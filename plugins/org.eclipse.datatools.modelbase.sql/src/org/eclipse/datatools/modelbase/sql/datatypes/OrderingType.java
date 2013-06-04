@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: OrderingType.java,v 1.3 2006/09/07 00:19:48 dpchou Exp $
+ * $Id$
  */
 package org.eclipse.datatools.modelbase.sql.datatypes;
 
@@ -10,7 +10,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import org.eclipse.emf.common.util.AbstractEnumerator;
+import org.eclipse.emf.common.util.Enumerator;
 
 /**
  * <!-- begin-user-doc -->
@@ -25,31 +25,28 @@ import org.eclipse.emf.common.util.AbstractEnumerator;
  * @model
  * @generated
  */
-public final class OrderingType extends AbstractEnumerator {
-	/**
-	 * The '<em><b>EQUALS</b></em>' literal value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #EQUALS_LITERAL
-	 * @model
-	 * @generated
-	 * @ordered
-	 */
-	public static final int EQUALS = 0;
-
-	/**
-	 * The '<em><b>FULL</b></em>' literal value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #FULL_LITERAL
-	 * @model
-	 * @generated
-	 * @ordered
-	 */
-	public static final int FULL = 1;
-
+public enum OrderingType implements Enumerator
+{
 	/**
 	 * The '<em><b>EQUALS</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #EQUALS_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	EQUALS(0, "EQUALS", "EQUALS"),
+	/**
+	 * The '<em><b>FULL</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #FULL_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	FULL(1, "FULL", "FULL");
+	/**
+	 * The '<em><b>EQUALS</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>EQUALS</b></em>' literal object isn't clear,
@@ -57,13 +54,14 @@ public final class OrderingType extends AbstractEnumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #EQUALS
+	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final OrderingType EQUALS_LITERAL = new OrderingType(EQUALS, "EQUALS", "EQUALS"); //$NON-NLS-1$
+	public static final int EQUALS_VALUE = 0;
 
 	/**
-	 * The '<em><b>FULL</b></em>' literal object.
+	 * The '<em><b>FULL</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>FULL</b></em>' literal object isn't clear,
@@ -71,10 +69,11 @@ public final class OrderingType extends AbstractEnumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #FULL
+	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final OrderingType FULL_LITERAL = new OrderingType(FULL, "FULL", "FULL"); //$NON-NLS-1$
+	public static final int FULL_VALUE = 1;
 
 	/**
 	 * An array of all the '<em><b>Ordering Type</b></em>' enumerators.
@@ -84,8 +83,8 @@ public final class OrderingType extends AbstractEnumerator {
 	 */
 	private static final OrderingType[] VALUES_ARRAY =
 		new OrderingType[] {
-			EQUALS_LITERAL,
-			FULL_LITERAL,
+			EQUALS,
+			FULL,
 		};
 
 	/**
@@ -94,7 +93,7 @@ public final class OrderingType extends AbstractEnumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<OrderingType> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
 	 * Returns the '<em><b>Ordering Type</b></em>' literal with the specified literal value.
@@ -136,11 +135,32 @@ public final class OrderingType extends AbstractEnumerator {
 	 */
 	public static OrderingType get(int value) {
 		switch (value) {
-			case EQUALS: return EQUALS_LITERAL;
-			case FULL: return FULL_LITERAL;
+			case EQUALS_VALUE: return EQUALS;
+			case FULL_VALUE: return FULL;
 		}
 		return null;
 	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final int value;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final String name;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final String literal;
 
 	/**
 	 * Only this class can construct instances.
@@ -149,7 +169,46 @@ public final class OrderingType extends AbstractEnumerator {
 	 * @generated
 	 */
 	private OrderingType(int value, String name, String literal) {
-		super(value, name, literal);
+		this.value = value;
+		this.name = name;
+		this.literal = literal;
 	}
 
-} //OrderingType
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int getValue() {
+	  return value;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getName() {
+	  return name;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getLiteral() {
+	  return literal;
+	}
+
+	/**
+	 * Returns the literal value of the enumerator, which is its string representation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		return literal;
+	}
+}

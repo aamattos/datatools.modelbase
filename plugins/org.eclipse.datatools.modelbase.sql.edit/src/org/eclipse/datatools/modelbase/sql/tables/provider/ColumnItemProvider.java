@@ -2,16 +2,15 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ColumnItemProvider.java,v 1.3 2007/05/31 00:29:18 dpchou Exp $
+ * $Id: ColumnItemProvider.java,v 1.22.8.10 2013/03/14 12:37:12 n775660 Exp $
  */
 package org.eclipse.datatools.modelbase.sql.tables.provider;
 
 
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
-import org.eclipse.datatools.modelbase.sql.expressions.SQLExpressionsFactory;
-import org.eclipse.datatools.modelbase.sql.schema.SQLSchemaFactory;
 import org.eclipse.datatools.modelbase.sql.schema.provider.SqlmodelEditPlugin;
 import org.eclipse.datatools.modelbase.sql.schema.provider.TypedElementItemProvider;
 import org.eclipse.datatools.modelbase.sql.tables.Column;
@@ -23,6 +22,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
+import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
@@ -59,41 +59,16 @@ public class ColumnItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getPropertyDescriptors(Object object) {
+	@Override
+	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addImplementationDependentPropertyDescriptor(object);
 			addNullablePropertyDescriptor(object);
-			addDefaultValuePropertyDescriptor(object);
-			addScopeCheckPropertyDescriptor(object);
-			addScopeCheckedPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
-
-	/**
-	 * This adds a property descriptor for the Implementation Dependent feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addImplementationDependentPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Column_implementationDependent_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_Column_implementationDependent_feature", "_UI_Column_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 SQLTablesPackage.Literals.COLUMN__IMPLEMENTATION_DEPENDENT,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
+	
 	/**
 	 * This adds a property descriptor for the Nullable feature.
 	 * <!-- begin-user-doc -->
@@ -105,75 +80,9 @@ public class ColumnItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Column_nullable_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_Column_nullable_feature", "_UI_Column_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 getString("_UI_Column_nullable_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Column_nullable_feature", "_UI_Column_type"),
 				 SQLTablesPackage.Literals.COLUMN__NULLABLE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Default Value feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addDefaultValuePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Column_defaultValue_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_Column_defaultValue_feature", "_UI_Column_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 SQLTablesPackage.Literals.COLUMN__DEFAULT_VALUE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Scope Check feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addScopeCheckPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Column_scopeCheck_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_Column_scopeCheck_feature", "_UI_Column_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 SQLTablesPackage.Literals.COLUMN__SCOPE_CHECK,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Scope Checked feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addScopeCheckedPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Column_scopeChecked_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_Column_scopeChecked_feature", "_UI_Column_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 SQLTablesPackage.Literals.COLUMN__SCOPE_CHECKED,
 				 true,
 				 false,
 				 false,
@@ -190,7 +99,8 @@ public class ColumnItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Collection getChildrenFeatures(Object object) {
+	@Override
+	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(SQLTablesPackage.Literals.COLUMN__IDENTITY_SPECIFIER);
@@ -204,6 +114,7 @@ public class ColumnItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EStructuralFeature getChildFeature(Object object, Object child) {
 		// Check the type of the specified child object and return the proper feature to use for
 		// adding (see {@link AddCommand}) it as a child.
@@ -217,8 +128,21 @@ public class ColumnItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/Column")); //$NON-NLS-1$
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/Column"));
+	}
+	
+	
+
+	@Override
+	public Collection<?> getChildren(Object object) {
+		
+		//El navegador muestra hasta las columnas
+		if(object instanceof Column)
+			return Collections.EMPTY_LIST;
+		
+		return super.getChildren(object);
 	}
 
 	/**
@@ -227,11 +151,12 @@ public class ColumnItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getText(Object object) {
 		String label = ((Column)object).getName();
 		return label == null || label.length() == 0 ?
-			getString("_UI_Column_type") : //$NON-NLS-1$
-			getString("_UI_Column_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+			getString("_UI_Column_type") :
+			label;
 	}
 
 	/**
@@ -241,6 +166,7 @@ public class ColumnItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
@@ -267,18 +193,9 @@ public class ColumnItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void collectNewChildDescriptors(Collection newChildDescriptors, Object object) {
+	@Override
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
-
-		newChildDescriptors.add
-			(createChildParameter
-				(SQLTablesPackage.Literals.COLUMN__IDENTITY_SPECIFIER,
-				 SQLSchemaFactory.eINSTANCE.createIdentitySpecifier()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(SQLTablesPackage.Literals.COLUMN__GENERATE_EXPRESSION,
-				 SQLExpressionsFactory.eINSTANCE.createValueExpressionDefault()));
 	}
 
 	/**
@@ -287,8 +204,8 @@ public class ColumnItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ResourceLocator getResourceLocator() {
 		return SqlmodelEditPlugin.INSTANCE;
 	}
-
 }

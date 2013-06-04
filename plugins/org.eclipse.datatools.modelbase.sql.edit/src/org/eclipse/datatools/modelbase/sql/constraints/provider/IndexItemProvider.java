@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: IndexItemProvider.java,v 1.4 2007/05/31 00:29:17 dpchou Exp $
+ * $Id$
  */
 package org.eclipse.datatools.modelbase.sql.constraints.provider;
 
@@ -22,12 +22,12 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
+import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-
 
 /**
  * This is the item provider adapter for a {@link org.eclipse.datatools.modelbase.sql.constraints.Index} object.
@@ -59,41 +59,18 @@ public class IndexItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getPropertyDescriptors(Object object) {
+	@Override
+	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addSchemaPropertyDescriptor(object);
 			addClusteredPropertyDescriptor(object);
 			addFillFactorPropertyDescriptor(object);
 			addUniquePropertyDescriptor(object);
 			addSystemGeneratedPropertyDescriptor(object);
-			addTablePropertyDescriptor(object);
-			addForeignKeyPropertyDescriptor(object);
+			addMembersPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
-	}
-
-	/**
-	 * This adds a property descriptor for the Schema feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addSchemaPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Index_Schema_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_Index_Schema_feature", "_UI_Index_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 SQLConstraintsPackage.Literals.INDEX__SCHEMA,
-				 true,
-				 false,
-				 false,
-				 null,
-				 null,
-				 null));
 	}
 
 	/**
@@ -107,8 +84,8 @@ public class IndexItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Index_clustered_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_Index_clustered_feature", "_UI_Index_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 getString("_UI_Index_clustered_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Index_clustered_feature", "_UI_Index_type"),
 				 SQLConstraintsPackage.Literals.INDEX__CLUSTERED,
 				 true,
 				 false,
@@ -129,8 +106,8 @@ public class IndexItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Index_fillFactor_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_Index_fillFactor_feature", "_UI_Index_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 getString("_UI_Index_fillFactor_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Index_fillFactor_feature", "_UI_Index_type"),
 				 SQLConstraintsPackage.Literals.INDEX__FILL_FACTOR,
 				 true,
 				 false,
@@ -151,8 +128,8 @@ public class IndexItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Index_unique_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_Index_unique_feature", "_UI_Index_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 getString("_UI_Index_unique_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Index_unique_feature", "_UI_Index_type"),
 				 SQLConstraintsPackage.Literals.INDEX__UNIQUE,
 				 true,
 				 false,
@@ -173,8 +150,8 @@ public class IndexItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Index_systemGenerated_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_Index_systemGenerated_feature", "_UI_Index_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 getString("_UI_Index_systemGenerated_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Index_systemGenerated_feature", "_UI_Index_type"),
 				 SQLConstraintsPackage.Literals.INDEX__SYSTEM_GENERATED,
 				 true,
 				 false,
@@ -185,41 +162,19 @@ public class IndexItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Table feature.
+	 * This adds a property descriptor for the Members feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addTablePropertyDescriptor(Object object) {
+	protected void addMembersPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Index_table_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_Index_table_feature", "_UI_Index_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 SQLConstraintsPackage.Literals.INDEX__TABLE,
-				 true,
-				 false,
-				 false,
-				 null,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Foreign Key feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addForeignKeyPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Index_ForeignKey_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_Index_ForeignKey_feature", "_UI_Index_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 SQLConstraintsPackage.Literals.INDEX__FOREIGN_KEY,
+				 getString("_UI_Index_members_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Index_members_feature", "_UI_Index_type"),
+				 SQLConstraintsPackage.Literals.INDEX__MEMBERS,
 				 true,
 				 false,
 				 false,
@@ -236,7 +191,8 @@ public class IndexItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Collection getChildrenFeatures(Object object) {
+	@Override
+	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(SQLConstraintsPackage.Literals.INDEX__MEMBERS);
@@ -250,6 +206,7 @@ public class IndexItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EStructuralFeature getChildFeature(Object object, Object child) {
 		// Check the type of the specified child object and return the proper feature to use for
 		// adding (see {@link AddCommand}) it as a child.
@@ -263,8 +220,9 @@ public class IndexItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/Index")); //$NON-NLS-1$
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/Index"));
 	}
 
 	/**
@@ -273,11 +231,12 @@ public class IndexItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getText(Object object) {
 		String label = ((Index)object).getName();
 		return label == null || label.length() == 0 ?
-			getString("_UI_Index_type") : //$NON-NLS-1$
-			getString("_UI_Index_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+			getString("_UI_Index_type") :
+			label;
 	}
 
 	/**
@@ -287,6 +246,7 @@ public class IndexItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
@@ -312,7 +272,8 @@ public class IndexItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void collectNewChildDescriptors(Collection newChildDescriptors, Object object) {
+	@Override
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
 		newChildDescriptors.add
@@ -332,7 +293,8 @@ public class IndexItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getCreateChildText(Object owner, Object feature, Object child, Collection selection) {
+	@Override
+	public String getCreateChildText(Object owner, Object feature, Object child, Collection<?> selection) {
 		Object childFeature = feature;
 		Object childObject = child;
 
@@ -342,7 +304,7 @@ public class IndexItemProvider
 
 		if (qualify) {
 			return getString
-				("_UI_CreateChild_text2", //$NON-NLS-1$
+				("_UI_CreateChild_text2",
 				 new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
 		}
 		return super.getCreateChildText(owner, feature, child, selection);
@@ -354,8 +316,8 @@ public class IndexItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ResourceLocator getResourceLocator() {
 		return SqlmodelEditPlugin.INSTANCE;
 	}
-
 }

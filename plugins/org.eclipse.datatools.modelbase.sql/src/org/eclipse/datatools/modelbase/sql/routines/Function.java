@@ -1,13 +1,9 @@
-/*******************************************************************************
- * Copyright (c) 2001, 2004 IBM Corporation and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- * 
- * Contributors:
- *     IBM Corporation - initial API and implementation
- *******************************************************************************/
+/**
+ * <copyright>
+ * </copyright>
+ *
+ * $Id$
+ */
 package org.eclipse.datatools.modelbase.sql.routines;
 
 
@@ -212,7 +208,7 @@ public interface Function extends Routine {
 	 * Returns the value of the '<em><b>Return Table</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Return Table</em>' containment reference isn't clear,
+	 * If the meaning of the '<em>Return Table</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
@@ -235,52 +231,52 @@ public interface Function extends Routine {
 	void setReturnTable(RoutineResultTable value);
 
 	/**
-	 * Returns the value of the '<em><b>Return Scalar</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Return Scalar</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Return Scalar</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Return Scalar</em>' containment reference.
+	 * @return the value of the '<em>Return Scalar</em>' reference.
 	 * @see #setReturnScalar(Parameter)
 	 * @see org.eclipse.datatools.modelbase.sql.routines.SQLRoutinesPackage#getFunction_ReturnScalar()
-	 * @model containment="true"
+	 * @model
 	 * @generated
 	 */
 	Parameter getReturnScalar();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.datatools.modelbase.sql.routines.Function#getReturnScalar <em>Return Scalar</em>}' containment reference.
+	 * Sets the value of the '{@link org.eclipse.datatools.modelbase.sql.routines.Function#getReturnScalar <em>Return Scalar</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Return Scalar</em>' containment reference.
+	 * @param value the new value of the '<em>Return Scalar</em>' reference.
 	 * @see #getReturnScalar()
 	 * @generated
 	 */
 	void setReturnScalar(Parameter value);
 
 	/**
-	 * Returns the value of the '<em><b>Return Cast</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Return Cast</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Return Cast</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Return Cast</em>' containment reference.
+	 * @return the value of the '<em>Return Cast</em>' reference.
 	 * @see #setReturnCast(Parameter)
 	 * @see org.eclipse.datatools.modelbase.sql.routines.SQLRoutinesPackage#getFunction_ReturnCast()
-	 * @model containment="true"
+	 * @model
 	 * @generated
 	 */
 	Parameter getReturnCast();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.datatools.modelbase.sql.routines.Function#getReturnCast <em>Return Cast</em>}' containment reference.
+	 * Sets the value of the '{@link org.eclipse.datatools.modelbase.sql.routines.Function#getReturnCast <em>Return Cast</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Return Cast</em>' containment reference.
+	 * @param value the new value of the '<em>Return Cast</em>' reference.
 	 * @see #getReturnCast()
 	 * @generated
 	 */

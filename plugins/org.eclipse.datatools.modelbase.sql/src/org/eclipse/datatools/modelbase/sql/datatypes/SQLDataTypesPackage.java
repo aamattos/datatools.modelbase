@@ -1,19 +1,16 @@
-/*******************************************************************************
- * Copyright (c) 2001, 2004 IBM Corporation and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- * 
- * Contributors:
- *     IBM Corporation - initial API and implementation
- *******************************************************************************/
+/**
+ * <copyright>
+ * </copyright>
+ *
+ * $Id$
+ */
 package org.eclipse.datatools.modelbase.sql.datatypes;
 
 import org.eclipse.datatools.modelbase.sql.schema.SQLSchemaPackage;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
+import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -24,6 +21,7 @@ import org.eclipse.emf.ecore.EReference;
  * <ul>
  *   <li>each class,</li>
  *   <li>each feature of each class,</li>
+ *   <li>each operation of each class,</li>
  *   <li>each enum,</li>
  *   <li>and each data type</li>
  * </ul>
@@ -39,7 +37,7 @@ public interface SQLDataTypesPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNAME = "datatypes"; //$NON-NLS-1$
+	String eNAME = "datatypes";
 
 	/**
 	 * The package namespace URI.
@@ -47,7 +45,7 @@ public interface SQLDataTypesPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http:///org/eclipse/datatools/modelbase/sql/datatypes.ecore"; //$NON-NLS-1$
+	String eNS_URI = "http:///org/eclipse/datatools/modelbase/sql/datatypes.ecore";
 
 	/**
 	 * The package namespace name.
@@ -55,7 +53,7 @@ public interface SQLDataTypesPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_PREFIX = "SQLDataTypes"; //$NON-NLS-1$
+	String eNS_PREFIX = "SQLDataTypes";
 
 	/**
 	 * The singleton instance of the package.
@@ -155,6 +153,78 @@ public interface SQLDataTypesPackage extends EPackage {
 	 * @ordered
 	 */
 	int DATA_TYPE_FEATURE_COUNT = SQLSchemaPackage.SQL_OBJECT_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Add EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_TYPE___ADD_EANNOTATION__STRING = SQLSchemaPackage.SQL_OBJECT___ADD_EANNOTATION__STRING;
+
+	/**
+	 * The operation id for the '<em>Add EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_TYPE___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING = SQLSchemaPackage.SQL_OBJECT___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_TYPE___GET_EANNOTATION_DETAIL__EANNOTATION_STRING = SQLSchemaPackage.SQL_OBJECT___GET_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Set Annotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_TYPE___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING = SQLSchemaPackage.SQL_OBJECT___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Remove EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_TYPE___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING = SQLSchemaPackage.SQL_OBJECT___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_TYPE___GET_EANNOTATION__STRING = SQLSchemaPackage.SQL_OBJECT___GET_EANNOTATION__STRING;
+
+	/**
+	 * The operation id for the '<em>Set Container</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_TYPE___SET_CONTAINER__TYPEDELEMENT = SQLSchemaPackage.SQL_OBJECT_OPERATION_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Data Type</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_TYPE_OPERATION_COUNT = SQLSchemaPackage.SQL_OBJECT_OPERATION_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.datatools.modelbase.sql.datatypes.impl.UserDefinedTypeImpl <em>User Defined Type</em>}' class.
@@ -266,6 +336,78 @@ public interface SQLDataTypesPackage extends EPackage {
 	int USER_DEFINED_TYPE_FEATURE_COUNT = DATA_TYPE_FEATURE_COUNT + 2;
 
 	/**
+	 * The operation id for the '<em>Add EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USER_DEFINED_TYPE___ADD_EANNOTATION__STRING = DATA_TYPE___ADD_EANNOTATION__STRING;
+
+	/**
+	 * The operation id for the '<em>Add EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USER_DEFINED_TYPE___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING = DATA_TYPE___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USER_DEFINED_TYPE___GET_EANNOTATION_DETAIL__EANNOTATION_STRING = DATA_TYPE___GET_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Set Annotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USER_DEFINED_TYPE___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING = DATA_TYPE___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Remove EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USER_DEFINED_TYPE___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING = DATA_TYPE___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USER_DEFINED_TYPE___GET_EANNOTATION__STRING = DATA_TYPE___GET_EANNOTATION__STRING;
+
+	/**
+	 * The operation id for the '<em>Set Container</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USER_DEFINED_TYPE___SET_CONTAINER__TYPEDELEMENT = DATA_TYPE___SET_CONTAINER__TYPEDELEMENT;
+
+	/**
+	 * The number of operations of the '<em>User Defined Type</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USER_DEFINED_TYPE_OPERATION_COUNT = DATA_TYPE_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.eclipse.datatools.modelbase.sql.datatypes.impl.SQLDataTypeImpl <em>SQL Data Type</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -355,6 +497,78 @@ public interface SQLDataTypesPackage extends EPackage {
 	 * @ordered
 	 */
 	int SQL_DATA_TYPE_FEATURE_COUNT = DATA_TYPE_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Add EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SQL_DATA_TYPE___ADD_EANNOTATION__STRING = DATA_TYPE___ADD_EANNOTATION__STRING;
+
+	/**
+	 * The operation id for the '<em>Add EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SQL_DATA_TYPE___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING = DATA_TYPE___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SQL_DATA_TYPE___GET_EANNOTATION_DETAIL__EANNOTATION_STRING = DATA_TYPE___GET_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Set Annotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SQL_DATA_TYPE___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING = DATA_TYPE___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Remove EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SQL_DATA_TYPE___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING = DATA_TYPE___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SQL_DATA_TYPE___GET_EANNOTATION__STRING = DATA_TYPE___GET_EANNOTATION__STRING;
+
+	/**
+	 * The operation id for the '<em>Set Container</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SQL_DATA_TYPE___SET_CONTAINER__TYPEDELEMENT = DATA_TYPE___SET_CONTAINER__TYPEDELEMENT;
+
+	/**
+	 * The number of operations of the '<em>SQL Data Type</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SQL_DATA_TYPE_OPERATION_COUNT = DATA_TYPE_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.datatools.modelbase.sql.datatypes.impl.PredefinedDataTypeImpl <em>Predefined Data Type</em>}' class.
@@ -457,6 +671,78 @@ public interface SQLDataTypesPackage extends EPackage {
 	int PREDEFINED_DATA_TYPE_FEATURE_COUNT = SQL_DATA_TYPE_FEATURE_COUNT + 1;
 
 	/**
+	 * The operation id for the '<em>Add EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PREDEFINED_DATA_TYPE___ADD_EANNOTATION__STRING = SQL_DATA_TYPE___ADD_EANNOTATION__STRING;
+
+	/**
+	 * The operation id for the '<em>Add EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PREDEFINED_DATA_TYPE___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING = SQL_DATA_TYPE___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PREDEFINED_DATA_TYPE___GET_EANNOTATION_DETAIL__EANNOTATION_STRING = SQL_DATA_TYPE___GET_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Set Annotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PREDEFINED_DATA_TYPE___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING = SQL_DATA_TYPE___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Remove EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PREDEFINED_DATA_TYPE___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING = SQL_DATA_TYPE___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PREDEFINED_DATA_TYPE___GET_EANNOTATION__STRING = SQL_DATA_TYPE___GET_EANNOTATION__STRING;
+
+	/**
+	 * The operation id for the '<em>Set Container</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PREDEFINED_DATA_TYPE___SET_CONTAINER__TYPEDELEMENT = SQL_DATA_TYPE___SET_CONTAINER__TYPEDELEMENT;
+
+	/**
+	 * The number of operations of the '<em>Predefined Data Type</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PREDEFINED_DATA_TYPE_OPERATION_COUNT = SQL_DATA_TYPE_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.eclipse.datatools.modelbase.sql.datatypes.impl.ConstructedDataTypeImpl <em>Constructed Data Type</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -546,6 +832,78 @@ public interface SQLDataTypesPackage extends EPackage {
 	 * @ordered
 	 */
 	int CONSTRUCTED_DATA_TYPE_FEATURE_COUNT = DATA_TYPE_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Add EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONSTRUCTED_DATA_TYPE___ADD_EANNOTATION__STRING = DATA_TYPE___ADD_EANNOTATION__STRING;
+
+	/**
+	 * The operation id for the '<em>Add EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONSTRUCTED_DATA_TYPE___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING = DATA_TYPE___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONSTRUCTED_DATA_TYPE___GET_EANNOTATION_DETAIL__EANNOTATION_STRING = DATA_TYPE___GET_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Set Annotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONSTRUCTED_DATA_TYPE___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING = DATA_TYPE___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Remove EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONSTRUCTED_DATA_TYPE___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING = DATA_TYPE___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONSTRUCTED_DATA_TYPE___GET_EANNOTATION__STRING = DATA_TYPE___GET_EANNOTATION__STRING;
+
+	/**
+	 * The operation id for the '<em>Set Container</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONSTRUCTED_DATA_TYPE___SET_CONTAINER__TYPEDELEMENT = DATA_TYPE___SET_CONTAINER__TYPEDELEMENT;
+
+	/**
+	 * The number of operations of the '<em>Constructed Data Type</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONSTRUCTED_DATA_TYPE_OPERATION_COUNT = DATA_TYPE_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.datatools.modelbase.sql.datatypes.impl.CollectionDataTypeImpl <em>Collection Data Type</em>}' class.
@@ -646,6 +1004,78 @@ public interface SQLDataTypesPackage extends EPackage {
 	 * @ordered
 	 */
 	int COLLECTION_DATA_TYPE_FEATURE_COUNT = CONSTRUCTED_DATA_TYPE_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Add EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COLLECTION_DATA_TYPE___ADD_EANNOTATION__STRING = CONSTRUCTED_DATA_TYPE___ADD_EANNOTATION__STRING;
+
+	/**
+	 * The operation id for the '<em>Add EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COLLECTION_DATA_TYPE___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING = CONSTRUCTED_DATA_TYPE___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COLLECTION_DATA_TYPE___GET_EANNOTATION_DETAIL__EANNOTATION_STRING = CONSTRUCTED_DATA_TYPE___GET_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Set Annotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COLLECTION_DATA_TYPE___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING = CONSTRUCTED_DATA_TYPE___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Remove EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COLLECTION_DATA_TYPE___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING = CONSTRUCTED_DATA_TYPE___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COLLECTION_DATA_TYPE___GET_EANNOTATION__STRING = CONSTRUCTED_DATA_TYPE___GET_EANNOTATION__STRING;
+
+	/**
+	 * The operation id for the '<em>Set Container</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COLLECTION_DATA_TYPE___SET_CONTAINER__TYPEDELEMENT = CONSTRUCTED_DATA_TYPE___SET_CONTAINER__TYPEDELEMENT;
+
+	/**
+	 * The number of operations of the '<em>Collection Data Type</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COLLECTION_DATA_TYPE_OPERATION_COUNT = CONSTRUCTED_DATA_TYPE_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.datatools.modelbase.sql.datatypes.impl.NumericalDataTypeImpl <em>Numerical Data Type</em>}' class.
@@ -755,6 +1185,78 @@ public interface SQLDataTypesPackage extends EPackage {
 	 * @ordered
 	 */
 	int NUMERICAL_DATA_TYPE_FEATURE_COUNT = PREDEFINED_DATA_TYPE_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Add EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NUMERICAL_DATA_TYPE___ADD_EANNOTATION__STRING = PREDEFINED_DATA_TYPE___ADD_EANNOTATION__STRING;
+
+	/**
+	 * The operation id for the '<em>Add EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NUMERICAL_DATA_TYPE___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING = PREDEFINED_DATA_TYPE___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NUMERICAL_DATA_TYPE___GET_EANNOTATION_DETAIL__EANNOTATION_STRING = PREDEFINED_DATA_TYPE___GET_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Set Annotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NUMERICAL_DATA_TYPE___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING = PREDEFINED_DATA_TYPE___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Remove EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NUMERICAL_DATA_TYPE___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING = PREDEFINED_DATA_TYPE___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NUMERICAL_DATA_TYPE___GET_EANNOTATION__STRING = PREDEFINED_DATA_TYPE___GET_EANNOTATION__STRING;
+
+	/**
+	 * The operation id for the '<em>Set Container</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NUMERICAL_DATA_TYPE___SET_CONTAINER__TYPEDELEMENT = PREDEFINED_DATA_TYPE___SET_CONTAINER__TYPEDELEMENT;
+
+	/**
+	 * The number of operations of the '<em>Numerical Data Type</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NUMERICAL_DATA_TYPE_OPERATION_COUNT = PREDEFINED_DATA_TYPE_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.datatools.modelbase.sql.datatypes.impl.CharacterStringDataTypeImpl <em>Character String Data Type</em>}' class.
@@ -902,6 +1404,78 @@ public interface SQLDataTypesPackage extends EPackage {
 	int CHARACTER_STRING_DATA_TYPE_FEATURE_COUNT = PREDEFINED_DATA_TYPE_FEATURE_COUNT + 5;
 
 	/**
+	 * The operation id for the '<em>Add EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHARACTER_STRING_DATA_TYPE___ADD_EANNOTATION__STRING = PREDEFINED_DATA_TYPE___ADD_EANNOTATION__STRING;
+
+	/**
+	 * The operation id for the '<em>Add EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHARACTER_STRING_DATA_TYPE___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING = PREDEFINED_DATA_TYPE___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHARACTER_STRING_DATA_TYPE___GET_EANNOTATION_DETAIL__EANNOTATION_STRING = PREDEFINED_DATA_TYPE___GET_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Set Annotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHARACTER_STRING_DATA_TYPE___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING = PREDEFINED_DATA_TYPE___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Remove EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHARACTER_STRING_DATA_TYPE___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING = PREDEFINED_DATA_TYPE___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHARACTER_STRING_DATA_TYPE___GET_EANNOTATION__STRING = PREDEFINED_DATA_TYPE___GET_EANNOTATION__STRING;
+
+	/**
+	 * The operation id for the '<em>Set Container</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHARACTER_STRING_DATA_TYPE___SET_CONTAINER__TYPEDELEMENT = PREDEFINED_DATA_TYPE___SET_CONTAINER__TYPEDELEMENT;
+
+	/**
+	 * The number of operations of the '<em>Character String Data Type</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHARACTER_STRING_DATA_TYPE_OPERATION_COUNT = PREDEFINED_DATA_TYPE_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.eclipse.datatools.modelbase.sql.datatypes.impl.RowDataTypeImpl <em>Row Data Type</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1000,6 +1574,78 @@ public interface SQLDataTypesPackage extends EPackage {
 	 * @ordered
 	 */
 	int ROW_DATA_TYPE_FEATURE_COUNT = CONSTRUCTED_DATA_TYPE_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Add EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROW_DATA_TYPE___ADD_EANNOTATION__STRING = CONSTRUCTED_DATA_TYPE___ADD_EANNOTATION__STRING;
+
+	/**
+	 * The operation id for the '<em>Add EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROW_DATA_TYPE___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING = CONSTRUCTED_DATA_TYPE___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROW_DATA_TYPE___GET_EANNOTATION_DETAIL__EANNOTATION_STRING = CONSTRUCTED_DATA_TYPE___GET_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Set Annotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROW_DATA_TYPE___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING = CONSTRUCTED_DATA_TYPE___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Remove EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROW_DATA_TYPE___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING = CONSTRUCTED_DATA_TYPE___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROW_DATA_TYPE___GET_EANNOTATION__STRING = CONSTRUCTED_DATA_TYPE___GET_EANNOTATION__STRING;
+
+	/**
+	 * The operation id for the '<em>Set Container</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROW_DATA_TYPE___SET_CONTAINER__TYPEDELEMENT = CONSTRUCTED_DATA_TYPE___SET_CONTAINER__TYPEDELEMENT;
+
+	/**
+	 * The number of operations of the '<em>Row Data Type</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROW_DATA_TYPE_OPERATION_COUNT = CONSTRUCTED_DATA_TYPE_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.datatools.modelbase.sql.datatypes.impl.ArrayDataTypeImpl <em>Array Data Type</em>}' class.
@@ -1111,6 +1757,78 @@ public interface SQLDataTypesPackage extends EPackage {
 	int ARRAY_DATA_TYPE_FEATURE_COUNT = COLLECTION_DATA_TYPE_FEATURE_COUNT + 1;
 
 	/**
+	 * The operation id for the '<em>Add EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ARRAY_DATA_TYPE___ADD_EANNOTATION__STRING = COLLECTION_DATA_TYPE___ADD_EANNOTATION__STRING;
+
+	/**
+	 * The operation id for the '<em>Add EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ARRAY_DATA_TYPE___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING = COLLECTION_DATA_TYPE___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ARRAY_DATA_TYPE___GET_EANNOTATION_DETAIL__EANNOTATION_STRING = COLLECTION_DATA_TYPE___GET_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Set Annotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ARRAY_DATA_TYPE___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING = COLLECTION_DATA_TYPE___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Remove EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ARRAY_DATA_TYPE___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING = COLLECTION_DATA_TYPE___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ARRAY_DATA_TYPE___GET_EANNOTATION__STRING = COLLECTION_DATA_TYPE___GET_EANNOTATION__STRING;
+
+	/**
+	 * The operation id for the '<em>Set Container</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ARRAY_DATA_TYPE___SET_CONTAINER__TYPEDELEMENT = COLLECTION_DATA_TYPE___SET_CONTAINER__TYPEDELEMENT;
+
+	/**
+	 * The number of operations of the '<em>Array Data Type</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ARRAY_DATA_TYPE_OPERATION_COUNT = COLLECTION_DATA_TYPE_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.eclipse.datatools.modelbase.sql.datatypes.impl.MultisetDataTypeImpl <em>Multiset Data Type</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1211,6 +1929,78 @@ public interface SQLDataTypesPackage extends EPackage {
 	int MULTISET_DATA_TYPE_FEATURE_COUNT = COLLECTION_DATA_TYPE_FEATURE_COUNT + 0;
 
 	/**
+	 * The operation id for the '<em>Add EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MULTISET_DATA_TYPE___ADD_EANNOTATION__STRING = COLLECTION_DATA_TYPE___ADD_EANNOTATION__STRING;
+
+	/**
+	 * The operation id for the '<em>Add EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MULTISET_DATA_TYPE___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING = COLLECTION_DATA_TYPE___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MULTISET_DATA_TYPE___GET_EANNOTATION_DETAIL__EANNOTATION_STRING = COLLECTION_DATA_TYPE___GET_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Set Annotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MULTISET_DATA_TYPE___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING = COLLECTION_DATA_TYPE___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Remove EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MULTISET_DATA_TYPE___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING = COLLECTION_DATA_TYPE___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MULTISET_DATA_TYPE___GET_EANNOTATION__STRING = COLLECTION_DATA_TYPE___GET_EANNOTATION__STRING;
+
+	/**
+	 * The operation id for the '<em>Set Container</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MULTISET_DATA_TYPE___SET_CONTAINER__TYPEDELEMENT = COLLECTION_DATA_TYPE___SET_CONTAINER__TYPEDELEMENT;
+
+	/**
+	 * The number of operations of the '<em>Multiset Data Type</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MULTISET_DATA_TYPE_OPERATION_COUNT = COLLECTION_DATA_TYPE_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.eclipse.datatools.modelbase.sql.datatypes.impl.BooleanDataTypeImpl <em>Boolean Data Type</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1309,6 +2099,78 @@ public interface SQLDataTypesPackage extends EPackage {
 	 * @ordered
 	 */
 	int BOOLEAN_DATA_TYPE_FEATURE_COUNT = PREDEFINED_DATA_TYPE_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Add EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOOLEAN_DATA_TYPE___ADD_EANNOTATION__STRING = PREDEFINED_DATA_TYPE___ADD_EANNOTATION__STRING;
+
+	/**
+	 * The operation id for the '<em>Add EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOOLEAN_DATA_TYPE___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING = PREDEFINED_DATA_TYPE___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOOLEAN_DATA_TYPE___GET_EANNOTATION_DETAIL__EANNOTATION_STRING = PREDEFINED_DATA_TYPE___GET_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Set Annotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOOLEAN_DATA_TYPE___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING = PREDEFINED_DATA_TYPE___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Remove EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOOLEAN_DATA_TYPE___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING = PREDEFINED_DATA_TYPE___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOOLEAN_DATA_TYPE___GET_EANNOTATION__STRING = PREDEFINED_DATA_TYPE___GET_EANNOTATION__STRING;
+
+	/**
+	 * The operation id for the '<em>Set Container</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOOLEAN_DATA_TYPE___SET_CONTAINER__TYPEDELEMENT = PREDEFINED_DATA_TYPE___SET_CONTAINER__TYPEDELEMENT;
+
+	/**
+	 * The number of operations of the '<em>Boolean Data Type</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOOLEAN_DATA_TYPE_OPERATION_COUNT = PREDEFINED_DATA_TYPE_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.datatools.modelbase.sql.datatypes.impl.IntervalDataTypeImpl <em>Interval Data Type</em>}' class.
@@ -1456,6 +2318,78 @@ public interface SQLDataTypesPackage extends EPackage {
 	int INTERVAL_DATA_TYPE_FEATURE_COUNT = PREDEFINED_DATA_TYPE_FEATURE_COUNT + 5;
 
 	/**
+	 * The operation id for the '<em>Add EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTERVAL_DATA_TYPE___ADD_EANNOTATION__STRING = PREDEFINED_DATA_TYPE___ADD_EANNOTATION__STRING;
+
+	/**
+	 * The operation id for the '<em>Add EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTERVAL_DATA_TYPE___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING = PREDEFINED_DATA_TYPE___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTERVAL_DATA_TYPE___GET_EANNOTATION_DETAIL__EANNOTATION_STRING = PREDEFINED_DATA_TYPE___GET_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Set Annotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTERVAL_DATA_TYPE___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING = PREDEFINED_DATA_TYPE___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Remove EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTERVAL_DATA_TYPE___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING = PREDEFINED_DATA_TYPE___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTERVAL_DATA_TYPE___GET_EANNOTATION__STRING = PREDEFINED_DATA_TYPE___GET_EANNOTATION__STRING;
+
+	/**
+	 * The operation id for the '<em>Set Container</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTERVAL_DATA_TYPE___SET_CONTAINER__TYPEDELEMENT = PREDEFINED_DATA_TYPE___SET_CONTAINER__TYPEDELEMENT;
+
+	/**
+	 * The number of operations of the '<em>Interval Data Type</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTERVAL_DATA_TYPE_OPERATION_COUNT = PREDEFINED_DATA_TYPE_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.eclipse.datatools.modelbase.sql.datatypes.impl.BinaryStringDataTypeImpl <em>Binary String Data Type</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1563,6 +2497,87 @@ public interface SQLDataTypesPackage extends EPackage {
 	 * @ordered
 	 */
 	int BINARY_STRING_DATA_TYPE_FEATURE_COUNT = PREDEFINED_DATA_TYPE_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Add EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BINARY_STRING_DATA_TYPE___ADD_EANNOTATION__STRING = PREDEFINED_DATA_TYPE___ADD_EANNOTATION__STRING;
+
+	/**
+	 * The operation id for the '<em>Add EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BINARY_STRING_DATA_TYPE___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING = PREDEFINED_DATA_TYPE___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BINARY_STRING_DATA_TYPE___GET_EANNOTATION_DETAIL__EANNOTATION_STRING = PREDEFINED_DATA_TYPE___GET_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Set Annotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BINARY_STRING_DATA_TYPE___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING = PREDEFINED_DATA_TYPE___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Remove EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BINARY_STRING_DATA_TYPE___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING = PREDEFINED_DATA_TYPE___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BINARY_STRING_DATA_TYPE___GET_EANNOTATION__STRING = PREDEFINED_DATA_TYPE___GET_EANNOTATION__STRING;
+
+	/**
+	 * The operation id for the '<em>Set Container</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BINARY_STRING_DATA_TYPE___SET_CONTAINER__TYPEDELEMENT = PREDEFINED_DATA_TYPE___SET_CONTAINER__TYPEDELEMENT;
+
+	/**
+	 * The operation id for the '<em>Equals</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BINARY_STRING_DATA_TYPE___EQUALS = PREDEFINED_DATA_TYPE_OPERATION_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Binary String Data Type</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BINARY_STRING_DATA_TYPE_OPERATION_COUNT = PREDEFINED_DATA_TYPE_OPERATION_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.datatools.modelbase.sql.datatypes.impl.CharacterSetImpl <em>Character Set</em>}' class.
@@ -1701,6 +2716,69 @@ public interface SQLDataTypesPackage extends EPackage {
 	int CHARACTER_SET_FEATURE_COUNT = SQLSchemaPackage.SQL_OBJECT_FEATURE_COUNT + 5;
 
 	/**
+	 * The operation id for the '<em>Add EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHARACTER_SET___ADD_EANNOTATION__STRING = SQLSchemaPackage.SQL_OBJECT___ADD_EANNOTATION__STRING;
+
+	/**
+	 * The operation id for the '<em>Add EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHARACTER_SET___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING = SQLSchemaPackage.SQL_OBJECT___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHARACTER_SET___GET_EANNOTATION_DETAIL__EANNOTATION_STRING = SQLSchemaPackage.SQL_OBJECT___GET_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Set Annotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHARACTER_SET___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING = SQLSchemaPackage.SQL_OBJECT___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Remove EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHARACTER_SET___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING = SQLSchemaPackage.SQL_OBJECT___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHARACTER_SET___GET_EANNOTATION__STRING = SQLSchemaPackage.SQL_OBJECT___GET_EANNOTATION__STRING;
+
+	/**
+	 * The number of operations of the '<em>Character Set</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHARACTER_SET_OPERATION_COUNT = SQLSchemaPackage.SQL_OBJECT_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.eclipse.datatools.modelbase.sql.datatypes.impl.TimeDataTypeImpl <em>Time Data Type</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1819,6 +2897,78 @@ public interface SQLDataTypesPackage extends EPackage {
 	int TIME_DATA_TYPE_FEATURE_COUNT = PREDEFINED_DATA_TYPE_FEATURE_COUNT + 2;
 
 	/**
+	 * The operation id for the '<em>Add EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_DATA_TYPE___ADD_EANNOTATION__STRING = PREDEFINED_DATA_TYPE___ADD_EANNOTATION__STRING;
+
+	/**
+	 * The operation id for the '<em>Add EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_DATA_TYPE___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING = PREDEFINED_DATA_TYPE___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_DATA_TYPE___GET_EANNOTATION_DETAIL__EANNOTATION_STRING = PREDEFINED_DATA_TYPE___GET_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Set Annotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_DATA_TYPE___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING = PREDEFINED_DATA_TYPE___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Remove EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_DATA_TYPE___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING = PREDEFINED_DATA_TYPE___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_DATA_TYPE___GET_EANNOTATION__STRING = PREDEFINED_DATA_TYPE___GET_EANNOTATION__STRING;
+
+	/**
+	 * The operation id for the '<em>Set Container</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_DATA_TYPE___SET_CONTAINER__TYPEDELEMENT = PREDEFINED_DATA_TYPE___SET_CONTAINER__TYPEDELEMENT;
+
+	/**
+	 * The number of operations of the '<em>Time Data Type</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_DATA_TYPE_OPERATION_COUNT = PREDEFINED_DATA_TYPE_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.eclipse.datatools.modelbase.sql.datatypes.impl.DistinctUserDefinedTypeImpl <em>Distinct User Defined Type</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1935,6 +3085,78 @@ public interface SQLDataTypesPackage extends EPackage {
 	 * @ordered
 	 */
 	int DISTINCT_USER_DEFINED_TYPE_FEATURE_COUNT = USER_DEFINED_TYPE_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Add EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISTINCT_USER_DEFINED_TYPE___ADD_EANNOTATION__STRING = USER_DEFINED_TYPE___ADD_EANNOTATION__STRING;
+
+	/**
+	 * The operation id for the '<em>Add EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISTINCT_USER_DEFINED_TYPE___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING = USER_DEFINED_TYPE___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISTINCT_USER_DEFINED_TYPE___GET_EANNOTATION_DETAIL__EANNOTATION_STRING = USER_DEFINED_TYPE___GET_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Set Annotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISTINCT_USER_DEFINED_TYPE___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING = USER_DEFINED_TYPE___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Remove EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISTINCT_USER_DEFINED_TYPE___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING = USER_DEFINED_TYPE___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISTINCT_USER_DEFINED_TYPE___GET_EANNOTATION__STRING = USER_DEFINED_TYPE___GET_EANNOTATION__STRING;
+
+	/**
+	 * The operation id for the '<em>Set Container</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISTINCT_USER_DEFINED_TYPE___SET_CONTAINER__TYPEDELEMENT = USER_DEFINED_TYPE___SET_CONTAINER__TYPEDELEMENT;
+
+	/**
+	 * The number of operations of the '<em>Distinct User Defined Type</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DISTINCT_USER_DEFINED_TYPE_OPERATION_COUNT = USER_DEFINED_TYPE_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.datatools.modelbase.sql.datatypes.impl.StructuredUserDefinedTypeImpl <em>Structured User Defined Type</em>}' class.
@@ -2100,6 +3322,78 @@ public interface SQLDataTypesPackage extends EPackage {
 	int STRUCTURED_USER_DEFINED_TYPE_FEATURE_COUNT = USER_DEFINED_TYPE_FEATURE_COUNT + 6;
 
 	/**
+	 * The operation id for the '<em>Add EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRUCTURED_USER_DEFINED_TYPE___ADD_EANNOTATION__STRING = USER_DEFINED_TYPE___ADD_EANNOTATION__STRING;
+
+	/**
+	 * The operation id for the '<em>Add EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRUCTURED_USER_DEFINED_TYPE___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING = USER_DEFINED_TYPE___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRUCTURED_USER_DEFINED_TYPE___GET_EANNOTATION_DETAIL__EANNOTATION_STRING = USER_DEFINED_TYPE___GET_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Set Annotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRUCTURED_USER_DEFINED_TYPE___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING = USER_DEFINED_TYPE___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Remove EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRUCTURED_USER_DEFINED_TYPE___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING = USER_DEFINED_TYPE___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRUCTURED_USER_DEFINED_TYPE___GET_EANNOTATION__STRING = USER_DEFINED_TYPE___GET_EANNOTATION__STRING;
+
+	/**
+	 * The operation id for the '<em>Set Container</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRUCTURED_USER_DEFINED_TYPE___SET_CONTAINER__TYPEDELEMENT = USER_DEFINED_TYPE___SET_CONTAINER__TYPEDELEMENT;
+
+	/**
+	 * The number of operations of the '<em>Structured User Defined Type</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRUCTURED_USER_DEFINED_TYPE_OPERATION_COUNT = USER_DEFINED_TYPE_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.eclipse.datatools.modelbase.sql.datatypes.impl.AttributeDefinitionImpl <em>Attribute Definition</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2236,6 +3530,87 @@ public interface SQLDataTypesPackage extends EPackage {
 	int ATTRIBUTE_DEFINITION_FEATURE_COUNT = SQLSchemaPackage.TYPED_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
+	 * The operation id for the '<em>Add EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ATTRIBUTE_DEFINITION___ADD_EANNOTATION__STRING = SQLSchemaPackage.TYPED_ELEMENT___ADD_EANNOTATION__STRING;
+
+	/**
+	 * The operation id for the '<em>Add EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ATTRIBUTE_DEFINITION___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING = SQLSchemaPackage.TYPED_ELEMENT___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ATTRIBUTE_DEFINITION___GET_EANNOTATION_DETAIL__EANNOTATION_STRING = SQLSchemaPackage.TYPED_ELEMENT___GET_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Set Annotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ATTRIBUTE_DEFINITION___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING = SQLSchemaPackage.TYPED_ELEMENT___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Remove EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ATTRIBUTE_DEFINITION___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING = SQLSchemaPackage.TYPED_ELEMENT___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ATTRIBUTE_DEFINITION___GET_EANNOTATION__STRING = SQLSchemaPackage.TYPED_ELEMENT___GET_EANNOTATION__STRING;
+
+	/**
+	 * The operation id for the '<em>Set Data Type</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ATTRIBUTE_DEFINITION___SET_DATA_TYPE__DATATYPE = SQLSchemaPackage.TYPED_ELEMENT___SET_DATA_TYPE__DATATYPE;
+
+	/**
+	 * The operation id for the '<em>Get Data Type</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ATTRIBUTE_DEFINITION___GET_DATA_TYPE = SQLSchemaPackage.TYPED_ELEMENT___GET_DATA_TYPE;
+
+	/**
+	 * The number of operations of the '<em>Attribute Definition</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ATTRIBUTE_DEFINITION_OPERATION_COUNT = SQLSchemaPackage.TYPED_ELEMENT_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.eclipse.datatools.modelbase.sql.datatypes.impl.ExactNumericDataTypeImpl <em>Exact Numeric Data Type</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2354,6 +3729,78 @@ public interface SQLDataTypesPackage extends EPackage {
 	int EXACT_NUMERIC_DATA_TYPE_FEATURE_COUNT = NUMERICAL_DATA_TYPE_FEATURE_COUNT + 1;
 
 	/**
+	 * The operation id for the '<em>Add EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXACT_NUMERIC_DATA_TYPE___ADD_EANNOTATION__STRING = NUMERICAL_DATA_TYPE___ADD_EANNOTATION__STRING;
+
+	/**
+	 * The operation id for the '<em>Add EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXACT_NUMERIC_DATA_TYPE___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING = NUMERICAL_DATA_TYPE___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXACT_NUMERIC_DATA_TYPE___GET_EANNOTATION_DETAIL__EANNOTATION_STRING = NUMERICAL_DATA_TYPE___GET_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Set Annotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXACT_NUMERIC_DATA_TYPE___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING = NUMERICAL_DATA_TYPE___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Remove EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXACT_NUMERIC_DATA_TYPE___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING = NUMERICAL_DATA_TYPE___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXACT_NUMERIC_DATA_TYPE___GET_EANNOTATION__STRING = NUMERICAL_DATA_TYPE___GET_EANNOTATION__STRING;
+
+	/**
+	 * The operation id for the '<em>Set Container</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXACT_NUMERIC_DATA_TYPE___SET_CONTAINER__TYPEDELEMENT = NUMERICAL_DATA_TYPE___SET_CONTAINER__TYPEDELEMENT;
+
+	/**
+	 * The number of operations of the '<em>Exact Numeric Data Type</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXACT_NUMERIC_DATA_TYPE_OPERATION_COUNT = NUMERICAL_DATA_TYPE_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.eclipse.datatools.modelbase.sql.datatypes.impl.FixedPrecisionDataTypeImpl <em>Fixed Precision Data Type</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2470,6 +3917,78 @@ public interface SQLDataTypesPackage extends EPackage {
 	 * @ordered
 	 */
 	int FIXED_PRECISION_DATA_TYPE_FEATURE_COUNT = EXACT_NUMERIC_DATA_TYPE_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Add EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FIXED_PRECISION_DATA_TYPE___ADD_EANNOTATION__STRING = EXACT_NUMERIC_DATA_TYPE___ADD_EANNOTATION__STRING;
+
+	/**
+	 * The operation id for the '<em>Add EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FIXED_PRECISION_DATA_TYPE___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING = EXACT_NUMERIC_DATA_TYPE___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FIXED_PRECISION_DATA_TYPE___GET_EANNOTATION_DETAIL__EANNOTATION_STRING = EXACT_NUMERIC_DATA_TYPE___GET_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Set Annotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FIXED_PRECISION_DATA_TYPE___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING = EXACT_NUMERIC_DATA_TYPE___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Remove EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FIXED_PRECISION_DATA_TYPE___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING = EXACT_NUMERIC_DATA_TYPE___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FIXED_PRECISION_DATA_TYPE___GET_EANNOTATION__STRING = EXACT_NUMERIC_DATA_TYPE___GET_EANNOTATION__STRING;
+
+	/**
+	 * The operation id for the '<em>Set Container</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FIXED_PRECISION_DATA_TYPE___SET_CONTAINER__TYPEDELEMENT = EXACT_NUMERIC_DATA_TYPE___SET_CONTAINER__TYPEDELEMENT;
+
+	/**
+	 * The number of operations of the '<em>Fixed Precision Data Type</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FIXED_PRECISION_DATA_TYPE_OPERATION_COUNT = EXACT_NUMERIC_DATA_TYPE_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.datatools.modelbase.sql.datatypes.impl.DomainImpl <em>Domain</em>}' class.
@@ -2608,6 +4127,78 @@ public interface SQLDataTypesPackage extends EPackage {
 	int DOMAIN_FEATURE_COUNT = DISTINCT_USER_DEFINED_TYPE_FEATURE_COUNT + 2;
 
 	/**
+	 * The operation id for the '<em>Add EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOMAIN___ADD_EANNOTATION__STRING = DISTINCT_USER_DEFINED_TYPE___ADD_EANNOTATION__STRING;
+
+	/**
+	 * The operation id for the '<em>Add EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOMAIN___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING = DISTINCT_USER_DEFINED_TYPE___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOMAIN___GET_EANNOTATION_DETAIL__EANNOTATION_STRING = DISTINCT_USER_DEFINED_TYPE___GET_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Set Annotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOMAIN___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING = DISTINCT_USER_DEFINED_TYPE___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Remove EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOMAIN___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING = DISTINCT_USER_DEFINED_TYPE___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOMAIN___GET_EANNOTATION__STRING = DISTINCT_USER_DEFINED_TYPE___GET_EANNOTATION__STRING;
+
+	/**
+	 * The operation id for the '<em>Set Container</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOMAIN___SET_CONTAINER__TYPEDELEMENT = DISTINCT_USER_DEFINED_TYPE___SET_CONTAINER__TYPEDELEMENT;
+
+	/**
+	 * The number of operations of the '<em>Domain</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOMAIN_OPERATION_COUNT = DISTINCT_USER_DEFINED_TYPE_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.eclipse.datatools.modelbase.sql.datatypes.impl.FieldImpl <em>Field</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2735,6 +4326,87 @@ public interface SQLDataTypesPackage extends EPackage {
 	int FIELD_FEATURE_COUNT = SQLSchemaPackage.TYPED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
+	 * The operation id for the '<em>Add EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FIELD___ADD_EANNOTATION__STRING = SQLSchemaPackage.TYPED_ELEMENT___ADD_EANNOTATION__STRING;
+
+	/**
+	 * The operation id for the '<em>Add EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FIELD___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING = SQLSchemaPackage.TYPED_ELEMENT___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FIELD___GET_EANNOTATION_DETAIL__EANNOTATION_STRING = SQLSchemaPackage.TYPED_ELEMENT___GET_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Set Annotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FIELD___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING = SQLSchemaPackage.TYPED_ELEMENT___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Remove EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FIELD___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING = SQLSchemaPackage.TYPED_ELEMENT___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FIELD___GET_EANNOTATION__STRING = SQLSchemaPackage.TYPED_ELEMENT___GET_EANNOTATION__STRING;
+
+	/**
+	 * The operation id for the '<em>Set Data Type</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FIELD___SET_DATA_TYPE__DATATYPE = SQLSchemaPackage.TYPED_ELEMENT___SET_DATA_TYPE__DATATYPE;
+
+	/**
+	 * The operation id for the '<em>Get Data Type</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FIELD___GET_DATA_TYPE = SQLSchemaPackage.TYPED_ELEMENT___GET_DATA_TYPE;
+
+	/**
+	 * The number of operations of the '<em>Field</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FIELD_OPERATION_COUNT = SQLSchemaPackage.TYPED_ELEMENT_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.eclipse.datatools.modelbase.sql.datatypes.impl.ReferenceDataTypeImpl <em>Reference Data Type</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2842,6 +4514,78 @@ public interface SQLDataTypesPackage extends EPackage {
 	 * @ordered
 	 */
 	int REFERENCE_DATA_TYPE_FEATURE_COUNT = CONSTRUCTED_DATA_TYPE_FEATURE_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>Add EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REFERENCE_DATA_TYPE___ADD_EANNOTATION__STRING = CONSTRUCTED_DATA_TYPE___ADD_EANNOTATION__STRING;
+
+	/**
+	 * The operation id for the '<em>Add EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REFERENCE_DATA_TYPE___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING = CONSTRUCTED_DATA_TYPE___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REFERENCE_DATA_TYPE___GET_EANNOTATION_DETAIL__EANNOTATION_STRING = CONSTRUCTED_DATA_TYPE___GET_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Set Annotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REFERENCE_DATA_TYPE___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING = CONSTRUCTED_DATA_TYPE___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Remove EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REFERENCE_DATA_TYPE___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING = CONSTRUCTED_DATA_TYPE___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REFERENCE_DATA_TYPE___GET_EANNOTATION__STRING = CONSTRUCTED_DATA_TYPE___GET_EANNOTATION__STRING;
+
+	/**
+	 * The operation id for the '<em>Set Container</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REFERENCE_DATA_TYPE___SET_CONTAINER__TYPEDELEMENT = CONSTRUCTED_DATA_TYPE___SET_CONTAINER__TYPEDELEMENT;
+
+	/**
+	 * The number of operations of the '<em>Reference Data Type</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REFERENCE_DATA_TYPE_OPERATION_COUNT = CONSTRUCTED_DATA_TYPE_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.datatools.modelbase.sql.datatypes.impl.DataLinkDataTypeImpl <em>Data Link Data Type</em>}' class.
@@ -3007,6 +4751,78 @@ public interface SQLDataTypesPackage extends EPackage {
 	int DATA_LINK_DATA_TYPE_FEATURE_COUNT = PREDEFINED_DATA_TYPE_FEATURE_COUNT + 7;
 
 	/**
+	 * The operation id for the '<em>Add EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_LINK_DATA_TYPE___ADD_EANNOTATION__STRING = PREDEFINED_DATA_TYPE___ADD_EANNOTATION__STRING;
+
+	/**
+	 * The operation id for the '<em>Add EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_LINK_DATA_TYPE___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING = PREDEFINED_DATA_TYPE___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_LINK_DATA_TYPE___GET_EANNOTATION_DETAIL__EANNOTATION_STRING = PREDEFINED_DATA_TYPE___GET_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Set Annotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_LINK_DATA_TYPE___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING = PREDEFINED_DATA_TYPE___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Remove EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_LINK_DATA_TYPE___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING = PREDEFINED_DATA_TYPE___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_LINK_DATA_TYPE___GET_EANNOTATION__STRING = PREDEFINED_DATA_TYPE___GET_EANNOTATION__STRING;
+
+	/**
+	 * The operation id for the '<em>Set Container</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_LINK_DATA_TYPE___SET_CONTAINER__TYPEDELEMENT = PREDEFINED_DATA_TYPE___SET_CONTAINER__TYPEDELEMENT;
+
+	/**
+	 * The number of operations of the '<em>Data Link Data Type</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATA_LINK_DATA_TYPE_OPERATION_COUNT = PREDEFINED_DATA_TYPE_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.eclipse.datatools.modelbase.sql.datatypes.impl.UserDefinedTypeOrderingImpl <em>User Defined Type Ordering</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3125,6 +4941,69 @@ public interface SQLDataTypesPackage extends EPackage {
 	int USER_DEFINED_TYPE_ORDERING_FEATURE_COUNT = SQLSchemaPackage.SQL_OBJECT_FEATURE_COUNT + 3;
 
 	/**
+	 * The operation id for the '<em>Add EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USER_DEFINED_TYPE_ORDERING___ADD_EANNOTATION__STRING = SQLSchemaPackage.SQL_OBJECT___ADD_EANNOTATION__STRING;
+
+	/**
+	 * The operation id for the '<em>Add EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USER_DEFINED_TYPE_ORDERING___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING = SQLSchemaPackage.SQL_OBJECT___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USER_DEFINED_TYPE_ORDERING___GET_EANNOTATION_DETAIL__EANNOTATION_STRING = SQLSchemaPackage.SQL_OBJECT___GET_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Set Annotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USER_DEFINED_TYPE_ORDERING___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING = SQLSchemaPackage.SQL_OBJECT___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Remove EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USER_DEFINED_TYPE_ORDERING___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING = SQLSchemaPackage.SQL_OBJECT___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USER_DEFINED_TYPE_ORDERING___GET_EANNOTATION__STRING = SQLSchemaPackage.SQL_OBJECT___GET_EANNOTATION__STRING;
+
+	/**
+	 * The number of operations of the '<em>User Defined Type Ordering</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USER_DEFINED_TYPE_ORDERING_OPERATION_COUNT = SQLSchemaPackage.SQL_OBJECT_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.eclipse.datatools.modelbase.sql.datatypes.impl.DateDataTypeImpl <em>Date Data Type</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3223,6 +5102,78 @@ public interface SQLDataTypesPackage extends EPackage {
 	 * @ordered
 	 */
 	int DATE_DATA_TYPE_FEATURE_COUNT = PREDEFINED_DATA_TYPE_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Add EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATE_DATA_TYPE___ADD_EANNOTATION__STRING = PREDEFINED_DATA_TYPE___ADD_EANNOTATION__STRING;
+
+	/**
+	 * The operation id for the '<em>Add EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATE_DATA_TYPE___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING = PREDEFINED_DATA_TYPE___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATE_DATA_TYPE___GET_EANNOTATION_DETAIL__EANNOTATION_STRING = PREDEFINED_DATA_TYPE___GET_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Set Annotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATE_DATA_TYPE___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING = PREDEFINED_DATA_TYPE___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Remove EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATE_DATA_TYPE___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING = PREDEFINED_DATA_TYPE___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATE_DATA_TYPE___GET_EANNOTATION__STRING = PREDEFINED_DATA_TYPE___GET_EANNOTATION__STRING;
+
+	/**
+	 * The operation id for the '<em>Set Container</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATE_DATA_TYPE___SET_CONTAINER__TYPEDELEMENT = PREDEFINED_DATA_TYPE___SET_CONTAINER__TYPEDELEMENT;
+
+	/**
+	 * The number of operations of the '<em>Date Data Type</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATE_DATA_TYPE_OPERATION_COUNT = PREDEFINED_DATA_TYPE_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.datatools.modelbase.sql.datatypes.impl.ApproximateNumericDataTypeImpl <em>Approximate Numeric Data Type</em>}' class.
@@ -3332,6 +5283,78 @@ public interface SQLDataTypesPackage extends EPackage {
 	 * @ordered
 	 */
 	int APPROXIMATE_NUMERIC_DATA_TYPE_FEATURE_COUNT = NUMERICAL_DATA_TYPE_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Add EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int APPROXIMATE_NUMERIC_DATA_TYPE___ADD_EANNOTATION__STRING = NUMERICAL_DATA_TYPE___ADD_EANNOTATION__STRING;
+
+	/**
+	 * The operation id for the '<em>Add EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int APPROXIMATE_NUMERIC_DATA_TYPE___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING = NUMERICAL_DATA_TYPE___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int APPROXIMATE_NUMERIC_DATA_TYPE___GET_EANNOTATION_DETAIL__EANNOTATION_STRING = NUMERICAL_DATA_TYPE___GET_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Set Annotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int APPROXIMATE_NUMERIC_DATA_TYPE___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING = NUMERICAL_DATA_TYPE___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Remove EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int APPROXIMATE_NUMERIC_DATA_TYPE___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING = NUMERICAL_DATA_TYPE___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int APPROXIMATE_NUMERIC_DATA_TYPE___GET_EANNOTATION__STRING = NUMERICAL_DATA_TYPE___GET_EANNOTATION__STRING;
+
+	/**
+	 * The operation id for the '<em>Set Container</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int APPROXIMATE_NUMERIC_DATA_TYPE___SET_CONTAINER__TYPEDELEMENT = NUMERICAL_DATA_TYPE___SET_CONTAINER__TYPEDELEMENT;
+
+	/**
+	 * The number of operations of the '<em>Approximate Numeric Data Type</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int APPROXIMATE_NUMERIC_DATA_TYPE_OPERATION_COUNT = NUMERICAL_DATA_TYPE_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.datatools.modelbase.sql.datatypes.impl.IntegerDataTypeImpl <em>Integer Data Type</em>}' class.
@@ -3452,6 +5475,78 @@ public interface SQLDataTypesPackage extends EPackage {
 	int INTEGER_DATA_TYPE_FEATURE_COUNT = EXACT_NUMERIC_DATA_TYPE_FEATURE_COUNT + 0;
 
 	/**
+	 * The operation id for the '<em>Add EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTEGER_DATA_TYPE___ADD_EANNOTATION__STRING = EXACT_NUMERIC_DATA_TYPE___ADD_EANNOTATION__STRING;
+
+	/**
+	 * The operation id for the '<em>Add EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTEGER_DATA_TYPE___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING = EXACT_NUMERIC_DATA_TYPE___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTEGER_DATA_TYPE___GET_EANNOTATION_DETAIL__EANNOTATION_STRING = EXACT_NUMERIC_DATA_TYPE___GET_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Set Annotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTEGER_DATA_TYPE___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING = EXACT_NUMERIC_DATA_TYPE___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Remove EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTEGER_DATA_TYPE___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING = EXACT_NUMERIC_DATA_TYPE___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTEGER_DATA_TYPE___GET_EANNOTATION__STRING = EXACT_NUMERIC_DATA_TYPE___GET_EANNOTATION__STRING;
+
+	/**
+	 * The operation id for the '<em>Set Container</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTEGER_DATA_TYPE___SET_CONTAINER__TYPEDELEMENT = EXACT_NUMERIC_DATA_TYPE___SET_CONTAINER__TYPEDELEMENT;
+
+	/**
+	 * The number of operations of the '<em>Integer Data Type</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTEGER_DATA_TYPE_OPERATION_COUNT = EXACT_NUMERIC_DATA_TYPE_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.eclipse.datatools.modelbase.sql.datatypes.impl.XMLDataTypeImpl <em>XML Data Type</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3550,6 +5645,78 @@ public interface SQLDataTypesPackage extends EPackage {
 	 * @ordered
 	 */
 	int XML_DATA_TYPE_FEATURE_COUNT = PREDEFINED_DATA_TYPE_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Add EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int XML_DATA_TYPE___ADD_EANNOTATION__STRING = PREDEFINED_DATA_TYPE___ADD_EANNOTATION__STRING;
+
+	/**
+	 * The operation id for the '<em>Add EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int XML_DATA_TYPE___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING = PREDEFINED_DATA_TYPE___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int XML_DATA_TYPE___GET_EANNOTATION_DETAIL__EANNOTATION_STRING = PREDEFINED_DATA_TYPE___GET_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Set Annotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int XML_DATA_TYPE___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING = PREDEFINED_DATA_TYPE___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Remove EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int XML_DATA_TYPE___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING = PREDEFINED_DATA_TYPE___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int XML_DATA_TYPE___GET_EANNOTATION__STRING = PREDEFINED_DATA_TYPE___GET_EANNOTATION__STRING;
+
+	/**
+	 * The operation id for the '<em>Set Container</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int XML_DATA_TYPE___SET_CONTAINER__TYPEDELEMENT = PREDEFINED_DATA_TYPE___SET_CONTAINER__TYPEDELEMENT;
+
+	/**
+	 * The number of operations of the '<em>XML Data Type</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int XML_DATA_TYPE_OPERATION_COUNT = PREDEFINED_DATA_TYPE_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.datatools.modelbase.sql.datatypes.impl.ElementTypeImpl <em>Element Type</em>}' class.
@@ -3670,6 +5837,87 @@ public interface SQLDataTypesPackage extends EPackage {
 	int ELEMENT_TYPE_FEATURE_COUNT = SQLSchemaPackage.TYPED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
+	 * The operation id for the '<em>Add EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ELEMENT_TYPE___ADD_EANNOTATION__STRING = SQLSchemaPackage.TYPED_ELEMENT___ADD_EANNOTATION__STRING;
+
+	/**
+	 * The operation id for the '<em>Add EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ELEMENT_TYPE___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING = SQLSchemaPackage.TYPED_ELEMENT___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ELEMENT_TYPE___GET_EANNOTATION_DETAIL__EANNOTATION_STRING = SQLSchemaPackage.TYPED_ELEMENT___GET_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Set Annotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ELEMENT_TYPE___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING = SQLSchemaPackage.TYPED_ELEMENT___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Remove EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ELEMENT_TYPE___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING = SQLSchemaPackage.TYPED_ELEMENT___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ELEMENT_TYPE___GET_EANNOTATION__STRING = SQLSchemaPackage.TYPED_ELEMENT___GET_EANNOTATION__STRING;
+
+	/**
+	 * The operation id for the '<em>Set Data Type</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ELEMENT_TYPE___SET_DATA_TYPE__DATATYPE = SQLSchemaPackage.TYPED_ELEMENT___SET_DATA_TYPE__DATATYPE;
+
+	/**
+	 * The operation id for the '<em>Get Data Type</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ELEMENT_TYPE___GET_DATA_TYPE = SQLSchemaPackage.TYPED_ELEMENT___GET_DATA_TYPE;
+
+	/**
+	 * The number of operations of the '<em>Element Type</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ELEMENT_TYPE_OPERATION_COUNT = SQLSchemaPackage.TYPED_ELEMENT_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.eclipse.datatools.modelbase.sql.datatypes.CoercibilityType <em>Coercibility Type</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3769,7 +6017,6 @@ public interface SQLDataTypesPackage extends EPackage {
 	 */
 	int UNLINK_OPTION = 40;
 
-
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.datatools.modelbase.sql.datatypes.UserDefinedType <em>User Defined Type</em>}'.
 	 * <!-- begin-user-doc -->
@@ -3811,6 +6058,16 @@ public interface SQLDataTypesPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getDataType();
+
+	/**
+	 * Returns the meta object for the '{@link org.eclipse.datatools.modelbase.sql.datatypes.DataType#setContainer(org.eclipse.datatools.modelbase.sql.schema.TypedElement) <em>Set Container</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Set Container</em>' operation.
+	 * @see org.eclipse.datatools.modelbase.sql.datatypes.DataType#setContainer(org.eclipse.datatools.modelbase.sql.schema.TypedElement)
+	 * @generated
+	 */
+	EOperation getDataType__SetContainer__TypedElement();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.datatools.modelbase.sql.datatypes.PredefinedDataType <em>Predefined Data Type</em>}'.
@@ -3897,17 +6154,6 @@ public interface SQLDataTypesPackage extends EPackage {
 	EAttribute getCharacterStringDataType_Length();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.datatools.modelbase.sql.datatypes.CharacterStringDataType#getCoercibility <em>Coercibility</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Coercibility</em>'.
-	 * @see org.eclipse.datatools.modelbase.sql.datatypes.CharacterStringDataType#getCoercibility()
-	 * @see #getCharacterStringDataType()
-	 * @generated
-	 */
-	EAttribute getCharacterStringDataType_Coercibility();
-
-	/**
 	 * Returns the meta object for the attribute '{@link org.eclipse.datatools.modelbase.sql.datatypes.CharacterStringDataType#isFixedLength <em>Fixed Length</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3939,6 +6185,17 @@ public interface SQLDataTypesPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getCharacterStringDataType_CharacterSet();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.datatools.modelbase.sql.datatypes.CharacterStringDataType#getCoercibility <em>Coercibility</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Coercibility</em>'.
+	 * @see org.eclipse.datatools.modelbase.sql.datatypes.CharacterStringDataType#getCoercibility()
+	 * @see #getCharacterStringDataType()
+	 * @generated
+	 */
+	EAttribute getCharacterStringDataType_Coercibility();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.datatools.modelbase.sql.datatypes.RowDataType <em>Row Data Type</em>}'.
@@ -4089,6 +6346,16 @@ public interface SQLDataTypesPackage extends EPackage {
 	EAttribute getBinaryStringDataType_Length();
 
 	/**
+	 * Returns the meta object for the '{@link org.eclipse.datatools.modelbase.sql.datatypes.BinaryStringDataType#equals() <em>Equals</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Equals</em>' operation.
+	 * @see org.eclipse.datatools.modelbase.sql.datatypes.BinaryStringDataType#equals()
+	 * @generated
+	 */
+	EOperation getBinaryStringDataType__Equals();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.datatools.modelbase.sql.datatypes.CharacterSet <em>Character Set</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4097,17 +6364,6 @@ public interface SQLDataTypesPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getCharacterSet();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.datatools.modelbase.sql.datatypes.CharacterSet#getRepertoire <em>Repertoire</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Repertoire</em>'.
-	 * @see org.eclipse.datatools.modelbase.sql.datatypes.CharacterSet#getRepertoire()
-	 * @see #getCharacterSet()
-	 * @generated
-	 */
-	EAttribute getCharacterSet_Repertoire();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.eclipse.datatools.modelbase.sql.datatypes.CharacterSet#getDefaultCollation <em>Default Collation</em>}'.
@@ -4154,6 +6410,17 @@ public interface SQLDataTypesPackage extends EPackage {
 	EReference getCharacterSet_Schema();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.datatools.modelbase.sql.datatypes.CharacterSet#getRepertoire <em>Repertoire</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Repertoire</em>'.
+	 * @see org.eclipse.datatools.modelbase.sql.datatypes.CharacterSet#getRepertoire()
+	 * @see #getCharacterSet()
+	 * @generated
+	 */
+	EAttribute getCharacterSet_Repertoire();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.datatools.modelbase.sql.datatypes.TimeDataType <em>Time Data Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4162,17 +6429,6 @@ public interface SQLDataTypesPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getTimeDataType();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.datatools.modelbase.sql.datatypes.TimeDataType#getFractionalSecondsPrecision <em>Fractional Seconds Precision</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Fractional Seconds Precision</em>'.
-	 * @see org.eclipse.datatools.modelbase.sql.datatypes.TimeDataType#getFractionalSecondsPrecision()
-	 * @see #getTimeDataType()
-	 * @generated
-	 */
-	EAttribute getTimeDataType_FractionalSecondsPrecision();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.eclipse.datatools.modelbase.sql.datatypes.TimeDataType#isTimeZone <em>Time Zone</em>}'.
@@ -4184,6 +6440,17 @@ public interface SQLDataTypesPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getTimeDataType_TimeZone();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.datatools.modelbase.sql.datatypes.TimeDataType#getFractionalSecondsPrecision <em>Fractional Seconds Precision</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Fractional Seconds Precision</em>'.
+	 * @see org.eclipse.datatools.modelbase.sql.datatypes.TimeDataType#getFractionalSecondsPrecision()
+	 * @see #getTimeDataType()
+	 * @generated
+	 */
+	EAttribute getTimeDataType_FractionalSecondsPrecision();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.datatools.modelbase.sql.datatypes.DistinctUserDefinedType <em>Distinct User Defined Type</em>}'.
@@ -4778,13 +7045,14 @@ public interface SQLDataTypesPackage extends EPackage {
 	 * <ul>
 	 *   <li>each class,</li>
 	 *   <li>each feature of each class,</li>
+	 *   <li>each operation of each class,</li>
 	 *   <li>each enum,</li>
 	 *   <li>and each data type</li>
 	 * </ul>
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	interface Literals  {
+	interface Literals {
 		/**
 		 * The meta object literal for the '{@link org.eclipse.datatools.modelbase.sql.datatypes.impl.UserDefinedTypeImpl <em>User Defined Type</em>}' class.
 		 * <!-- begin-user-doc -->
@@ -4820,6 +7088,14 @@ public interface SQLDataTypesPackage extends EPackage {
 		 * @generated
 		 */
 		EClass DATA_TYPE = eINSTANCE.getDataType();
+
+		/**
+		 * The meta object literal for the '<em><b>Set Container</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATA_TYPE___SET_CONTAINER__TYPEDELEMENT = eINSTANCE.getDataType__SetContainer__TypedElement();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.datatools.modelbase.sql.datatypes.impl.PredefinedDataTypeImpl <em>Predefined Data Type</em>}' class.
@@ -4894,14 +7170,6 @@ public interface SQLDataTypesPackage extends EPackage {
 		EAttribute CHARACTER_STRING_DATA_TYPE__LENGTH = eINSTANCE.getCharacterStringDataType_Length();
 
 		/**
-		 * The meta object literal for the '<em><b>Coercibility</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute CHARACTER_STRING_DATA_TYPE__COERCIBILITY = eINSTANCE.getCharacterStringDataType_Coercibility();
-
-		/**
 		 * The meta object literal for the '<em><b>Fixed Length</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -4924,6 +7192,14 @@ public interface SQLDataTypesPackage extends EPackage {
 		 * @generated
 		 */
 		EReference CHARACTER_STRING_DATA_TYPE__CHARACTER_SET = eINSTANCE.getCharacterStringDataType_CharacterSet();
+
+		/**
+		 * The meta object literal for the '<em><b>Coercibility</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CHARACTER_STRING_DATA_TYPE__COERCIBILITY = eINSTANCE.getCharacterStringDataType_Coercibility();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.datatools.modelbase.sql.datatypes.impl.RowDataTypeImpl <em>Row Data Type</em>}' class.
@@ -5050,6 +7326,14 @@ public interface SQLDataTypesPackage extends EPackage {
 		EAttribute BINARY_STRING_DATA_TYPE__LENGTH = eINSTANCE.getBinaryStringDataType_Length();
 
 		/**
+		 * The meta object literal for the '<em><b>Equals</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation BINARY_STRING_DATA_TYPE___EQUALS = eINSTANCE.getBinaryStringDataType__Equals();
+
+		/**
 		 * The meta object literal for the '{@link org.eclipse.datatools.modelbase.sql.datatypes.impl.CharacterSetImpl <em>Character Set</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -5058,14 +7342,6 @@ public interface SQLDataTypesPackage extends EPackage {
 		 * @generated
 		 */
 		EClass CHARACTER_SET = eINSTANCE.getCharacterSet();
-
-		/**
-		 * The meta object literal for the '<em><b>Repertoire</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute CHARACTER_SET__REPERTOIRE = eINSTANCE.getCharacterSet_Repertoire();
 
 		/**
 		 * The meta object literal for the '<em><b>Default Collation</b></em>' attribute feature.
@@ -5100,6 +7376,14 @@ public interface SQLDataTypesPackage extends EPackage {
 		EReference CHARACTER_SET__SCHEMA = eINSTANCE.getCharacterSet_Schema();
 
 		/**
+		 * The meta object literal for the '<em><b>Repertoire</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CHARACTER_SET__REPERTOIRE = eINSTANCE.getCharacterSet_Repertoire();
+
+		/**
 		 * The meta object literal for the '{@link org.eclipse.datatools.modelbase.sql.datatypes.impl.TimeDataTypeImpl <em>Time Data Type</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -5110,20 +7394,20 @@ public interface SQLDataTypesPackage extends EPackage {
 		EClass TIME_DATA_TYPE = eINSTANCE.getTimeDataType();
 
 		/**
-		 * The meta object literal for the '<em><b>Fractional Seconds Precision</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute TIME_DATA_TYPE__FRACTIONAL_SECONDS_PRECISION = eINSTANCE.getTimeDataType_FractionalSecondsPrecision();
-
-		/**
 		 * The meta object literal for the '<em><b>Time Zone</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
 		EAttribute TIME_DATA_TYPE__TIME_ZONE = eINSTANCE.getTimeDataType_TimeZone();
+
+		/**
+		 * The meta object literal for the '<em><b>Fractional Seconds Precision</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TIME_DATA_TYPE__FRACTIONAL_SECONDS_PRECISION = eINSTANCE.getTimeDataType_FractionalSecondsPrecision();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.datatools.modelbase.sql.datatypes.impl.DistinctUserDefinedTypeImpl <em>Distinct User Defined Type</em>}' class.

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ActionTimeType.java,v 1.3 2006/09/07 00:19:49 dpchou Exp $
+ * $Id$
  */
 package org.eclipse.datatools.modelbase.sql.tables;
 
@@ -10,7 +10,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import org.eclipse.emf.common.util.AbstractEnumerator;
+import org.eclipse.emf.common.util.Enumerator;
 
 /**
  * <!-- begin-user-doc -->
@@ -24,42 +24,37 @@ import org.eclipse.emf.common.util.AbstractEnumerator;
  * @model
  * @generated
  */
-public final class ActionTimeType extends AbstractEnumerator {
-	/**
-	 * The '<em><b>AFTER</b></em>' literal value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #AFTER_LITERAL
-	 * @model
-	 * @generated
-	 * @ordered
-	 */
-	public static final int AFTER = 0;
-
-	/**
-	 * The '<em><b>BEFORE</b></em>' literal value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #BEFORE_LITERAL
-	 * @model
-	 * @generated
-	 * @ordered
-	 */
-	public static final int BEFORE = 1;
-
-	/**
-	 * The '<em><b>INSTEADOF</b></em>' literal value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #INSTEADOF_LITERAL
-	 * @model
-	 * @generated
-	 * @ordered
-	 */
-	public static final int INSTEADOF = 2;
-
+public enum ActionTimeType implements Enumerator
+{
 	/**
 	 * The '<em><b>AFTER</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #AFTER_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	AFTER(0, "AFTER", "AFTER"),
+	/**
+	 * The '<em><b>BEFORE</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #BEFORE_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	BEFORE(1, "BEFORE", "BEFORE"),
+	/**
+	 * The '<em><b>INSTEADOF</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #INSTEADOF_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	INSTEADOF(2, "INSTEADOF", "INSTEADOF");
+	/**
+	 * The '<em><b>AFTER</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>AFTER</b></em>' literal object isn't clear,
@@ -67,13 +62,14 @@ public final class ActionTimeType extends AbstractEnumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #AFTER
+	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final ActionTimeType AFTER_LITERAL = new ActionTimeType(AFTER, "AFTER", "AFTER"); //$NON-NLS-1$
+	public static final int AFTER_VALUE = 0;
 
 	/**
-	 * The '<em><b>BEFORE</b></em>' literal object.
+	 * The '<em><b>BEFORE</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>BEFORE</b></em>' literal object isn't clear,
@@ -81,13 +77,14 @@ public final class ActionTimeType extends AbstractEnumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #BEFORE
+	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final ActionTimeType BEFORE_LITERAL = new ActionTimeType(BEFORE, "BEFORE", "BEFORE"); //$NON-NLS-1$
+	public static final int BEFORE_VALUE = 1;
 
 	/**
-	 * The '<em><b>INSTEADOF</b></em>' literal object.
+	 * The '<em><b>INSTEADOF</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>INSTEADOF</b></em>' literal object isn't clear,
@@ -95,10 +92,11 @@ public final class ActionTimeType extends AbstractEnumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #INSTEADOF
+	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final ActionTimeType INSTEADOF_LITERAL = new ActionTimeType(INSTEADOF, "INSTEADOF", "INSTEADOF"); //$NON-NLS-1$
+	public static final int INSTEADOF_VALUE = 2;
 
 	/**
 	 * An array of all the '<em><b>Action Time Type</b></em>' enumerators.
@@ -108,9 +106,9 @@ public final class ActionTimeType extends AbstractEnumerator {
 	 */
 	private static final ActionTimeType[] VALUES_ARRAY =
 		new ActionTimeType[] {
-			AFTER_LITERAL,
-			BEFORE_LITERAL,
-			INSTEADOF_LITERAL,
+			AFTER,
+			BEFORE,
+			INSTEADOF,
 		};
 
 	/**
@@ -119,7 +117,7 @@ public final class ActionTimeType extends AbstractEnumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<ActionTimeType> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
 	 * Returns the '<em><b>Action Time Type</b></em>' literal with the specified literal value.
@@ -161,12 +159,33 @@ public final class ActionTimeType extends AbstractEnumerator {
 	 */
 	public static ActionTimeType get(int value) {
 		switch (value) {
-			case AFTER: return AFTER_LITERAL;
-			case BEFORE: return BEFORE_LITERAL;
-			case INSTEADOF: return INSTEADOF_LITERAL;
+			case AFTER_VALUE: return AFTER;
+			case BEFORE_VALUE: return BEFORE;
+			case INSTEADOF_VALUE: return INSTEADOF;
 		}
 		return null;
 	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final int value;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final String name;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final String literal;
 
 	/**
 	 * Only this class can construct instances.
@@ -175,7 +194,91 @@ public final class ActionTimeType extends AbstractEnumerator {
 	 * @generated
 	 */
 	private ActionTimeType(int value, String name, String literal) {
-		super(value, name, literal);
+		this.value = value;
+		this.name = name;
+		this.literal = literal;
 	}
 
-} //ActionTimeType
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int getValue() {
+	  return value;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getName() {
+	  return name;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getLiteral() {
+	  return literal;
+	}
+
+	/**
+	 * Returns the literal value of the enumerator, which is its string representation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		return literal;
+	}
+	
+	/*******************DEJAMOS ESTA SECCION POR COMPATIBILIDAD CON LOS PLUGINS QUE USAN EL DATATOOLS GENERADO CON COMPLIANCE 1.4 ***********************
+	
+	/**
+	 * The '<em><b>AFTER</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>AFTER</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #AFTER
+	 * @generated NOT
+	 * @ordered
+	 */
+	public static final ActionTimeType AFTER_LITERAL = AFTER; //$NON-NLS-1$
+
+	/**
+	 * The '<em><b>BEFORE</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>BEFORE</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #BEFORE
+	 * @generated  NOT
+	 * @ordered
+	 */
+	public static final ActionTimeType BEFORE_LITERAL = BEFORE; //$NON-NLS-1$
+
+	/**
+	 * The '<em><b>INSTEADOF</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>INSTEADOF</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #INSTEADOF
+	 * @generated  NOT
+	 * @ordered
+	 */
+	public static final ActionTimeType INSTEADOF_LITERAL = INSTEADOF; //$NON-NLS-1$
+
+}

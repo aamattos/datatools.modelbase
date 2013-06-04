@@ -1,15 +1,12 @@
-/*******************************************************************************
- * Copyright (c) 2001, 2004 IBM Corporation and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
+/**
+ * <copyright>
+ * </copyright>
  *
- * Contributors:
- *     IBM Corporation - initial API and implementation
- *******************************************************************************/
+ * $Id$
+ */
 package org.eclipse.datatools.modelbase.sql.expressions;
 
+import org.eclipse.emf.cdo.CDOObject;
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -24,9 +21,10 @@ import org.eclipse.emf.ecore.EObject;
  *
  * @see org.eclipse.datatools.modelbase.sql.expressions.SQLExpressionsPackage#getSearchCondition()
  * @model interface="true" abstract="true"
+ * @extends CDOObject
  * @generated
  */
-public interface SearchCondition extends EObject {
+public interface SearchCondition extends CDOObject {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

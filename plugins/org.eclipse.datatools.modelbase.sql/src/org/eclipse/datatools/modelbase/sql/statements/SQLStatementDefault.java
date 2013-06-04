@@ -1,17 +1,12 @@
-/*******************************************************************************
- * Copyright (c) 2001, 2004 IBM Corporation and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- * 
- * Contributors:
- *     IBM Corporation - initial API and implementation
- *******************************************************************************/
+/**
+ * <copyright>
+ * </copyright>
+ *
+ * $Id$
+ */
 package org.eclipse.datatools.modelbase.sql.statements;
 
 import org.eclipse.datatools.modelbase.sql.schema.SQLObject;
-
 
 /**
  * <!-- begin-user-doc -->
@@ -29,7 +24,7 @@ import org.eclipse.datatools.modelbase.sql.schema.SQLObject;
  * @model
  * @generated
  */
-public interface SQLStatementDefault extends SQLObject, SQLStatement{
+public interface SQLStatementDefault extends SQLObject, SQLStatement {
 	/**
 	 * Returns the value of the '<em><b>SQL</b></em>' attribute.
 	 * <!-- begin-user-doc -->

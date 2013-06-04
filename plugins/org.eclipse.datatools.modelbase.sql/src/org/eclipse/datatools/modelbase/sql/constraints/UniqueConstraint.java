@@ -1,13 +1,9 @@
-/*******************************************************************************
- * Copyright (c) 2001, 2004 IBM Corporation and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- * 
- * Contributors:
- *     IBM Corporation - initial API and implementation
- *******************************************************************************/
+/**
+ * <copyright>
+ * </copyright>
+ *
+ * $Id$
+ */
 package org.eclipse.datatools.modelbase.sql.constraints;
 
 import org.eclipse.emf.common.util.EList;
@@ -39,30 +35,30 @@ public interface UniqueConstraint extends ReferenceConstraint {
 	 * Returns the value of the '<em><b>Clustered</b></em>' attribute.
 	 * The default value is <code>"true"</code>.
 	 * <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Clustered</em>' attribute isn't clear,
-     * there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Clustered</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Clustered</em>' attribute.
 	 * @see #setClustered(boolean)
 	 * @see org.eclipse.datatools.modelbase.sql.constraints.SQLConstraintsPackage#getUniqueConstraint_Clustered()
 	 * @model default="true"
 	 * @generated
 	 */
-    boolean isClustered();
+	boolean isClustered();
 
-    /**
+	/**
 	 * Sets the value of the '{@link org.eclipse.datatools.modelbase.sql.constraints.UniqueConstraint#isClustered <em>Clustered</em>}' attribute.
 	 * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Clustered</em>' attribute.
 	 * @see #isClustered()
 	 * @generated
 	 */
-    void setClustered(boolean value);
+	void setClustered(boolean value);
 
-    /**
+	/**
 	 * Returns the value of the '<em><b>Foreign Key</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.datatools.modelbase.sql.constraints.ForeignKey}.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.datatools.modelbase.sql.constraints.ForeignKey#getUniqueConstraint <em>Unique Constraint</em>}'.
@@ -75,9 +71,9 @@ public interface UniqueConstraint extends ReferenceConstraint {
 	 * @return the value of the '<em>Foreign Key</em>' reference list.
 	 * @see org.eclipse.datatools.modelbase.sql.constraints.SQLConstraintsPackage#getUniqueConstraint_ForeignKey()
 	 * @see org.eclipse.datatools.modelbase.sql.constraints.ForeignKey#getUniqueConstraint
-	 * @model type="org.eclipse.datatools.modelbase.sql.constraints.ForeignKey" opposite="uniqueConstraint"
+	 * @model opposite="uniqueConstraint"
 	 * @generated
 	 */
-	EList getForeignKey();
+	EList<ForeignKey> getForeignKey();
 
 } // UniqueConstraint

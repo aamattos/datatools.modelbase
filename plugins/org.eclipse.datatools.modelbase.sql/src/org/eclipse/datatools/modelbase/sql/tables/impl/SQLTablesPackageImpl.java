@@ -1,13 +1,9 @@
-/*******************************************************************************
- * Copyright (c) 2001, 2004 IBM Corporation and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- * 
- * Contributors:
- *     IBM Corporation - initial API and implementation
- *******************************************************************************/
+/**
+ * <copyright>
+ * </copyright>
+ *
+ * $Id$
+ */
 package org.eclipse.datatools.modelbase.sql.tables.impl;
 
 import org.eclipse.datatools.modelbase.sql.accesscontrol.SQLAccessControlPackage;
@@ -41,12 +37,11 @@ import org.eclipse.datatools.modelbase.sql.tables.ViewTable;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
+import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EcorePackage;
-
 import org.eclipse.emf.ecore.impl.EPackageImpl;
-import org.eclipse.emf.ecore.impl.EcorePackageImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -166,20 +161,10 @@ public class SQLTablesPackageImpl extends EPackageImpl implements SQLTablesPacka
 	private static boolean isInited = false;
 
 	/**
-	 * Creates, registers, and initializes the <b>Package</b> for this
-	 * model, and for any others upon which it depends.  Simple
-	 * dependencies are satisfied by calling this method on all
-	 * dependent packages before doing anything else.  This method drives
-	 * initialization for interdependent packages directly, in parallel
-	 * with this package, itself.
-	 * <p>Of this package and its interdependencies, all packages which
-	 * have not yet been registered by their URI values are first created
-	 * and registered.  The packages are then initialized in two steps:
-	 * meta-model objects for all of the packages are created before any
-	 * are initialized, since one package's meta-model objects may refer to
-	 * those of another.
-	 * <p>Invocation of this method will not affect any packages that have
-	 * already been initialized.
+	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
+	 * 
+	 * <p>This method is used to initialize {@link SQLTablesPackage#eINSTANCE} when that field is accessed.
+	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #eNS_URI
@@ -191,7 +176,7 @@ public class SQLTablesPackageImpl extends EPackageImpl implements SQLTablesPacka
 		if (isInited) return (SQLTablesPackage)EPackage.Registry.INSTANCE.getEPackage(SQLTablesPackage.eNS_URI);
 
 		// Obtain or create and register package
-		SQLTablesPackageImpl theSQLTablesPackage = (SQLTablesPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(eNS_URI) instanceof SQLTablesPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(eNS_URI) : new SQLTablesPackageImpl());
+		SQLTablesPackageImpl theSQLTablesPackage = (SQLTablesPackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof SQLTablesPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new SQLTablesPackageImpl());
 
 		isInited = true;
 
@@ -230,6 +215,9 @@ public class SQLTablesPackageImpl extends EPackageImpl implements SQLTablesPacka
 		// Mark meta-data to indicate it can't be changed
 		theSQLTablesPackage.freeze();
 
+  
+		// Update the registry and return the package
+		EPackage.Registry.INSTANCE.put(SQLTablesPackage.eNS_URI, theSQLTablesPackage);
 		return theSQLTablesPackage;
 	}
 
@@ -436,6 +424,33 @@ public class SQLTablesPackageImpl extends EPackageImpl implements SQLTablesPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EOperation getBaseTable__GetUniqueConstraints() {
+		return baseTableEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getBaseTable__GetForeignKeys() {
+		return baseTableEClass.getEOperations().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getBaseTable__GetPrimaryKey() {
+		return baseTableEClass.getEOperations().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getColumn() {
 		return columnEClass;
 	}
@@ -510,6 +525,33 @@ public class SQLTablesPackageImpl extends EPackageImpl implements SQLTablesPacka
 	 */
 	public EAttribute getColumn_ScopeChecked() {
 		return (EAttribute)columnEClass.getEStructuralFeatures().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getColumn__IsPartOfForeignKey() {
+		return columnEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getColumn__IsPartOfUniqueConstraint() {
+		return columnEClass.getEOperations().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getColumn__IsPartOfPrimaryKey() {
+		return columnEClass.getEOperations().get(2);
 	}
 
 	/**
@@ -747,6 +789,9 @@ public class SQLTablesPackageImpl extends EPackageImpl implements SQLTablesPacka
 		baseTableEClass = createEClass(BASE_TABLE);
 		createEReference(baseTableEClass, BASE_TABLE__CONSTRAINTS);
 		createEReference(baseTableEClass, BASE_TABLE__REFERENCING_FOREIGN_KEYS);
+		createEOperation(baseTableEClass, BASE_TABLE___GET_UNIQUE_CONSTRAINTS);
+		createEOperation(baseTableEClass, BASE_TABLE___GET_FOREIGN_KEYS);
+		createEOperation(baseTableEClass, BASE_TABLE___GET_PRIMARY_KEY);
 
 		columnEClass = createEClass(COLUMN);
 		createEReference(columnEClass, COLUMN__TABLE);
@@ -757,6 +802,9 @@ public class SQLTablesPackageImpl extends EPackageImpl implements SQLTablesPacka
 		createEAttribute(columnEClass, COLUMN__DEFAULT_VALUE);
 		createEAttribute(columnEClass, COLUMN__SCOPE_CHECK);
 		createEAttribute(columnEClass, COLUMN__SCOPE_CHECKED);
+		createEOperation(columnEClass, COLUMN___IS_PART_OF_FOREIGN_KEY);
+		createEOperation(columnEClass, COLUMN___IS_PART_OF_UNIQUE_CONSTRAINT);
+		createEOperation(columnEClass, COLUMN___IS_PART_OF_PRIMARY_KEY);
 
 		triggerEClass = createEClass(TRIGGER);
 		createEReference(triggerEClass, TRIGGER__SCHEMA);
@@ -812,6 +860,10 @@ public class SQLTablesPackageImpl extends EPackageImpl implements SQLTablesPacka
 		SQLExpressionsPackage theSQLExpressionsPackage = (SQLExpressionsPackage)EPackage.Registry.INSTANCE.getEPackage(SQLExpressionsPackage.eNS_URI);
 		SQLStatementsPackage theSQLStatementsPackage = (SQLStatementsPackage)EPackage.Registry.INSTANCE.getEPackage(SQLStatementsPackage.eNS_URI);
 
+		// Create type parameters
+
+		// Set bounds for type parameters
+
 		// Add supertypes to classes
 		viewTableEClass.getESuperTypes().add(this.getDerivedTable());
 		temporaryTableEClass.getESuperTypes().add(this.getBaseTable());
@@ -822,96 +874,133 @@ public class SQLTablesPackageImpl extends EPackageImpl implements SQLTablesPacka
 		columnEClass.getESuperTypes().add(theSQLSchemaPackage.getTypedElement());
 		triggerEClass.getESuperTypes().add(theSQLSchemaPackage.getSQLObject());
 
-		// Initialize classes and features; add operations and parameters
-		initEClass(viewTableEClass, ViewTable.class, "ViewTable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEAttribute(getViewTable_CheckType(), this.getCheckType(), "checkType", null, 0, 1, ViewTable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		// Initialize classes, features, and operations; add parameters
+		initEClass(viewTableEClass, ViewTable.class, "ViewTable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getViewTable_CheckType(), this.getCheckType(), "checkType", null, 0, 1, ViewTable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(temporaryTableEClass, TemporaryTable.class, "TemporaryTable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEAttribute(getTemporaryTable_Local(), ecorePackage.getEBoolean(), "local", null, 0, 1, TemporaryTable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEAttribute(getTemporaryTable_DeleteOnCommit(), ecorePackage.getEBoolean(), "deleteOnCommit", null, 0, 1, TemporaryTable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEClass(temporaryTableEClass, TemporaryTable.class, "TemporaryTable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getTemporaryTable_Local(), ecorePackage.getEBoolean(), "local", null, 0, 1, TemporaryTable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTemporaryTable_DeleteOnCommit(), ecorePackage.getEBoolean(), "deleteOnCommit", null, 0, 1, TemporaryTable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(tableEClass, Table.class, "Table", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(getTable_Columns(), this.getColumn(), this.getColumn_Table(), "columns", null, 1, -1, Table.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getTable_Supertable(), this.getTable(), this.getTable_Subtables(), "supertable", null, 0, 1, Table.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getTable_Subtables(), this.getTable(), this.getTable_Supertable(), "subtables", null, 0, -1, Table.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getTable_Schema(), theSQLSchemaPackage.getSchema(), theSQLSchemaPackage.getSchema_Tables(), "schema", null, 1, 1, Table.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getTable_Udt(), theSQLDataTypesPackage.getStructuredUserDefinedType(), null, "udt", null, 0, 1, Table.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getTable_Triggers(), this.getTrigger(), this.getTrigger_SubjectTable(), "triggers", null, 0, -1, Table.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getTable_Index(), theSQLConstraintsPackage.getIndex(), theSQLConstraintsPackage.getIndex_Table(), "index", null, 0, -1, Table.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEAttribute(getTable_SelfRefColumnGeneration(), this.getReferenceType(), "selfRefColumnGeneration", null, 0, 1, Table.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEAttribute(getTable_Insertable(), ecorePackage.getEBoolean(), "insertable", null, 0, 1, Table.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEAttribute(getTable_Updatable(), ecorePackage.getEBoolean(), "updatable", null, 0, 1, Table.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEClass(tableEClass, Table.class, "Table", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getTable_Columns(), this.getColumn(), this.getColumn_Table(), "columns", null, 1, -1, Table.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTable_Supertable(), this.getTable(), this.getTable_Subtables(), "supertable", null, 0, 1, Table.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTable_Subtables(), this.getTable(), this.getTable_Supertable(), "subtables", null, 0, -1, Table.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTable_Schema(), theSQLSchemaPackage.getSchema(), theSQLSchemaPackage.getSchema_Tables(), "schema", null, 1, 1, Table.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTable_Udt(), theSQLDataTypesPackage.getStructuredUserDefinedType(), null, "udt", null, 0, 1, Table.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTable_Triggers(), this.getTrigger(), this.getTrigger_SubjectTable(), "triggers", null, 0, -1, Table.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTable_Index(), theSQLConstraintsPackage.getIndex(), theSQLConstraintsPackage.getIndex_Table(), "index", null, 0, -1, Table.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTable_SelfRefColumnGeneration(), this.getReferenceType(), "selfRefColumnGeneration", null, 0, 1, Table.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTable_Insertable(), ecorePackage.getEBoolean(), "insertable", null, 0, 1, Table.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTable_Updatable(), ecorePackage.getEBoolean(), "updatable", null, 0, 1, Table.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
-		initEClass(persistentTableEClass, PersistentTable.class, "PersistentTable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(persistentTableEClass, PersistentTable.class, "PersistentTable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(derivedTableEClass, DerivedTable.class, "DerivedTable", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(getDerivedTable_QueryExpression(), theSQLExpressionsPackage.getQueryExpression(), null, "queryExpression", null, 0, 1, DerivedTable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEClass(derivedTableEClass, DerivedTable.class, "DerivedTable", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getDerivedTable_QueryExpression(), theSQLExpressionsPackage.getQueryExpression(), null, "queryExpression", null, 0, 1, DerivedTable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(baseTableEClass, BaseTable.class, "BaseTable", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(getBaseTable_Constraints(), theSQLConstraintsPackage.getTableConstraint(), theSQLConstraintsPackage.getTableConstraint_BaseTable(), "constraints", null, 0, -1, BaseTable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getBaseTable_ReferencingForeignKeys(), theSQLConstraintsPackage.getForeignKey(), theSQLConstraintsPackage.getForeignKey_ReferencedTable(), "referencingForeignKeys", null, 0, -1, BaseTable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEClass(baseTableEClass, BaseTable.class, "BaseTable", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getBaseTable_Constraints(), theSQLConstraintsPackage.getTableConstraint(), theSQLConstraintsPackage.getTableConstraint_BaseTable(), "constraints", null, 0, -1, BaseTable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getBaseTable_ReferencingForeignKeys(), theSQLConstraintsPackage.getForeignKey(), theSQLConstraintsPackage.getForeignKey_ReferencedTable(), "referencingForeignKeys", null, 0, -1, BaseTable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		addEOperation(baseTableEClass, theSQLSchemaPackage.getList(), "getUniqueConstraints", 0, 1); //$NON-NLS-1$
+		initEOperation(getBaseTable__GetUniqueConstraints(), theSQLSchemaPackage.getList(), "getUniqueConstraints", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(baseTableEClass, theSQLSchemaPackage.getList(), "getForeignKeys", 0, 1); //$NON-NLS-1$
+		initEOperation(getBaseTable__GetForeignKeys(), theSQLSchemaPackage.getList(), "getForeignKeys", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(baseTableEClass, theSQLConstraintsPackage.getPrimaryKey(), "getPrimaryKey", 0, 1); //$NON-NLS-1$
+		initEOperation(getBaseTable__GetPrimaryKey(), theSQLConstraintsPackage.getPrimaryKey(), "getPrimaryKey", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		initEClass(columnEClass, Column.class, "Column", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(getColumn_Table(), this.getTable(), this.getTable_Columns(), "table", null, 1, 1, Column.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getColumn_IdentitySpecifier(), theSQLSchemaPackage.getIdentitySpecifier(), null, "identitySpecifier", null, 0, 1, Column.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getColumn_GenerateExpression(), theSQLExpressionsPackage.getValueExpression(), null, "generateExpression", null, 0, 1, Column.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEAttribute(getColumn_ImplementationDependent(), ecorePackage.getEBoolean(), "implementationDependent", "False", 0, 1, Column.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
-		initEAttribute(getColumn_Nullable(), ecorePackage.getEBoolean(), "nullable", "True", 0, 1, Column.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
-		initEAttribute(getColumn_DefaultValue(), ecorePackage.getEString(), "defaultValue", null, 0, 1, Column.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEAttribute(getColumn_ScopeCheck(), theSQLSchemaPackage.getReferentialActionType(), "scopeCheck", "NO_ACTION", 0, 1, Column.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
-		initEAttribute(getColumn_ScopeChecked(), ecorePackage.getEBoolean(), "scopeChecked", null, 0, 1, Column.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEClass(columnEClass, Column.class, "Column", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getColumn_Table(), this.getTable(), this.getTable_Columns(), "table", null, 1, 1, Column.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getColumn_IdentitySpecifier(), theSQLSchemaPackage.getIdentitySpecifier(), null, "identitySpecifier", null, 0, 1, Column.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getColumn_GenerateExpression(), theSQLExpressionsPackage.getValueExpression(), null, "generateExpression", null, 0, 1, Column.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getColumn_ImplementationDependent(), ecorePackage.getEBoolean(), "implementationDependent", "False", 0, 1, Column.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getColumn_Nullable(), ecorePackage.getEBoolean(), "nullable", "True", 0, 1, Column.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getColumn_DefaultValue(), ecorePackage.getEString(), "defaultValue", null, 0, 1, Column.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getColumn_ScopeCheck(), theSQLSchemaPackage.getReferentialActionType(), "scopeCheck", "NO_ACTION", 0, 1, Column.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getColumn_ScopeChecked(), ecorePackage.getEBoolean(), "scopeChecked", null, 0, 1, Column.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		addEOperation(columnEClass, ecorePackage.getEBoolean(), "isPartOfForeignKey", 0, 1); //$NON-NLS-1$
+		initEOperation(getColumn__IsPartOfForeignKey(), ecorePackage.getEBoolean(), "isPartOfForeignKey", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(columnEClass, ecorePackage.getEBoolean(), "isPartOfUniqueConstraint", 0, 1); //$NON-NLS-1$
+		initEOperation(getColumn__IsPartOfUniqueConstraint(), ecorePackage.getEBoolean(), "isPartOfUniqueConstraint", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(columnEClass, ecorePackage.getEBoolean(), "isPartOfPrimaryKey", 0, 1); //$NON-NLS-1$
+		initEOperation(getColumn__IsPartOfPrimaryKey(), ecorePackage.getEBoolean(), "isPartOfPrimaryKey", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		initEClass(triggerEClass, Trigger.class, "Trigger", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(getTrigger_Schema(), theSQLSchemaPackage.getSchema(), theSQLSchemaPackage.getSchema_Triggers(), "schema", null, 1, 1, Trigger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getTrigger_SubjectTable(), this.getTable(), this.getTable_Triggers(), "subjectTable", null, 1, 1, Trigger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getTrigger_ActionStatement(), theSQLStatementsPackage.getSQLStatement(), null, "actionStatement", null, 1, -1, Trigger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getTrigger_TriggerColumn(), this.getColumn(), null, "triggerColumn", null, 0, -1, Trigger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEAttribute(getTrigger_ActionGranularity(), this.getActionGranularityType(), "actionGranularity", "STATEMENT", 0, 1, Trigger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
-		initEReference(getTrigger_When(), theSQLExpressionsPackage.getSearchCondition(), null, "when", null, 0, 1, Trigger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEAttribute(getTrigger_TimeStamp(), theSQLSchemaPackage.getDate(), "timeStamp", null, 0, 1, Trigger.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEAttribute(getTrigger_ActionTime(), this.getActionTimeType(), "actionTime", null, 0, 1, Trigger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEAttribute(getTrigger_UpdateType(), ecorePackage.getEBoolean(), "updateType", null, 0, 1, Trigger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEAttribute(getTrigger_InsertType(), ecorePackage.getEBoolean(), "insertType", null, 0, 1, Trigger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEAttribute(getTrigger_DeleteType(), ecorePackage.getEBoolean(), "deleteType", null, 0, 1, Trigger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEAttribute(getTrigger_OldRow(), ecorePackage.getEString(), "oldRow", null, 0, 1, Trigger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEAttribute(getTrigger_NewRow(), ecorePackage.getEString(), "newRow", null, 0, 1, Trigger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEAttribute(getTrigger_OldTable(), ecorePackage.getEString(), "oldTable", null, 0, 1, Trigger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEAttribute(getTrigger_NewTable(), ecorePackage.getEString(), "newTable", null, 0, 1, Trigger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEClass(triggerEClass, Trigger.class, "Trigger", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getTrigger_Schema(), theSQLSchemaPackage.getSchema(), theSQLSchemaPackage.getSchema_Triggers(), "schema", null, 1, 1, Trigger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTrigger_SubjectTable(), this.getTable(), this.getTable_Triggers(), "subjectTable", null, 1, 1, Trigger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTrigger_ActionStatement(), theSQLStatementsPackage.getSQLStatement(), null, "actionStatement", null, 1, -1, Trigger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTrigger_TriggerColumn(), this.getColumn(), null, "triggerColumn", null, 0, -1, Trigger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTrigger_ActionGranularity(), this.getActionGranularityType(), "actionGranularity", "STATEMENT", 0, 1, Trigger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTrigger_When(), theSQLExpressionsPackage.getSearchCondition(), null, "when", null, 0, 1, Trigger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTrigger_TimeStamp(), theSQLSchemaPackage.getDate(), "timeStamp", null, 0, 1, Trigger.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTrigger_ActionTime(), this.getActionTimeType(), "actionTime", null, 0, 1, Trigger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTrigger_UpdateType(), ecorePackage.getEBoolean(), "updateType", null, 0, 1, Trigger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTrigger_InsertType(), ecorePackage.getEBoolean(), "insertType", null, 0, 1, Trigger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTrigger_DeleteType(), ecorePackage.getEBoolean(), "deleteType", null, 0, 1, Trigger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTrigger_OldRow(), ecorePackage.getEString(), "oldRow", null, 0, 1, Trigger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTrigger_NewRow(), ecorePackage.getEString(), "newRow", null, 0, 1, Trigger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTrigger_OldTable(), ecorePackage.getEString(), "oldTable", null, 0, 1, Trigger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTrigger_NewTable(), ecorePackage.getEString(), "newTable", null, 0, 1, Trigger.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
-		initEEnum(checkTypeEEnum, CheckType.class, "CheckType"); //$NON-NLS-1$
-		addEEnumLiteral(checkTypeEEnum, CheckType.CASCADED_LITERAL);
-		addEEnumLiteral(checkTypeEEnum, CheckType.LOCAL_LITERAL);
-		addEEnumLiteral(checkTypeEEnum, CheckType.NONE_LITERAL);
+		initEEnum(checkTypeEEnum, CheckType.class, "CheckType");
+		addEEnumLiteral(checkTypeEEnum, CheckType.CASCADED);
+		addEEnumLiteral(checkTypeEEnum, CheckType.LOCAL);
+		addEEnumLiteral(checkTypeEEnum, CheckType.NONE);
 
-		initEEnum(referenceTypeEEnum, ReferenceType.class, "ReferenceType"); //$NON-NLS-1$
-		addEEnumLiteral(referenceTypeEEnum, ReferenceType.SYSTEM_GENERATED_LITERAL);
-		addEEnumLiteral(referenceTypeEEnum, ReferenceType.USER_GENERATED_LITERAL);
-		addEEnumLiteral(referenceTypeEEnum, ReferenceType.DERIVED_SELF_REF_LITERAL);
+		initEEnum(referenceTypeEEnum, ReferenceType.class, "ReferenceType");
+		addEEnumLiteral(referenceTypeEEnum, ReferenceType.SYSTEM_GENERATED);
+		addEEnumLiteral(referenceTypeEEnum, ReferenceType.USER_GENERATED);
+		addEEnumLiteral(referenceTypeEEnum, ReferenceType.DERIVED_SELF_REF);
 
-		initEEnum(actionTimeTypeEEnum, ActionTimeType.class, "ActionTimeType"); //$NON-NLS-1$
-		addEEnumLiteral(actionTimeTypeEEnum, ActionTimeType.AFTER_LITERAL);
-		addEEnumLiteral(actionTimeTypeEEnum, ActionTimeType.BEFORE_LITERAL);
-		addEEnumLiteral(actionTimeTypeEEnum, ActionTimeType.INSTEADOF_LITERAL);
+		initEEnum(actionTimeTypeEEnum, ActionTimeType.class, "ActionTimeType");
+		addEEnumLiteral(actionTimeTypeEEnum, ActionTimeType.AFTER);
+		addEEnumLiteral(actionTimeTypeEEnum, ActionTimeType.BEFORE);
+		addEEnumLiteral(actionTimeTypeEEnum, ActionTimeType.INSTEADOF);
 
-		initEEnum(actionGranularityTypeEEnum, ActionGranularityType.class, "ActionGranularityType"); //$NON-NLS-1$
+		initEEnum(actionGranularityTypeEEnum, ActionGranularityType.class, "ActionGranularityType");
 		addEEnumLiteral(actionGranularityTypeEEnum, ActionGranularityType.STATEMENT_LITERAL);
 		addEEnumLiteral(actionGranularityTypeEEnum, ActionGranularityType.ROW_LITERAL);
 
 		// Create resource
 		createResource(eNS_URI);
+
+		// Create annotations
+		// http://www.eclipse.org/emf/2002/Ecore
+		createEcoreAnnotations();
+		// com.isb.datamodeler.tables.setting
+		createComAnnotations();
+	}
+
+	/**
+	 * Initializes the annotations for <b>http://www.eclipse.org/emf/2002/Ecore</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createEcoreAnnotations() {
+		String source = "http://www.eclipse.org/emf/2002/Ecore";		
+		addAnnotation
+		  (this, 
+		   source, 
+		   new String[] {
+			 "settingDelegates", "com.isb.datamodeler.tables.setting"
+		   });													
+	}
+
+	/**
+	 * Initializes the annotations for <b>com.isb.datamodeler.tables.setting</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createComAnnotations() {
+		String source = "com.isb.datamodeler.tables.setting";											
+		addAnnotation
+		  (getColumn_DefaultValue(), 
+		   source, 
+		   new String[] {
+		   });				
 	}
 
 } //SQLTablesPackageImpl

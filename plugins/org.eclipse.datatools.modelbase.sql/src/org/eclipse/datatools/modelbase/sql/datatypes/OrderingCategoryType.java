@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: OrderingCategoryType.java,v 1.3 2006/09/07 00:19:48 dpchou Exp $
+ * $Id$
  */
 package org.eclipse.datatools.modelbase.sql.datatypes;
 
@@ -10,7 +10,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import org.eclipse.emf.common.util.AbstractEnumerator;
+import org.eclipse.emf.common.util.Enumerator;
 
 /**
  * <!-- begin-user-doc -->
@@ -25,42 +25,37 @@ import org.eclipse.emf.common.util.AbstractEnumerator;
  * @model
  * @generated
  */
-public final class OrderingCategoryType extends AbstractEnumerator {
-	/**
-	 * The '<em><b>RELATIVE</b></em>' literal value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #RELATIVE_LITERAL
-	 * @model
-	 * @generated
-	 * @ordered
-	 */
-	public static final int RELATIVE = 0;
-
-	/**
-	 * The '<em><b>MAP</b></em>' literal value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #MAP_LITERAL
-	 * @model
-	 * @generated
-	 * @ordered
-	 */
-	public static final int MAP = 1;
-
-	/**
-	 * The '<em><b>STATE</b></em>' literal value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #STATE_LITERAL
-	 * @model
-	 * @generated
-	 * @ordered
-	 */
-	public static final int STATE = 2;
-
+public enum OrderingCategoryType implements Enumerator
+{
 	/**
 	 * The '<em><b>RELATIVE</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #RELATIVE_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	RELATIVE(0, "RELATIVE", "RELATIVE"),
+	/**
+	 * The '<em><b>MAP</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #MAP_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	MAP(1, "MAP", "MAP"),
+	/**
+	 * The '<em><b>STATE</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #STATE_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	STATE(2, "STATE", "STATE");
+	/**
+	 * The '<em><b>RELATIVE</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>RELATIVE</b></em>' literal object isn't clear,
@@ -68,13 +63,14 @@ public final class OrderingCategoryType extends AbstractEnumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #RELATIVE
+	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final OrderingCategoryType RELATIVE_LITERAL = new OrderingCategoryType(RELATIVE, "RELATIVE", "RELATIVE"); //$NON-NLS-1$
+	public static final int RELATIVE_VALUE = 0;
 
 	/**
-	 * The '<em><b>MAP</b></em>' literal object.
+	 * The '<em><b>MAP</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>MAP</b></em>' literal object isn't clear,
@@ -82,13 +78,14 @@ public final class OrderingCategoryType extends AbstractEnumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #MAP
+	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final OrderingCategoryType MAP_LITERAL = new OrderingCategoryType(MAP, "MAP", "MAP"); //$NON-NLS-1$
+	public static final int MAP_VALUE = 1;
 
 	/**
-	 * The '<em><b>STATE</b></em>' literal object.
+	 * The '<em><b>STATE</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>STATE</b></em>' literal object isn't clear,
@@ -96,10 +93,11 @@ public final class OrderingCategoryType extends AbstractEnumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #STATE
+	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final OrderingCategoryType STATE_LITERAL = new OrderingCategoryType(STATE, "STATE", "STATE"); //$NON-NLS-1$
+	public static final int STATE_VALUE = 2;
 
 	/**
 	 * An array of all the '<em><b>Ordering Category Type</b></em>' enumerators.
@@ -109,9 +107,9 @@ public final class OrderingCategoryType extends AbstractEnumerator {
 	 */
 	private static final OrderingCategoryType[] VALUES_ARRAY =
 		new OrderingCategoryType[] {
-			RELATIVE_LITERAL,
-			MAP_LITERAL,
-			STATE_LITERAL,
+			RELATIVE,
+			MAP,
+			STATE,
 		};
 
 	/**
@@ -120,7 +118,7 @@ public final class OrderingCategoryType extends AbstractEnumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<OrderingCategoryType> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
 	 * Returns the '<em><b>Ordering Category Type</b></em>' literal with the specified literal value.
@@ -162,12 +160,33 @@ public final class OrderingCategoryType extends AbstractEnumerator {
 	 */
 	public static OrderingCategoryType get(int value) {
 		switch (value) {
-			case RELATIVE: return RELATIVE_LITERAL;
-			case MAP: return MAP_LITERAL;
-			case STATE: return STATE_LITERAL;
+			case RELATIVE_VALUE: return RELATIVE;
+			case MAP_VALUE: return MAP;
+			case STATE_VALUE: return STATE;
 		}
 		return null;
 	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final int value;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final String name;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final String literal;
 
 	/**
 	 * Only this class can construct instances.
@@ -176,7 +195,46 @@ public final class OrderingCategoryType extends AbstractEnumerator {
 	 * @generated
 	 */
 	private OrderingCategoryType(int value, String name, String literal) {
-		super(value, name, literal);
+		this.value = value;
+		this.name = name;
+		this.literal = literal;
 	}
 
-} //OrderingCategoryType
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int getValue() {
+	  return value;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getName() {
+	  return name;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getLiteral() {
+	  return literal;
+	}
+
+	/**
+	 * Returns the literal value of the enumerator, which is its string representation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		return literal;
+	}
+}

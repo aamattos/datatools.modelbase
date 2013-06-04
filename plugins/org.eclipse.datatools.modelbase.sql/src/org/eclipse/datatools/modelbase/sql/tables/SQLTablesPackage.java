@@ -1,19 +1,16 @@
-/*******************************************************************************
- * Copyright (c) 2001, 2004 IBM Corporation and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- * 
- * Contributors:
- *     IBM Corporation - initial API and implementation
- *******************************************************************************/
+/**
+ * <copyright>
+ * </copyright>
+ *
+ * $Id$
+ */
 package org.eclipse.datatools.modelbase.sql.tables;
 
 import org.eclipse.datatools.modelbase.sql.schema.SQLSchemaPackage;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
+import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -24,12 +21,14 @@ import org.eclipse.emf.ecore.EReference;
  * <ul>
  *   <li>each class,</li>
  *   <li>each feature of each class,</li>
+ *   <li>each operation of each class,</li>
  *   <li>each enum,</li>
  *   <li>and each data type</li>
  * </ul>
  * <!-- end-user-doc -->
  * @see org.eclipse.datatools.modelbase.sql.tables.SQLTablesFactory
  * @model kind="package"
+ *        annotation="http://www.eclipse.org/emf/2002/Ecore settingDelegates='com.isb.datamodeler.tables.setting'"
  * @generated
  */
 public interface SQLTablesPackage extends EPackage {
@@ -39,7 +38,7 @@ public interface SQLTablesPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNAME = "tables"; //$NON-NLS-1$
+	String eNAME = "tables";
 
 	/**
 	 * The package namespace URI.
@@ -47,7 +46,7 @@ public interface SQLTablesPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http:///org/eclipse/datatools/modelbase/sql/tables.ecore"; //$NON-NLS-1$
+	String eNS_URI = "http:///org/eclipse/datatools/modelbase/sql/tables.ecore";
 
 	/**
 	 * The package namespace name.
@@ -55,7 +54,7 @@ public interface SQLTablesPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_PREFIX = "SQLTables"; //$NON-NLS-1$
+	String eNS_PREFIX = "SQLTables";
 
 	/**
 	 * The singleton instance of the package.
@@ -247,6 +246,69 @@ public interface SQLTablesPackage extends EPackage {
 	int TABLE_FEATURE_COUNT = SQLSchemaPackage.SQL_OBJECT_FEATURE_COUNT + 10;
 
 	/**
+	 * The operation id for the '<em>Add EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TABLE___ADD_EANNOTATION__STRING = SQLSchemaPackage.SQL_OBJECT___ADD_EANNOTATION__STRING;
+
+	/**
+	 * The operation id for the '<em>Add EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TABLE___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING = SQLSchemaPackage.SQL_OBJECT___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TABLE___GET_EANNOTATION_DETAIL__EANNOTATION_STRING = SQLSchemaPackage.SQL_OBJECT___GET_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Set Annotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TABLE___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING = SQLSchemaPackage.SQL_OBJECT___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Remove EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TABLE___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING = SQLSchemaPackage.SQL_OBJECT___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TABLE___GET_EANNOTATION__STRING = SQLSchemaPackage.SQL_OBJECT___GET_EANNOTATION__STRING;
+
+	/**
+	 * The number of operations of the '<em>Table</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TABLE_OPERATION_COUNT = SQLSchemaPackage.SQL_OBJECT_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.eclipse.datatools.modelbase.sql.tables.impl.DerivedTableImpl <em>Derived Table</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -435,6 +497,69 @@ public interface SQLTablesPackage extends EPackage {
 	 * @ordered
 	 */
 	int DERIVED_TABLE_FEATURE_COUNT = TABLE_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Add EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DERIVED_TABLE___ADD_EANNOTATION__STRING = TABLE___ADD_EANNOTATION__STRING;
+
+	/**
+	 * The operation id for the '<em>Add EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DERIVED_TABLE___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING = TABLE___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DERIVED_TABLE___GET_EANNOTATION_DETAIL__EANNOTATION_STRING = TABLE___GET_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Set Annotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DERIVED_TABLE___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING = TABLE___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Remove EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DERIVED_TABLE___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING = TABLE___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DERIVED_TABLE___GET_EANNOTATION__STRING = TABLE___GET_EANNOTATION__STRING;
+
+	/**
+	 * The number of operations of the '<em>Derived Table</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DERIVED_TABLE_OPERATION_COUNT = TABLE_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.datatools.modelbase.sql.tables.impl.ViewTableImpl <em>View Table</em>}' class.
@@ -636,6 +761,69 @@ public interface SQLTablesPackage extends EPackage {
 	int VIEW_TABLE_FEATURE_COUNT = DERIVED_TABLE_FEATURE_COUNT + 1;
 
 	/**
+	 * The operation id for the '<em>Add EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIEW_TABLE___ADD_EANNOTATION__STRING = DERIVED_TABLE___ADD_EANNOTATION__STRING;
+
+	/**
+	 * The operation id for the '<em>Add EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIEW_TABLE___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING = DERIVED_TABLE___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIEW_TABLE___GET_EANNOTATION_DETAIL__EANNOTATION_STRING = DERIVED_TABLE___GET_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Set Annotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIEW_TABLE___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING = DERIVED_TABLE___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Remove EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIEW_TABLE___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING = DERIVED_TABLE___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIEW_TABLE___GET_EANNOTATION__STRING = DERIVED_TABLE___GET_EANNOTATION__STRING;
+
+	/**
+	 * The number of operations of the '<em>View Table</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIEW_TABLE_OPERATION_COUNT = DERIVED_TABLE_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.eclipse.datatools.modelbase.sql.tables.impl.BaseTableImpl <em>Base Table</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -833,6 +1021,96 @@ public interface SQLTablesPackage extends EPackage {
 	 * @ordered
 	 */
 	int BASE_TABLE_FEATURE_COUNT = TABLE_FEATURE_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>Add EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BASE_TABLE___ADD_EANNOTATION__STRING = TABLE___ADD_EANNOTATION__STRING;
+
+	/**
+	 * The operation id for the '<em>Add EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BASE_TABLE___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING = TABLE___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BASE_TABLE___GET_EANNOTATION_DETAIL__EANNOTATION_STRING = TABLE___GET_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Set Annotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BASE_TABLE___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING = TABLE___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Remove EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BASE_TABLE___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING = TABLE___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BASE_TABLE___GET_EANNOTATION__STRING = TABLE___GET_EANNOTATION__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Unique Constraints</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BASE_TABLE___GET_UNIQUE_CONSTRAINTS = TABLE_OPERATION_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Get Foreign Keys</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BASE_TABLE___GET_FOREIGN_KEYS = TABLE_OPERATION_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Get Primary Key</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BASE_TABLE___GET_PRIMARY_KEY = TABLE_OPERATION_COUNT + 2;
+
+	/**
+	 * The number of operations of the '<em>Base Table</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BASE_TABLE_OPERATION_COUNT = TABLE_OPERATION_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.datatools.modelbase.sql.tables.impl.TemporaryTableImpl <em>Temporary Table</em>}' class.
@@ -1052,6 +1330,96 @@ public interface SQLTablesPackage extends EPackage {
 	int TEMPORARY_TABLE_FEATURE_COUNT = BASE_TABLE_FEATURE_COUNT + 2;
 
 	/**
+	 * The operation id for the '<em>Add EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPORARY_TABLE___ADD_EANNOTATION__STRING = BASE_TABLE___ADD_EANNOTATION__STRING;
+
+	/**
+	 * The operation id for the '<em>Add EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPORARY_TABLE___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING = BASE_TABLE___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPORARY_TABLE___GET_EANNOTATION_DETAIL__EANNOTATION_STRING = BASE_TABLE___GET_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Set Annotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPORARY_TABLE___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING = BASE_TABLE___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Remove EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPORARY_TABLE___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING = BASE_TABLE___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPORARY_TABLE___GET_EANNOTATION__STRING = BASE_TABLE___GET_EANNOTATION__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Unique Constraints</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPORARY_TABLE___GET_UNIQUE_CONSTRAINTS = BASE_TABLE___GET_UNIQUE_CONSTRAINTS;
+
+	/**
+	 * The operation id for the '<em>Get Foreign Keys</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPORARY_TABLE___GET_FOREIGN_KEYS = BASE_TABLE___GET_FOREIGN_KEYS;
+
+	/**
+	 * The operation id for the '<em>Get Primary Key</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPORARY_TABLE___GET_PRIMARY_KEY = BASE_TABLE___GET_PRIMARY_KEY;
+
+	/**
+	 * The number of operations of the '<em>Temporary Table</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPORARY_TABLE_OPERATION_COUNT = BASE_TABLE_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.eclipse.datatools.modelbase.sql.tables.impl.PersistentTableImpl <em>Persistent Table</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1251,6 +1619,96 @@ public interface SQLTablesPackage extends EPackage {
 	int PERSISTENT_TABLE_FEATURE_COUNT = BASE_TABLE_FEATURE_COUNT + 0;
 
 	/**
+	 * The operation id for the '<em>Add EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSISTENT_TABLE___ADD_EANNOTATION__STRING = BASE_TABLE___ADD_EANNOTATION__STRING;
+
+	/**
+	 * The operation id for the '<em>Add EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSISTENT_TABLE___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING = BASE_TABLE___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSISTENT_TABLE___GET_EANNOTATION_DETAIL__EANNOTATION_STRING = BASE_TABLE___GET_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Set Annotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSISTENT_TABLE___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING = BASE_TABLE___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Remove EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSISTENT_TABLE___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING = BASE_TABLE___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSISTENT_TABLE___GET_EANNOTATION__STRING = BASE_TABLE___GET_EANNOTATION__STRING;
+
+	/**
+	 * The operation id for the '<em>Get Unique Constraints</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSISTENT_TABLE___GET_UNIQUE_CONSTRAINTS = BASE_TABLE___GET_UNIQUE_CONSTRAINTS;
+
+	/**
+	 * The operation id for the '<em>Get Foreign Keys</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSISTENT_TABLE___GET_FOREIGN_KEYS = BASE_TABLE___GET_FOREIGN_KEYS;
+
+	/**
+	 * The operation id for the '<em>Get Primary Key</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSISTENT_TABLE___GET_PRIMARY_KEY = BASE_TABLE___GET_PRIMARY_KEY;
+
+	/**
+	 * The number of operations of the '<em>Persistent Table</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSISTENT_TABLE_OPERATION_COUNT = BASE_TABLE_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.eclipse.datatools.modelbase.sql.tables.impl.ColumnImpl <em>Column</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1430,6 +1888,114 @@ public interface SQLTablesPackage extends EPackage {
 	 * @ordered
 	 */
 	int COLUMN_FEATURE_COUNT = SQLSchemaPackage.TYPED_ELEMENT_FEATURE_COUNT + 8;
+
+	/**
+	 * The operation id for the '<em>Add EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COLUMN___ADD_EANNOTATION__STRING = SQLSchemaPackage.TYPED_ELEMENT___ADD_EANNOTATION__STRING;
+
+	/**
+	 * The operation id for the '<em>Add EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COLUMN___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING = SQLSchemaPackage.TYPED_ELEMENT___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COLUMN___GET_EANNOTATION_DETAIL__EANNOTATION_STRING = SQLSchemaPackage.TYPED_ELEMENT___GET_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Set Annotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COLUMN___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING = SQLSchemaPackage.TYPED_ELEMENT___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Remove EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COLUMN___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING = SQLSchemaPackage.TYPED_ELEMENT___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COLUMN___GET_EANNOTATION__STRING = SQLSchemaPackage.TYPED_ELEMENT___GET_EANNOTATION__STRING;
+
+	/**
+	 * The operation id for the '<em>Set Data Type</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COLUMN___SET_DATA_TYPE__DATATYPE = SQLSchemaPackage.TYPED_ELEMENT___SET_DATA_TYPE__DATATYPE;
+
+	/**
+	 * The operation id for the '<em>Get Data Type</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COLUMN___GET_DATA_TYPE = SQLSchemaPackage.TYPED_ELEMENT___GET_DATA_TYPE;
+
+	/**
+	 * The operation id for the '<em>Is Part Of Foreign Key</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COLUMN___IS_PART_OF_FOREIGN_KEY = SQLSchemaPackage.TYPED_ELEMENT_OPERATION_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Is Part Of Unique Constraint</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COLUMN___IS_PART_OF_UNIQUE_CONSTRAINT = SQLSchemaPackage.TYPED_ELEMENT_OPERATION_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Is Part Of Primary Key</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COLUMN___IS_PART_OF_PRIMARY_KEY = SQLSchemaPackage.TYPED_ELEMENT_OPERATION_COUNT + 2;
+
+	/**
+	 * The number of operations of the '<em>Column</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COLUMN_OPERATION_COUNT = SQLSchemaPackage.TYPED_ELEMENT_OPERATION_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.datatools.modelbase.sql.tables.impl.TriggerImpl <em>Trigger</em>}' class.
@@ -1656,6 +2222,69 @@ public interface SQLTablesPackage extends EPackage {
 	 * @ordered
 	 */
 	int TRIGGER_FEATURE_COUNT = SQLSchemaPackage.SQL_OBJECT_FEATURE_COUNT + 15;
+
+	/**
+	 * The operation id for the '<em>Add EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRIGGER___ADD_EANNOTATION__STRING = SQLSchemaPackage.SQL_OBJECT___ADD_EANNOTATION__STRING;
+
+	/**
+	 * The operation id for the '<em>Add EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRIGGER___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING = SQLSchemaPackage.SQL_OBJECT___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRIGGER___GET_EANNOTATION_DETAIL__EANNOTATION_STRING = SQLSchemaPackage.SQL_OBJECT___GET_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Set Annotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRIGGER___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING = SQLSchemaPackage.SQL_OBJECT___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Remove EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRIGGER___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING = SQLSchemaPackage.SQL_OBJECT___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRIGGER___GET_EANNOTATION__STRING = SQLSchemaPackage.SQL_OBJECT___GET_EANNOTATION__STRING;
+
+	/**
+	 * The number of operations of the '<em>Trigger</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRIGGER_OPERATION_COUNT = SQLSchemaPackage.SQL_OBJECT_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.datatools.modelbase.sql.tables.CheckType <em>Check Type</em>}' enum.
@@ -1935,6 +2564,36 @@ public interface SQLTablesPackage extends EPackage {
 	EReference getBaseTable_ReferencingForeignKeys();
 
 	/**
+	 * Returns the meta object for the '{@link org.eclipse.datatools.modelbase.sql.tables.BaseTable#getUniqueConstraints() <em>Get Unique Constraints</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Unique Constraints</em>' operation.
+	 * @see org.eclipse.datatools.modelbase.sql.tables.BaseTable#getUniqueConstraints()
+	 * @generated
+	 */
+	EOperation getBaseTable__GetUniqueConstraints();
+
+	/**
+	 * Returns the meta object for the '{@link org.eclipse.datatools.modelbase.sql.tables.BaseTable#getForeignKeys() <em>Get Foreign Keys</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Foreign Keys</em>' operation.
+	 * @see org.eclipse.datatools.modelbase.sql.tables.BaseTable#getForeignKeys()
+	 * @generated
+	 */
+	EOperation getBaseTable__GetForeignKeys();
+
+	/**
+	 * Returns the meta object for the '{@link org.eclipse.datatools.modelbase.sql.tables.BaseTable#getPrimaryKey() <em>Get Primary Key</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Primary Key</em>' operation.
+	 * @see org.eclipse.datatools.modelbase.sql.tables.BaseTable#getPrimaryKey()
+	 * @generated
+	 */
+	EOperation getBaseTable__GetPrimaryKey();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.datatools.modelbase.sql.tables.Column <em>Column</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2031,6 +2690,36 @@ public interface SQLTablesPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getColumn_ScopeChecked();
+
+	/**
+	 * Returns the meta object for the '{@link org.eclipse.datatools.modelbase.sql.tables.Column#isPartOfForeignKey() <em>Is Part Of Foreign Key</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Is Part Of Foreign Key</em>' operation.
+	 * @see org.eclipse.datatools.modelbase.sql.tables.Column#isPartOfForeignKey()
+	 * @generated
+	 */
+	EOperation getColumn__IsPartOfForeignKey();
+
+	/**
+	 * Returns the meta object for the '{@link org.eclipse.datatools.modelbase.sql.tables.Column#isPartOfUniqueConstraint() <em>Is Part Of Unique Constraint</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Is Part Of Unique Constraint</em>' operation.
+	 * @see org.eclipse.datatools.modelbase.sql.tables.Column#isPartOfUniqueConstraint()
+	 * @generated
+	 */
+	EOperation getColumn__IsPartOfUniqueConstraint();
+
+	/**
+	 * Returns the meta object for the '{@link org.eclipse.datatools.modelbase.sql.tables.Column#isPartOfPrimaryKey() <em>Is Part Of Primary Key</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Is Part Of Primary Key</em>' operation.
+	 * @see org.eclipse.datatools.modelbase.sql.tables.Column#isPartOfPrimaryKey()
+	 * @generated
+	 */
+	EOperation getColumn__IsPartOfPrimaryKey();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.datatools.modelbase.sql.tables.Trigger <em>Trigger</em>}'.
@@ -2262,13 +2951,14 @@ public interface SQLTablesPackage extends EPackage {
 	 * <ul>
 	 *   <li>each class,</li>
 	 *   <li>each feature of each class,</li>
+	 *   <li>each operation of each class,</li>
 	 *   <li>each enum,</li>
 	 *   <li>and each data type</li>
 	 * </ul>
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	interface Literals  {
+	interface Literals {
 		/**
 		 * The meta object literal for the '{@link org.eclipse.datatools.modelbase.sql.tables.impl.ViewTableImpl <em>View Table</em>}' class.
 		 * <!-- begin-user-doc -->
@@ -2458,6 +3148,30 @@ public interface SQLTablesPackage extends EPackage {
 		EReference BASE_TABLE__REFERENCING_FOREIGN_KEYS = eINSTANCE.getBaseTable_ReferencingForeignKeys();
 
 		/**
+		 * The meta object literal for the '<em><b>Get Unique Constraints</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation BASE_TABLE___GET_UNIQUE_CONSTRAINTS = eINSTANCE.getBaseTable__GetUniqueConstraints();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Foreign Keys</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation BASE_TABLE___GET_FOREIGN_KEYS = eINSTANCE.getBaseTable__GetForeignKeys();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Primary Key</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation BASE_TABLE___GET_PRIMARY_KEY = eINSTANCE.getBaseTable__GetPrimaryKey();
+
+		/**
 		 * The meta object literal for the '{@link org.eclipse.datatools.modelbase.sql.tables.impl.ColumnImpl <em>Column</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2530,6 +3244,30 @@ public interface SQLTablesPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute COLUMN__SCOPE_CHECKED = eINSTANCE.getColumn_ScopeChecked();
+
+		/**
+		 * The meta object literal for the '<em><b>Is Part Of Foreign Key</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation COLUMN___IS_PART_OF_FOREIGN_KEY = eINSTANCE.getColumn__IsPartOfForeignKey();
+
+		/**
+		 * The meta object literal for the '<em><b>Is Part Of Unique Constraint</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation COLUMN___IS_PART_OF_UNIQUE_CONSTRAINT = eINSTANCE.getColumn__IsPartOfUniqueConstraint();
+
+		/**
+		 * The meta object literal for the '<em><b>Is Part Of Primary Key</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation COLUMN___IS_PART_OF_PRIMARY_KEY = eINSTANCE.getColumn__IsPartOfPrimaryKey();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.datatools.modelbase.sql.tables.impl.TriggerImpl <em>Trigger</em>}' class.

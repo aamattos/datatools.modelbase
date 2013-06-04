@@ -1,16 +1,44 @@
-/*******************************************************************************
- * Copyright (c) 2001, 2004 IBM Corporation and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- * 
- * Contributors:
- *     IBM Corporation - initial API and implementation
- *******************************************************************************/
+/**
+ * <copyright>
+ * </copyright>
+ *
+ * $Id$
+ */
 package org.eclipse.datatools.modelbase.sql.datatypes.util;
 
 import org.eclipse.datatools.modelbase.sql.datatypes.*;
+import org.eclipse.datatools.modelbase.sql.datatypes.ApproximateNumericDataType;
+import org.eclipse.datatools.modelbase.sql.datatypes.ArrayDataType;
+import org.eclipse.datatools.modelbase.sql.datatypes.AttributeDefinition;
+import org.eclipse.datatools.modelbase.sql.datatypes.BinaryStringDataType;
+import org.eclipse.datatools.modelbase.sql.datatypes.BooleanDataType;
+import org.eclipse.datatools.modelbase.sql.datatypes.CharacterSet;
+import org.eclipse.datatools.modelbase.sql.datatypes.CharacterStringDataType;
+import org.eclipse.datatools.modelbase.sql.datatypes.CollectionDataType;
+import org.eclipse.datatools.modelbase.sql.datatypes.ConstructedDataType;
+import org.eclipse.datatools.modelbase.sql.datatypes.DataLinkDataType;
+import org.eclipse.datatools.modelbase.sql.datatypes.DataType;
+import org.eclipse.datatools.modelbase.sql.datatypes.DateDataType;
+import org.eclipse.datatools.modelbase.sql.datatypes.DistinctUserDefinedType;
+import org.eclipse.datatools.modelbase.sql.datatypes.Domain;
+import org.eclipse.datatools.modelbase.sql.datatypes.ElementType;
+import org.eclipse.datatools.modelbase.sql.datatypes.ExactNumericDataType;
+import org.eclipse.datatools.modelbase.sql.datatypes.Field;
+import org.eclipse.datatools.modelbase.sql.datatypes.FixedPrecisionDataType;
+import org.eclipse.datatools.modelbase.sql.datatypes.IntegerDataType;
+import org.eclipse.datatools.modelbase.sql.datatypes.IntervalDataType;
+import org.eclipse.datatools.modelbase.sql.datatypes.MultisetDataType;
+import org.eclipse.datatools.modelbase.sql.datatypes.NumericalDataType;
+import org.eclipse.datatools.modelbase.sql.datatypes.PredefinedDataType;
+import org.eclipse.datatools.modelbase.sql.datatypes.ReferenceDataType;
+import org.eclipse.datatools.modelbase.sql.datatypes.RowDataType;
+import org.eclipse.datatools.modelbase.sql.datatypes.SQLDataType;
+import org.eclipse.datatools.modelbase.sql.datatypes.SQLDataTypesPackage;
+import org.eclipse.datatools.modelbase.sql.datatypes.StructuredUserDefinedType;
+import org.eclipse.datatools.modelbase.sql.datatypes.TimeDataType;
+import org.eclipse.datatools.modelbase.sql.datatypes.UserDefinedType;
+import org.eclipse.datatools.modelbase.sql.datatypes.UserDefinedTypeOrdering;
+import org.eclipse.datatools.modelbase.sql.datatypes.XMLDataType;
 import org.eclipse.datatools.modelbase.sql.schema.SQLObject;
 import org.eclipse.datatools.modelbase.sql.schema.TypedElement;
 import org.eclipse.emf.common.notify.Adapter;
@@ -19,7 +47,6 @@ import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EModelElement;
 import org.eclipse.emf.ecore.ENamedElement;
 import org.eclipse.emf.ecore.EObject;
-
 
 /**
  * <!-- begin-user-doc -->
@@ -58,6 +85,7 @@ public class SQLDataTypesAdapterFactory extends AdapterFactoryImpl {
 	 * @return whether this factory is applicable for the type of the object.
 	 * @generated
 	 */
+	@Override
 	public boolean isFactoryForType(Object object) {
 		if (object == modelPackage) {
 			return true;
@@ -74,114 +102,150 @@ public class SQLDataTypesAdapterFactory extends AdapterFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected SQLDataTypesSwitch modelSwitch =
-		new SQLDataTypesSwitch() {
-			public Object caseUserDefinedType(UserDefinedType object) {
+	protected SQLDataTypesSwitch<Adapter> modelSwitch =
+		new SQLDataTypesSwitch<Adapter>() {
+			@Override
+			public Adapter caseUserDefinedType(UserDefinedType object) {
 				return createUserDefinedTypeAdapter();
 			}
-			public Object caseDataType(DataType object) {
+			@Override
+			public Adapter caseDataType(DataType object) {
 				return createDataTypeAdapter();
 			}
-			public Object casePredefinedDataType(PredefinedDataType object) {
+			@Override
+			public Adapter casePredefinedDataType(PredefinedDataType object) {
 				return createPredefinedDataTypeAdapter();
 			}
-			public Object caseCollectionDataType(CollectionDataType object) {
+			@Override
+			public Adapter caseCollectionDataType(CollectionDataType object) {
 				return createCollectionDataTypeAdapter();
 			}
-			public Object caseNumericalDataType(NumericalDataType object) {
+			@Override
+			public Adapter caseNumericalDataType(NumericalDataType object) {
 				return createNumericalDataTypeAdapter();
 			}
-			public Object caseCharacterStringDataType(CharacterStringDataType object) {
+			@Override
+			public Adapter caseCharacterStringDataType(CharacterStringDataType object) {
 				return createCharacterStringDataTypeAdapter();
 			}
-			public Object caseRowDataType(RowDataType object) {
+			@Override
+			public Adapter caseRowDataType(RowDataType object) {
 				return createRowDataTypeAdapter();
 			}
-			public Object caseArrayDataType(ArrayDataType object) {
+			@Override
+			public Adapter caseArrayDataType(ArrayDataType object) {
 				return createArrayDataTypeAdapter();
 			}
-			public Object caseMultisetDataType(MultisetDataType object) {
+			@Override
+			public Adapter caseMultisetDataType(MultisetDataType object) {
 				return createMultisetDataTypeAdapter();
 			}
-			public Object caseBooleanDataType(BooleanDataType object) {
+			@Override
+			public Adapter caseBooleanDataType(BooleanDataType object) {
 				return createBooleanDataTypeAdapter();
 			}
-			public Object caseIntervalDataType(IntervalDataType object) {
+			@Override
+			public Adapter caseIntervalDataType(IntervalDataType object) {
 				return createIntervalDataTypeAdapter();
 			}
-			public Object caseBinaryStringDataType(BinaryStringDataType object) {
+			@Override
+			public Adapter caseBinaryStringDataType(BinaryStringDataType object) {
 				return createBinaryStringDataTypeAdapter();
 			}
-			public Object caseCharacterSet(CharacterSet object) {
+			@Override
+			public Adapter caseCharacterSet(CharacterSet object) {
 				return createCharacterSetAdapter();
 			}
-			public Object caseTimeDataType(TimeDataType object) {
+			@Override
+			public Adapter caseTimeDataType(TimeDataType object) {
 				return createTimeDataTypeAdapter();
 			}
-			public Object caseDistinctUserDefinedType(DistinctUserDefinedType object) {
+			@Override
+			public Adapter caseDistinctUserDefinedType(DistinctUserDefinedType object) {
 				return createDistinctUserDefinedTypeAdapter();
 			}
-			public Object caseStructuredUserDefinedType(StructuredUserDefinedType object) {
+			@Override
+			public Adapter caseStructuredUserDefinedType(StructuredUserDefinedType object) {
 				return createStructuredUserDefinedTypeAdapter();
 			}
-			public Object caseAttributeDefinition(AttributeDefinition object) {
+			@Override
+			public Adapter caseAttributeDefinition(AttributeDefinition object) {
 				return createAttributeDefinitionAdapter();
 			}
-			public Object caseFixedPrecisionDataType(FixedPrecisionDataType object) {
+			@Override
+			public Adapter caseFixedPrecisionDataType(FixedPrecisionDataType object) {
 				return createFixedPrecisionDataTypeAdapter();
 			}
-			public Object caseDomain(Domain object) {
+			@Override
+			public Adapter caseDomain(Domain object) {
 				return createDomainAdapter();
 			}
-			public Object caseField(Field object) {
+			@Override
+			public Adapter caseField(Field object) {
 				return createFieldAdapter();
 			}
-			public Object caseReferenceDataType(ReferenceDataType object) {
+			@Override
+			public Adapter caseReferenceDataType(ReferenceDataType object) {
 				return createReferenceDataTypeAdapter();
 			}
-			public Object caseConstructedDataType(ConstructedDataType object) {
+			@Override
+			public Adapter caseConstructedDataType(ConstructedDataType object) {
 				return createConstructedDataTypeAdapter();
 			}
-			public Object caseSQLDataType(SQLDataType object) {
+			@Override
+			public Adapter caseSQLDataType(SQLDataType object) {
 				return createSQLDataTypeAdapter();
 			}
-			public Object caseDataLinkDataType(DataLinkDataType object) {
+			@Override
+			public Adapter caseDataLinkDataType(DataLinkDataType object) {
 				return createDataLinkDataTypeAdapter();
 			}
-			public Object caseUserDefinedTypeOrdering(UserDefinedTypeOrdering object) {
+			@Override
+			public Adapter caseUserDefinedTypeOrdering(UserDefinedTypeOrdering object) {
 				return createUserDefinedTypeOrderingAdapter();
 			}
-			public Object caseDateDataType(DateDataType object) {
+			@Override
+			public Adapter caseDateDataType(DateDataType object) {
 				return createDateDataTypeAdapter();
 			}
-			public Object caseExactNumericDataType(ExactNumericDataType object) {
+			@Override
+			public Adapter caseExactNumericDataType(ExactNumericDataType object) {
 				return createExactNumericDataTypeAdapter();
 			}
-			public Object caseApproximateNumericDataType(ApproximateNumericDataType object) {
+			@Override
+			public Adapter caseApproximateNumericDataType(ApproximateNumericDataType object) {
 				return createApproximateNumericDataTypeAdapter();
 			}
-			public Object caseIntegerDataType(IntegerDataType object) {
+			@Override
+			public Adapter caseIntegerDataType(IntegerDataType object) {
 				return createIntegerDataTypeAdapter();
 			}
-			public Object caseXMLDataType(XMLDataType object) {
+			@Override
+			public Adapter caseXMLDataType(XMLDataType object) {
 				return createXMLDataTypeAdapter();
 			}
-			public Object caseElementType(ElementType object) {
+			@Override
+			public Adapter caseElementType(ElementType object) {
 				return createElementTypeAdapter();
 			}
-			public Object caseEModelElement(EModelElement object) {
+			@Override
+			public Adapter caseEModelElement(EModelElement object) {
 				return createEModelElementAdapter();
 			}
-			public Object caseENamedElement(ENamedElement object) {
+			@Override
+			public Adapter caseENamedElement(ENamedElement object) {
 				return createENamedElementAdapter();
 			}
-			public Object caseSQLObject(SQLObject object) {
+			@Override
+			public Adapter caseSQLObject(SQLObject object) {
 				return createSQLObjectAdapter();
 			}
-			public Object caseTypedElement(TypedElement object) {
+			@Override
+			public Adapter caseTypedElement(TypedElement object) {
 				return createTypedElementAdapter();
 			}
-			public Object defaultCase(EObject object) {
+			@Override
+			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
 		};
@@ -194,8 +258,9 @@ public class SQLDataTypesAdapterFactory extends AdapterFactoryImpl {
 	 * @return the adapter for the <code>target</code>.
 	 * @generated
 	 */
+	@Override
 	public Adapter createAdapter(Notifier target) {
-		return (Adapter)modelSwitch.doSwitch((EObject)target);
+		return modelSwitch.doSwitch((EObject)target);
 	}
 
 

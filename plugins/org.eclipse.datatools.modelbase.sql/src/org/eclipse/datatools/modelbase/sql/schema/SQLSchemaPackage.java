@@ -1,19 +1,16 @@
-/*******************************************************************************
- * Copyright (c) 2001, 2004 IBM Corporation and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- * 
- * Contributors:
- *     IBM Corporation - initial API and implementation
- *******************************************************************************/
+/**
+ * <copyright>
+ * </copyright>
+ *
+ * $Id$
+ */
 package org.eclipse.datatools.modelbase.sql.schema;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EEnum;
+import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EcorePackage;
@@ -25,12 +22,14 @@ import org.eclipse.emf.ecore.EcorePackage;
  * <ul>
  *   <li>each class,</li>
  *   <li>each feature of each class,</li>
+ *   <li>each operation of each class,</li>
  *   <li>each enum,</li>
  *   <li>and each data type</li>
  * </ul>
  * <!-- end-user-doc -->
  * @see org.eclipse.datatools.modelbase.sql.schema.SQLSchemaFactory
  * @model kind="package"
+ *        annotation="http://www.eclipse.org/emf/2002/Ecore settingDelegates='com.isb.datamodeler.schema.setting'"
  * @generated
  */
 public interface SQLSchemaPackage extends EPackage {
@@ -40,7 +39,7 @@ public interface SQLSchemaPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNAME = "schema"; //$NON-NLS-1$
+	String eNAME = "schema";
 
 	/**
 	 * The package namespace URI.
@@ -48,7 +47,7 @@ public interface SQLSchemaPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http:///org/eclipse/datatools/modelbase/sql/schema.ecore"; //$NON-NLS-1$
+	String eNS_URI = "http:///org/eclipse/datatools/modelbase/sql/schema.ecore";
 
 	/**
 	 * The package namespace name.
@@ -56,7 +55,7 @@ public interface SQLSchemaPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_PREFIX = "SQLSchema"; //$NON-NLS-1$
+	String eNS_PREFIX = "SQLSchema";
 
 	/**
 	 * The singleton instance of the package.
@@ -65,6 +64,16 @@ public interface SQLSchemaPackage extends EPackage {
 	 * @generated
 	 */
 	SQLSchemaPackage eINSTANCE = org.eclipse.datatools.modelbase.sql.schema.impl.SQLSchemaPackageImpl.init();
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.datatools.modelbase.sql.schema.impl.SQLObjectImpl <em>SQL Object</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.datatools.modelbase.sql.schema.impl.SQLObjectImpl
+	 * @see org.eclipse.datatools.modelbase.sql.schema.impl.SQLSchemaPackageImpl#getSQLObject()
+	 * @generated
+	 */
+	int SQL_OBJECT = 4;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.datatools.modelbase.sql.schema.impl.IdentitySpecifierImpl <em>Identity Specifier</em>}' class.
@@ -77,14 +86,94 @@ public interface SQLSchemaPackage extends EPackage {
 	int IDENTITY_SPECIFIER = 0;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.datatools.modelbase.sql.schema.impl.SQLObjectImpl <em>SQL Object</em>}' class.
+	 * The meta object id for the '{@link org.eclipse.datatools.modelbase.sql.schema.impl.TypedElementImpl <em>Typed Element</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.datatools.modelbase.sql.schema.impl.SQLObjectImpl
-	 * @see org.eclipse.datatools.modelbase.sql.schema.impl.SQLSchemaPackageImpl#getSQLObject()
+	 * @see org.eclipse.datatools.modelbase.sql.schema.impl.TypedElementImpl
+	 * @see org.eclipse.datatools.modelbase.sql.schema.impl.SQLSchemaPackageImpl#getTypedElement()
 	 * @generated
 	 */
-	int SQL_OBJECT = 4;
+	int TYPED_ELEMENT = 1;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.datatools.modelbase.sql.schema.impl.DependencyImpl <em>Dependency</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.datatools.modelbase.sql.schema.impl.DependencyImpl
+	 * @see org.eclipse.datatools.modelbase.sql.schema.impl.SQLSchemaPackageImpl#getDependency()
+	 * @generated
+	 */
+	int DEPENDENCY = 2;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.datatools.modelbase.sql.schema.impl.SchemaImpl <em>Schema</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.datatools.modelbase.sql.schema.impl.SchemaImpl
+	 * @see org.eclipse.datatools.modelbase.sql.schema.impl.SQLSchemaPackageImpl#getSchema()
+	 * @generated
+	 */
+	int SCHEMA = 3;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.datatools.modelbase.sql.schema.impl.SequenceImpl <em>Sequence</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.datatools.modelbase.sql.schema.impl.SequenceImpl
+	 * @see org.eclipse.datatools.modelbase.sql.schema.impl.SQLSchemaPackageImpl#getSequence()
+	 * @generated
+	 */
+	int SEQUENCE = 5;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.datatools.modelbase.sql.schema.impl.DatabaseImpl <em>Database</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.datatools.modelbase.sql.schema.impl.DatabaseImpl
+	 * @see org.eclipse.datatools.modelbase.sql.schema.impl.SQLSchemaPackageImpl#getDatabase()
+	 * @generated
+	 */
+	int DATABASE = 6;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.datatools.modelbase.sql.schema.impl.EventImpl <em>Event</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.datatools.modelbase.sql.schema.impl.EventImpl
+	 * @see org.eclipse.datatools.modelbase.sql.schema.impl.SQLSchemaPackageImpl#getEvent()
+	 * @generated
+	 */
+	int EVENT = 7;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.datatools.modelbase.sql.schema.impl.CommentImpl <em>Comment</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.datatools.modelbase.sql.schema.impl.CommentImpl
+	 * @see org.eclipse.datatools.modelbase.sql.schema.impl.SQLSchemaPackageImpl#getComment()
+	 * @generated
+	 */
+	int COMMENT = 8;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.datatools.modelbase.sql.schema.impl.CatalogImpl <em>Catalog</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.datatools.modelbase.sql.schema.impl.CatalogImpl
+	 * @see org.eclipse.datatools.modelbase.sql.schema.impl.SQLSchemaPackageImpl#getCatalog()
+	 * @generated
+	 */
+	int CATALOG = 9;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.datatools.modelbase.sql.schema.ObjectExtension <em>Object Extension</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.datatools.modelbase.sql.schema.ObjectExtension
+	 * @see org.eclipse.datatools.modelbase.sql.schema.impl.SQLSchemaPackageImpl#getObjectExtension()
+	 * @generated
+	 */
+	int OBJECT_EXTENSION = 10;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -166,6 +255,69 @@ public interface SQLSchemaPackage extends EPackage {
 	 * @ordered
 	 */
 	int SQL_OBJECT_FEATURE_COUNT = EcorePackage.ENAMED_ELEMENT_FEATURE_COUNT + 6;
+
+	/**
+	 * The operation id for the '<em>Add EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SQL_OBJECT___ADD_EANNOTATION__STRING = EcorePackage.ENAMED_ELEMENT_OPERATION_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Add EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SQL_OBJECT___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING = EcorePackage.ENAMED_ELEMENT_OPERATION_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SQL_OBJECT___GET_EANNOTATION_DETAIL__EANNOTATION_STRING = EcorePackage.ENAMED_ELEMENT_OPERATION_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>Set Annotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SQL_OBJECT___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING = EcorePackage.ENAMED_ELEMENT_OPERATION_COUNT + 3;
+
+	/**
+	 * The operation id for the '<em>Remove EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SQL_OBJECT___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING = EcorePackage.ENAMED_ELEMENT_OPERATION_COUNT + 4;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SQL_OBJECT___GET_EANNOTATION__STRING = EcorePackage.ENAMED_ELEMENT_OPERATION_COUNT + 5;
+
+	/**
+	 * The number of operations of the '<em>SQL Object</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SQL_OBJECT_OPERATION_COUNT = EcorePackage.ENAMED_ELEMENT_OPERATION_COUNT + 6;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -303,14 +455,67 @@ public interface SQLSchemaPackage extends EPackage {
 	int IDENTITY_SPECIFIER_FEATURE_COUNT = SQL_OBJECT_FEATURE_COUNT + 6;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.datatools.modelbase.sql.schema.impl.TypedElementImpl <em>Typed Element</em>}' class.
+	 * The operation id for the '<em>Add EAnnotation</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.datatools.modelbase.sql.schema.impl.TypedElementImpl
-	 * @see org.eclipse.datatools.modelbase.sql.schema.impl.SQLSchemaPackageImpl#getTypedElement()
 	 * @generated
+	 * @ordered
 	 */
-	int TYPED_ELEMENT = 1;
+	int IDENTITY_SPECIFIER___ADD_EANNOTATION__STRING = SQL_OBJECT___ADD_EANNOTATION__STRING;
+
+	/**
+	 * The operation id for the '<em>Add EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IDENTITY_SPECIFIER___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING = SQL_OBJECT___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IDENTITY_SPECIFIER___GET_EANNOTATION_DETAIL__EANNOTATION_STRING = SQL_OBJECT___GET_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Set Annotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IDENTITY_SPECIFIER___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING = SQL_OBJECT___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Remove EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IDENTITY_SPECIFIER___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING = SQL_OBJECT___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IDENTITY_SPECIFIER___GET_EANNOTATION__STRING = SQL_OBJECT___GET_EANNOTATION__STRING;
+
+	/**
+	 * The number of operations of the '<em>Identity Specifier</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IDENTITY_SPECIFIER_OPERATION_COUNT = SQL_OBJECT_OPERATION_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -412,14 +617,85 @@ public interface SQLSchemaPackage extends EPackage {
 	int TYPED_ELEMENT_FEATURE_COUNT = SQL_OBJECT_FEATURE_COUNT + 2;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.datatools.modelbase.sql.schema.impl.DependencyImpl <em>Dependency</em>}' class.
+	 * The operation id for the '<em>Add EAnnotation</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.datatools.modelbase.sql.schema.impl.DependencyImpl
-	 * @see org.eclipse.datatools.modelbase.sql.schema.impl.SQLSchemaPackageImpl#getDependency()
 	 * @generated
+	 * @ordered
 	 */
-	int DEPENDENCY = 2;
+	int TYPED_ELEMENT___ADD_EANNOTATION__STRING = SQL_OBJECT___ADD_EANNOTATION__STRING;
+
+	/**
+	 * The operation id for the '<em>Add EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TYPED_ELEMENT___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING = SQL_OBJECT___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TYPED_ELEMENT___GET_EANNOTATION_DETAIL__EANNOTATION_STRING = SQL_OBJECT___GET_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Set Annotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TYPED_ELEMENT___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING = SQL_OBJECT___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Remove EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TYPED_ELEMENT___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING = SQL_OBJECT___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TYPED_ELEMENT___GET_EANNOTATION__STRING = SQL_OBJECT___GET_EANNOTATION__STRING;
+
+	/**
+	 * The operation id for the '<em>Set Data Type</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TYPED_ELEMENT___SET_DATA_TYPE__DATATYPE = SQL_OBJECT_OPERATION_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Get Data Type</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TYPED_ELEMENT___GET_DATA_TYPE = SQL_OBJECT_OPERATION_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Typed Element</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TYPED_ELEMENT_OPERATION_COUNT = SQL_OBJECT_OPERATION_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -521,14 +797,67 @@ public interface SQLSchemaPackage extends EPackage {
 	int DEPENDENCY_FEATURE_COUNT = SQL_OBJECT_FEATURE_COUNT + 2;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.datatools.modelbase.sql.schema.impl.SchemaImpl <em>Schema</em>}' class.
+	 * The operation id for the '<em>Add EAnnotation</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.datatools.modelbase.sql.schema.impl.SchemaImpl
-	 * @see org.eclipse.datatools.modelbase.sql.schema.impl.SQLSchemaPackageImpl#getSchema()
 	 * @generated
+	 * @ordered
 	 */
-	int SCHEMA = 3;
+	int DEPENDENCY___ADD_EANNOTATION__STRING = SQL_OBJECT___ADD_EANNOTATION__STRING;
+
+	/**
+	 * The operation id for the '<em>Add EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEPENDENCY___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING = SQL_OBJECT___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEPENDENCY___GET_EANNOTATION_DETAIL__EANNOTATION_STRING = SQL_OBJECT___GET_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Set Annotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEPENDENCY___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING = SQL_OBJECT___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Remove EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEPENDENCY___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING = SQL_OBJECT___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEPENDENCY___GET_EANNOTATION__STRING = SQL_OBJECT___GET_EANNOTATION__STRING;
+
+	/**
+	 * The number of operations of the '<em>Dependency</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEPENDENCY_OPERATION_COUNT = SQL_OBJECT_OPERATION_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -711,14 +1040,67 @@ public interface SQLSchemaPackage extends EPackage {
 	int SCHEMA_FEATURE_COUNT = SQL_OBJECT_FEATURE_COUNT + 11;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.datatools.modelbase.sql.schema.impl.SequenceImpl <em>Sequence</em>}' class.
+	 * The operation id for the '<em>Add EAnnotation</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.datatools.modelbase.sql.schema.impl.SequenceImpl
-	 * @see org.eclipse.datatools.modelbase.sql.schema.impl.SQLSchemaPackageImpl#getSequence()
 	 * @generated
+	 * @ordered
 	 */
-	int SEQUENCE = 5;
+	int SCHEMA___ADD_EANNOTATION__STRING = SQL_OBJECT___ADD_EANNOTATION__STRING;
+
+	/**
+	 * The operation id for the '<em>Add EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCHEMA___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING = SQL_OBJECT___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCHEMA___GET_EANNOTATION_DETAIL__EANNOTATION_STRING = SQL_OBJECT___GET_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Set Annotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCHEMA___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING = SQL_OBJECT___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Remove EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCHEMA___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING = SQL_OBJECT___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCHEMA___GET_EANNOTATION__STRING = SQL_OBJECT___GET_EANNOTATION__STRING;
+
+	/**
+	 * The number of operations of the '<em>Schema</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCHEMA_OPERATION_COUNT = SQL_OBJECT_OPERATION_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -838,14 +1220,85 @@ public interface SQLSchemaPackage extends EPackage {
 	int SEQUENCE_FEATURE_COUNT = TYPED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.datatools.modelbase.sql.schema.impl.DatabaseImpl <em>Database</em>}' class.
+	 * The operation id for the '<em>Add EAnnotation</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.datatools.modelbase.sql.schema.impl.DatabaseImpl
-	 * @see org.eclipse.datatools.modelbase.sql.schema.impl.SQLSchemaPackageImpl#getDatabase()
 	 * @generated
+	 * @ordered
 	 */
-	int DATABASE = 6;
+	int SEQUENCE___ADD_EANNOTATION__STRING = TYPED_ELEMENT___ADD_EANNOTATION__STRING;
+
+	/**
+	 * The operation id for the '<em>Add EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING = TYPED_ELEMENT___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE___GET_EANNOTATION_DETAIL__EANNOTATION_STRING = TYPED_ELEMENT___GET_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Set Annotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING = TYPED_ELEMENT___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Remove EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING = TYPED_ELEMENT___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE___GET_EANNOTATION__STRING = TYPED_ELEMENT___GET_EANNOTATION__STRING;
+
+	/**
+	 * The operation id for the '<em>Set Data Type</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE___SET_DATA_TYPE__DATATYPE = TYPED_ELEMENT___SET_DATA_TYPE__DATATYPE;
+
+	/**
+	 * The operation id for the '<em>Get Data Type</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE___GET_DATA_TYPE = TYPED_ELEMENT___GET_DATA_TYPE;
+
+	/**
+	 * The number of operations of the '<em>Sequence</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEQUENCE_OPERATION_COUNT = TYPED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -983,14 +1436,76 @@ public interface SQLSchemaPackage extends EPackage {
 	int DATABASE_FEATURE_COUNT = SQL_OBJECT_FEATURE_COUNT + 6;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.datatools.modelbase.sql.schema.impl.EventImpl <em>Event</em>}' class.
+	 * The operation id for the '<em>Add EAnnotation</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.datatools.modelbase.sql.schema.impl.EventImpl
-	 * @see org.eclipse.datatools.modelbase.sql.schema.impl.SQLSchemaPackageImpl#getEvent()
 	 * @generated
+	 * @ordered
 	 */
-	int EVENT = 7;
+	int DATABASE___ADD_EANNOTATION__STRING = SQL_OBJECT___ADD_EANNOTATION__STRING;
+
+	/**
+	 * The operation id for the '<em>Add EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATABASE___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING = SQL_OBJECT___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATABASE___GET_EANNOTATION_DETAIL__EANNOTATION_STRING = SQL_OBJECT___GET_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Set Annotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATABASE___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING = SQL_OBJECT___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Remove EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATABASE___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING = SQL_OBJECT___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATABASE___GET_EANNOTATION__STRING = SQL_OBJECT___GET_EANNOTATION__STRING;
+
+	/**
+	 * The operation id for the '<em>Get User Defined Types</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATABASE___GET_USER_DEFINED_TYPES = SQL_OBJECT_OPERATION_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Database</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DATABASE_OPERATION_COUNT = SQL_OBJECT_OPERATION_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -1119,14 +1634,67 @@ public interface SQLSchemaPackage extends EPackage {
 	int EVENT_FEATURE_COUNT = SQL_OBJECT_FEATURE_COUNT + 5;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.datatools.modelbase.sql.schema.impl.CommentImpl <em>Comment</em>}' class.
+	 * The operation id for the '<em>Add EAnnotation</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.datatools.modelbase.sql.schema.impl.CommentImpl
-	 * @see org.eclipse.datatools.modelbase.sql.schema.impl.SQLSchemaPackageImpl#getComment()
 	 * @generated
+	 * @ordered
 	 */
-	int COMMENT = 8;
+	int EVENT___ADD_EANNOTATION__STRING = SQL_OBJECT___ADD_EANNOTATION__STRING;
+
+	/**
+	 * The operation id for the '<em>Add EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING = SQL_OBJECT___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT___GET_EANNOTATION_DETAIL__EANNOTATION_STRING = SQL_OBJECT___GET_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Set Annotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING = SQL_OBJECT___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Remove EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING = SQL_OBJECT___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT___GET_EANNOTATION__STRING = SQL_OBJECT___GET_EANNOTATION__STRING;
+
+	/**
+	 * The number of operations of the '<em>Event</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT_OPERATION_COUNT = SQL_OBJECT_OPERATION_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -1156,14 +1724,13 @@ public interface SQLSchemaPackage extends EPackage {
 	int COMMENT_FEATURE_COUNT = 2;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.datatools.modelbase.sql.schema.impl.CatalogImpl <em>Catalog</em>}' class.
+	 * The number of operations of the '<em>Comment</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.datatools.modelbase.sql.schema.impl.CatalogImpl
-	 * @see org.eclipse.datatools.modelbase.sql.schema.impl.SQLSchemaPackageImpl#getCatalog()
 	 * @generated
+	 * @ordered
 	 */
-	int CATALOG = 9;
+	int COMMENT_OPERATION_COUNT = 0;
 
 	/**
 	 * The feature id for the '<em><b>EAnnotations</b></em>' containment reference list.
@@ -1265,14 +1832,67 @@ public interface SQLSchemaPackage extends EPackage {
 	int CATALOG_FEATURE_COUNT = SQL_OBJECT_FEATURE_COUNT + 2;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.datatools.modelbase.sql.schema.ObjectExtension <em>Object Extension</em>}' class.
+	 * The operation id for the '<em>Add EAnnotation</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.datatools.modelbase.sql.schema.ObjectExtension
-	 * @see org.eclipse.datatools.modelbase.sql.schema.impl.SQLSchemaPackageImpl#getObjectExtension()
 	 * @generated
+	 * @ordered
 	 */
-	int OBJECT_EXTENSION = 10;
+	int CATALOG___ADD_EANNOTATION__STRING = SQL_OBJECT___ADD_EANNOTATION__STRING;
+
+	/**
+	 * The operation id for the '<em>Add EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CATALOG___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING = SQL_OBJECT___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CATALOG___GET_EANNOTATION_DETAIL__EANNOTATION_STRING = SQL_OBJECT___GET_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Set Annotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CATALOG___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING = SQL_OBJECT___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Remove EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CATALOG___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING = SQL_OBJECT___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CATALOG___GET_EANNOTATION__STRING = SQL_OBJECT___GET_EANNOTATION__STRING;
+
+	/**
+	 * The number of operations of the '<em>Catalog</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CATALOG_OPERATION_COUNT = SQL_OBJECT_OPERATION_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>SQL Object</b></em>' container reference.
@@ -1291,6 +1911,15 @@ public interface SQLSchemaPackage extends EPackage {
 	 * @ordered
 	 */
 	int OBJECT_EXTENSION_FEATURE_COUNT = 1;
+
+	/**
+	 * The number of operations of the '<em>Object Extension</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OBJECT_EXTENSION_OPERATION_COUNT = 0;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.datatools.modelbase.sql.schema.GenerateType <em>Generate Type</em>}' enum.
@@ -1331,7 +1960,6 @@ public interface SQLSchemaPackage extends EPackage {
 	 * @generated
 	 */
 	int LIST = 14;
-
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.datatools.modelbase.sql.schema.IdentitySpecifier <em>Identity Specifier</em>}'.
@@ -1440,6 +2068,26 @@ public interface SQLSchemaPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getTypedElement_ReferencedType();
+
+	/**
+	 * Returns the meta object for the '{@link org.eclipse.datatools.modelbase.sql.schema.TypedElement#setDataType(org.eclipse.datatools.modelbase.sql.datatypes.DataType) <em>Set Data Type</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Set Data Type</em>' operation.
+	 * @see org.eclipse.datatools.modelbase.sql.schema.TypedElement#setDataType(org.eclipse.datatools.modelbase.sql.datatypes.DataType)
+	 * @generated
+	 */
+	EOperation getTypedElement__SetDataType__DataType();
+
+	/**
+	 * Returns the meta object for the '{@link org.eclipse.datatools.modelbase.sql.schema.TypedElement#getDataType() <em>Get Data Type</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Data Type</em>' operation.
+	 * @see org.eclipse.datatools.modelbase.sql.schema.TypedElement#getDataType()
+	 * @generated
+	 */
+	EOperation getTypedElement__GetDataType();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.datatools.modelbase.sql.schema.Dependency <em>Dependency</em>}'.
@@ -1681,6 +2329,66 @@ public interface SQLSchemaPackage extends EPackage {
 	EReference getSQLObject_Privileges();
 
 	/**
+	 * Returns the meta object for the '{@link org.eclipse.datatools.modelbase.sql.schema.SQLObject#addEAnnotation(java.lang.String) <em>Add EAnnotation</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Add EAnnotation</em>' operation.
+	 * @see org.eclipse.datatools.modelbase.sql.schema.SQLObject#addEAnnotation(java.lang.String)
+	 * @generated
+	 */
+	EOperation getSQLObject__AddEAnnotation__String();
+
+	/**
+	 * Returns the meta object for the '{@link org.eclipse.datatools.modelbase.sql.schema.SQLObject#addEAnnotationDetail(org.eclipse.emf.ecore.EAnnotation, java.lang.String, java.lang.String) <em>Add EAnnotation Detail</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Add EAnnotation Detail</em>' operation.
+	 * @see org.eclipse.datatools.modelbase.sql.schema.SQLObject#addEAnnotationDetail(org.eclipse.emf.ecore.EAnnotation, java.lang.String, java.lang.String)
+	 * @generated
+	 */
+	EOperation getSQLObject__AddEAnnotationDetail__EAnnotation_String_String();
+
+	/**
+	 * Returns the meta object for the '{@link org.eclipse.datatools.modelbase.sql.schema.SQLObject#getEAnnotationDetail(org.eclipse.emf.ecore.EAnnotation, java.lang.String) <em>Get EAnnotation Detail</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get EAnnotation Detail</em>' operation.
+	 * @see org.eclipse.datatools.modelbase.sql.schema.SQLObject#getEAnnotationDetail(org.eclipse.emf.ecore.EAnnotation, java.lang.String)
+	 * @generated
+	 */
+	EOperation getSQLObject__GetEAnnotationDetail__EAnnotation_String();
+
+	/**
+	 * Returns the meta object for the '{@link org.eclipse.datatools.modelbase.sql.schema.SQLObject#setAnnotationDetail(org.eclipse.emf.ecore.EAnnotation, java.lang.String, java.lang.String) <em>Set Annotation Detail</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Set Annotation Detail</em>' operation.
+	 * @see org.eclipse.datatools.modelbase.sql.schema.SQLObject#setAnnotationDetail(org.eclipse.emf.ecore.EAnnotation, java.lang.String, java.lang.String)
+	 * @generated
+	 */
+	EOperation getSQLObject__SetAnnotationDetail__EAnnotation_String_String();
+
+	/**
+	 * Returns the meta object for the '{@link org.eclipse.datatools.modelbase.sql.schema.SQLObject#removeEAnnotationDetail(org.eclipse.emf.ecore.EAnnotation, java.lang.String) <em>Remove EAnnotation Detail</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Remove EAnnotation Detail</em>' operation.
+	 * @see org.eclipse.datatools.modelbase.sql.schema.SQLObject#removeEAnnotationDetail(org.eclipse.emf.ecore.EAnnotation, java.lang.String)
+	 * @generated
+	 */
+	EOperation getSQLObject__RemoveEAnnotationDetail__EAnnotation_String();
+
+	/**
+	 * Returns the meta object for the '{@link org.eclipse.datatools.modelbase.sql.schema.SQLObject#getEAnnotation(java.lang.String) <em>Get EAnnotation</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get EAnnotation</em>' operation.
+	 * @see org.eclipse.datatools.modelbase.sql.schema.SQLObject#getEAnnotation(java.lang.String)
+	 * @generated
+	 */
+	EOperation getSQLObject__GetEAnnotation__String();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.datatools.modelbase.sql.schema.Sequence <em>Sequence</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1787,6 +2495,16 @@ public interface SQLSchemaPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getDatabase_AuthorizationIds();
+
+	/**
+	 * Returns the meta object for the '{@link org.eclipse.datatools.modelbase.sql.schema.Database#getUserDefinedTypes() <em>Get User Defined Types</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get User Defined Types</em>' operation.
+	 * @see org.eclipse.datatools.modelbase.sql.schema.Database#getUserDefinedTypes()
+	 * @generated
+	 */
+	EOperation getDatabase__GetUserDefinedTypes();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.datatools.modelbase.sql.schema.Event <em>Event</em>}'.
@@ -1995,13 +2713,14 @@ public interface SQLSchemaPackage extends EPackage {
 	 * <ul>
 	 *   <li>each class,</li>
 	 *   <li>each feature of each class,</li>
+	 *   <li>each operation of each class,</li>
 	 *   <li>each enum,</li>
 	 *   <li>and each data type</li>
 	 * </ul>
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	interface Literals  {
+	interface Literals {
 		/**
 		 * The meta object literal for the '{@link org.eclipse.datatools.modelbase.sql.schema.impl.IdentitySpecifierImpl <em>Identity Specifier</em>}' class.
 		 * <!-- begin-user-doc -->
@@ -2085,6 +2804,22 @@ public interface SQLSchemaPackage extends EPackage {
 		 * @generated
 		 */
 		EReference TYPED_ELEMENT__REFERENCED_TYPE = eINSTANCE.getTypedElement_ReferencedType();
+
+		/**
+		 * The meta object literal for the '<em><b>Set Data Type</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation TYPED_ELEMENT___SET_DATA_TYPE__DATATYPE = eINSTANCE.getTypedElement__SetDataType__DataType();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Data Type</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation TYPED_ELEMENT___GET_DATA_TYPE = eINSTANCE.getTypedElement__GetDataType();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.datatools.modelbase.sql.schema.impl.DependencyImpl <em>Dependency</em>}' class.
@@ -2269,6 +3004,54 @@ public interface SQLSchemaPackage extends EPackage {
 		EReference SQL_OBJECT__PRIVILEGES = eINSTANCE.getSQLObject_Privileges();
 
 		/**
+		 * The meta object literal for the '<em><b>Add EAnnotation</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation SQL_OBJECT___ADD_EANNOTATION__STRING = eINSTANCE.getSQLObject__AddEAnnotation__String();
+
+		/**
+		 * The meta object literal for the '<em><b>Add EAnnotation Detail</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation SQL_OBJECT___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING = eINSTANCE.getSQLObject__AddEAnnotationDetail__EAnnotation_String_String();
+
+		/**
+		 * The meta object literal for the '<em><b>Get EAnnotation Detail</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation SQL_OBJECT___GET_EANNOTATION_DETAIL__EANNOTATION_STRING = eINSTANCE.getSQLObject__GetEAnnotationDetail__EAnnotation_String();
+
+		/**
+		 * The meta object literal for the '<em><b>Set Annotation Detail</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation SQL_OBJECT___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING = eINSTANCE.getSQLObject__SetAnnotationDetail__EAnnotation_String_String();
+
+		/**
+		 * The meta object literal for the '<em><b>Remove EAnnotation Detail</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation SQL_OBJECT___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING = eINSTANCE.getSQLObject__RemoveEAnnotationDetail__EAnnotation_String();
+
+		/**
+		 * The meta object literal for the '<em><b>Get EAnnotation</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation SQL_OBJECT___GET_EANNOTATION__STRING = eINSTANCE.getSQLObject__GetEAnnotation__String();
+
+		/**
 		 * The meta object literal for the '{@link org.eclipse.datatools.modelbase.sql.schema.impl.SequenceImpl <em>Sequence</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2351,6 +3134,14 @@ public interface SQLSchemaPackage extends EPackage {
 		 * @generated
 		 */
 		EReference DATABASE__AUTHORIZATION_IDS = eINSTANCE.getDatabase_AuthorizationIds();
+
+		/**
+		 * The meta object literal for the '<em><b>Get User Defined Types</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation DATABASE___GET_USER_DEFINED_TYPES = eINSTANCE.getDatabase__GetUserDefinedTypes();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.datatools.modelbase.sql.schema.impl.EventImpl <em>Event</em>}' class.

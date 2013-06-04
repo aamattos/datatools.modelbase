@@ -31,7 +31,7 @@ public interface Catalog extends SQLObject {
 	 * It is bidirectional and its opposite is '{@link org.eclipse.datatools.modelbase.sql.schema.Database#getCatalogs <em>Catalogs</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Database</em>' reference isn't clear,
+	 * If the meaning of the '<em>Database</em>' container reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
@@ -67,9 +67,9 @@ public interface Catalog extends SQLObject {
 	 * @return the value of the '<em>Schemas</em>' reference list.
 	 * @see org.eclipse.datatools.modelbase.sql.schema.SQLSchemaPackage#getCatalog_Schemas()
 	 * @see org.eclipse.datatools.modelbase.sql.schema.Schema#getCatalog
-	 * @model type="org.eclipse.datatools.modelbase.sql.schema.Schema" opposite="Catalog"
+	 * @model opposite="Catalog"
 	 * @generated
 	 */
-	EList getSchemas();
+	EList<Schema> getSchemas();
 
 } // Catalog

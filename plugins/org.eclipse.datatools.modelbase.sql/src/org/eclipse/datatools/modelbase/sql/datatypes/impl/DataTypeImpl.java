@@ -1,26 +1,19 @@
-/*******************************************************************************
- * Copyright (c) 2001, 2004 IBM Corporation and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- * 
- * Contributors:
- *     IBM Corporation - initial API and implementation
- *******************************************************************************/
+/**
+ * <copyright>
+ * </copyright>
+ *
+ * $Id$
+ */
 package org.eclipse.datatools.modelbase.sql.datatypes.impl;
 
-import java.util.Collection;
+import java.lang.reflect.InvocationTargetException;
 
 import org.eclipse.datatools.modelbase.sql.datatypes.DataType;
 import org.eclipse.datatools.modelbase.sql.datatypes.SQLDataTypesPackage;
 import org.eclipse.datatools.modelbase.sql.schema.TypedElement;
 import org.eclipse.datatools.modelbase.sql.schema.impl.SQLObjectImpl;
-import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.ecore.InternalEObject;
-import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -46,6 +39,7 @@ public abstract class DataTypeImpl extends SQLObjectImpl implements DataType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return SQLDataTypesPackage.Literals.DATA_TYPE;
 	}
@@ -59,6 +53,21 @@ public abstract class DataTypeImpl extends SQLObjectImpl implements DataType {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
 		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
+		switch (operationID) {
+			case SQLDataTypesPackage.DATA_TYPE___SET_CONTAINER__TYPEDELEMENT:
+				setContainer((TypedElement)arguments.get(0));
+				return null;
+		}
+		return super.eInvoke(operationID, arguments);
 	}
 
 } //DataTypeImpl

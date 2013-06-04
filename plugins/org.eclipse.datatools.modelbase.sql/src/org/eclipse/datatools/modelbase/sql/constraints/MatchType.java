@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: MatchType.java,v 1.3 2006/09/07 00:19:49 dpchou Exp $
+ * $Id$
  */
 package org.eclipse.datatools.modelbase.sql.constraints;
 
@@ -10,7 +10,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import org.eclipse.emf.common.util.AbstractEnumerator;
+import org.eclipse.emf.common.util.Enumerator;
 
 /**
  * <!-- begin-user-doc -->
@@ -24,42 +24,37 @@ import org.eclipse.emf.common.util.AbstractEnumerator;
  * @model
  * @generated
  */
-public final class MatchType extends AbstractEnumerator {
-	/**
-	 * The '<em><b>MATCH SIMPLE</b></em>' literal value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #MATCH_SIMPLE_LITERAL
-	 * @model
-	 * @generated
-	 * @ordered
-	 */
-	public static final int MATCH_SIMPLE = 0;
-
-	/**
-	 * The '<em><b>MATCH FULL</b></em>' literal value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #MATCH_FULL_LITERAL
-	 * @model
-	 * @generated
-	 * @ordered
-	 */
-	public static final int MATCH_FULL = 1;
-
-	/**
-	 * The '<em><b>MATCH PARTIAL</b></em>' literal value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #MATCH_PARTIAL_LITERAL
-	 * @model
-	 * @generated
-	 * @ordered
-	 */
-	public static final int MATCH_PARTIAL = 2;
-
+public enum MatchType implements Enumerator
+{
 	/**
 	 * The '<em><b>MATCH SIMPLE</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #MATCH_SIMPLE_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	MATCH_SIMPLE(0, "MATCH_SIMPLE", "MATCH_SIMPLE"),
+	/**
+	 * The '<em><b>MATCH FULL</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #MATCH_FULL_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	MATCH_FULL(1, "MATCH_FULL", "MATCH_FULL"),
+	/**
+	 * The '<em><b>MATCH PARTIAL</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #MATCH_PARTIAL_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	MATCH_PARTIAL(2, "MATCH_PARTIAL", "MATCH_PARTIAL");
+	/**
+	 * The '<em><b>MATCH SIMPLE</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>MATCH SIMPLE</b></em>' literal object isn't clear,
@@ -67,13 +62,14 @@ public final class MatchType extends AbstractEnumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #MATCH_SIMPLE
+	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final MatchType MATCH_SIMPLE_LITERAL = new MatchType(MATCH_SIMPLE, "MATCH_SIMPLE", "MATCH_SIMPLE"); //$NON-NLS-1$
+	public static final int MATCH_SIMPLE_VALUE = 0;
 
 	/**
-	 * The '<em><b>MATCH FULL</b></em>' literal object.
+	 * The '<em><b>MATCH FULL</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>MATCH FULL</b></em>' literal object isn't clear,
@@ -81,13 +77,14 @@ public final class MatchType extends AbstractEnumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #MATCH_FULL
+	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final MatchType MATCH_FULL_LITERAL = new MatchType(MATCH_FULL, "MATCH_FULL", "MATCH_FULL"); //$NON-NLS-1$
+	public static final int MATCH_FULL_VALUE = 1;
 
 	/**
-	 * The '<em><b>MATCH PARTIAL</b></em>' literal object.
+	 * The '<em><b>MATCH PARTIAL</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>MATCH PARTIAL</b></em>' literal object isn't clear,
@@ -95,10 +92,11 @@ public final class MatchType extends AbstractEnumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #MATCH_PARTIAL
+	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final MatchType MATCH_PARTIAL_LITERAL = new MatchType(MATCH_PARTIAL, "MATCH_PARTIAL", "MATCH_PARTIAL"); //$NON-NLS-1$
+	public static final int MATCH_PARTIAL_VALUE = 2;
 
 	/**
 	 * An array of all the '<em><b>Match Type</b></em>' enumerators.
@@ -108,9 +106,9 @@ public final class MatchType extends AbstractEnumerator {
 	 */
 	private static final MatchType[] VALUES_ARRAY =
 		new MatchType[] {
-			MATCH_SIMPLE_LITERAL,
-			MATCH_FULL_LITERAL,
-			MATCH_PARTIAL_LITERAL,
+			MATCH_SIMPLE,
+			MATCH_FULL,
+			MATCH_PARTIAL,
 		};
 
 	/**
@@ -119,7 +117,7 @@ public final class MatchType extends AbstractEnumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<MatchType> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
 	 * Returns the '<em><b>Match Type</b></em>' literal with the specified literal value.
@@ -161,12 +159,33 @@ public final class MatchType extends AbstractEnumerator {
 	 */
 	public static MatchType get(int value) {
 		switch (value) {
-			case MATCH_SIMPLE: return MATCH_SIMPLE_LITERAL;
-			case MATCH_FULL: return MATCH_FULL_LITERAL;
-			case MATCH_PARTIAL: return MATCH_PARTIAL_LITERAL;
+			case MATCH_SIMPLE_VALUE: return MATCH_SIMPLE;
+			case MATCH_FULL_VALUE: return MATCH_FULL;
+			case MATCH_PARTIAL_VALUE: return MATCH_PARTIAL;
 		}
 		return null;
 	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final int value;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final String name;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final String literal;
 
 	/**
 	 * Only this class can construct instances.
@@ -175,7 +194,46 @@ public final class MatchType extends AbstractEnumerator {
 	 * @generated
 	 */
 	private MatchType(int value, String name, String literal) {
-		super(value, name, literal);
+		this.value = value;
+		this.name = name;
+		this.literal = literal;
 	}
 
-} //MatchType
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int getValue() {
+	  return value;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getName() {
+	  return name;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getLiteral() {
+	  return literal;
+	}
+
+	/**
+	 * Returns the literal value of the enumerator, which is its string representation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		return literal;
+	}
+}

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: WritePermissionOption.java,v 1.3 2006/09/07 00:19:48 dpchou Exp $
+ * $Id$
  */
 package org.eclipse.datatools.modelbase.sql.datatypes;
 
@@ -10,7 +10,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import org.eclipse.emf.common.util.AbstractEnumerator;
+import org.eclipse.emf.common.util.Enumerator;
 
 /**
  * <!-- begin-user-doc -->
@@ -21,42 +21,37 @@ import org.eclipse.emf.common.util.AbstractEnumerator;
  * @model
  * @generated
  */
-public final class WritePermissionOption extends AbstractEnumerator {
-	/**
-	 * The '<em><b>FS</b></em>' literal value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #FS_LITERAL
-	 * @model
-	 * @generated
-	 * @ordered
-	 */
-	public static final int FS = 0;
-
-	/**
-	 * The '<em><b>ADMIN</b></em>' literal value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #ADMIN_LITERAL
-	 * @model
-	 * @generated
-	 * @ordered
-	 */
-	public static final int ADMIN = 1;
-
-	/**
-	 * The '<em><b>BLOCKED</b></em>' literal value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #BLOCKED_LITERAL
-	 * @model
-	 * @generated
-	 * @ordered
-	 */
-	public static final int BLOCKED = 2;
-
+public enum WritePermissionOption implements Enumerator
+{
 	/**
 	 * The '<em><b>FS</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #FS_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	FS(0, "FS", "FS"),
+	/**
+	 * The '<em><b>ADMIN</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #ADMIN_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	ADMIN(1, "ADMIN", "ADMIN"),
+	/**
+	 * The '<em><b>BLOCKED</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #BLOCKED_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	BLOCKED(2, "BLOCKED", "BLOCKED");
+	/**
+	 * The '<em><b>FS</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>FS</b></em>' literal object isn't clear,
@@ -64,13 +59,14 @@ public final class WritePermissionOption extends AbstractEnumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #FS
+	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final WritePermissionOption FS_LITERAL = new WritePermissionOption(FS, "FS", "FS"); //$NON-NLS-1$
+	public static final int FS_VALUE = 0;
 
 	/**
-	 * The '<em><b>ADMIN</b></em>' literal object.
+	 * The '<em><b>ADMIN</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>ADMIN</b></em>' literal object isn't clear,
@@ -78,13 +74,14 @@ public final class WritePermissionOption extends AbstractEnumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #ADMIN
+	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final WritePermissionOption ADMIN_LITERAL = new WritePermissionOption(ADMIN, "ADMIN", "ADMIN"); //$NON-NLS-1$
+	public static final int ADMIN_VALUE = 1;
 
 	/**
-	 * The '<em><b>BLOCKED</b></em>' literal object.
+	 * The '<em><b>BLOCKED</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>BLOCKED</b></em>' literal object isn't clear,
@@ -92,10 +89,11 @@ public final class WritePermissionOption extends AbstractEnumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #BLOCKED
+	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final WritePermissionOption BLOCKED_LITERAL = new WritePermissionOption(BLOCKED, "BLOCKED", "BLOCKED"); //$NON-NLS-1$
+	public static final int BLOCKED_VALUE = 2;
 
 	/**
 	 * An array of all the '<em><b>Write Permission Option</b></em>' enumerators.
@@ -105,9 +103,9 @@ public final class WritePermissionOption extends AbstractEnumerator {
 	 */
 	private static final WritePermissionOption[] VALUES_ARRAY =
 		new WritePermissionOption[] {
-			FS_LITERAL,
-			ADMIN_LITERAL,
-			BLOCKED_LITERAL,
+			FS,
+			ADMIN,
+			BLOCKED,
 		};
 
 	/**
@@ -116,7 +114,7 @@ public final class WritePermissionOption extends AbstractEnumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<WritePermissionOption> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
 	 * Returns the '<em><b>Write Permission Option</b></em>' literal with the specified literal value.
@@ -158,12 +156,33 @@ public final class WritePermissionOption extends AbstractEnumerator {
 	 */
 	public static WritePermissionOption get(int value) {
 		switch (value) {
-			case FS: return FS_LITERAL;
-			case ADMIN: return ADMIN_LITERAL;
-			case BLOCKED: return BLOCKED_LITERAL;
+			case FS_VALUE: return FS;
+			case ADMIN_VALUE: return ADMIN;
+			case BLOCKED_VALUE: return BLOCKED;
 		}
 		return null;
 	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final int value;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final String name;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final String literal;
 
 	/**
 	 * Only this class can construct instances.
@@ -172,7 +191,46 @@ public final class WritePermissionOption extends AbstractEnumerator {
 	 * @generated
 	 */
 	private WritePermissionOption(int value, String name, String literal) {
-		super(value, name, literal);
+		this.value = value;
+		this.name = name;
+		this.literal = literal;
 	}
 
-} //WritePermissionOption
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int getValue() {
+	  return value;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getName() {
+	  return name;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getLiteral() {
+	  return literal;
+	}
+
+	/**
+	 * Returns the literal value of the enumerator, which is its string representation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		return literal;
+	}
+}

@@ -1,13 +1,9 @@
-/*******************************************************************************
- * Copyright (c) 2001, 2004 IBM Corporation and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- * 
- * Contributors:
- *     IBM Corporation - initial API and implementation
- *******************************************************************************/
+/**
+ * <copyright>
+ * </copyright>
+ *
+ * $Id$
+ */
 package org.eclipse.datatools.modelbase.sql.datatypes;
 
 
@@ -64,35 +60,6 @@ public interface CharacterStringDataType extends PredefinedDataType {
 	void setLength(int value);
 
 	/**
-	 * Returns the value of the '<em><b>Coercibility</b></em>' attribute.
-	 * The literals are from the enumeration {@link org.eclipse.datatools.modelbase.sql.datatypes.CoercibilityType}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Coercibility</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Coercibility</em>' attribute.
-	 * @see org.eclipse.datatools.modelbase.sql.datatypes.CoercibilityType
-	 * @see #setCoercibility(CoercibilityType)
-	 * @see org.eclipse.datatools.modelbase.sql.datatypes.SQLDataTypesPackage#getCharacterStringDataType_Coercibility()
-	 * @model
-	 * @generated
-	 */
-	CoercibilityType getCoercibility();
-
-	/**
-	 * Sets the value of the '{@link org.eclipse.datatools.modelbase.sql.datatypes.CharacterStringDataType#getCoercibility <em>Coercibility</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Coercibility</em>' attribute.
-	 * @see org.eclipse.datatools.modelbase.sql.datatypes.CoercibilityType
-	 * @see #getCoercibility()
-	 * @generated
-	 */
-	void setCoercibility(CoercibilityType value);
-
-	/**
 	 * Returns the value of the '<em><b>Fixed Length</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -101,11 +68,22 @@ public interface CharacterStringDataType extends PredefinedDataType {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Fixed Length</em>' attribute.
+	 * @see #setFixedLength(boolean)
 	 * @see org.eclipse.datatools.modelbase.sql.datatypes.SQLDataTypesPackage#getCharacterStringDataType_FixedLength()
-	 * @model changeable="false"
+	 * @model
 	 * @generated
 	 */
 	boolean isFixedLength();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.datatools.modelbase.sql.datatypes.CharacterStringDataType#isFixedLength <em>Fixed Length</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Fixed Length</em>' attribute.
+	 * @see #isFixedLength()
+	 * @generated
+	 */
+	void setFixedLength(boolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Collation Name</b></em>' attribute.
@@ -160,5 +138,34 @@ public interface CharacterStringDataType extends PredefinedDataType {
 	 * @generated
 	 */
 	void setCharacterSet(CharacterSet value);
+
+	/**
+	 * Returns the value of the '<em><b>Coercibility</b></em>' attribute.
+	 * The literals are from the enumeration {@link org.eclipse.datatools.modelbase.sql.datatypes.CoercibilityType}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Coercibility</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Coercibility</em>' attribute.
+	 * @see org.eclipse.datatools.modelbase.sql.datatypes.CoercibilityType
+	 * @see #setCoercibility(CoercibilityType)
+	 * @see org.eclipse.datatools.modelbase.sql.datatypes.SQLDataTypesPackage#getCharacterStringDataType_Coercibility()
+	 * @model
+	 * @generated
+	 */
+	CoercibilityType getCoercibility();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.datatools.modelbase.sql.datatypes.CharacterStringDataType#getCoercibility <em>Coercibility</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Coercibility</em>' attribute.
+	 * @see org.eclipse.datatools.modelbase.sql.datatypes.CoercibilityType
+	 * @see #getCoercibility()
+	 * @generated
+	 */
+	void setCoercibility(CoercibilityType value);
 
 } // CharacterStringDataType

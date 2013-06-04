@@ -1,15 +1,12 @@
-/*******************************************************************************
- * Copyright (c) 2001, 2004 IBM Corporation and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- * 
- * Contributors:  
- *     IBM Corporation - initial API and implementation
- *******************************************************************************/
+/**
+ * <copyright>
+ * </copyright>
+ *
+ * $Id$
+ */
 package org.eclipse.datatools.modelbase.sql.tables;
 
+import org.eclipse.datatools.modelbase.sql.constraints.Index;
 import org.eclipse.datatools.modelbase.sql.datatypes.StructuredUserDefinedType;
 import org.eclipse.datatools.modelbase.sql.schema.SQLObject;
 import org.eclipse.datatools.modelbase.sql.schema.Schema;
@@ -58,10 +55,10 @@ public interface Table extends SQLObject {
 	 * @return the value of the '<em>Columns</em>' containment reference list.
 	 * @see org.eclipse.datatools.modelbase.sql.tables.SQLTablesPackage#getTable_Columns()
 	 * @see org.eclipse.datatools.modelbase.sql.tables.Column#getTable
-	 * @model type="org.eclipse.datatools.modelbase.sql.tables.Column" opposite="table" containment="true" required="true"
+	 * @model opposite="table" containment="true" required="true"
 	 * @generated
 	 */
-	EList getColumns();
+	EList<Column> getColumns();
 
 	/**
 	 * Returns the value of the '<em><b>Supertable</b></em>' reference.
@@ -104,17 +101,17 @@ public interface Table extends SQLObject {
 	 * @return the value of the '<em>Subtables</em>' reference list.
 	 * @see org.eclipse.datatools.modelbase.sql.tables.SQLTablesPackage#getTable_Subtables()
 	 * @see org.eclipse.datatools.modelbase.sql.tables.Table#getSupertable
-	 * @model type="org.eclipse.datatools.modelbase.sql.tables.Table" opposite="supertable"
+	 * @model opposite="supertable"
 	 * @generated
 	 */
-	EList getSubtables();
+	EList<Table> getSubtables();
 
 	/**
 	 * Returns the value of the '<em><b>Schema</b></em>' reference.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.datatools.modelbase.sql.schema.Schema#getTables <em>Tables</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Schema</em>' reference isn't clear,
+	 * If the meaning of the '<em>Schema</em>' container reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
@@ -176,10 +173,10 @@ public interface Table extends SQLObject {
 	 * @return the value of the '<em>Triggers</em>' reference list.
 	 * @see org.eclipse.datatools.modelbase.sql.tables.SQLTablesPackage#getTable_Triggers()
 	 * @see org.eclipse.datatools.modelbase.sql.tables.Trigger#getSubjectTable
-	 * @model type="org.eclipse.datatools.modelbase.sql.tables.Trigger" opposite="subjectTable"
+	 * @model opposite="subjectTable"
 	 * @generated
 	 */
-	EList getTriggers();
+	EList<Trigger> getTriggers();
 
 	/**
 	 * Returns the value of the '<em><b>Index</b></em>' reference list.
@@ -187,17 +184,17 @@ public interface Table extends SQLObject {
 	 * It is bidirectional and its opposite is '{@link org.eclipse.datatools.modelbase.sql.constraints.Index#getTable <em>Table</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Index</em>' reference list isn't clear,
+	 * If the meaning of the '<em>Index</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Index</em>' reference list.
 	 * @see org.eclipse.datatools.modelbase.sql.tables.SQLTablesPackage#getTable_Index()
 	 * @see org.eclipse.datatools.modelbase.sql.constraints.Index#getTable
-	 * @model type="org.eclipse.datatools.modelbase.sql.constraints.Index" opposite="table"
+	 * @model opposite="table"
 	 * @generated
 	 */
-	EList getIndex();
+	EList<Index> getIndex();
 
 	/**
 	 * Returns the value of the '<em><b>Self Ref Column Generation</b></em>' attribute.

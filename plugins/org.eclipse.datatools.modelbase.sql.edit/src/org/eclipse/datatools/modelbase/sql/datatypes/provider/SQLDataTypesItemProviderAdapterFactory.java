@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SQLDataTypesItemProviderAdapterFactory.java,v 1.3 2006/03/09 23:46:15 dpchou Exp $
+ * $Id$
  */
 package org.eclipse.datatools.modelbase.sql.datatypes.provider;
 
@@ -57,7 +57,7 @@ public class SQLDataTypesItemProviderAdapterFactory extends SQLDataTypesAdapterF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected Collection supportedTypes = new ArrayList();
+	protected Collection<Object> supportedTypes = new ArrayList<Object>();
 
 	/**
 	 * This constructs an instance.
@@ -87,6 +87,7 @@ public class SQLDataTypesItemProviderAdapterFactory extends SQLDataTypesAdapterF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createCharacterStringDataTypeAdapter() {
 		if (characterStringDataTypeItemProvider == null) {
 			characterStringDataTypeItemProvider = new CharacterStringDataTypeItemProvider(this);
@@ -109,6 +110,7 @@ public class SQLDataTypesItemProviderAdapterFactory extends SQLDataTypesAdapterF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createRowDataTypeAdapter() {
 		if (rowDataTypeItemProvider == null) {
 			rowDataTypeItemProvider = new RowDataTypeItemProvider(this);
@@ -131,6 +133,7 @@ public class SQLDataTypesItemProviderAdapterFactory extends SQLDataTypesAdapterF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createBooleanDataTypeAdapter() {
 		if (booleanDataTypeItemProvider == null) {
 			booleanDataTypeItemProvider = new BooleanDataTypeItemProvider(this);
@@ -153,6 +156,7 @@ public class SQLDataTypesItemProviderAdapterFactory extends SQLDataTypesAdapterF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createIntervalDataTypeAdapter() {
 		if (intervalDataTypeItemProvider == null) {
 			intervalDataTypeItemProvider = new IntervalDataTypeItemProvider(this);
@@ -175,6 +179,7 @@ public class SQLDataTypesItemProviderAdapterFactory extends SQLDataTypesAdapterF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createBinaryStringDataTypeAdapter() {
 		if (binaryStringDataTypeItemProvider == null) {
 			binaryStringDataTypeItemProvider = new BinaryStringDataTypeItemProvider(this);
@@ -197,6 +202,7 @@ public class SQLDataTypesItemProviderAdapterFactory extends SQLDataTypesAdapterF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createCharacterSetAdapter() {
 		if (characterSetItemProvider == null) {
 			characterSetItemProvider = new CharacterSetItemProvider(this);
@@ -219,6 +225,7 @@ public class SQLDataTypesItemProviderAdapterFactory extends SQLDataTypesAdapterF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createTimeDataTypeAdapter() {
 		if (timeDataTypeItemProvider == null) {
 			timeDataTypeItemProvider = new TimeDataTypeItemProvider(this);
@@ -241,6 +248,7 @@ public class SQLDataTypesItemProviderAdapterFactory extends SQLDataTypesAdapterF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createDistinctUserDefinedTypeAdapter() {
 		if (distinctUserDefinedTypeItemProvider == null) {
 			distinctUserDefinedTypeItemProvider = new DistinctUserDefinedTypeItemProvider(this);
@@ -263,6 +271,7 @@ public class SQLDataTypesItemProviderAdapterFactory extends SQLDataTypesAdapterF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createStructuredUserDefinedTypeAdapter() {
 		if (structuredUserDefinedTypeItemProvider == null) {
 			structuredUserDefinedTypeItemProvider = new StructuredUserDefinedTypeItemProvider(this);
@@ -285,6 +294,7 @@ public class SQLDataTypesItemProviderAdapterFactory extends SQLDataTypesAdapterF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createAttributeDefinitionAdapter() {
 		if (attributeDefinitionItemProvider == null) {
 			attributeDefinitionItemProvider = new AttributeDefinitionItemProvider(this);
@@ -307,6 +317,7 @@ public class SQLDataTypesItemProviderAdapterFactory extends SQLDataTypesAdapterF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createFixedPrecisionDataTypeAdapter() {
 		if (fixedPrecisionDataTypeItemProvider == null) {
 			fixedPrecisionDataTypeItemProvider = new FixedPrecisionDataTypeItemProvider(this);
@@ -329,6 +340,7 @@ public class SQLDataTypesItemProviderAdapterFactory extends SQLDataTypesAdapterF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createDomainAdapter() {
 		if (domainItemProvider == null) {
 			domainItemProvider = new DomainItemProvider(this);
@@ -351,6 +363,7 @@ public class SQLDataTypesItemProviderAdapterFactory extends SQLDataTypesAdapterF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createFieldAdapter() {
 		if (fieldItemProvider == null) {
 			fieldItemProvider = new FieldItemProvider(this);
@@ -373,6 +386,7 @@ public class SQLDataTypesItemProviderAdapterFactory extends SQLDataTypesAdapterF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createDataLinkDataTypeAdapter() {
 		if (dataLinkDataTypeItemProvider == null) {
 			dataLinkDataTypeItemProvider = new DataLinkDataTypeItemProvider(this);
@@ -395,6 +409,7 @@ public class SQLDataTypesItemProviderAdapterFactory extends SQLDataTypesAdapterF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createUserDefinedTypeOrderingAdapter() {
 		if (userDefinedTypeOrderingItemProvider == null) {
 			userDefinedTypeOrderingItemProvider = new UserDefinedTypeOrderingItemProvider(this);
@@ -417,6 +432,7 @@ public class SQLDataTypesItemProviderAdapterFactory extends SQLDataTypesAdapterF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createDateDataTypeAdapter() {
 		if (dateDataTypeItemProvider == null) {
 			dateDataTypeItemProvider = new DateDataTypeItemProvider(this);
@@ -439,6 +455,7 @@ public class SQLDataTypesItemProviderAdapterFactory extends SQLDataTypesAdapterF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createApproximateNumericDataTypeAdapter() {
 		if (approximateNumericDataTypeItemProvider == null) {
 			approximateNumericDataTypeItemProvider = new ApproximateNumericDataTypeItemProvider(this);
@@ -461,6 +478,7 @@ public class SQLDataTypesItemProviderAdapterFactory extends SQLDataTypesAdapterF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createIntegerDataTypeAdapter() {
 		if (integerDataTypeItemProvider == null) {
 			integerDataTypeItemProvider = new IntegerDataTypeItemProvider(this);
@@ -483,6 +501,7 @@ public class SQLDataTypesItemProviderAdapterFactory extends SQLDataTypesAdapterF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createXMLDataTypeAdapter() {
 		if (xmlDataTypeItemProvider == null) {
 			xmlDataTypeItemProvider = new XMLDataTypeItemProvider(this);
@@ -505,6 +524,7 @@ public class SQLDataTypesItemProviderAdapterFactory extends SQLDataTypesAdapterF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createElementTypeAdapter() {
 		if (elementTypeItemProvider == null) {
 			elementTypeItemProvider = new ElementTypeItemProvider(this);
@@ -538,6 +558,7 @@ public class SQLDataTypesItemProviderAdapterFactory extends SQLDataTypesAdapterF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isFactoryForType(Object type) {
 		return supportedTypes.contains(type) || super.isFactoryForType(type);
 	}
@@ -548,6 +569,7 @@ public class SQLDataTypesItemProviderAdapterFactory extends SQLDataTypesAdapterF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter adapt(Notifier notifier, Object type) {
 		return super.adapt(notifier, this);
 	}
@@ -557,10 +579,11 @@ public class SQLDataTypesItemProviderAdapterFactory extends SQLDataTypesAdapterF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object adapt(Object object, Object type) {
 		if (isFactoryForType(type)) {
 			Object adapter = super.adapt(object, type);
-			if (!(type instanceof Class) || (((Class)type).isInstance(adapter))) {
+			if (!(type instanceof Class<?>) || (((Class<?>)type).isInstance(adapter))) {
 				return adapter;
 			}
 		}

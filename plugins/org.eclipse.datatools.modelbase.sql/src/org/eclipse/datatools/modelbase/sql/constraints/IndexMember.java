@@ -1,13 +1,9 @@
-/*******************************************************************************
- * Copyright (c) 2001, 2004 IBM Corporation and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- * 
- * Contributors:
- *     IBM Corporation - initial API and implementation
- *******************************************************************************/
+/**
+ * <copyright>
+ * </copyright>
+ *
+ * $Id$
+ */
 package org.eclipse.datatools.modelbase.sql.constraints;
 
 import org.eclipse.datatools.modelbase.sql.schema.SQLObject;
@@ -36,7 +32,7 @@ import org.eclipse.datatools.modelbase.sql.tables.Column;
  * @model
  * @generated
  */
-public interface IndexMember extends SQLObject{
+public interface IndexMember extends SQLObject {
 	/**
 	 * Returns the value of the '<em><b>Increment Type</b></em>' attribute.
 	 * The literals are from the enumeration {@link org.eclipse.datatools.modelbase.sql.constraints.IncrementType}.

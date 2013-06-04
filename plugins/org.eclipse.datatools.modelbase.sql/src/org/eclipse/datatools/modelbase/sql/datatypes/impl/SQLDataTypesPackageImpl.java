@@ -1,13 +1,9 @@
-/*******************************************************************************
- * Copyright (c) 2001, 2004 IBM Corporation and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- * 
- * Contributors:
- *     IBM Corporation - initial API and implementation
- *******************************************************************************/
+/**
+ * <copyright>
+ * </copyright>
+ *
+ * $Id$
+ */
 package org.eclipse.datatools.modelbase.sql.datatypes.impl;
 
 import org.eclipse.datatools.modelbase.sql.accesscontrol.SQLAccessControlPackage;
@@ -74,9 +70,7 @@ import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EcorePackage;
-
 import org.eclipse.emf.ecore.impl.EPackageImpl;
-import org.eclipse.emf.ecore.impl.EcorePackageImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -399,20 +393,10 @@ public class SQLDataTypesPackageImpl extends EPackageImpl implements SQLDataType
 	private static boolean isInited = false;
 
 	/**
-	 * Creates, registers, and initializes the <b>Package</b> for this
-	 * model, and for any others upon which it depends.  Simple
-	 * dependencies are satisfied by calling this method on all
-	 * dependent packages before doing anything else.  This method drives
-	 * initialization for interdependent packages directly, in parallel
-	 * with this package, itself.
-	 * <p>Of this package and its interdependencies, all packages which
-	 * have not yet been registered by their URI values are first created
-	 * and registered.  The packages are then initialized in two steps:
-	 * meta-model objects for all of the packages are created before any
-	 * are initialized, since one package's meta-model objects may refer to
-	 * those of another.
-	 * <p>Invocation of this method will not affect any packages that have
-	 * already been initialized.
+	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
+	 * 
+	 * <p>This method is used to initialize {@link SQLDataTypesPackage#eINSTANCE} when that field is accessed.
+	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #eNS_URI
@@ -424,7 +408,7 @@ public class SQLDataTypesPackageImpl extends EPackageImpl implements SQLDataType
 		if (isInited) return (SQLDataTypesPackage)EPackage.Registry.INSTANCE.getEPackage(SQLDataTypesPackage.eNS_URI);
 
 		// Obtain or create and register package
-		SQLDataTypesPackageImpl theSQLDataTypesPackage = (SQLDataTypesPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(eNS_URI) instanceof SQLDataTypesPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(eNS_URI) : new SQLDataTypesPackageImpl());
+		SQLDataTypesPackageImpl theSQLDataTypesPackage = (SQLDataTypesPackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof SQLDataTypesPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new SQLDataTypesPackageImpl());
 
 		isInited = true;
 
@@ -463,6 +447,9 @@ public class SQLDataTypesPackageImpl extends EPackageImpl implements SQLDataType
 		// Mark meta-data to indicate it can't be changed
 		theSQLDataTypesPackage.freeze();
 
+  
+		// Update the registry and return the package
+		EPackage.Registry.INSTANCE.put(SQLDataTypesPackage.eNS_URI, theSQLDataTypesPackage);
 		return theSQLDataTypesPackage;
 	}
 
@@ -500,6 +487,15 @@ public class SQLDataTypesPackageImpl extends EPackageImpl implements SQLDataType
 	 */
 	public EClass getDataType() {
 		return dataTypeEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getDataType__SetContainer__TypedElement() {
+		return dataTypeEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -579,15 +575,6 @@ public class SQLDataTypesPackageImpl extends EPackageImpl implements SQLDataType
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getCharacterStringDataType_Coercibility() {
-		return (EAttribute)characterStringDataTypeEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EAttribute getCharacterStringDataType_FixedLength() {
 		return (EAttribute)characterStringDataTypeEClass.getEStructuralFeatures().get(2);
 	}
@@ -608,6 +595,15 @@ public class SQLDataTypesPackageImpl extends EPackageImpl implements SQLDataType
 	 */
 	public EReference getCharacterStringDataType_CharacterSet() {
 		return (EReference)characterStringDataTypeEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getCharacterStringDataType_Coercibility() {
+		return (EAttribute)characterStringDataTypeEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -741,8 +737,8 @@ public class SQLDataTypesPackageImpl extends EPackageImpl implements SQLDataType
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getCharacterSet() {
-		return characterSetEClass;
+	public EOperation getBinaryStringDataType__Equals() {
+		return binaryStringDataTypeEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -750,8 +746,8 @@ public class SQLDataTypesPackageImpl extends EPackageImpl implements SQLDataType
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getCharacterSet_Repertoire() {
-		return (EAttribute)characterSetEClass.getEStructuralFeatures().get(0);
+	public EClass getCharacterSet() {
+		return characterSetEClass;
 	}
 
 	/**
@@ -795,6 +791,15 @@ public class SQLDataTypesPackageImpl extends EPackageImpl implements SQLDataType
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getCharacterSet_Repertoire() {
+		return (EAttribute)characterSetEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getTimeDataType() {
 		return timeDataTypeEClass;
 	}
@@ -804,8 +809,8 @@ public class SQLDataTypesPackageImpl extends EPackageImpl implements SQLDataType
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getTimeDataType_FractionalSecondsPrecision() {
-		return (EAttribute)timeDataTypeEClass.getEStructuralFeatures().get(0);
+	public EAttribute getTimeDataType_TimeZone() {
+		return (EAttribute)timeDataTypeEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -813,8 +818,8 @@ public class SQLDataTypesPackageImpl extends EPackageImpl implements SQLDataType
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getTimeDataType_TimeZone() {
-		return (EAttribute)timeDataTypeEClass.getEStructuralFeatures().get(1);
+	public EAttribute getTimeDataType_FractionalSecondsPrecision() {
+		return (EAttribute)timeDataTypeEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -1345,6 +1350,7 @@ public class SQLDataTypesPackageImpl extends EPackageImpl implements SQLDataType
 		createEReference(userDefinedTypeEClass, USER_DEFINED_TYPE__ORDERING);
 
 		dataTypeEClass = createEClass(DATA_TYPE);
+		createEOperation(dataTypeEClass, DATA_TYPE___SET_CONTAINER__TYPEDELEMENT);
 
 		predefinedDataTypeEClass = createEClass(PREDEFINED_DATA_TYPE);
 		createEAttribute(predefinedDataTypeEClass, PREDEFINED_DATA_TYPE__PRIMITIVE_TYPE);
@@ -1381,6 +1387,7 @@ public class SQLDataTypesPackageImpl extends EPackageImpl implements SQLDataType
 
 		binaryStringDataTypeEClass = createEClass(BINARY_STRING_DATA_TYPE);
 		createEAttribute(binaryStringDataTypeEClass, BINARY_STRING_DATA_TYPE__LENGTH);
+		createEOperation(binaryStringDataTypeEClass, BINARY_STRING_DATA_TYPE___EQUALS);
 
 		characterSetEClass = createEClass(CHARACTER_SET);
 		createEAttribute(characterSetEClass, CHARACTER_SET__REPERTOIRE);
@@ -1497,6 +1504,10 @@ public class SQLDataTypesPackageImpl extends EPackageImpl implements SQLDataType
 		SQLConstraintsPackage theSQLConstraintsPackage = (SQLConstraintsPackage)EPackage.Registry.INSTANCE.getEPackage(SQLConstraintsPackage.eNS_URI);
 		SQLTablesPackage theSQLTablesPackage = (SQLTablesPackage)EPackage.Registry.INSTANCE.getEPackage(SQLTablesPackage.eNS_URI);
 
+		// Create type parameters
+
+		// Set bounds for type parameters
+
 		// Add supertypes to classes
 		userDefinedTypeEClass.getESuperTypes().add(this.getDataType());
 		dataTypeEClass.getESuperTypes().add(theSQLSchemaPackage.getSQLObject());
@@ -1530,153 +1541,153 @@ public class SQLDataTypesPackageImpl extends EPackageImpl implements SQLDataType
 		xmlDataTypeEClass.getESuperTypes().add(this.getPredefinedDataType());
 		elementTypeEClass.getESuperTypes().add(theSQLSchemaPackage.getTypedElement());
 
-		// Initialize classes and features; add operations and parameters
-		initEClass(userDefinedTypeEClass, UserDefinedType.class, "UserDefinedType", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(getUserDefinedType_Schema(), theSQLSchemaPackage.getSchema(), theSQLSchemaPackage.getSchema_UserDefinedTypes(), "schema", null, 1, 1, UserDefinedType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getUserDefinedType_Ordering(), this.getUserDefinedTypeOrdering(), null, "ordering", null, 0, 1, UserDefinedType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		// Initialize classes, features, and operations; add parameters
+		initEClass(userDefinedTypeEClass, UserDefinedType.class, "UserDefinedType", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getUserDefinedType_Schema(), theSQLSchemaPackage.getSchema(), theSQLSchemaPackage.getSchema_UserDefinedTypes(), "schema", null, 1, 1, UserDefinedType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getUserDefinedType_Ordering(), this.getUserDefinedTypeOrdering(), null, "ordering", null, 0, 1, UserDefinedType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(dataTypeEClass, DataType.class, "DataType", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(dataTypeEClass, DataType.class, "DataType", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		EOperation op = addEOperation(dataTypeEClass, null, "setContainer"); //$NON-NLS-1$
-		addEParameter(op, theSQLSchemaPackage.getTypedElement(), "newContainer", 0, 1); //$NON-NLS-1$
+		EOperation op = initEOperation(getDataType__SetContainer__TypedElement(), null, "setContainer", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theSQLSchemaPackage.getTypedElement(), "newContainer", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		initEClass(predefinedDataTypeEClass, PredefinedDataType.class, "PredefinedDataType", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEAttribute(getPredefinedDataType_PrimitiveType(), this.getPrimitiveType(), "primitiveType", null, 0, 1, PredefinedDataType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEClass(predefinedDataTypeEClass, PredefinedDataType.class, "PredefinedDataType", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getPredefinedDataType_PrimitiveType(), this.getPrimitiveType(), "primitiveType", null, 0, 1, PredefinedDataType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(collectionDataTypeEClass, CollectionDataType.class, "CollectionDataType", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(getCollectionDataType_ElementType(), this.getElementType(), this.getElementType_CollectionDataType(), "elementType", null, 1, 1, CollectionDataType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEClass(collectionDataTypeEClass, CollectionDataType.class, "CollectionDataType", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getCollectionDataType_ElementType(), this.getElementType(), this.getElementType_CollectionDataType(), "elementType", null, 1, 1, CollectionDataType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(numericalDataTypeEClass, NumericalDataType.class, "NumericalDataType", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEAttribute(getNumericalDataType_Precision(), ecorePackage.getEInt(), "precision", null, 0, 1, NumericalDataType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEClass(numericalDataTypeEClass, NumericalDataType.class, "NumericalDataType", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getNumericalDataType_Precision(), ecorePackage.getEInt(), "precision", null, 0, 1, NumericalDataType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(characterStringDataTypeEClass, CharacterStringDataType.class, "CharacterStringDataType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEAttribute(getCharacterStringDataType_Length(), ecorePackage.getEInt(), "length", "1", 0, 1, CharacterStringDataType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
-		initEAttribute(getCharacterStringDataType_Coercibility(), this.getCoercibilityType(), "coercibility", null, 0, 1, CharacterStringDataType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEAttribute(getCharacterStringDataType_FixedLength(), ecorePackage.getEBoolean(), "fixedLength", null, 0, 1, CharacterStringDataType.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEAttribute(getCharacterStringDataType_CollationName(), ecorePackage.getEString(), "collationName", null, 0, 1, CharacterStringDataType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getCharacterStringDataType_CharacterSet(), this.getCharacterSet(), this.getCharacterSet_CharacterStringDataType(), "characterSet", null, 1, 1, CharacterStringDataType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEClass(characterStringDataTypeEClass, CharacterStringDataType.class, "CharacterStringDataType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getCharacterStringDataType_Length(), ecorePackage.getEInt(), "length", "1", 0, 1, CharacterStringDataType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getCharacterStringDataType_Coercibility(), this.getCoercibilityType(), "coercibility", null, 0, 1, CharacterStringDataType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getCharacterStringDataType_FixedLength(), ecorePackage.getEBoolean(), "fixedLength", null, 0, 1, CharacterStringDataType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getCharacterStringDataType_CollationName(), ecorePackage.getEString(), "collationName", null, 0, 1, CharacterStringDataType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCharacterStringDataType_CharacterSet(), this.getCharacterSet(), this.getCharacterSet_CharacterStringDataType(), "characterSet", null, 1, 1, CharacterStringDataType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(rowDataTypeEClass, RowDataType.class, "RowDataType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(getRowDataType_Fields(), this.getField(), null, "fields", null, 1, -1, RowDataType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEClass(rowDataTypeEClass, RowDataType.class, "RowDataType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getRowDataType_Fields(), this.getField(), null, "fields", null, 1, -1, RowDataType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(arrayDataTypeEClass, ArrayDataType.class, "ArrayDataType", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEAttribute(getArrayDataType_MaxCardinality(), ecorePackage.getEInt(), "maxCardinality", null, 0, 1, ArrayDataType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEClass(arrayDataTypeEClass, ArrayDataType.class, "ArrayDataType", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getArrayDataType_MaxCardinality(), ecorePackage.getEInt(), "maxCardinality", null, 0, 1, ArrayDataType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(multisetDataTypeEClass, MultisetDataType.class, "MultisetDataType", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(multisetDataTypeEClass, MultisetDataType.class, "MultisetDataType", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(booleanDataTypeEClass, BooleanDataType.class, "BooleanDataType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(booleanDataTypeEClass, BooleanDataType.class, "BooleanDataType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(intervalDataTypeEClass, IntervalDataType.class, "IntervalDataType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEAttribute(getIntervalDataType_LeadingQualifier(), this.getIntervalQualifierType(), "leadingQualifier", null, 0, 1, IntervalDataType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEAttribute(getIntervalDataType_TrailingQualifier(), this.getIntervalQualifierType(), "trailingQualifier", null, 0, 1, IntervalDataType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEAttribute(getIntervalDataType_LeadingFieldPrecision(), ecorePackage.getEInt(), "leadingFieldPrecision", null, 0, 1, IntervalDataType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEAttribute(getIntervalDataType_TrailingFieldPrecision(), ecorePackage.getEInt(), "trailingFieldPrecision", null, 0, 1, IntervalDataType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEAttribute(getIntervalDataType_FractionalSecondsPrecision(), ecorePackage.getEInt(), "fractionalSecondsPrecision", null, 0, 1, IntervalDataType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEClass(intervalDataTypeEClass, IntervalDataType.class, "IntervalDataType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getIntervalDataType_LeadingQualifier(), this.getIntervalQualifierType(), "leadingQualifier", null, 0, 1, IntervalDataType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getIntervalDataType_TrailingQualifier(), this.getIntervalQualifierType(), "trailingQualifier", null, 0, 1, IntervalDataType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getIntervalDataType_LeadingFieldPrecision(), ecorePackage.getEInt(), "leadingFieldPrecision", null, 0, 1, IntervalDataType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getIntervalDataType_TrailingFieldPrecision(), ecorePackage.getEInt(), "trailingFieldPrecision", null, 0, 1, IntervalDataType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getIntervalDataType_FractionalSecondsPrecision(), ecorePackage.getEInt(), "fractionalSecondsPrecision", null, 0, 1, IntervalDataType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(binaryStringDataTypeEClass, BinaryStringDataType.class, "BinaryStringDataType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEAttribute(getBinaryStringDataType_Length(), ecorePackage.getEInt(), "length", null, 0, 1, BinaryStringDataType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEClass(binaryStringDataTypeEClass, BinaryStringDataType.class, "BinaryStringDataType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getBinaryStringDataType_Length(), ecorePackage.getEInt(), "length", null, 0, 1, BinaryStringDataType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		addEOperation(binaryStringDataTypeEClass, ecorePackage.getEBoolean(), "equals", 0, 1); //$NON-NLS-1$
+		initEOperation(getBinaryStringDataType__Equals(), ecorePackage.getEBoolean(), "equals", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		initEClass(characterSetEClass, CharacterSet.class, "CharacterSet", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEAttribute(getCharacterSet_Repertoire(), ecorePackage.getEString(), "repertoire", null, 0, 1, CharacterSet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEAttribute(getCharacterSet_DefaultCollation(), ecorePackage.getEString(), "defaultCollation", null, 0, 1, CharacterSet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEAttribute(getCharacterSet_Encoding(), ecorePackage.getEString(), "encoding", null, 0, 1, CharacterSet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getCharacterSet_CharacterStringDataType(), this.getCharacterStringDataType(), this.getCharacterStringDataType_CharacterSet(), "CharacterStringDataType", null, 1, 1, CharacterSet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getCharacterSet_Schema(), theSQLSchemaPackage.getSchema(), theSQLSchemaPackage.getSchema_CharSets(), "schema", null, 1, 1, CharacterSet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEClass(characterSetEClass, CharacterSet.class, "CharacterSet", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getCharacterSet_Repertoire(), ecorePackage.getEString(), "repertoire", null, 0, 1, CharacterSet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getCharacterSet_DefaultCollation(), ecorePackage.getEString(), "defaultCollation", null, 0, 1, CharacterSet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getCharacterSet_Encoding(), ecorePackage.getEString(), "encoding", null, 0, 1, CharacterSet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCharacterSet_CharacterStringDataType(), this.getCharacterStringDataType(), this.getCharacterStringDataType_CharacterSet(), "CharacterStringDataType", null, 1, 1, CharacterSet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCharacterSet_Schema(), theSQLSchemaPackage.getSchema(), theSQLSchemaPackage.getSchema_CharSets(), "schema", null, 1, 1, CharacterSet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(timeDataTypeEClass, TimeDataType.class, "TimeDataType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEAttribute(getTimeDataType_FractionalSecondsPrecision(), ecorePackage.getEInt(), "fractionalSecondsPrecision", null, 0, 1, TimeDataType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEAttribute(getTimeDataType_TimeZone(), ecorePackage.getEBoolean(), "timeZone", "false", 0, 1, TimeDataType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
+		initEClass(timeDataTypeEClass, TimeDataType.class, "TimeDataType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getTimeDataType_FractionalSecondsPrecision(), ecorePackage.getEInt(), "fractionalSecondsPrecision", null, 0, 1, TimeDataType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTimeDataType_TimeZone(), ecorePackage.getEBoolean(), "timeZone", "false", 0, 1, TimeDataType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(distinctUserDefinedTypeEClass, DistinctUserDefinedType.class, "DistinctUserDefinedType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(getDistinctUserDefinedType_PredefinedRepresentation(), this.getPredefinedDataType(), null, "predefinedRepresentation", null, 1, 1, DistinctUserDefinedType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEClass(distinctUserDefinedTypeEClass, DistinctUserDefinedType.class, "DistinctUserDefinedType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getDistinctUserDefinedType_PredefinedRepresentation(), this.getPredefinedDataType(), null, "predefinedRepresentation", null, 1, 1, DistinctUserDefinedType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(structuredUserDefinedTypeEClass, StructuredUserDefinedType.class, "StructuredUserDefinedType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEAttribute(getStructuredUserDefinedType_Instantiable(), ecorePackage.getEBoolean(), "instantiable", "True", 0, 1, StructuredUserDefinedType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
-		initEAttribute(getStructuredUserDefinedType_Final(), ecorePackage.getEBoolean(), "final", null, 0, 1, StructuredUserDefinedType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getStructuredUserDefinedType_Super(), this.getStructuredUserDefinedType(), this.getStructuredUserDefinedType_Sub(), "super", null, 0, 1, StructuredUserDefinedType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getStructuredUserDefinedType_Sub(), this.getStructuredUserDefinedType(), this.getStructuredUserDefinedType_Super(), "sub", null, 0, -1, StructuredUserDefinedType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getStructuredUserDefinedType_Attributes(), this.getAttributeDefinition(), null, "attributes", null, 0, -1, StructuredUserDefinedType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getStructuredUserDefinedType_Methods(), theSQLRoutinesPackage.getMethod(), null, "methods", null, 0, -1, StructuredUserDefinedType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEClass(structuredUserDefinedTypeEClass, StructuredUserDefinedType.class, "StructuredUserDefinedType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getStructuredUserDefinedType_Instantiable(), ecorePackage.getEBoolean(), "instantiable", "True", 0, 1, StructuredUserDefinedType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getStructuredUserDefinedType_Final(), ecorePackage.getEBoolean(), "final", null, 0, 1, StructuredUserDefinedType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getStructuredUserDefinedType_Super(), this.getStructuredUserDefinedType(), this.getStructuredUserDefinedType_Sub(), "super", null, 0, 1, StructuredUserDefinedType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getStructuredUserDefinedType_Sub(), this.getStructuredUserDefinedType(), this.getStructuredUserDefinedType_Super(), "sub", null, 0, -1, StructuredUserDefinedType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getStructuredUserDefinedType_Attributes(), this.getAttributeDefinition(), null, "attributes", null, 0, -1, StructuredUserDefinedType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getStructuredUserDefinedType_Methods(), theSQLRoutinesPackage.getMethod(), null, "methods", null, 0, -1, StructuredUserDefinedType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(attributeDefinitionEClass, AttributeDefinition.class, "AttributeDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEAttribute(getAttributeDefinition_ScopeCheck(), theSQLSchemaPackage.getReferentialActionType(), "scopeCheck", null, 0, 1, AttributeDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEAttribute(getAttributeDefinition_ScopeChecked(), ecorePackage.getEBoolean(), "scopeChecked", null, 0, 1, AttributeDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEAttribute(getAttributeDefinition_DefaultValue(), ecorePackage.getEString(), "defaultValue", null, 0, 1, AttributeDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEClass(attributeDefinitionEClass, AttributeDefinition.class, "AttributeDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getAttributeDefinition_ScopeCheck(), theSQLSchemaPackage.getReferentialActionType(), "scopeCheck", null, 0, 1, AttributeDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAttributeDefinition_ScopeChecked(), ecorePackage.getEBoolean(), "scopeChecked", null, 0, 1, AttributeDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAttributeDefinition_DefaultValue(), ecorePackage.getEString(), "defaultValue", null, 0, 1, AttributeDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(fixedPrecisionDataTypeEClass, FixedPrecisionDataType.class, "FixedPrecisionDataType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(fixedPrecisionDataTypeEClass, FixedPrecisionDataType.class, "FixedPrecisionDataType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(domainEClass, Domain.class, "Domain", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(getDomain_Constraint(), theSQLConstraintsPackage.getCheckConstraint(), null, "constraint", null, 0, -1, Domain.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEAttribute(getDomain_DefaultValue(), ecorePackage.getEString(), "defaultValue", null, 0, 1, Domain.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEClass(domainEClass, Domain.class, "Domain", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getDomain_Constraint(), theSQLConstraintsPackage.getCheckConstraint(), null, "constraint", null, 0, -1, Domain.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDomain_DefaultValue(), ecorePackage.getEString(), "defaultValue", null, 0, 1, Domain.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(fieldEClass, Field.class, "Field", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEAttribute(getField_ScopeCheck(), theSQLSchemaPackage.getReferentialActionType(), "scopeCheck", null, 0, 1, Field.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEAttribute(getField_ScopeChecked(), ecorePackage.getEBoolean(), "scopeChecked", null, 0, 1, Field.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEClass(fieldEClass, Field.class, "Field", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getField_ScopeCheck(), theSQLSchemaPackage.getReferentialActionType(), "scopeCheck", null, 0, 1, Field.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getField_ScopeChecked(), ecorePackage.getEBoolean(), "scopeChecked", null, 0, 1, Field.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(referenceDataTypeEClass, ReferenceDataType.class, "ReferenceDataType", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(getReferenceDataType_ScopeTable(), theSQLTablesPackage.getTable(), null, "scopeTable", null, 1, 1, ReferenceDataType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getReferenceDataType_ReferencedType(), this.getStructuredUserDefinedType(), null, "referencedType", null, 1, 1, ReferenceDataType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEClass(referenceDataTypeEClass, ReferenceDataType.class, "ReferenceDataType", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getReferenceDataType_ScopeTable(), theSQLTablesPackage.getTable(), null, "scopeTable", null, 1, 1, ReferenceDataType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getReferenceDataType_ReferencedType(), this.getStructuredUserDefinedType(), null, "referencedType", null, 1, 1, ReferenceDataType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(constructedDataTypeEClass, ConstructedDataType.class, "ConstructedDataType", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(constructedDataTypeEClass, ConstructedDataType.class, "ConstructedDataType", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(sqlDataTypeEClass, SQLDataType.class, "SQLDataType", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(sqlDataTypeEClass, SQLDataType.class, "SQLDataType", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(dataLinkDataTypeEClass, DataLinkDataType.class, "DataLinkDataType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEAttribute(getDataLinkDataType_Length(), ecorePackage.getEInt(), "length", null, 0, 1, DataLinkDataType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEAttribute(getDataLinkDataType_LinkControl(), this.getLinkControlOption(), "linkControl", null, 0, 1, DataLinkDataType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEAttribute(getDataLinkDataType_IntegrityControl(), this.getIntegrityControlOption(), "integrityControl", null, 0, 1, DataLinkDataType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEAttribute(getDataLinkDataType_ReadPermission(), this.getReadPermissionOption(), "readPermission", null, 0, 1, DataLinkDataType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEAttribute(getDataLinkDataType_WritePermission(), this.getWritePermissionOption(), "writePermission", null, 0, 1, DataLinkDataType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEAttribute(getDataLinkDataType_Recovery(), ecorePackage.getEBoolean(), "recovery", null, 0, 1, DataLinkDataType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEAttribute(getDataLinkDataType_Unlink(), this.getUnlinkOption(), "unlink", null, 0, 1, DataLinkDataType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEClass(dataLinkDataTypeEClass, DataLinkDataType.class, "DataLinkDataType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getDataLinkDataType_Length(), ecorePackage.getEInt(), "length", null, 0, 1, DataLinkDataType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDataLinkDataType_LinkControl(), this.getLinkControlOption(), "linkControl", null, 0, 1, DataLinkDataType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDataLinkDataType_IntegrityControl(), this.getIntegrityControlOption(), "integrityControl", null, 0, 1, DataLinkDataType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDataLinkDataType_ReadPermission(), this.getReadPermissionOption(), "readPermission", null, 0, 1, DataLinkDataType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDataLinkDataType_WritePermission(), this.getWritePermissionOption(), "writePermission", null, 0, 1, DataLinkDataType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDataLinkDataType_Recovery(), ecorePackage.getEBoolean(), "recovery", null, 0, 1, DataLinkDataType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDataLinkDataType_Unlink(), this.getUnlinkOption(), "unlink", null, 0, 1, DataLinkDataType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(userDefinedTypeOrderingEClass, UserDefinedTypeOrdering.class, "UserDefinedTypeOrdering", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEAttribute(getUserDefinedTypeOrdering_OrderingForm(), this.getOrderingType(), "orderingForm", null, 0, 1, UserDefinedTypeOrdering.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEAttribute(getUserDefinedTypeOrdering_OrderingCategory(), this.getOrderingCategoryType(), "orderingCategory", null, 0, 1, UserDefinedTypeOrdering.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getUserDefinedTypeOrdering_OrderingRoutine(), theSQLRoutinesPackage.getRoutine(), null, "orderingRoutine", null, 1, 1, UserDefinedTypeOrdering.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEClass(userDefinedTypeOrderingEClass, UserDefinedTypeOrdering.class, "UserDefinedTypeOrdering", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getUserDefinedTypeOrdering_OrderingForm(), this.getOrderingType(), "orderingForm", null, 0, 1, UserDefinedTypeOrdering.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getUserDefinedTypeOrdering_OrderingCategory(), this.getOrderingCategoryType(), "orderingCategory", null, 0, 1, UserDefinedTypeOrdering.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getUserDefinedTypeOrdering_OrderingRoutine(), theSQLRoutinesPackage.getRoutine(), null, "orderingRoutine", null, 1, 1, UserDefinedTypeOrdering.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(dateDataTypeEClass, DateDataType.class, "DateDataType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(dateDataTypeEClass, DateDataType.class, "DateDataType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(exactNumericDataTypeEClass, ExactNumericDataType.class, "ExactNumericDataType", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEAttribute(getExactNumericDataType_Scale(), ecorePackage.getEInt(), "scale", null, 0, 1, ExactNumericDataType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEClass(exactNumericDataTypeEClass, ExactNumericDataType.class, "ExactNumericDataType", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getExactNumericDataType_Scale(), ecorePackage.getEInt(), "scale", null, 0, 1, ExactNumericDataType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(approximateNumericDataTypeEClass, ApproximateNumericDataType.class, "ApproximateNumericDataType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(approximateNumericDataTypeEClass, ApproximateNumericDataType.class, "ApproximateNumericDataType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(integerDataTypeEClass, IntegerDataType.class, "IntegerDataType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(integerDataTypeEClass, IntegerDataType.class, "IntegerDataType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(xmlDataTypeEClass, XMLDataType.class, "XMLDataType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(xmlDataTypeEClass, XMLDataType.class, "XMLDataType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(elementTypeEClass, ElementType.class, "ElementType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(getElementType_CollectionDataType(), this.getCollectionDataType(), this.getCollectionDataType_ElementType(), "CollectionDataType", null, 0, 1, ElementType.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEClass(elementTypeEClass, ElementType.class, "ElementType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getElementType_CollectionDataType(), this.getCollectionDataType(), this.getCollectionDataType_ElementType(), "CollectionDataType", null, 0, 1, ElementType.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
-		initEEnum(coercibilityTypeEEnum, CoercibilityType.class, "CoercibilityType"); //$NON-NLS-1$
-		addEEnumLiteral(coercibilityTypeEEnum, CoercibilityType.IMPLICIT_LITERAL);
-		addEEnumLiteral(coercibilityTypeEEnum, CoercibilityType.EXPLICIT_LITERAL);
-		addEEnumLiteral(coercibilityTypeEEnum, CoercibilityType.COERCIBILE_LITERAL);
-		addEEnumLiteral(coercibilityTypeEEnum, CoercibilityType.NO_COLLATION_LITERAL);
+		initEEnum(coercibilityTypeEEnum, CoercibilityType.class, "CoercibilityType");
+		addEEnumLiteral(coercibilityTypeEEnum, CoercibilityType.IMPLICIT);
+		addEEnumLiteral(coercibilityTypeEEnum, CoercibilityType.EXPLICIT);
+		addEEnumLiteral(coercibilityTypeEEnum, CoercibilityType.COERCIBILE);
+		addEEnumLiteral(coercibilityTypeEEnum, CoercibilityType.NO_COLLATION);
 
-		initEEnum(intervalQualifierTypeEEnum, IntervalQualifierType.class, "IntervalQualifierType"); //$NON-NLS-1$
-		addEEnumLiteral(intervalQualifierTypeEEnum, IntervalQualifierType.YEAR_LITERAL);
-		addEEnumLiteral(intervalQualifierTypeEEnum, IntervalQualifierType.MONTH_LITERAL);
-		addEEnumLiteral(intervalQualifierTypeEEnum, IntervalQualifierType.DAY_LITERAL);
-		addEEnumLiteral(intervalQualifierTypeEEnum, IntervalQualifierType.HOUR_LITERAL);
-		addEEnumLiteral(intervalQualifierTypeEEnum, IntervalQualifierType.MINUTE_LITERAL);
-		addEEnumLiteral(intervalQualifierTypeEEnum, IntervalQualifierType.SECOND_LITERAL);
-		addEEnumLiteral(intervalQualifierTypeEEnum, IntervalQualifierType.FRACTION_LITERAL);
+		initEEnum(intervalQualifierTypeEEnum, IntervalQualifierType.class, "IntervalQualifierType");
+		addEEnumLiteral(intervalQualifierTypeEEnum, IntervalQualifierType.YEAR);
+		addEEnumLiteral(intervalQualifierTypeEEnum, IntervalQualifierType.MONTH);
+		addEEnumLiteral(intervalQualifierTypeEEnum, IntervalQualifierType.DAY);
+		addEEnumLiteral(intervalQualifierTypeEEnum, IntervalQualifierType.HOUR);
+		addEEnumLiteral(intervalQualifierTypeEEnum, IntervalQualifierType.MINUTE);
+		addEEnumLiteral(intervalQualifierTypeEEnum, IntervalQualifierType.SECOND);
+		addEEnumLiteral(intervalQualifierTypeEEnum, IntervalQualifierType.FRACTION);
 
-		initEEnum(orderingTypeEEnum, OrderingType.class, "OrderingType"); //$NON-NLS-1$
-		addEEnumLiteral(orderingTypeEEnum, OrderingType.EQUALS_LITERAL);
-		addEEnumLiteral(orderingTypeEEnum, OrderingType.FULL_LITERAL);
+		initEEnum(orderingTypeEEnum, OrderingType.class, "OrderingType");
+		addEEnumLiteral(orderingTypeEEnum, OrderingType.EQUALS);
+		addEEnumLiteral(orderingTypeEEnum, OrderingType.FULL);
 
-		initEEnum(orderingCategoryTypeEEnum, OrderingCategoryType.class, "OrderingCategoryType"); //$NON-NLS-1$
-		addEEnumLiteral(orderingCategoryTypeEEnum, OrderingCategoryType.RELATIVE_LITERAL);
-		addEEnumLiteral(orderingCategoryTypeEEnum, OrderingCategoryType.MAP_LITERAL);
-		addEEnumLiteral(orderingCategoryTypeEEnum, OrderingCategoryType.STATE_LITERAL);
+		initEEnum(orderingCategoryTypeEEnum, OrderingCategoryType.class, "OrderingCategoryType");
+		addEEnumLiteral(orderingCategoryTypeEEnum, OrderingCategoryType.RELATIVE);
+		addEEnumLiteral(orderingCategoryTypeEEnum, OrderingCategoryType.MAP);
+		addEEnumLiteral(orderingCategoryTypeEEnum, OrderingCategoryType.STATE);
 
-		initEEnum(primitiveTypeEEnum, PrimitiveType.class, "PrimitiveType"); //$NON-NLS-1$
+		initEEnum(primitiveTypeEEnum, PrimitiveType.class, "PrimitiveType");
 		addEEnumLiteral(primitiveTypeEEnum, PrimitiveType.CHARACTER_LITERAL);
 		addEEnumLiteral(primitiveTypeEEnum, PrimitiveType.CHARACTER_VARYING_LITERAL);
 		addEEnumLiteral(primitiveTypeEEnum, PrimitiveType.CHARACTER_LARGE_OBJECT_LITERAL);
@@ -1702,28 +1713,28 @@ public class SQLDataTypesPackageImpl extends EPackageImpl implements SQLDataType
 		addEEnumLiteral(primitiveTypeEEnum, PrimitiveType.DATALINK_LITERAL);
 		addEEnumLiteral(primitiveTypeEEnum, PrimitiveType.XML_TYPE_LITERAL);
 
-		initEEnum(linkControlOptionEEnum, LinkControlOption.class, "LinkControlOption"); //$NON-NLS-1$
-		addEEnumLiteral(linkControlOptionEEnum, LinkControlOption.FILE_LINK_CONTROL_LITERAL);
-		addEEnumLiteral(linkControlOptionEEnum, LinkControlOption.NO_FILE_LINK_CONTROL_LITERAL);
+		initEEnum(linkControlOptionEEnum, LinkControlOption.class, "LinkControlOption");
+		addEEnumLiteral(linkControlOptionEEnum, LinkControlOption.FILE_LINK_CONTROL);
+		addEEnumLiteral(linkControlOptionEEnum, LinkControlOption.NO_FILE_LINK_CONTROL);
 
-		initEEnum(integrityControlOptionEEnum, IntegrityControlOption.class, "IntegrityControlOption"); //$NON-NLS-1$
-		addEEnumLiteral(integrityControlOptionEEnum, IntegrityControlOption.ALL_LITERAL);
-		addEEnumLiteral(integrityControlOptionEEnum, IntegrityControlOption.SELECTIVE_LITERAL);
-		addEEnumLiteral(integrityControlOptionEEnum, IntegrityControlOption.NONE_LITERAL);
+		initEEnum(integrityControlOptionEEnum, IntegrityControlOption.class, "IntegrityControlOption");
+		addEEnumLiteral(integrityControlOptionEEnum, IntegrityControlOption.ALL);
+		addEEnumLiteral(integrityControlOptionEEnum, IntegrityControlOption.SELECTIVE);
+		addEEnumLiteral(integrityControlOptionEEnum, IntegrityControlOption.NONE);
 
-		initEEnum(readPermissionOptionEEnum, ReadPermissionOption.class, "ReadPermissionOption"); //$NON-NLS-1$
-		addEEnumLiteral(readPermissionOptionEEnum, ReadPermissionOption.FS_LITERAL);
-		addEEnumLiteral(readPermissionOptionEEnum, ReadPermissionOption.DB_LITERAL);
+		initEEnum(readPermissionOptionEEnum, ReadPermissionOption.class, "ReadPermissionOption");
+		addEEnumLiteral(readPermissionOptionEEnum, ReadPermissionOption.FS);
+		addEEnumLiteral(readPermissionOptionEEnum, ReadPermissionOption.DB);
 
-		initEEnum(writePermissionOptionEEnum, WritePermissionOption.class, "WritePermissionOption"); //$NON-NLS-1$
-		addEEnumLiteral(writePermissionOptionEEnum, WritePermissionOption.FS_LITERAL);
-		addEEnumLiteral(writePermissionOptionEEnum, WritePermissionOption.ADMIN_LITERAL);
-		addEEnumLiteral(writePermissionOptionEEnum, WritePermissionOption.BLOCKED_LITERAL);
+		initEEnum(writePermissionOptionEEnum, WritePermissionOption.class, "WritePermissionOption");
+		addEEnumLiteral(writePermissionOptionEEnum, WritePermissionOption.FS);
+		addEEnumLiteral(writePermissionOptionEEnum, WritePermissionOption.ADMIN);
+		addEEnumLiteral(writePermissionOptionEEnum, WritePermissionOption.BLOCKED);
 
-		initEEnum(unlinkOptionEEnum, UnlinkOption.class, "UnlinkOption"); //$NON-NLS-1$
-		addEEnumLiteral(unlinkOptionEEnum, UnlinkOption.RESTORE_LITERAL);
-		addEEnumLiteral(unlinkOptionEEnum, UnlinkOption.DELETE_LITERAL);
-		addEEnumLiteral(unlinkOptionEEnum, UnlinkOption.NONE_LITERAL);
+		initEEnum(unlinkOptionEEnum, UnlinkOption.class, "UnlinkOption");
+		addEEnumLiteral(unlinkOptionEEnum, UnlinkOption.RESTORE);
+		addEEnumLiteral(unlinkOptionEEnum, UnlinkOption.DELETE);
+		addEEnumLiteral(unlinkOptionEEnum, UnlinkOption.NONE);
 
 		// Create resource
 		createResource(eNS_URI);

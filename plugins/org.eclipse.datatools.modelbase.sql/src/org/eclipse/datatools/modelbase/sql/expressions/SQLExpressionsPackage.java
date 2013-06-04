@@ -1,18 +1,15 @@
-/*******************************************************************************
- * Copyright (c) 2001, 2004 IBM Corporation and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- * 
- * Contributors:
- *     IBM Corporation - initial API and implementation
- *******************************************************************************/
+/**
+ * <copyright>
+ * </copyright>
+ *
+ * $Id$
+ */
 package org.eclipse.datatools.modelbase.sql.expressions;
 
 import org.eclipse.datatools.modelbase.sql.schema.SQLSchemaPackage;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 
 /**
@@ -22,12 +19,14 @@ import org.eclipse.emf.ecore.EPackage;
  * <ul>
  *   <li>each class,</li>
  *   <li>each feature of each class,</li>
+ *   <li>each operation of each class,</li>
  *   <li>each enum,</li>
  *   <li>and each data type</li>
  * </ul>
  * <!-- end-user-doc -->
  * @see org.eclipse.datatools.modelbase.sql.expressions.SQLExpressionsFactory
  * @model kind="package"
+ *        annotation="http://www.eclipse.org/emf/2002/Ecore settingDelegates='com.isb.datamodeler.expressions.setting'"
  * @generated
  */
 public interface SQLExpressionsPackage extends EPackage {
@@ -37,7 +36,7 @@ public interface SQLExpressionsPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNAME = "expressions"; //$NON-NLS-1$
+	String eNAME = "expressions";
 
 	/**
 	 * The package namespace URI.
@@ -45,7 +44,7 @@ public interface SQLExpressionsPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http:///org/eclipse/datatools/modelbase/sql/expressions.ecore"; //$NON-NLS-1$
+	String eNS_URI = "http:///org/eclipse/datatools/modelbase/sql/expressions.ecore";
 
 	/**
 	 * The package namespace name.
@@ -53,7 +52,7 @@ public interface SQLExpressionsPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_PREFIX = "SQLExpressions"; //$NON-NLS-1$
+	String eNS_PREFIX = "SQLExpressions";
 
 	/**
 	 * The singleton instance of the package.
@@ -83,6 +82,33 @@ public interface SQLExpressionsPackage extends EPackage {
 	int QUERY_EXPRESSION_FEATURE_COUNT = 0;
 
 	/**
+	 * The operation id for the '<em>Get SQL</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int QUERY_EXPRESSION___GET_SQL = 0;
+
+	/**
+	 * The operation id for the '<em>Set SQL</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int QUERY_EXPRESSION___SET_SQL__STRING = 1;
+
+	/**
+	 * The number of operations of the '<em>Query Expression</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int QUERY_EXPRESSION_OPERATION_COUNT = 2;
+
+	/**
 	 * The meta object id for the '{@link org.eclipse.datatools.modelbase.sql.expressions.ValueExpression <em>Value Expression</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -102,6 +128,33 @@ public interface SQLExpressionsPackage extends EPackage {
 	int VALUE_EXPRESSION_FEATURE_COUNT = 0;
 
 	/**
+	 * The operation id for the '<em>Get SQL</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_EXPRESSION___GET_SQL = 0;
+
+	/**
+	 * The operation id for the '<em>Set SQL</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_EXPRESSION___SET_SQL__STRING = 1;
+
+	/**
+	 * The number of operations of the '<em>Value Expression</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_EXPRESSION_OPERATION_COUNT = 2;
+
+	/**
 	 * The meta object id for the '{@link org.eclipse.datatools.modelbase.sql.expressions.SearchCondition <em>Search Condition</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -119,6 +172,33 @@ public interface SQLExpressionsPackage extends EPackage {
 	 * @ordered
 	 */
 	int SEARCH_CONDITION_FEATURE_COUNT = 0;
+
+	/**
+	 * The operation id for the '<em>Get SQL</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEARCH_CONDITION___GET_SQL = 0;
+
+	/**
+	 * The operation id for the '<em>Set SQL</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEARCH_CONDITION___SET_SQL__STRING = 1;
+
+	/**
+	 * The number of operations of the '<em>Search Condition</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEARCH_CONDITION_OPERATION_COUNT = 2;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.datatools.modelbase.sql.expressions.impl.QueryExpressionDefaultImpl <em>Query Expression Default</em>}' class.
@@ -221,6 +301,87 @@ public interface SQLExpressionsPackage extends EPackage {
 	int QUERY_EXPRESSION_DEFAULT_FEATURE_COUNT = SQLSchemaPackage.SQL_OBJECT_FEATURE_COUNT + 1;
 
 	/**
+	 * The operation id for the '<em>Add EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int QUERY_EXPRESSION_DEFAULT___ADD_EANNOTATION__STRING = SQLSchemaPackage.SQL_OBJECT___ADD_EANNOTATION__STRING;
+
+	/**
+	 * The operation id for the '<em>Add EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int QUERY_EXPRESSION_DEFAULT___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING = SQLSchemaPackage.SQL_OBJECT___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int QUERY_EXPRESSION_DEFAULT___GET_EANNOTATION_DETAIL__EANNOTATION_STRING = SQLSchemaPackage.SQL_OBJECT___GET_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Set Annotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int QUERY_EXPRESSION_DEFAULT___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING = SQLSchemaPackage.SQL_OBJECT___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Remove EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int QUERY_EXPRESSION_DEFAULT___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING = SQLSchemaPackage.SQL_OBJECT___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int QUERY_EXPRESSION_DEFAULT___GET_EANNOTATION__STRING = SQLSchemaPackage.SQL_OBJECT___GET_EANNOTATION__STRING;
+
+	/**
+	 * The operation id for the '<em>Get SQL</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int QUERY_EXPRESSION_DEFAULT___GET_SQL = SQLSchemaPackage.SQL_OBJECT_OPERATION_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Set SQL</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int QUERY_EXPRESSION_DEFAULT___SET_SQL__STRING = SQLSchemaPackage.SQL_OBJECT_OPERATION_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Query Expression Default</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int QUERY_EXPRESSION_DEFAULT_OPERATION_COUNT = SQLSchemaPackage.SQL_OBJECT_OPERATION_COUNT + 2;
+
+	/**
 	 * The meta object id for the '{@link org.eclipse.datatools.modelbase.sql.expressions.impl.SearchConditionDefaultImpl <em>Search Condition Default</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -319,6 +480,87 @@ public interface SQLExpressionsPackage extends EPackage {
 	 * @ordered
 	 */
 	int SEARCH_CONDITION_DEFAULT_FEATURE_COUNT = SQLSchemaPackage.SQL_OBJECT_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Add EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEARCH_CONDITION_DEFAULT___ADD_EANNOTATION__STRING = SQLSchemaPackage.SQL_OBJECT___ADD_EANNOTATION__STRING;
+
+	/**
+	 * The operation id for the '<em>Add EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEARCH_CONDITION_DEFAULT___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING = SQLSchemaPackage.SQL_OBJECT___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEARCH_CONDITION_DEFAULT___GET_EANNOTATION_DETAIL__EANNOTATION_STRING = SQLSchemaPackage.SQL_OBJECT___GET_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Set Annotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEARCH_CONDITION_DEFAULT___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING = SQLSchemaPackage.SQL_OBJECT___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Remove EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEARCH_CONDITION_DEFAULT___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING = SQLSchemaPackage.SQL_OBJECT___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEARCH_CONDITION_DEFAULT___GET_EANNOTATION__STRING = SQLSchemaPackage.SQL_OBJECT___GET_EANNOTATION__STRING;
+
+	/**
+	 * The operation id for the '<em>Get SQL</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEARCH_CONDITION_DEFAULT___GET_SQL = SQLSchemaPackage.SQL_OBJECT_OPERATION_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Set SQL</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEARCH_CONDITION_DEFAULT___SET_SQL__STRING = SQLSchemaPackage.SQL_OBJECT_OPERATION_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Search Condition Default</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEARCH_CONDITION_DEFAULT_OPERATION_COUNT = SQLSchemaPackage.SQL_OBJECT_OPERATION_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.datatools.modelbase.sql.expressions.impl.ValueExpressionDefaultImpl <em>Value Expression Default</em>}' class.
@@ -420,6 +662,86 @@ public interface SQLExpressionsPackage extends EPackage {
 	 */
 	int VALUE_EXPRESSION_DEFAULT_FEATURE_COUNT = SQLSchemaPackage.SQL_OBJECT_FEATURE_COUNT + 1;
 
+	/**
+	 * The operation id for the '<em>Add EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_EXPRESSION_DEFAULT___ADD_EANNOTATION__STRING = SQLSchemaPackage.SQL_OBJECT___ADD_EANNOTATION__STRING;
+
+	/**
+	 * The operation id for the '<em>Add EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_EXPRESSION_DEFAULT___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING = SQLSchemaPackage.SQL_OBJECT___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_EXPRESSION_DEFAULT___GET_EANNOTATION_DETAIL__EANNOTATION_STRING = SQLSchemaPackage.SQL_OBJECT___GET_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Set Annotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_EXPRESSION_DEFAULT___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING = SQLSchemaPackage.SQL_OBJECT___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Remove EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_EXPRESSION_DEFAULT___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING = SQLSchemaPackage.SQL_OBJECT___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_EXPRESSION_DEFAULT___GET_EANNOTATION__STRING = SQLSchemaPackage.SQL_OBJECT___GET_EANNOTATION__STRING;
+
+	/**
+	 * The operation id for the '<em>Get SQL</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_EXPRESSION_DEFAULT___GET_SQL = SQLSchemaPackage.SQL_OBJECT_OPERATION_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Set SQL</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_EXPRESSION_DEFAULT___SET_SQL__STRING = SQLSchemaPackage.SQL_OBJECT_OPERATION_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Value Expression Default</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VALUE_EXPRESSION_DEFAULT_OPERATION_COUNT = SQLSchemaPackage.SQL_OBJECT_OPERATION_COUNT + 2;
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.datatools.modelbase.sql.expressions.QueryExpression <em>Query Expression</em>}'.
@@ -432,6 +754,26 @@ public interface SQLExpressionsPackage extends EPackage {
 	EClass getQueryExpression();
 
 	/**
+	 * Returns the meta object for the '{@link org.eclipse.datatools.modelbase.sql.expressions.QueryExpression#getSQL() <em>Get SQL</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get SQL</em>' operation.
+	 * @see org.eclipse.datatools.modelbase.sql.expressions.QueryExpression#getSQL()
+	 * @generated
+	 */
+	EOperation getQueryExpression__GetSQL();
+
+	/**
+	 * Returns the meta object for the '{@link org.eclipse.datatools.modelbase.sql.expressions.QueryExpression#setSQL(java.lang.String) <em>Set SQL</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Set SQL</em>' operation.
+	 * @see org.eclipse.datatools.modelbase.sql.expressions.QueryExpression#setSQL(java.lang.String)
+	 * @generated
+	 */
+	EOperation getQueryExpression__SetSQL__String();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.datatools.modelbase.sql.expressions.ValueExpression <em>Value Expression</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -442,6 +784,26 @@ public interface SQLExpressionsPackage extends EPackage {
 	EClass getValueExpression();
 
 	/**
+	 * Returns the meta object for the '{@link org.eclipse.datatools.modelbase.sql.expressions.ValueExpression#getSQL() <em>Get SQL</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get SQL</em>' operation.
+	 * @see org.eclipse.datatools.modelbase.sql.expressions.ValueExpression#getSQL()
+	 * @generated
+	 */
+	EOperation getValueExpression__GetSQL();
+
+	/**
+	 * Returns the meta object for the '{@link org.eclipse.datatools.modelbase.sql.expressions.ValueExpression#setSQL(java.lang.String) <em>Set SQL</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Set SQL</em>' operation.
+	 * @see org.eclipse.datatools.modelbase.sql.expressions.ValueExpression#setSQL(java.lang.String)
+	 * @generated
+	 */
+	EOperation getValueExpression__SetSQL__String();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.datatools.modelbase.sql.expressions.SearchCondition <em>Search Condition</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -450,6 +812,26 @@ public interface SQLExpressionsPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getSearchCondition();
+
+	/**
+	 * Returns the meta object for the '{@link org.eclipse.datatools.modelbase.sql.expressions.SearchCondition#getSQL() <em>Get SQL</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get SQL</em>' operation.
+	 * @see org.eclipse.datatools.modelbase.sql.expressions.SearchCondition#getSQL()
+	 * @generated
+	 */
+	EOperation getSearchCondition__GetSQL();
+
+	/**
+	 * Returns the meta object for the '{@link org.eclipse.datatools.modelbase.sql.expressions.SearchCondition#setSQL(java.lang.String) <em>Set SQL</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Set SQL</em>' operation.
+	 * @see org.eclipse.datatools.modelbase.sql.expressions.SearchCondition#setSQL(java.lang.String)
+	 * @generated
+	 */
+	EOperation getSearchCondition__SetSQL__String();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.datatools.modelbase.sql.expressions.QueryExpressionDefault <em>Query Expression Default</em>}'.
@@ -529,13 +911,14 @@ public interface SQLExpressionsPackage extends EPackage {
 	 * <ul>
 	 *   <li>each class,</li>
 	 *   <li>each feature of each class,</li>
+	 *   <li>each operation of each class,</li>
 	 *   <li>each enum,</li>
 	 *   <li>and each data type</li>
 	 * </ul>
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	interface Literals  {
+	interface Literals {
 		/**
 		 * The meta object literal for the '{@link org.eclipse.datatools.modelbase.sql.expressions.QueryExpression <em>Query Expression</em>}' class.
 		 * <!-- begin-user-doc -->
@@ -545,6 +928,22 @@ public interface SQLExpressionsPackage extends EPackage {
 		 * @generated
 		 */
 		EClass QUERY_EXPRESSION = eINSTANCE.getQueryExpression();
+
+		/**
+		 * The meta object literal for the '<em><b>Get SQL</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation QUERY_EXPRESSION___GET_SQL = eINSTANCE.getQueryExpression__GetSQL();
+
+		/**
+		 * The meta object literal for the '<em><b>Set SQL</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation QUERY_EXPRESSION___SET_SQL__STRING = eINSTANCE.getQueryExpression__SetSQL__String();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.datatools.modelbase.sql.expressions.ValueExpression <em>Value Expression</em>}' class.
@@ -557,6 +956,22 @@ public interface SQLExpressionsPackage extends EPackage {
 		EClass VALUE_EXPRESSION = eINSTANCE.getValueExpression();
 
 		/**
+		 * The meta object literal for the '<em><b>Get SQL</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation VALUE_EXPRESSION___GET_SQL = eINSTANCE.getValueExpression__GetSQL();
+
+		/**
+		 * The meta object literal for the '<em><b>Set SQL</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation VALUE_EXPRESSION___SET_SQL__STRING = eINSTANCE.getValueExpression__SetSQL__String();
+
+		/**
 		 * The meta object literal for the '{@link org.eclipse.datatools.modelbase.sql.expressions.SearchCondition <em>Search Condition</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -565,6 +980,22 @@ public interface SQLExpressionsPackage extends EPackage {
 		 * @generated
 		 */
 		EClass SEARCH_CONDITION = eINSTANCE.getSearchCondition();
+
+		/**
+		 * The meta object literal for the '<em><b>Get SQL</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation SEARCH_CONDITION___GET_SQL = eINSTANCE.getSearchCondition__GetSQL();
+
+		/**
+		 * The meta object literal for the '<em><b>Set SQL</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation SEARCH_CONDITION___SET_SQL__STRING = eINSTANCE.getSearchCondition__SetSQL__String();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.datatools.modelbase.sql.expressions.impl.QueryExpressionDefaultImpl <em>Query Expression Default</em>}' class.

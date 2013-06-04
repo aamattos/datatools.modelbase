@@ -1,20 +1,15 @@
-/*******************************************************************************
- * Copyright (c) 2001, 2004 IBM Corporation and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- * 
- * Contributors:
- *     IBM Corporation - initial API and implementation
- *******************************************************************************/
+/**
+ * <copyright>
+ * </copyright>
+ *
+ * $Id$
+ */
 package org.eclipse.datatools.modelbase.sql.constraints;
 
 import org.eclipse.datatools.modelbase.sql.schema.SQLObject;
 import org.eclipse.datatools.modelbase.sql.schema.Schema;
 import org.eclipse.datatools.modelbase.sql.tables.Table;
 import org.eclipse.emf.common.util.EList;
-
 
 /**
  * <!-- begin-user-doc -->
@@ -191,17 +186,17 @@ public interface Index extends SQLObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Members</em>' containment reference list.
 	 * @see org.eclipse.datatools.modelbase.sql.constraints.SQLConstraintsPackage#getIndex_Members()
-	 * @model type="org.eclipse.datatools.modelbase.sql.constraints.IndexMember" containment="true" required="true"
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
-	EList getMembers();
+	EList<IndexMember> getMembers();
 
 	/**
 	 * Returns the value of the '<em><b>Table</b></em>' reference.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.datatools.modelbase.sql.tables.Table#getIndex <em>Index</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Table</em>' reference isn't clear,
+	 * If the meaning of the '<em>Table</em>' container reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
@@ -237,10 +232,10 @@ public interface Index extends SQLObject {
 	 * @return the value of the '<em>Foreign Key</em>' reference list.
 	 * @see org.eclipse.datatools.modelbase.sql.constraints.SQLConstraintsPackage#getIndex_ForeignKey()
 	 * @see org.eclipse.datatools.modelbase.sql.constraints.ForeignKey#getUniqueIndex
-	 * @model type="org.eclipse.datatools.modelbase.sql.constraints.ForeignKey" opposite="uniqueIndex"
+	 * @model opposite="uniqueIndex"
 	 * @generated
 	 */
-	EList getForeignKey();
+	EList<ForeignKey> getForeignKey();
 
 	/**
 	 * Returns the value of the '<em><b>Included Members</b></em>' containment reference list.
@@ -253,9 +248,9 @@ public interface Index extends SQLObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Included Members</em>' containment reference list.
 	 * @see org.eclipse.datatools.modelbase.sql.constraints.SQLConstraintsPackage#getIndex_IncludedMembers()
-	 * @model type="org.eclipse.datatools.modelbase.sql.constraints.IndexMember" containment="true"
+	 * @model containment="true"
 	 * @generated
 	 */
-	EList getIncludedMembers();
+	EList<IndexMember> getIncludedMembers();
 
 } // Index

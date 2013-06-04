@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: AuthorizationIdentifierItemProvider.java,v 1.3 2007/05/31 00:29:18 dpchou Exp $
+ * $Id$
  */
 package org.eclipse.datatools.modelbase.sql.accesscontrol.provider;
 
@@ -22,12 +22,11 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
+import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-
 
 /**
  * This is the item provider adapter for a {@link org.eclipse.datatools.modelbase.sql.accesscontrol.AuthorizationIdentifier} object.
@@ -59,7 +58,8 @@ public class AuthorizationIdentifierItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getPropertyDescriptors(Object object) {
+	@Override
+	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
@@ -83,12 +83,12 @@ public class AuthorizationIdentifierItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_AuthorizationIdentifier_ownedSchema_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_AuthorizationIdentifier_ownedSchema_feature", "_UI_AuthorizationIdentifier_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 getString("_UI_AuthorizationIdentifier_ownedSchema_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_AuthorizationIdentifier_ownedSchema_feature", "_UI_AuthorizationIdentifier_type"),
 				 SQLAccessControlPackage.Literals.AUTHORIZATION_IDENTIFIER__OWNED_SCHEMA,
 				 true,
 				 false,
-				 false,
+				 true,
 				 null,
 				 null,
 				 null));
@@ -105,8 +105,8 @@ public class AuthorizationIdentifierItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_AuthorizationIdentifier_Database_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_AuthorizationIdentifier_Database_feature", "_UI_AuthorizationIdentifier_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 getString("_UI_AuthorizationIdentifier_Database_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_AuthorizationIdentifier_Database_feature", "_UI_AuthorizationIdentifier_type"),
 				 SQLAccessControlPackage.Literals.AUTHORIZATION_IDENTIFIER__DATABASE,
 				 true,
 				 false,
@@ -127,12 +127,12 @@ public class AuthorizationIdentifierItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_AuthorizationIdentifier_receivedRoleAuthorization_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_AuthorizationIdentifier_receivedRoleAuthorization_feature", "_UI_AuthorizationIdentifier_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 getString("_UI_AuthorizationIdentifier_receivedRoleAuthorization_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_AuthorizationIdentifier_receivedRoleAuthorization_feature", "_UI_AuthorizationIdentifier_type"),
 				 SQLAccessControlPackage.Literals.AUTHORIZATION_IDENTIFIER__RECEIVED_ROLE_AUTHORIZATION,
 				 true,
 				 false,
-				 false,
+				 true,
 				 null,
 				 null,
 				 null));
@@ -149,12 +149,12 @@ public class AuthorizationIdentifierItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_AuthorizationIdentifier_grantedRoleAuthorization_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_AuthorizationIdentifier_grantedRoleAuthorization_feature", "_UI_AuthorizationIdentifier_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 getString("_UI_AuthorizationIdentifier_grantedRoleAuthorization_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_AuthorizationIdentifier_grantedRoleAuthorization_feature", "_UI_AuthorizationIdentifier_type"),
 				 SQLAccessControlPackage.Literals.AUTHORIZATION_IDENTIFIER__GRANTED_ROLE_AUTHORIZATION,
 				 true,
 				 false,
-				 false,
+				 true,
 				 null,
 				 null,
 				 null));
@@ -171,12 +171,12 @@ public class AuthorizationIdentifierItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_AuthorizationIdentifier_grantedPrivilege_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_AuthorizationIdentifier_grantedPrivilege_feature", "_UI_AuthorizationIdentifier_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 getString("_UI_AuthorizationIdentifier_grantedPrivilege_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_AuthorizationIdentifier_grantedPrivilege_feature", "_UI_AuthorizationIdentifier_type"),
 				 SQLAccessControlPackage.Literals.AUTHORIZATION_IDENTIFIER__GRANTED_PRIVILEGE,
 				 true,
 				 false,
-				 false,
+				 true,
 				 null,
 				 null,
 				 null));
@@ -190,7 +190,8 @@ public class AuthorizationIdentifierItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Collection getChildrenFeatures(Object object) {
+	@Override
+	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(SQLAccessControlPackage.Literals.AUTHORIZATION_IDENTIFIER__RECEIVED_PRIVILEGE);
@@ -203,6 +204,7 @@ public class AuthorizationIdentifierItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EStructuralFeature getChildFeature(Object object, Object child) {
 		// Check the type of the specified child object and return the proper feature to use for
 		// adding (see {@link AddCommand}) it as a child.
@@ -211,26 +213,17 @@ public class AuthorizationIdentifierItemProvider
 	}
 
 	/**
-	 * This returns AuthorizationIdentifier.gif.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/AuthorizationIdentifier")); //$NON-NLS-1$
-	}
-
-	/**
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getText(Object object) {
 		String label = ((AuthorizationIdentifier)object).getName();
 		return label == null || label.length() == 0 ?
-			getString("_UI_AuthorizationIdentifier_type") : //$NON-NLS-1$
-			getString("_UI_AuthorizationIdentifier_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+			getString("_UI_AuthorizationIdentifier_type") :
+			label;
 	}
 
 	/**
@@ -240,6 +233,7 @@ public class AuthorizationIdentifierItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
@@ -258,7 +252,8 @@ public class AuthorizationIdentifierItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void collectNewChildDescriptors(Collection newChildDescriptors, Object object) {
+	@Override
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
 		newChildDescriptors.add
@@ -273,8 +268,8 @@ public class AuthorizationIdentifierItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ResourceLocator getResourceLocator() {
 		return SqlmodelEditPlugin.INSTANCE;
 	}
-
 }

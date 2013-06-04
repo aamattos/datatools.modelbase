@@ -1,16 +1,19 @@
-/*******************************************************************************
- * Copyright (c) 2001, 2004 IBM Corporation and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- * 
- * Contributors:
- *     IBM Corporation - initial API and implementation
- *******************************************************************************/
+/**
+ * <copyright>
+ * </copyright>
+ *
+ * $Id$
+ */
 package org.eclipse.datatools.modelbase.sql.expressions.util;
 
 import org.eclipse.datatools.modelbase.sql.expressions.*;
+import org.eclipse.datatools.modelbase.sql.expressions.QueryExpression;
+import org.eclipse.datatools.modelbase.sql.expressions.QueryExpressionDefault;
+import org.eclipse.datatools.modelbase.sql.expressions.SQLExpressionsPackage;
+import org.eclipse.datatools.modelbase.sql.expressions.SearchCondition;
+import org.eclipse.datatools.modelbase.sql.expressions.SearchConditionDefault;
+import org.eclipse.datatools.modelbase.sql.expressions.ValueExpression;
+import org.eclipse.datatools.modelbase.sql.expressions.ValueExpressionDefault;
 import org.eclipse.datatools.modelbase.sql.schema.SQLObject;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
@@ -18,7 +21,6 @@ import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EModelElement;
 import org.eclipse.emf.ecore.ENamedElement;
 import org.eclipse.emf.ecore.EObject;
-
 
 /**
  * <!-- begin-user-doc -->
@@ -57,6 +59,7 @@ public class SQLExpressionsAdapterFactory extends AdapterFactoryImpl {
 	 * @return whether this factory is applicable for the type of the object.
 	 * @generated
 	 */
+	@Override
 	public boolean isFactoryForType(Object object) {
 		if (object == modelPackage) {
 			return true;
@@ -73,36 +76,46 @@ public class SQLExpressionsAdapterFactory extends AdapterFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected SQLExpressionsSwitch modelSwitch =
-		new SQLExpressionsSwitch() {
-			public Object caseQueryExpression(QueryExpression object) {
+	protected SQLExpressionsSwitch<Adapter> modelSwitch =
+		new SQLExpressionsSwitch<Adapter>() {
+			@Override
+			public Adapter caseQueryExpression(QueryExpression object) {
 				return createQueryExpressionAdapter();
 			}
-			public Object caseValueExpression(ValueExpression object) {
+			@Override
+			public Adapter caseValueExpression(ValueExpression object) {
 				return createValueExpressionAdapter();
 			}
-			public Object caseSearchCondition(SearchCondition object) {
+			@Override
+			public Adapter caseSearchCondition(SearchCondition object) {
 				return createSearchConditionAdapter();
 			}
-			public Object caseQueryExpressionDefault(QueryExpressionDefault object) {
+			@Override
+			public Adapter caseQueryExpressionDefault(QueryExpressionDefault object) {
 				return createQueryExpressionDefaultAdapter();
 			}
-			public Object caseSearchConditionDefault(SearchConditionDefault object) {
+			@Override
+			public Adapter caseSearchConditionDefault(SearchConditionDefault object) {
 				return createSearchConditionDefaultAdapter();
 			}
-			public Object caseValueExpressionDefault(ValueExpressionDefault object) {
+			@Override
+			public Adapter caseValueExpressionDefault(ValueExpressionDefault object) {
 				return createValueExpressionDefaultAdapter();
 			}
-			public Object caseEModelElement(EModelElement object) {
+			@Override
+			public Adapter caseEModelElement(EModelElement object) {
 				return createEModelElementAdapter();
 			}
-			public Object caseENamedElement(ENamedElement object) {
+			@Override
+			public Adapter caseENamedElement(ENamedElement object) {
 				return createENamedElementAdapter();
 			}
-			public Object caseSQLObject(SQLObject object) {
+			@Override
+			public Adapter caseSQLObject(SQLObject object) {
 				return createSQLObjectAdapter();
 			}
-			public Object defaultCase(EObject object) {
+			@Override
+			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
 		};
@@ -115,8 +128,9 @@ public class SQLExpressionsAdapterFactory extends AdapterFactoryImpl {
 	 * @return the adapter for the <code>target</code>.
 	 * @generated
 	 */
+	@Override
 	public Adapter createAdapter(Notifier target) {
-		return (Adapter)modelSwitch.doSwitch((EObject)target);
+		return modelSwitch.doSwitch((EObject)target);
 	}
 
 

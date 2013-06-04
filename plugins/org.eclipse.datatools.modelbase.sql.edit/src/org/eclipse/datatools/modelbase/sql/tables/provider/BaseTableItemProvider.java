@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: BaseTableItemProvider.java,v 1.4 2007/05/31 00:29:18 dpchou Exp $
+ * $Id: BaseTableItemProvider.java,v 1.13.16.1 2013/01/14 18:31:16 aalvamat Exp $
  */
 package org.eclipse.datatools.modelbase.sql.tables.provider;
 
@@ -11,16 +11,15 @@ import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.datatools.modelbase.sql.constraints.SQLConstraintsFactory;
-import org.eclipse.datatools.modelbase.sql.schema.provider.SqlmodelEditPlugin;
 import org.eclipse.datatools.modelbase.sql.tables.BaseTable;
 import org.eclipse.datatools.modelbase.sql.tables.SQLTablesPackage;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
+import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
@@ -56,13 +55,37 @@ public class BaseTableItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getPropertyDescriptors(Object object) {
+	@Override
+	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addConstraintsPropertyDescriptor(object);
 			addReferencingForeignKeysPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
+	}
+
+	/**
+	 * This adds a property descriptor for the Constraints feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addConstraintsPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_BaseTable_constraints_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_BaseTable_constraints_feature", "_UI_BaseTable_type"),
+				 SQLTablesPackage.Literals.BASE_TABLE__CONSTRAINTS,
+				 false,
+				 false,
+				 false,
+				 null,
+				 null,
+				 null));
 	}
 
 	/**
@@ -76,12 +99,12 @@ public class BaseTableItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_BaseTable_referencingForeignKeys_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_BaseTable_referencingForeignKeys_feature", "_UI_BaseTable_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 getString("_UI_BaseTable_referencingForeignKeys_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_BaseTable_referencingForeignKeys_feature", "_UI_BaseTable_type"),
 				 SQLTablesPackage.Literals.BASE_TABLE__REFERENCING_FOREIGN_KEYS,
+				 false,
+				 false,
 				 true,
-				 false,
-				 false,
 				 null,
 				 null,
 				 null));
@@ -95,7 +118,8 @@ public class BaseTableItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Collection getChildrenFeatures(Object object) {
+	@Override
+	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(SQLTablesPackage.Literals.BASE_TABLE__CONSTRAINTS);
@@ -108,6 +132,7 @@ public class BaseTableItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EStructuralFeature getChildFeature(Object object, Object child) {
 		// Check the type of the specified child object and return the proper feature to use for
 		// adding (see {@link AddCommand}) it as a child.
@@ -116,26 +141,17 @@ public class BaseTableItemProvider
 	}
 
 	/**
-	 * This returns BaseTable.gif.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/BaseTable")); //$NON-NLS-1$
-	}
-
-	/**
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getText(Object object) {
 		String label = ((BaseTable)object).getName();
 		return label == null || label.length() == 0 ?
-			getString("_UI_BaseTable_type") : //$NON-NLS-1$
-			getString("_UI_BaseTable_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+			getString("_UI_BaseTable_type") :
+			label;
 	}
 
 	/**
@@ -145,6 +161,7 @@ public class BaseTableItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
@@ -163,7 +180,8 @@ public class BaseTableItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void collectNewChildDescriptors(Collection newChildDescriptors, Object object) {
+	@Override
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
 		newChildDescriptors.add
@@ -186,5 +204,4 @@ public class BaseTableItemProvider
 				(SQLTablesPackage.Literals.BASE_TABLE__CONSTRAINTS,
 				 SQLConstraintsFactory.eINSTANCE.createPrimaryKey()));
 	}
-
 }

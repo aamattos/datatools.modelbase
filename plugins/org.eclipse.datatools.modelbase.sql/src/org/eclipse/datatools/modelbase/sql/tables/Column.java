@@ -1,13 +1,9 @@
-/*******************************************************************************
- * Copyright (c) 2001, 2004 IBM Corporation and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- * 
- * Contributors:
- *     IBM Corporation - initial API and implementation
- *******************************************************************************/
+/**
+ * <copyright>
+ * </copyright>
+ *
+ * $Id$
+ */
 package org.eclipse.datatools.modelbase.sql.tables;
 
 import org.eclipse.datatools.modelbase.sql.expressions.ValueExpression;
@@ -49,7 +45,7 @@ public interface Column extends TypedElement {
 	 * It is bidirectional and its opposite is '{@link org.eclipse.datatools.modelbase.sql.tables.Table#getColumns <em>Columns</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Table</em>' container reference isn't clear,
+	 * If the meaning of the '<em>Table</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
@@ -102,7 +98,7 @@ public interface Column extends TypedElement {
 	 * Returns the value of the '<em><b>Generate Expression</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Generate Expression</em>' reference isn't clear,
+	 * If the meaning of the '<em>Generate Expression</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
@@ -187,9 +183,11 @@ public interface Column extends TypedElement {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Default Value</em>' attribute.
+	 * @see #isSetDefaultValue()
+	 * @see #unsetDefaultValue()
 	 * @see #setDefaultValue(String)
 	 * @see org.eclipse.datatools.modelbase.sql.tables.SQLTablesPackage#getColumn_DefaultValue()
-	 * @model
+	 * @model unsettable="true" transient="true"
 	 * @generated
 	 */
 	String getDefaultValue();
@@ -199,10 +197,35 @@ public interface Column extends TypedElement {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Default Value</em>' attribute.
+	 * @see #isSetDefaultValue()
+	 * @see #unsetDefaultValue()
 	 * @see #getDefaultValue()
 	 * @generated
 	 */
 	void setDefaultValue(String value);
+
+	/**
+	 * Unsets the value of the '{@link org.eclipse.datatools.modelbase.sql.tables.Column#getDefaultValue <em>Default Value</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isSetDefaultValue()
+	 * @see #getDefaultValue()
+	 * @see #setDefaultValue(String)
+	 * @generated
+	 */
+	void unsetDefaultValue();
+
+	/**
+	 * Returns whether the value of the '{@link org.eclipse.datatools.modelbase.sql.tables.Column#getDefaultValue <em>Default Value</em>}' attribute is set.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return whether the value of the '<em>Default Value</em>' attribute is set.
+	 * @see #unsetDefaultValue()
+	 * @see #getDefaultValue()
+	 * @see #setDefaultValue(String)
+	 * @generated
+	 */
+	boolean isSetDefaultValue();
 
 	/**
 	 * Returns the value of the '<em><b>Scope Check</b></em>' attribute.
@@ -262,6 +285,10 @@ public interface Column extends TypedElement {
 
 	/**
 	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Part Of Foreign Key</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
 	 * <!-- end-user-doc -->
 	 * @model kind="operation"
 	 * @generated
@@ -270,6 +297,10 @@ public interface Column extends TypedElement {
 
 	/**
 	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Part Of Unique Constraint</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
 	 * <!-- end-user-doc -->
 	 * @model kind="operation"
 	 * @generated

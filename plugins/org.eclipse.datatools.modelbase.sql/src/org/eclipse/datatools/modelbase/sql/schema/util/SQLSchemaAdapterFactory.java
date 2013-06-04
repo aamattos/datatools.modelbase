@@ -1,18 +1,24 @@
-/*******************************************************************************
- * Copyright (c) 2001, 2004 IBM Corporation and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- * 
- * Contributors:
- *     IBM Corporation - initial API and implementation
- *******************************************************************************/
+/**
+ * <copyright>
+ * </copyright>
+ *
+ * $Id$
+ */
 package org.eclipse.datatools.modelbase.sql.schema.util;
 
-import javax.sound.midi.Sequence;
-
 import org.eclipse.datatools.modelbase.sql.schema.*;
+import org.eclipse.datatools.modelbase.sql.schema.Catalog;
+import org.eclipse.datatools.modelbase.sql.schema.Comment;
+import org.eclipse.datatools.modelbase.sql.schema.Database;
+import org.eclipse.datatools.modelbase.sql.schema.Dependency;
+import org.eclipse.datatools.modelbase.sql.schema.Event;
+import org.eclipse.datatools.modelbase.sql.schema.IdentitySpecifier;
+import org.eclipse.datatools.modelbase.sql.schema.ObjectExtension;
+import org.eclipse.datatools.modelbase.sql.schema.SQLObject;
+import org.eclipse.datatools.modelbase.sql.schema.SQLSchemaPackage;
+import org.eclipse.datatools.modelbase.sql.schema.Schema;
+import org.eclipse.datatools.modelbase.sql.schema.Sequence;
+import org.eclipse.datatools.modelbase.sql.schema.TypedElement;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
@@ -57,6 +63,7 @@ public class SQLSchemaAdapterFactory extends AdapterFactoryImpl {
 	 * @return whether this factory is applicable for the type of the object.
 	 * @generated
 	 */
+	@Override
 	public boolean isFactoryForType(Object object) {
 		if (object == modelPackage) {
 			return true;
@@ -73,48 +80,62 @@ public class SQLSchemaAdapterFactory extends AdapterFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected SQLSchemaSwitch modelSwitch =
-		new SQLSchemaSwitch() {
-			public Object caseIdentitySpecifier(IdentitySpecifier object) {
+	protected SQLSchemaSwitch<Adapter> modelSwitch =
+		new SQLSchemaSwitch<Adapter>() {
+			@Override
+			public Adapter caseIdentitySpecifier(IdentitySpecifier object) {
 				return createIdentitySpecifierAdapter();
 			}
-			public Object caseTypedElement(TypedElement object) {
+			@Override
+			public Adapter caseTypedElement(TypedElement object) {
 				return createTypedElementAdapter();
 			}
-			public Object caseDependency(Dependency object) {
+			@Override
+			public Adapter caseDependency(Dependency object) {
 				return createDependencyAdapter();
 			}
-			public Object caseSchema(Schema object) {
+			@Override
+			public Adapter caseSchema(Schema object) {
 				return createSchemaAdapter();
 			}
-			public Object caseSQLObject(SQLObject object) {
+			@Override
+			public Adapter caseSQLObject(SQLObject object) {
 				return createSQLObjectAdapter();
 			}
-			public Object caseSequence(Sequence object) {
+			@Override
+			public Adapter caseSequence(Sequence object) {
 				return createSequenceAdapter();
 			}
-			public Object caseDatabase(Database object) {
+			@Override
+			public Adapter caseDatabase(Database object) {
 				return createDatabaseAdapter();
 			}
-			public Object caseEvent(Event object) {
+			@Override
+			public Adapter caseEvent(Event object) {
 				return createEventAdapter();
 			}
-			public Object caseComment(Comment object) {
+			@Override
+			public Adapter caseComment(Comment object) {
 				return createCommentAdapter();
 			}
-			public Object caseCatalog(Catalog object) {
+			@Override
+			public Adapter caseCatalog(Catalog object) {
 				return createCatalogAdapter();
 			}
-			public Object caseObjectExtension(ObjectExtension object) {
+			@Override
+			public Adapter caseObjectExtension(ObjectExtension object) {
 				return createObjectExtensionAdapter();
 			}
-			public Object caseEModelElement(EModelElement object) {
+			@Override
+			public Adapter caseEModelElement(EModelElement object) {
 				return createEModelElementAdapter();
 			}
-			public Object caseENamedElement(ENamedElement object) {
+			@Override
+			public Adapter caseENamedElement(ENamedElement object) {
 				return createENamedElementAdapter();
 			}
-			public Object defaultCase(EObject object) {
+			@Override
+			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
 		};
@@ -127,8 +148,9 @@ public class SQLSchemaAdapterFactory extends AdapterFactoryImpl {
 	 * @return the adapter for the <code>target</code>.
 	 * @generated
 	 */
+	@Override
 	public Adapter createAdapter(Notifier target) {
-		return (Adapter)modelSwitch.doSwitch((EObject)target);
+		return modelSwitch.doSwitch((EObject)target);
 	}
 
 

@@ -2,10 +2,12 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.eclipse.datatools.modelbase.sql.edit;singleton:=true
-Bundle-Version: 1.0.2.qualifier
+Bundle-Version: 1.0.0.qualifier
+Bundle-ClassPath: .
 Bundle-Activator: org.eclipse.datatools.modelbase.sql.schema.provider.SqlmodelEditPlugin$Implementation
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: 
  org.eclipse.datatools.modelbase.sql.accesscontrol.provider,
  org.eclipse.datatools.modelbase.sql.constraints.provider,
@@ -15,12 +17,11 @@ Export-Package:
  org.eclipse.datatools.modelbase.sql.schema.provider,
  org.eclipse.datatools.modelbase.sql.statements.provider,
  org.eclipse.datatools.modelbase.sql.tables.provider
-Require-Bundle: 
- org.eclipse.core.runtime;bundle-version="[3.2.0,4.0.0)",
- org.eclipse.datatools.modelbase.sql;bundle-version="[0.9.0,1.5.0)";visibility:=reexport,
- org.eclipse.emf.edit;bundle-version="[2.2.0,3.0.0)";visibility:=reexport,
- org.eclipse.emf.ecore;bundle-version="[2.2.0,3.0.0)";visibility:=reexport,
- org.eclipse.emf.ecore.edit;bundle-version="[2.2.0,3.0.0)";visibility:=reexport
-Eclipse-LazyStart: true
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.datatools.modelbase.sql;visibility:=reexport,
+ org.eclipse.emf.edit;visibility:=reexport,
+ org.eclipse.emf.ecore;visibility:=reexport,
+ org.eclipse.emf.ecore.edit;visibility:=reexport,
+ org.eclipse.core.resources;bundle-version="3.7.101",
+ com.isb.datamodeler.model.core;bundle-version="3.2.0"
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: J2SE-1.5

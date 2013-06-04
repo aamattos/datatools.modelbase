@@ -1,16 +1,11 @@
-/*******************************************************************************
- * Copyright (c) 2001, 2004 IBM Corporation and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- * 
- * Contributors:
- *     IBM Corporation - initial API and implementation
- *******************************************************************************/
+/**
+ * <copyright>
+ * </copyright>
+ *
+ * $Id$
+ */
 package org.eclipse.datatools.modelbase.sql.datatypes;
 
-import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -60,16 +55,5 @@ public interface CollectionDataType extends ConstructedDataType {
 	 * @generated
 	 */
 	void setElementType(ElementType value);
-	
-	/**
-	 * Sets the value of the '{@link org.eclipse.datatools.modelbase.sql.datatypes.CollectionDataType#getElementType <em>Element Type</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Element Type</em>' containment reference.
-	 * @deprecated As of release DTP 1.8, this method has been replaced by 
-	 * {@link #getElementType} and {@link #setElementType(ElementType newElementType)}
-	 */
-	@Deprecated
-	EList getElement();
 
 } // CollectionDataType

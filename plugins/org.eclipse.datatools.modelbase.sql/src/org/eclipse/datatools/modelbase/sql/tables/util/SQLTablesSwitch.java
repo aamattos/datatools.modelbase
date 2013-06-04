@@ -1,29 +1,33 @@
-/*******************************************************************************
- * Copyright (c) 2001, 2004 IBM Corporation and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- * 
- * Contributors:
- *     IBM Corporation - initial API and implementation
- *******************************************************************************/
+/**
+ * <copyright>
+ * </copyright>
+ *
+ * $Id$
+ */
 package org.eclipse.datatools.modelbase.sql.tables.util;
-
-import java.util.List;
 
 import org.eclipse.datatools.modelbase.sql.schema.SQLObject;
 import org.eclipse.datatools.modelbase.sql.schema.TypedElement;
 import org.eclipse.datatools.modelbase.sql.tables.*;
-import org.eclipse.emf.ecore.EClass;
+import org.eclipse.datatools.modelbase.sql.tables.BaseTable;
+import org.eclipse.datatools.modelbase.sql.tables.Column;
+import org.eclipse.datatools.modelbase.sql.tables.DerivedTable;
+import org.eclipse.datatools.modelbase.sql.tables.PersistentTable;
+import org.eclipse.datatools.modelbase.sql.tables.SQLTablesPackage;
+import org.eclipse.datatools.modelbase.sql.tables.Table;
+import org.eclipse.datatools.modelbase.sql.tables.TemporaryTable;
+import org.eclipse.datatools.modelbase.sql.tables.Trigger;
+import org.eclipse.datatools.modelbase.sql.tables.ViewTable;
 import org.eclipse.emf.ecore.EModelElement;
 import org.eclipse.emf.ecore.ENamedElement;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.util.Switch;
 
 /**
  * <!-- begin-user-doc -->
  * The <b>Switch</b> for the model's inheritance hierarchy.
- * It supports the call {@link #doSwitch doSwitch(object)}
+ * It supports the call {@link #doSwitch(EObject) doSwitch(object)}
  * to invoke the <code>caseXXX</code> method for each class of the model,
  * starting with the actual class of the object
  * and proceeding up the inheritance hierarchy
@@ -33,7 +37,7 @@ import org.eclipse.emf.ecore.EObject;
  * @see org.eclipse.datatools.modelbase.sql.tables.SQLTablesPackage
  * @generated
  */
-public class SQLTablesSwitch {
+public class SQLTablesSwitch<T> extends Switch<T> {
 	/**
 	 * The cached model package
 	 * <!-- begin-user-doc -->
@@ -55,14 +59,16 @@ public class SQLTablesSwitch {
 	}
 
 	/**
-	 * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that result.
+	 * Checks whether this is a switch for the given package.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the first non-null result returned by a <code>caseXXX</code> call.
+	 * @parameter ePackage the package in question.
+	 * @return whether this is a switch for the given package.
 	 * @generated
 	 */
-	public Object doSwitch(EObject theEObject) {
-		return doSwitch(theEObject.eClass(), theEObject);
+	@Override
+	protected boolean isSwitchFor(EPackage ePackage) {
+		return ePackage == modelPackage;
 	}
 
 	/**
@@ -72,31 +78,12 @@ public class SQLTablesSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	protected Object doSwitch(EClass theEClass, EObject theEObject) {
-		if (theEClass.eContainer() == modelPackage) {
-			return doSwitch(theEClass.getClassifierID(), theEObject);
-		}
-		else {
-			List eSuperTypes = theEClass.getESuperTypes();
-			return
-				eSuperTypes.isEmpty() ?
-					defaultCase(theEObject) :
-					doSwitch((EClass)eSuperTypes.get(0), theEObject);
-		}
-	}
-
-	/**
-	 * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that result.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the first non-null result returned by a <code>caseXXX</code> call.
-	 * @generated
-	 */
-	protected Object doSwitch(int classifierID, EObject theEObject) {
+	@Override
+	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
 			case SQLTablesPackage.VIEW_TABLE: {
 				ViewTable viewTable = (ViewTable)theEObject;
-				Object result = caseViewTable(viewTable);
+				T result = caseViewTable(viewTable);
 				if (result == null) result = caseDerivedTable(viewTable);
 				if (result == null) result = caseTable(viewTable);
 				if (result == null) result = caseSQLObject(viewTable);
@@ -107,7 +94,7 @@ public class SQLTablesSwitch {
 			}
 			case SQLTablesPackage.TEMPORARY_TABLE: {
 				TemporaryTable temporaryTable = (TemporaryTable)theEObject;
-				Object result = caseTemporaryTable(temporaryTable);
+				T result = caseTemporaryTable(temporaryTable);
 				if (result == null) result = caseBaseTable(temporaryTable);
 				if (result == null) result = caseTable(temporaryTable);
 				if (result == null) result = caseSQLObject(temporaryTable);
@@ -118,7 +105,7 @@ public class SQLTablesSwitch {
 			}
 			case SQLTablesPackage.TABLE: {
 				Table table = (Table)theEObject;
-				Object result = caseTable(table);
+				T result = caseTable(table);
 				if (result == null) result = caseSQLObject(table);
 				if (result == null) result = caseENamedElement(table);
 				if (result == null) result = caseEModelElement(table);
@@ -127,7 +114,7 @@ public class SQLTablesSwitch {
 			}
 			case SQLTablesPackage.PERSISTENT_TABLE: {
 				PersistentTable persistentTable = (PersistentTable)theEObject;
-				Object result = casePersistentTable(persistentTable);
+				T result = casePersistentTable(persistentTable);
 				if (result == null) result = caseBaseTable(persistentTable);
 				if (result == null) result = caseTable(persistentTable);
 				if (result == null) result = caseSQLObject(persistentTable);
@@ -138,7 +125,7 @@ public class SQLTablesSwitch {
 			}
 			case SQLTablesPackage.DERIVED_TABLE: {
 				DerivedTable derivedTable = (DerivedTable)theEObject;
-				Object result = caseDerivedTable(derivedTable);
+				T result = caseDerivedTable(derivedTable);
 				if (result == null) result = caseTable(derivedTable);
 				if (result == null) result = caseSQLObject(derivedTable);
 				if (result == null) result = caseENamedElement(derivedTable);
@@ -148,7 +135,7 @@ public class SQLTablesSwitch {
 			}
 			case SQLTablesPackage.BASE_TABLE: {
 				BaseTable baseTable = (BaseTable)theEObject;
-				Object result = caseBaseTable(baseTable);
+				T result = caseBaseTable(baseTable);
 				if (result == null) result = caseTable(baseTable);
 				if (result == null) result = caseSQLObject(baseTable);
 				if (result == null) result = caseENamedElement(baseTable);
@@ -158,7 +145,7 @@ public class SQLTablesSwitch {
 			}
 			case SQLTablesPackage.COLUMN: {
 				Column column = (Column)theEObject;
-				Object result = caseColumn(column);
+				T result = caseColumn(column);
 				if (result == null) result = caseTypedElement(column);
 				if (result == null) result = caseSQLObject(column);
 				if (result == null) result = caseENamedElement(column);
@@ -168,7 +155,7 @@ public class SQLTablesSwitch {
 			}
 			case SQLTablesPackage.TRIGGER: {
 				Trigger trigger = (Trigger)theEObject;
-				Object result = caseTrigger(trigger);
+				T result = caseTrigger(trigger);
 				if (result == null) result = caseSQLObject(trigger);
 				if (result == null) result = caseENamedElement(trigger);
 				if (result == null) result = caseEModelElement(trigger);
@@ -190,7 +177,7 @@ public class SQLTablesSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseViewTable(ViewTable object) {
+	public T caseViewTable(ViewTable object) {
 		return null;
 	}
 
@@ -205,7 +192,7 @@ public class SQLTablesSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseTemporaryTable(TemporaryTable object) {
+	public T caseTemporaryTable(TemporaryTable object) {
 		return null;
 	}
 
@@ -220,7 +207,7 @@ public class SQLTablesSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseTable(Table object) {
+	public T caseTable(Table object) {
 		return null;
 	}
 
@@ -235,7 +222,7 @@ public class SQLTablesSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object casePersistentTable(PersistentTable object) {
+	public T casePersistentTable(PersistentTable object) {
 		return null;
 	}
 
@@ -250,7 +237,7 @@ public class SQLTablesSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseDerivedTable(DerivedTable object) {
+	public T caseDerivedTable(DerivedTable object) {
 		return null;
 	}
 
@@ -265,7 +252,7 @@ public class SQLTablesSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseBaseTable(BaseTable object) {
+	public T caseBaseTable(BaseTable object) {
 		return null;
 	}
 
@@ -280,7 +267,7 @@ public class SQLTablesSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseColumn(Column object) {
+	public T caseColumn(Column object) {
 		return null;
 	}
 
@@ -295,7 +282,7 @@ public class SQLTablesSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseTrigger(Trigger object) {
+	public T caseTrigger(Trigger object) {
 		return null;
 	}
 
@@ -310,7 +297,7 @@ public class SQLTablesSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseEModelElement(EModelElement object) {
+	public T caseEModelElement(EModelElement object) {
 		return null;
 	}
 
@@ -325,7 +312,7 @@ public class SQLTablesSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseENamedElement(ENamedElement object) {
+	public T caseENamedElement(ENamedElement object) {
 		return null;
 	}
 
@@ -340,7 +327,7 @@ public class SQLTablesSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseSQLObject(SQLObject object) {
+	public T caseSQLObject(SQLObject object) {
 		return null;
 	}
 
@@ -355,7 +342,7 @@ public class SQLTablesSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseTypedElement(TypedElement object) {
+	public T caseTypedElement(TypedElement object) {
 		return null;
 	}
 
@@ -370,7 +357,8 @@ public class SQLTablesSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject)
 	 * @generated
 	 */
-	public Object defaultCase(EObject object) {
+	@Override
+	public T defaultCase(EObject object) {
 		return null;
 	}
 

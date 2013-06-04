@@ -1,13 +1,9 @@
-/*******************************************************************************
- * Copyright (c) 2001, 2004 IBM Corporation and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- * 
- * Contributors:
- *     IBM Corporation - initial API and implementation
- *******************************************************************************/
+/**
+ * <copyright>
+ * </copyright>
+ *
+ * $Id$
+ */
 package org.eclipse.datatools.modelbase.sql.accesscontrol;
 
 import org.eclipse.datatools.modelbase.sql.schema.SQLSchemaPackage;
@@ -23,6 +19,7 @@ import org.eclipse.emf.ecore.EReference;
  * <ul>
  *   <li>each class,</li>
  *   <li>each feature of each class,</li>
+ *   <li>each operation of each class,</li>
  *   <li>each enum,</li>
  *   <li>and each data type</li>
  * </ul>
@@ -38,7 +35,7 @@ public interface SQLAccessControlPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNAME = "accesscontrol"; //$NON-NLS-1$
+	String eNAME = "accesscontrol";
 
 	/**
 	 * The package namespace URI.
@@ -46,7 +43,7 @@ public interface SQLAccessControlPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http:///org/eclipse/datatools/modelbase/sql/accesscontrol.ecore"; //$NON-NLS-1$
+	String eNS_URI = "http:///org/eclipse/datatools/modelbase/sql/accesscontrol.ecore";
 
 	/**
 	 * The package namespace name.
@@ -54,7 +51,7 @@ public interface SQLAccessControlPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_PREFIX = "SQLAccessControl"; //$NON-NLS-1$
+	String eNS_PREFIX = "SQLAccessControl";
 
 	/**
 	 * The singleton instance of the package.
@@ -208,6 +205,69 @@ public interface SQLAccessControlPackage extends EPackage {
 	 * @ordered
 	 */
 	int AUTHORIZATION_IDENTIFIER_FEATURE_COUNT = SQLSchemaPackage.SQL_OBJECT_FEATURE_COUNT + 6;
+
+	/**
+	 * The operation id for the '<em>Add EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AUTHORIZATION_IDENTIFIER___ADD_EANNOTATION__STRING = SQLSchemaPackage.SQL_OBJECT___ADD_EANNOTATION__STRING;
+
+	/**
+	 * The operation id for the '<em>Add EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AUTHORIZATION_IDENTIFIER___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING = SQLSchemaPackage.SQL_OBJECT___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AUTHORIZATION_IDENTIFIER___GET_EANNOTATION_DETAIL__EANNOTATION_STRING = SQLSchemaPackage.SQL_OBJECT___GET_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Set Annotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AUTHORIZATION_IDENTIFIER___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING = SQLSchemaPackage.SQL_OBJECT___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Remove EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AUTHORIZATION_IDENTIFIER___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING = SQLSchemaPackage.SQL_OBJECT___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AUTHORIZATION_IDENTIFIER___GET_EANNOTATION__STRING = SQLSchemaPackage.SQL_OBJECT___GET_EANNOTATION__STRING;
+
+	/**
+	 * The number of operations of the '<em>Authorization Identifier</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int AUTHORIZATION_IDENTIFIER_OPERATION_COUNT = SQLSchemaPackage.SQL_OBJECT_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.datatools.modelbase.sql.accesscontrol.impl.PrivilegeImpl <em>Privilege</em>}' class.
@@ -364,6 +424,69 @@ public interface SQLAccessControlPackage extends EPackage {
 	int PRIVILEGE_FEATURE_COUNT = SQLSchemaPackage.SQL_OBJECT_FEATURE_COUNT + 7;
 
 	/**
+	 * The operation id for the '<em>Add EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRIVILEGE___ADD_EANNOTATION__STRING = SQLSchemaPackage.SQL_OBJECT___ADD_EANNOTATION__STRING;
+
+	/**
+	 * The operation id for the '<em>Add EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRIVILEGE___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING = SQLSchemaPackage.SQL_OBJECT___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRIVILEGE___GET_EANNOTATION_DETAIL__EANNOTATION_STRING = SQLSchemaPackage.SQL_OBJECT___GET_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Set Annotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRIVILEGE___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING = SQLSchemaPackage.SQL_OBJECT___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Remove EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRIVILEGE___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING = SQLSchemaPackage.SQL_OBJECT___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRIVILEGE___GET_EANNOTATION__STRING = SQLSchemaPackage.SQL_OBJECT___GET_EANNOTATION__STRING;
+
+	/**
+	 * The number of operations of the '<em>Privilege</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRIVILEGE_OPERATION_COUNT = SQLSchemaPackage.SQL_OBJECT_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.eclipse.datatools.modelbase.sql.accesscontrol.impl.GroupImpl <em>Group</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -516,6 +639,69 @@ public interface SQLAccessControlPackage extends EPackage {
 	 * @ordered
 	 */
 	int GROUP_FEATURE_COUNT = AUTHORIZATION_IDENTIFIER_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Add EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GROUP___ADD_EANNOTATION__STRING = AUTHORIZATION_IDENTIFIER___ADD_EANNOTATION__STRING;
+
+	/**
+	 * The operation id for the '<em>Add EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GROUP___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING = AUTHORIZATION_IDENTIFIER___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GROUP___GET_EANNOTATION_DETAIL__EANNOTATION_STRING = AUTHORIZATION_IDENTIFIER___GET_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Set Annotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GROUP___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING = AUTHORIZATION_IDENTIFIER___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Remove EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GROUP___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING = AUTHORIZATION_IDENTIFIER___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GROUP___GET_EANNOTATION__STRING = AUTHORIZATION_IDENTIFIER___GET_EANNOTATION__STRING;
+
+	/**
+	 * The number of operations of the '<em>Group</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GROUP_OPERATION_COUNT = AUTHORIZATION_IDENTIFIER_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.datatools.modelbase.sql.accesscontrol.impl.UserImpl <em>User</em>}' class.
@@ -672,6 +858,69 @@ public interface SQLAccessControlPackage extends EPackage {
 	int USER_FEATURE_COUNT = AUTHORIZATION_IDENTIFIER_FEATURE_COUNT + 1;
 
 	/**
+	 * The operation id for the '<em>Add EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USER___ADD_EANNOTATION__STRING = AUTHORIZATION_IDENTIFIER___ADD_EANNOTATION__STRING;
+
+	/**
+	 * The operation id for the '<em>Add EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USER___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING = AUTHORIZATION_IDENTIFIER___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USER___GET_EANNOTATION_DETAIL__EANNOTATION_STRING = AUTHORIZATION_IDENTIFIER___GET_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Set Annotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USER___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING = AUTHORIZATION_IDENTIFIER___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Remove EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USER___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING = AUTHORIZATION_IDENTIFIER___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USER___GET_EANNOTATION__STRING = AUTHORIZATION_IDENTIFIER___GET_EANNOTATION__STRING;
+
+	/**
+	 * The number of operations of the '<em>User</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USER_OPERATION_COUNT = AUTHORIZATION_IDENTIFIER_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.eclipse.datatools.modelbase.sql.accesscontrol.impl.RoleImpl <em>Role</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -826,6 +1075,69 @@ public interface SQLAccessControlPackage extends EPackage {
 	int ROLE_FEATURE_COUNT = AUTHORIZATION_IDENTIFIER_FEATURE_COUNT + 1;
 
 	/**
+	 * The operation id for the '<em>Add EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROLE___ADD_EANNOTATION__STRING = AUTHORIZATION_IDENTIFIER___ADD_EANNOTATION__STRING;
+
+	/**
+	 * The operation id for the '<em>Add EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROLE___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING = AUTHORIZATION_IDENTIFIER___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROLE___GET_EANNOTATION_DETAIL__EANNOTATION_STRING = AUTHORIZATION_IDENTIFIER___GET_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Set Annotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROLE___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING = AUTHORIZATION_IDENTIFIER___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Remove EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROLE___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING = AUTHORIZATION_IDENTIFIER___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROLE___GET_EANNOTATION__STRING = AUTHORIZATION_IDENTIFIER___GET_EANNOTATION__STRING;
+
+	/**
+	 * The number of operations of the '<em>Role</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROLE_OPERATION_COUNT = AUTHORIZATION_IDENTIFIER_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.eclipse.datatools.modelbase.sql.accesscontrol.impl.RoleAuthorizationImpl <em>Role Authorization</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -951,6 +1263,69 @@ public interface SQLAccessControlPackage extends EPackage {
 	 * @ordered
 	 */
 	int ROLE_AUTHORIZATION_FEATURE_COUNT = SQLSchemaPackage.SQL_OBJECT_FEATURE_COUNT + 4;
+
+	/**
+	 * The operation id for the '<em>Add EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROLE_AUTHORIZATION___ADD_EANNOTATION__STRING = SQLSchemaPackage.SQL_OBJECT___ADD_EANNOTATION__STRING;
+
+	/**
+	 * The operation id for the '<em>Add EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROLE_AUTHORIZATION___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING = SQLSchemaPackage.SQL_OBJECT___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROLE_AUTHORIZATION___GET_EANNOTATION_DETAIL__EANNOTATION_STRING = SQLSchemaPackage.SQL_OBJECT___GET_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Set Annotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROLE_AUTHORIZATION___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING = SQLSchemaPackage.SQL_OBJECT___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Remove EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROLE_AUTHORIZATION___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING = SQLSchemaPackage.SQL_OBJECT___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROLE_AUTHORIZATION___GET_EANNOTATION__STRING = SQLSchemaPackage.SQL_OBJECT___GET_EANNOTATION__STRING;
+
+	/**
+	 * The number of operations of the '<em>Role Authorization</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROLE_AUTHORIZATION_OPERATION_COUNT = SQLSchemaPackage.SQL_OBJECT_OPERATION_COUNT + 0;
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.datatools.modelbase.sql.accesscontrol.AuthorizationIdentifier <em>Authorization Identifier</em>}'.
@@ -1247,13 +1622,14 @@ public interface SQLAccessControlPackage extends EPackage {
 	 * <ul>
 	 *   <li>each class,</li>
 	 *   <li>each feature of each class,</li>
+	 *   <li>each operation of each class,</li>
 	 *   <li>each enum,</li>
 	 *   <li>and each data type</li>
 	 * </ul>
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	interface Literals  {
+	interface Literals {
 		/**
 		 * The meta object literal for the '{@link org.eclipse.datatools.modelbase.sql.accesscontrol.impl.AuthorizationIdentifierImpl <em>Authorization Identifier</em>}' class.
 		 * <!-- begin-user-doc -->
@@ -1474,6 +1850,6 @@ public interface SQLAccessControlPackage extends EPackage {
 		 */
 		EReference ROLE_AUTHORIZATION__GRANTOR = eINSTANCE.getRoleAuthorization_Grantor();
 
-}
+	}
 
 } //SQLAccessControlPackage

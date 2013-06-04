@@ -1,23 +1,29 @@
-/*******************************************************************************
- * Copyright (c) 2001, 2004 IBM Corporation and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- * 
- * Contributors:
- *     IBM Corporation - initial API and implementation
- *******************************************************************************/
+/**
+ * <copyright>
+ * </copyright>
+ *
+ * $Id$
+ */
 package org.eclipse.datatools.modelbase.sql.routines.impl;
 
 import org.eclipse.datatools.modelbase.sql.routines.*;
+import org.eclipse.datatools.modelbase.sql.routines.BuiltInFunction;
+import org.eclipse.datatools.modelbase.sql.routines.DataAccess;
+import org.eclipse.datatools.modelbase.sql.routines.Function;
+import org.eclipse.datatools.modelbase.sql.routines.Method;
+import org.eclipse.datatools.modelbase.sql.routines.Parameter;
+import org.eclipse.datatools.modelbase.sql.routines.ParameterMode;
+import org.eclipse.datatools.modelbase.sql.routines.Procedure;
+import org.eclipse.datatools.modelbase.sql.routines.RoutineResultTable;
+import org.eclipse.datatools.modelbase.sql.routines.SQLRoutinesFactory;
+import org.eclipse.datatools.modelbase.sql.routines.SQLRoutinesPackage;
+import org.eclipse.datatools.modelbase.sql.routines.Source;
+import org.eclipse.datatools.modelbase.sql.routines.UserDefinedFunction;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
-
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
 /**
@@ -35,7 +41,7 @@ public class SQLRoutinesFactoryImpl extends EFactoryImpl implements SQLRoutinesF
 	 */
 	public static SQLRoutinesFactory init() {
 		try {
-			SQLRoutinesFactory theSQLRoutinesFactory = (SQLRoutinesFactory)EPackage.Registry.INSTANCE.getEFactory("http:///org/eclipse/datatools/modelbase/sql/routines.ecore"); //$NON-NLS-1$ 
+			SQLRoutinesFactory theSQLRoutinesFactory = (SQLRoutinesFactory)EPackage.Registry.INSTANCE.getEFactory("http:///org/eclipse/datatools/modelbase/sql/routines.ecore"); 
 			if (theSQLRoutinesFactory != null) {
 				return theSQLRoutinesFactory;
 			}
@@ -61,6 +67,7 @@ public class SQLRoutinesFactoryImpl extends EFactoryImpl implements SQLRoutinesF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case SQLRoutinesPackage.SOURCE: return createSource();
@@ -72,7 +79,7 @@ public class SQLRoutinesFactoryImpl extends EFactoryImpl implements SQLRoutinesF
 			case SQLRoutinesPackage.USER_DEFINED_FUNCTION: return createUserDefinedFunction();
 			case SQLRoutinesPackage.BUILT_IN_FUNCTION: return createBuiltInFunction();
 			default:
-				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
+				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
 	}
 
@@ -81,6 +88,7 @@ public class SQLRoutinesFactoryImpl extends EFactoryImpl implements SQLRoutinesF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object createFromString(EDataType eDataType, String initialValue) {
 		switch (eDataType.getClassifierID()) {
 			case SQLRoutinesPackage.DATA_ACCESS:
@@ -88,7 +96,7 @@ public class SQLRoutinesFactoryImpl extends EFactoryImpl implements SQLRoutinesF
 			case SQLRoutinesPackage.PARAMETER_MODE:
 				return createParameterModeFromString(eDataType, initialValue);
 			default:
-				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
+				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
 	}
 
@@ -97,6 +105,7 @@ public class SQLRoutinesFactoryImpl extends EFactoryImpl implements SQLRoutinesF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String convertToString(EDataType eDataType, Object instanceValue) {
 		switch (eDataType.getClassifierID()) {
 			case SQLRoutinesPackage.DATA_ACCESS:
@@ -104,7 +113,7 @@ public class SQLRoutinesFactoryImpl extends EFactoryImpl implements SQLRoutinesF
 			case SQLRoutinesPackage.PARAMETER_MODE:
 				return convertParameterModeToString(eDataType, instanceValue);
 			default:
-				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
+				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
 	}
 
@@ -195,7 +204,7 @@ public class SQLRoutinesFactoryImpl extends EFactoryImpl implements SQLRoutinesF
 	 */
 	public DataAccess createDataAccessFromString(EDataType eDataType, String initialValue) {
 		DataAccess result = DataAccess.get(initialValue);
-		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
 		return result;
 	}
 
@@ -215,7 +224,7 @@ public class SQLRoutinesFactoryImpl extends EFactoryImpl implements SQLRoutinesF
 	 */
 	public ParameterMode createParameterModeFromString(EDataType eDataType, String initialValue) {
 		ParameterMode result = ParameterMode.get(initialValue);
-		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
 		return result;
 	}
 
@@ -243,6 +252,7 @@ public class SQLRoutinesFactoryImpl extends EFactoryImpl implements SQLRoutinesF
 	 * @deprecated
 	 * @generated
 	 */
+	@Deprecated
 	public static SQLRoutinesPackage getPackage() {
 		return SQLRoutinesPackage.eINSTANCE;
 	}

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: CheckType.java,v 1.3 2006/09/07 00:19:49 dpchou Exp $
+ * $Id$
  */
 package org.eclipse.datatools.modelbase.sql.tables;
 
@@ -10,7 +10,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import org.eclipse.emf.common.util.AbstractEnumerator;
+import org.eclipse.emf.common.util.Enumerator;
 
 /**
  * <!-- begin-user-doc -->
@@ -25,42 +25,39 @@ import org.eclipse.emf.common.util.AbstractEnumerator;
  * @model
  * @generated
  */
-public final class CheckType extends AbstractEnumerator {
-	/**
-	 * The '<em><b>CASCADED</b></em>' literal value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #CASCADED_LITERAL
-	 * @model
-	 * @generated
-	 * @ordered
-	 */
-	public static final int CASCADED = 0;
-
-	/**
-	 * The '<em><b>LOCAL</b></em>' literal value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #LOCAL_LITERAL
-	 * @model
-	 * @generated
-	 * @ordered
-	 */
-	public static final int LOCAL = 1;
-
-	/**
-	 * The '<em><b>NONE</b></em>' literal value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #NONE_LITERAL
-	 * @model
-	 * @generated
-	 * @ordered
-	 */
-	public static final int NONE = 2;
-
+public enum CheckType implements Enumerator {
 	/**
 	 * The '<em><b>CASCADED</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #CASCADED_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	CASCADED(0, "CASCADED", "CASCADED"),
+
+	/**
+	 * The '<em><b>LOCAL</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #LOCAL_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	LOCAL(1, "LOCAL", "LOCAL"),
+
+	/**
+	 * The '<em><b>NONE</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #NONE_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	NONE(2, "NONE", "NONE");
+
+	/**
+	 * The '<em><b>CASCADED</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>CASCADED</b></em>' literal object isn't clear,
@@ -68,13 +65,14 @@ public final class CheckType extends AbstractEnumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #CASCADED
+	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final CheckType CASCADED_LITERAL = new CheckType(CASCADED, "CASCADED", "CASCADED"); //$NON-NLS-1$
+	public static final int CASCADED_VALUE = 0;
 
 	/**
-	 * The '<em><b>LOCAL</b></em>' literal object.
+	 * The '<em><b>LOCAL</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>LOCAL</b></em>' literal object isn't clear,
@@ -82,13 +80,14 @@ public final class CheckType extends AbstractEnumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #LOCAL
+	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final CheckType LOCAL_LITERAL = new CheckType(LOCAL, "LOCAL", "LOCAL"); //$NON-NLS-1$
+	public static final int LOCAL_VALUE = 1;
 
 	/**
-	 * The '<em><b>NONE</b></em>' literal object.
+	 * The '<em><b>NONE</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>NONE</b></em>' literal object isn't clear,
@@ -96,10 +95,11 @@ public final class CheckType extends AbstractEnumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #NONE
+	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final CheckType NONE_LITERAL = new CheckType(NONE, "NONE", "NONE"); //$NON-NLS-1$
+	public static final int NONE_VALUE = 2;
 
 	/**
 	 * An array of all the '<em><b>Check Type</b></em>' enumerators.
@@ -109,9 +109,9 @@ public final class CheckType extends AbstractEnumerator {
 	 */
 	private static final CheckType[] VALUES_ARRAY =
 		new CheckType[] {
-			CASCADED_LITERAL,
-			LOCAL_LITERAL,
-			NONE_LITERAL,
+			CASCADED,
+			LOCAL,
+			NONE,
 		};
 
 	/**
@@ -120,7 +120,7 @@ public final class CheckType extends AbstractEnumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<CheckType> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
 	 * Returns the '<em><b>Check Type</b></em>' literal with the specified literal value.
@@ -162,12 +162,33 @@ public final class CheckType extends AbstractEnumerator {
 	 */
 	public static CheckType get(int value) {
 		switch (value) {
-			case CASCADED: return CASCADED_LITERAL;
-			case LOCAL: return LOCAL_LITERAL;
-			case NONE: return NONE_LITERAL;
+			case CASCADED_VALUE: return CASCADED;
+			case LOCAL_VALUE: return LOCAL;
+			case NONE_VALUE: return NONE;
 		}
 		return null;
 	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final int value;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final String name;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final String literal;
 
 	/**
 	 * Only this class can construct instances.
@@ -176,7 +197,92 @@ public final class CheckType extends AbstractEnumerator {
 	 * @generated
 	 */
 	private CheckType(int value, String name, String literal) {
-		super(value, name, literal);
+		this.value = value;
+		this.name = name;
+		this.literal = literal;
 	}
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int getValue() {
+	  return value;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getName() {
+	  return name;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getLiteral() {
+	  return literal;
+	}
+
+	/**
+	 * Returns the literal value of the enumerator, which is its string representation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		return literal;
+	}
+	
+	/*******************DEJAMOS ESTA SECCION POR COMPATIBILIDAD CON LOS PLUGINS QUE USAN EL DATATOOLS GENERADO CON COMPLIANCE 1.4 ***********************
+
+	
+	/**
+	 * The '<em><b>CASCADED</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>CASCADED</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #CASCADED
+	 * @generated NOT
+	 * @ordered
+	 */
+	public static final CheckType CASCADED_LITERAL = CASCADED; //$NON-NLS-1$
+
+	/**
+	 * The '<em><b>LOCAL</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>LOCAL</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #LOCAL
+	 * @generated NOT
+	 * @ordered
+	 */
+	public static final CheckType LOCAL_LITERAL = LOCAL; //$NON-NLS-1$
+
+	/**
+	 * The '<em><b>NONE</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>NONE</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #NONE
+	 * @generated NOT
+	 * @ordered
+	 */
+	public static final CheckType NONE_LITERAL = NONE; //$NON-NLS-1$
+	
 } //CheckType

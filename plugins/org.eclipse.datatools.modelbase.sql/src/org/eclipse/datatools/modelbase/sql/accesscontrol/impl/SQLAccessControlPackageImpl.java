@@ -1,24 +1,18 @@
-/*******************************************************************************
- * Copyright (c) 2001, 2004 IBM Corporation and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- * 
- * Contributors:
- *     IBM Corporation - initial API and implementation
- *******************************************************************************/
+/**
+ * <copyright>
+ * </copyright>
+ *
+ * $Id$
+ */
 package org.eclipse.datatools.modelbase.sql.accesscontrol.impl;
 
 import org.eclipse.datatools.modelbase.sql.accesscontrol.AuthorizationIdentifier;
-import org.eclipse.datatools.modelbase.sql.accesscontrol.DoubleObjectPrivilege;
 import org.eclipse.datatools.modelbase.sql.accesscontrol.Group;
 import org.eclipse.datatools.modelbase.sql.accesscontrol.Privilege;
 import org.eclipse.datatools.modelbase.sql.accesscontrol.Role;
 import org.eclipse.datatools.modelbase.sql.accesscontrol.RoleAuthorization;
 import org.eclipse.datatools.modelbase.sql.accesscontrol.SQLAccessControlFactory;
 import org.eclipse.datatools.modelbase.sql.accesscontrol.SQLAccessControlPackage;
-import org.eclipse.datatools.modelbase.sql.accesscontrol.TablePrivilege;
 import org.eclipse.datatools.modelbase.sql.accesscontrol.User;
 import org.eclipse.datatools.modelbase.sql.constraints.SQLConstraintsPackage;
 import org.eclipse.datatools.modelbase.sql.constraints.impl.SQLConstraintsPackageImpl;
@@ -39,9 +33,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EcorePackage;
-
 import org.eclipse.emf.ecore.impl.EPackageImpl;
-import org.eclipse.emf.ecore.impl.EcorePackageImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -119,20 +111,10 @@ public class SQLAccessControlPackageImpl extends EPackageImpl implements SQLAcce
 	private static boolean isInited = false;
 
 	/**
-	 * Creates, registers, and initializes the <b>Package</b> for this
-	 * model, and for any others upon which it depends.  Simple
-	 * dependencies are satisfied by calling this method on all
-	 * dependent packages before doing anything else.  This method drives
-	 * initialization for interdependent packages directly, in parallel
-	 * with this package, itself.
-	 * <p>Of this package and its interdependencies, all packages which
-	 * have not yet been registered by their URI values are first created
-	 * and registered.  The packages are then initialized in two steps:
-	 * meta-model objects for all of the packages are created before any
-	 * are initialized, since one package's meta-model objects may refer to
-	 * those of another.
-	 * <p>Invocation of this method will not affect any packages that have
-	 * already been initialized.
+	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
+	 * 
+	 * <p>This method is used to initialize {@link SQLAccessControlPackage#eINSTANCE} when that field is accessed.
+	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #eNS_URI
@@ -144,7 +126,7 @@ public class SQLAccessControlPackageImpl extends EPackageImpl implements SQLAcce
 		if (isInited) return (SQLAccessControlPackage)EPackage.Registry.INSTANCE.getEPackage(SQLAccessControlPackage.eNS_URI);
 
 		// Obtain or create and register package
-		SQLAccessControlPackageImpl theSQLAccessControlPackage = (SQLAccessControlPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(eNS_URI) instanceof SQLAccessControlPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(eNS_URI) : new SQLAccessControlPackageImpl());
+		SQLAccessControlPackageImpl theSQLAccessControlPackage = (SQLAccessControlPackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof SQLAccessControlPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new SQLAccessControlPackageImpl());
 
 		isInited = true;
 
@@ -183,6 +165,9 @@ public class SQLAccessControlPackageImpl extends EPackageImpl implements SQLAcce
 		// Mark meta-data to indicate it can't be changed
 		theSQLAccessControlPackage.freeze();
 
+  
+		// Update the registry and return the package
+		EPackage.Registry.INSTANCE.put(SQLAccessControlPackage.eNS_URI, theSQLAccessControlPackage);
 		return theSQLAccessControlPackage;
 	}
 
@@ -507,6 +492,10 @@ public class SQLAccessControlPackageImpl extends EPackageImpl implements SQLAcce
 		// Obtain other dependent packages
 		SQLSchemaPackage theSQLSchemaPackage = (SQLSchemaPackage)EPackage.Registry.INSTANCE.getEPackage(SQLSchemaPackage.eNS_URI);
 
+		// Create type parameters
+
+		// Set bounds for type parameters
+
 		// Add supertypes to classes
 		authorizationIdentifierEClass.getESuperTypes().add(theSQLSchemaPackage.getSQLObject());
 		privilegeEClass.getESuperTypes().add(theSQLSchemaPackage.getSQLObject());
@@ -515,38 +504,38 @@ public class SQLAccessControlPackageImpl extends EPackageImpl implements SQLAcce
 		roleEClass.getESuperTypes().add(this.getAuthorizationIdentifier());
 		roleAuthorizationEClass.getESuperTypes().add(theSQLSchemaPackage.getSQLObject());
 
-		// Initialize classes and features; add operations and parameters
-		initEClass(authorizationIdentifierEClass, AuthorizationIdentifier.class, "AuthorizationIdentifier", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(getAuthorizationIdentifier_OwnedSchema(), theSQLSchemaPackage.getSchema(), theSQLSchemaPackage.getSchema_Owner(), "ownedSchema", null, 0, -1, AuthorizationIdentifier.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getAuthorizationIdentifier_Database(), theSQLSchemaPackage.getDatabase(), theSQLSchemaPackage.getDatabase_AuthorizationIds(), "Database", null, 1, 1, AuthorizationIdentifier.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getAuthorizationIdentifier_ReceivedRoleAuthorization(), this.getRoleAuthorization(), this.getRoleAuthorization_Grantee(), "receivedRoleAuthorization", null, 0, -1, AuthorizationIdentifier.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getAuthorizationIdentifier_GrantedRoleAuthorization(), this.getRoleAuthorization(), this.getRoleAuthorization_Grantor(), "grantedRoleAuthorization", null, 0, -1, AuthorizationIdentifier.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getAuthorizationIdentifier_GrantedPrivilege(), this.getPrivilege(), this.getPrivilege_Grantor(), "grantedPrivilege", null, 0, -1, AuthorizationIdentifier.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getAuthorizationIdentifier_ReceivedPrivilege(), this.getPrivilege(), this.getPrivilege_Grantee(), "receivedPrivilege", null, 0, -1, AuthorizationIdentifier.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		// Initialize classes, features, and operations; add parameters
+		initEClass(authorizationIdentifierEClass, AuthorizationIdentifier.class, "AuthorizationIdentifier", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getAuthorizationIdentifier_OwnedSchema(), theSQLSchemaPackage.getSchema(), theSQLSchemaPackage.getSchema_Owner(), "ownedSchema", null, 0, -1, AuthorizationIdentifier.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getAuthorizationIdentifier_Database(), theSQLSchemaPackage.getDatabase(), theSQLSchemaPackage.getDatabase_AuthorizationIds(), "Database", null, 1, 1, AuthorizationIdentifier.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getAuthorizationIdentifier_ReceivedRoleAuthorization(), this.getRoleAuthorization(), this.getRoleAuthorization_Grantee(), "receivedRoleAuthorization", null, 0, -1, AuthorizationIdentifier.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getAuthorizationIdentifier_GrantedRoleAuthorization(), this.getRoleAuthorization(), this.getRoleAuthorization_Grantor(), "grantedRoleAuthorization", null, 0, -1, AuthorizationIdentifier.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getAuthorizationIdentifier_GrantedPrivilege(), this.getPrivilege(), this.getPrivilege_Grantor(), "grantedPrivilege", null, 0, -1, AuthorizationIdentifier.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getAuthorizationIdentifier_ReceivedPrivilege(), this.getPrivilege(), this.getPrivilege_Grantee(), "receivedPrivilege", null, 0, -1, AuthorizationIdentifier.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(privilegeEClass, Privilege.class, "Privilege", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEAttribute(getPrivilege_Grantable(), ecorePackage.getEBoolean(), "grantable", null, 0, 1, Privilege.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEAttribute(getPrivilege_Action(), ecorePackage.getEString(), "action", null, 0, 1, Privilege.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEAttribute(getPrivilege_WithHierarchy(), ecorePackage.getEBoolean(), "withHierarchy", null, 0, 1, Privilege.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getPrivilege_Grantor(), this.getAuthorizationIdentifier(), this.getAuthorizationIdentifier_GrantedPrivilege(), "grantor", null, 1, 1, Privilege.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getPrivilege_Grantee(), this.getAuthorizationIdentifier(), this.getAuthorizationIdentifier_ReceivedPrivilege(), "grantee", null, 0, 1, Privilege.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getPrivilege_ActionObjects(), theSQLSchemaPackage.getSQLObject(), null, "actionObjects", null, 0, -1, Privilege.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getPrivilege_Object(), theSQLSchemaPackage.getSQLObject(), theSQLSchemaPackage.getSQLObject_Privileges(), "object", null, 1, 1, Privilege.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEClass(privilegeEClass, Privilege.class, "Privilege", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getPrivilege_Grantable(), ecorePackage.getEBoolean(), "grantable", null, 0, 1, Privilege.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPrivilege_Action(), ecorePackage.getEString(), "action", null, 0, 1, Privilege.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPrivilege_WithHierarchy(), ecorePackage.getEBoolean(), "withHierarchy", null, 0, 1, Privilege.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPrivilege_Grantor(), this.getAuthorizationIdentifier(), this.getAuthorizationIdentifier_GrantedPrivilege(), "grantor", null, 1, 1, Privilege.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPrivilege_Grantee(), this.getAuthorizationIdentifier(), this.getAuthorizationIdentifier_ReceivedPrivilege(), "grantee", null, 0, 1, Privilege.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPrivilege_ActionObjects(), theSQLSchemaPackage.getSQLObject(), null, "actionObjects", null, 0, -1, Privilege.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPrivilege_Object(), theSQLSchemaPackage.getSQLObject(), theSQLSchemaPackage.getSQLObject_Privileges(), "object", null, 1, 1, Privilege.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(groupEClass, Group.class, "Group", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(getGroup_User(), this.getUser(), this.getUser_Group(), "user", null, 0, -1, Group.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEClass(groupEClass, Group.class, "Group", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getGroup_User(), this.getUser(), this.getUser_Group(), "user", null, 0, -1, Group.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(userEClass, User.class, "User", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(getUser_Group(), this.getGroup(), this.getGroup_User(), "group", null, 0, -1, User.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEClass(userEClass, User.class, "User", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getUser_Group(), this.getGroup(), this.getGroup_User(), "group", null, 0, -1, User.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(roleEClass, Role.class, "Role", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(getRole_RoleAuthorization(), this.getRoleAuthorization(), this.getRoleAuthorization_Role(), "roleAuthorization", null, 1, -1, Role.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEClass(roleEClass, Role.class, "Role", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getRole_RoleAuthorization(), this.getRoleAuthorization(), this.getRoleAuthorization_Role(), "roleAuthorization", null, 1, -1, Role.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(roleAuthorizationEClass, RoleAuthorization.class, "RoleAuthorization", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEAttribute(getRoleAuthorization_Grantable(), ecorePackage.getEBoolean(), "grantable", null, 0, 1, RoleAuthorization.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getRoleAuthorization_Role(), this.getRole(), this.getRole_RoleAuthorization(), "role", null, 1, 1, RoleAuthorization.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getRoleAuthorization_Grantee(), this.getAuthorizationIdentifier(), this.getAuthorizationIdentifier_ReceivedRoleAuthorization(), "grantee", null, 1, 1, RoleAuthorization.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-		initEReference(getRoleAuthorization_Grantor(), this.getAuthorizationIdentifier(), this.getAuthorizationIdentifier_GrantedRoleAuthorization(), "grantor", null, 1, 1, RoleAuthorization.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEClass(roleAuthorizationEClass, RoleAuthorization.class, "RoleAuthorization", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getRoleAuthorization_Grantable(), ecorePackage.getEBoolean(), "grantable", null, 0, 1, RoleAuthorization.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getRoleAuthorization_Role(), this.getRole(), this.getRole_RoleAuthorization(), "role", null, 1, 1, RoleAuthorization.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getRoleAuthorization_Grantee(), this.getAuthorizationIdentifier(), this.getAuthorizationIdentifier_ReceivedRoleAuthorization(), "grantee", null, 1, 1, RoleAuthorization.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getRoleAuthorization_Grantor(), this.getAuthorizationIdentifier(), this.getAuthorizationIdentifier_GrantedRoleAuthorization(), "grantor", null, 1, 1, RoleAuthorization.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

@@ -1,18 +1,16 @@
-/*******************************************************************************
- * Copyright (c) 2001, 2004 IBM Corporation and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- * 
- * Contributors:
- *     IBM Corporation - initial API and implementation
- *******************************************************************************/
+/**
+ * <copyright>
+ * </copyright>
+ *
+ * $Id$
+ */
 package org.eclipse.datatools.modelbase.sql.tables;
 
 import java.util.List;
 
+import org.eclipse.datatools.modelbase.sql.constraints.ForeignKey;
 import org.eclipse.datatools.modelbase.sql.constraints.PrimaryKey;
+import org.eclipse.datatools.modelbase.sql.constraints.TableConstraint;
 import org.eclipse.emf.common.util.EList;
 
 /**
@@ -51,10 +49,10 @@ public interface BaseTable extends Table {
 	 * @return the value of the '<em>Constraints</em>' containment reference list.
 	 * @see org.eclipse.datatools.modelbase.sql.tables.SQLTablesPackage#getBaseTable_Constraints()
 	 * @see org.eclipse.datatools.modelbase.sql.constraints.TableConstraint#getBaseTable
-	 * @model type="org.eclipse.datatools.modelbase.sql.constraints.TableConstraint" opposite="BaseTable" containment="true"
+	 * @model opposite="BaseTable" containment="true"
 	 * @generated
 	 */
-	EList getConstraints();
+	EList<TableConstraint> getConstraints();
 
 	/**
 	 * Returns the value of the '<em><b>Referencing Foreign Keys</b></em>' reference list.
@@ -69,10 +67,10 @@ public interface BaseTable extends Table {
 	 * @return the value of the '<em>Referencing Foreign Keys</em>' reference list.
 	 * @see org.eclipse.datatools.modelbase.sql.tables.SQLTablesPackage#getBaseTable_ReferencingForeignKeys()
 	 * @see org.eclipse.datatools.modelbase.sql.constraints.ForeignKey#getReferencedTable
-	 * @model type="org.eclipse.datatools.modelbase.sql.constraints.ForeignKey" opposite="referencedTable"
+	 * @model opposite="referencedTable"
 	 * @generated
 	 */
-	EList getReferencingForeignKeys();
+	EList<ForeignKey> getReferencingForeignKeys();
 
 	/**
 	 * <!-- begin-user-doc -->

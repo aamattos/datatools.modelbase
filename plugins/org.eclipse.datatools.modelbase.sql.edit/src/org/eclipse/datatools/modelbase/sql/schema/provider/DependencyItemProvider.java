@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: DependencyItemProvider.java,v 1.3 2007/05/31 00:29:17 dpchou Exp $
+ * $Id$
  */
 package org.eclipse.datatools.modelbase.sql.schema.provider;
 
@@ -14,10 +14,10 @@ import org.eclipse.datatools.modelbase.sql.schema.Dependency;
 import org.eclipse.datatools.modelbase.sql.schema.SQLSchemaPackage;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
+import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
@@ -54,7 +54,8 @@ public class DependencyItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getPropertyDescriptors(Object object) {
+	@Override
+	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
@@ -75,12 +76,12 @@ public class DependencyItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Dependency_targetEnd_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_Dependency_targetEnd_feature", "_UI_Dependency_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 getString("_UI_Dependency_targetEnd_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Dependency_targetEnd_feature", "_UI_Dependency_type"),
 				 SQLSchemaPackage.Literals.DEPENDENCY__TARGET_END,
 				 true,
 				 false,
-				 false,
+				 true,
 				 null,
 				 null,
 				 null));
@@ -97,8 +98,8 @@ public class DependencyItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Dependency_dependencyType_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_Dependency_dependencyType_feature", "_UI_Dependency_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 getString("_UI_Dependency_dependencyType_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Dependency_dependencyType_feature", "_UI_Dependency_type"),
 				 SQLSchemaPackage.Literals.DEPENDENCY__DEPENDENCY_TYPE,
 				 true,
 				 false,
@@ -114,8 +115,9 @@ public class DependencyItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/Dependency")); //$NON-NLS-1$
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/Dependency"));
 	}
 
 	/**
@@ -124,11 +126,12 @@ public class DependencyItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getText(Object object) {
 		String label = ((Dependency)object).getName();
 		return label == null || label.length() == 0 ?
-			getString("_UI_Dependency_type") : //$NON-NLS-1$
-			getString("_UI_Dependency_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+			getString("_UI_Dependency_type") :
+			label;
 	}
 
 	/**
@@ -138,6 +141,7 @@ public class DependencyItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
@@ -156,8 +160,8 @@ public class DependencyItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void collectNewChildDescriptors(Collection newChildDescriptors, Object object) {
+	@Override
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
-
 }

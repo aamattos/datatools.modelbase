@@ -5,6 +5,9 @@
     nsURI="http:///SQLModel.ecore" nsPrefix="SQLModel">
   <eSubpackages name="schema" nsURI="http:///org/eclipse/datatools/modelbase/sql/schema.ecore"
       nsPrefix="SQLSchema">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="settingDelegates" value="com.isb.datamodeler.schema.setting"/>
+    </eAnnotations>
     <eClassifiers xsi:type="ecore:EClass" name="IdentitySpecifier" eSuperTypes="#//schema/SQLObject">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Reference: 5WD-02-Foundation-2002-12 4.14.4 Identity columns"/>
@@ -195,6 +198,9 @@
   </eSubpackages>
   <eSubpackages name="constraints" nsURI="http:///org/eclipse/datatools/modelbase/sql/constraints.ecore"
       nsPrefix="SQLConstraints">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="settingDelegates" value="com.isb.datamodeler.constraints.setting"/>
+    </eAnnotations>
     <eClassifiers xsi:type="ecore:EClass" name="Assertion" eSuperTypes="#//constraints/Constraint">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Reference: 5WD-02-Foundation-2002-12 4.17.4 Assertions,&#xD;&#xA;5WD-02-Foundation-2002-12 11.37 &lt;assertion definition>&#xD;&#xA;"/>
@@ -385,8 +391,7 @@
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="length" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
           defaultValueLiteral="1"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="coercibility" eType="#//datatypes/CoercibilityType"/>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="fixedLength" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
-          changeable="false"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="fixedLength" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="collationName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="characterSet" lowerBound="1"
           eType="#//datatypes/CharacterSet" eOpposite="#//datatypes/CharacterSet/CharacterStringDataType"/>
@@ -671,6 +676,9 @@
   </eSubpackages>
   <eSubpackages name="expressions" nsURI="http:///org/eclipse/datatools/modelbase/sql/expressions.ecore"
       nsPrefix="SQLExpressions">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="settingDelegates" value="com.isb.datamodeler.expressions.setting"/>
+    </eAnnotations>
     <eClassifiers xsi:type="ecore:EClass" name="QueryExpression" abstract="true" interface="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Reference: 5WD-02-Foundation-2002-12 7 Query Expression&#xD;&#xA;"/>
@@ -708,7 +716,8 @@
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Place holder for the default search condition."/>
       </eAnnotations>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="SQL" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="SQL" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+          transient="true" unsettable="true" derived="true"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="ValueExpressionDefault" eSuperTypes="#//schema/SQLObject #//expressions/ValueExpression">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -845,10 +854,8 @@
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="mutator" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="returnTable" eType="#//routines/RoutineResultTable"
           containment="true"/>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="returnScalar" eType="#//routines/Parameter"
-          containment="true"/>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="returnCast" eType="#//routines/Parameter"
-          containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="returnScalar" eType="#//routines/Parameter"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="returnCast" eType="#//routines/Parameter"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EEnum" name="DataAccess">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -961,6 +968,9 @@
   </eSubpackages>
   <eSubpackages name="tables" nsURI="http:///org/eclipse/datatools/modelbase/sql/tables.ecore"
       nsPrefix="SQLTables">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="settingDelegates" value="com.isb.datamodeler.tables.setting"/>
+    </eAnnotations>
     <eClassifiers xsi:type="ecore:EClass" name="ViewTable" eSuperTypes="#//tables/DerivedTable">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Reference: 5WD-02-Foundation-2002-12 4.14 Tables&#xD;&#xA;"/>
@@ -1053,7 +1063,10 @@
           defaultValueLiteral="False"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="nullable" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
           defaultValueLiteral="True"/>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="defaultValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="defaultValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+          transient="true" unsettable="true">
+        <eAnnotations source="com.isb.datamodeler.tables.setting"/>
+      </eStructuralFeatures>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="scopeCheck" eType="#//schema/ReferentialActionType"
           defaultValueLiteral="NO_ACTION"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="scopeChecked" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>

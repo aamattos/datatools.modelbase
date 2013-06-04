@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: PrivilegeItemProvider.java,v 1.3 2007/05/31 00:29:18 dpchou Exp $
+ * $Id$
  */
 package org.eclipse.datatools.modelbase.sql.accesscontrol.provider;
 
@@ -20,12 +20,12 @@ import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
+import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-
 
 /**
  * This is the item provider adapter for a {@link org.eclipse.datatools.modelbase.sql.accesscontrol.Privilege} object.
@@ -57,7 +57,8 @@ public class PrivilegeItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getPropertyDescriptors(Object object) {
+	@Override
+	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
@@ -82,8 +83,8 @@ public class PrivilegeItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Privilege_grantable_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_Privilege_grantable_feature", "_UI_Privilege_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 getString("_UI_Privilege_grantable_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Privilege_grantable_feature", "_UI_Privilege_type"),
 				 SQLAccessControlPackage.Literals.PRIVILEGE__GRANTABLE,
 				 true,
 				 false,
@@ -104,8 +105,8 @@ public class PrivilegeItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Privilege_action_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_Privilege_action_feature", "_UI_Privilege_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 getString("_UI_Privilege_action_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Privilege_action_feature", "_UI_Privilege_type"),
 				 SQLAccessControlPackage.Literals.PRIVILEGE__ACTION,
 				 true,
 				 false,
@@ -126,8 +127,8 @@ public class PrivilegeItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Privilege_withHierarchy_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_Privilege_withHierarchy_feature", "_UI_Privilege_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 getString("_UI_Privilege_withHierarchy_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Privilege_withHierarchy_feature", "_UI_Privilege_type"),
 				 SQLAccessControlPackage.Literals.PRIVILEGE__WITH_HIERARCHY,
 				 true,
 				 false,
@@ -148,12 +149,12 @@ public class PrivilegeItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Privilege_grantor_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_Privilege_grantor_feature", "_UI_Privilege_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 getString("_UI_Privilege_grantor_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Privilege_grantor_feature", "_UI_Privilege_type"),
 				 SQLAccessControlPackage.Literals.PRIVILEGE__GRANTOR,
 				 true,
 				 false,
-				 false,
+				 true,
 				 null,
 				 null,
 				 null));
@@ -170,8 +171,8 @@ public class PrivilegeItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Privilege_actionObjects_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_Privilege_actionObjects_feature", "_UI_Privilege_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 getString("_UI_Privilege_actionObjects_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Privilege_actionObjects_feature", "_UI_Privilege_type"),
 				 SQLAccessControlPackage.Literals.PRIVILEGE__ACTION_OBJECTS,
 				 true,
 				 false,
@@ -192,12 +193,12 @@ public class PrivilegeItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Privilege_object_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_Privilege_object_feature", "_UI_Privilege_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 getString("_UI_Privilege_object_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Privilege_object_feature", "_UI_Privilege_type"),
 				 SQLAccessControlPackage.Literals.PRIVILEGE__OBJECT,
 				 true,
 				 false,
-				 false,
+				 true,
 				 null,
 				 null,
 				 null));
@@ -209,8 +210,9 @@ public class PrivilegeItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/Privilege")); //$NON-NLS-1$
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/Privilege"));
 	}
 
 	/**
@@ -219,11 +221,12 @@ public class PrivilegeItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getText(Object object) {
 		String label = ((Privilege)object).getName();
 		return label == null || label.length() == 0 ?
-			getString("_UI_Privilege_type") : //$NON-NLS-1$
-			getString("_UI_Privilege_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+			getString("_UI_Privilege_type") :
+			label;
 	}
 
 	/**
@@ -233,6 +236,7 @@ public class PrivilegeItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
@@ -253,7 +257,8 @@ public class PrivilegeItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void collectNewChildDescriptors(Collection newChildDescriptors, Object object) {
+	@Override
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 
@@ -263,8 +268,8 @@ public class PrivilegeItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ResourceLocator getResourceLocator() {
 		return SqlmodelEditPlugin.INSTANCE;
 	}
-
 }

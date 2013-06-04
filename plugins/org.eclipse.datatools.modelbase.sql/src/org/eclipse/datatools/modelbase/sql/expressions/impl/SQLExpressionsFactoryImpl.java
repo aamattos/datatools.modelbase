@@ -1,22 +1,21 @@
-/*******************************************************************************
- * Copyright (c) 2001, 2004 IBM Corporation and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- * 
- * Contributors:
- *     IBM Corporation - initial API and implementation
- *******************************************************************************/
+/**
+ * <copyright>
+ * </copyright>
+ *
+ * $Id$
+ */
 package org.eclipse.datatools.modelbase.sql.expressions.impl;
 
 import org.eclipse.datatools.modelbase.sql.expressions.*;
+import org.eclipse.datatools.modelbase.sql.expressions.QueryExpressionDefault;
+import org.eclipse.datatools.modelbase.sql.expressions.SQLExpressionsFactory;
+import org.eclipse.datatools.modelbase.sql.expressions.SQLExpressionsPackage;
+import org.eclipse.datatools.modelbase.sql.expressions.SearchConditionDefault;
+import org.eclipse.datatools.modelbase.sql.expressions.ValueExpressionDefault;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
-
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
 /**
@@ -34,7 +33,7 @@ public class SQLExpressionsFactoryImpl extends EFactoryImpl implements SQLExpres
 	 */
 	public static SQLExpressionsFactory init() {
 		try {
-			SQLExpressionsFactory theSQLExpressionsFactory = (SQLExpressionsFactory)EPackage.Registry.INSTANCE.getEFactory("http:///org/eclipse/datatools/modelbase/sql/expressions.ecore"); //$NON-NLS-1$ 
+			SQLExpressionsFactory theSQLExpressionsFactory = (SQLExpressionsFactory)EPackage.Registry.INSTANCE.getEFactory("http:///org/eclipse/datatools/modelbase/sql/expressions.ecore"); 
 			if (theSQLExpressionsFactory != null) {
 				return theSQLExpressionsFactory;
 			}
@@ -60,13 +59,14 @@ public class SQLExpressionsFactoryImpl extends EFactoryImpl implements SQLExpres
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case SQLExpressionsPackage.QUERY_EXPRESSION_DEFAULT: return createQueryExpressionDefault();
 			case SQLExpressionsPackage.SEARCH_CONDITION_DEFAULT: return createSearchConditionDefault();
 			case SQLExpressionsPackage.VALUE_EXPRESSION_DEFAULT: return createValueExpressionDefault();
 			default:
-				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
+				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
 	}
 
@@ -115,6 +115,7 @@ public class SQLExpressionsFactoryImpl extends EFactoryImpl implements SQLExpres
 	 * @deprecated
 	 * @generated
 	 */
+	@Deprecated
 	public static SQLExpressionsPackage getPackage() {
 		return SQLExpressionsPackage.eINSTANCE;
 	}

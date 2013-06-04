@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SQLTablesItemProviderAdapterFactory.java,v 1.2 2005/12/22 22:37:40 bpayton Exp $
+ * $Id$
  */
 package org.eclipse.datatools.modelbase.sql.tables.provider;
 
@@ -17,6 +17,7 @@ import org.eclipse.emf.edit.provider.ChangeNotifier;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.provider.IChangeNotifier;
+import org.eclipse.emf.edit.provider.IDisposable;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
@@ -33,7 +34,7 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
  * <!-- end-user-doc -->
  * @generated
  */
-public class SQLTablesItemProviderAdapterFactory extends SQLTablesAdapterFactory implements ComposeableAdapterFactory, IChangeNotifier {
+public class SQLTablesItemProviderAdapterFactory extends SQLTablesAdapterFactory implements ComposeableAdapterFactory, IChangeNotifier, IDisposable {
 	/**
 	 * This keeps track of the root adapter factory that delegates to this adapter factory.
 	 * <!-- begin-user-doc -->
@@ -56,7 +57,7 @@ public class SQLTablesItemProviderAdapterFactory extends SQLTablesAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected Collection supportedTypes = new ArrayList();
+	protected Collection<Object> supportedTypes = new ArrayList<Object>();
 
 	/**
 	 * This constructs an instance.
@@ -86,6 +87,7 @@ public class SQLTablesItemProviderAdapterFactory extends SQLTablesAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createViewTableAdapter() {
 		if (viewTableItemProvider == null) {
 			viewTableItemProvider = new ViewTableItemProvider(this);
@@ -108,6 +110,7 @@ public class SQLTablesItemProviderAdapterFactory extends SQLTablesAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createTemporaryTableAdapter() {
 		if (temporaryTableItemProvider == null) {
 			temporaryTableItemProvider = new TemporaryTableItemProvider(this);
@@ -130,6 +133,7 @@ public class SQLTablesItemProviderAdapterFactory extends SQLTablesAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createPersistentTableAdapter() {
 		if (persistentTableItemProvider == null) {
 			persistentTableItemProvider = new PersistentTableItemProvider(this);
@@ -152,6 +156,7 @@ public class SQLTablesItemProviderAdapterFactory extends SQLTablesAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createColumnAdapter() {
 		if (columnItemProvider == null) {
 			columnItemProvider = new ColumnItemProvider(this);
@@ -174,6 +179,7 @@ public class SQLTablesItemProviderAdapterFactory extends SQLTablesAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createTriggerAdapter() {
 		if (triggerItemProvider == null) {
 			triggerItemProvider = new TriggerItemProvider(this);
@@ -207,6 +213,7 @@ public class SQLTablesItemProviderAdapterFactory extends SQLTablesAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isFactoryForType(Object type) {
 		return supportedTypes.contains(type) || super.isFactoryForType(type);
 	}
@@ -217,6 +224,7 @@ public class SQLTablesItemProviderAdapterFactory extends SQLTablesAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter adapt(Notifier notifier, Object type) {
 		return super.adapt(notifier, this);
 	}
@@ -226,10 +234,11 @@ public class SQLTablesItemProviderAdapterFactory extends SQLTablesAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object adapt(Object object, Object type) {
 		if (isFactoryForType(type)) {
 			Object adapter = super.adapt(object, type);
-			if (!(type instanceof Class) || (((Class)type).isInstance(adapter))) {
+			if (!(type instanceof Class<?>) || (((Class<?>)type).isInstance(adapter))) {
 				return adapter;
 			}
 		}
@@ -269,6 +278,20 @@ public class SQLTablesItemProviderAdapterFactory extends SQLTablesAdapterFactory
 		if (parentAdapterFactory != null) {
 			parentAdapterFactory.fireNotifyChanged(notification);
 		}
+	}
+
+	/**
+	 * This disposes all of the item providers created by this factory. 
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void dispose() {
+		if (viewTableItemProvider != null) viewTableItemProvider.dispose();
+		if (temporaryTableItemProvider != null) temporaryTableItemProvider.dispose();
+		if (persistentTableItemProvider != null) persistentTableItemProvider.dispose();
+		if (columnItemProvider != null) columnItemProvider.dispose();
+		if (triggerItemProvider != null) triggerItemProvider.dispose();
 	}
 
 }

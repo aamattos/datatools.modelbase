@@ -6,6 +6,7 @@
  */
 package org.eclipse.datatools.modelbase.sql.schema;
 
+import org.eclipse.emf.cdo.CDOObject;
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -22,9 +23,10 @@ import org.eclipse.emf.ecore.EObject;
  *
  * @see org.eclipse.datatools.modelbase.sql.schema.SQLSchemaPackage#getObjectExtension()
  * @model interface="true" abstract="true"
+ * @extends CDOObject
  * @generated
  */
-public interface ObjectExtension extends EObject {
+public interface ObjectExtension extends CDOObject {
 	/**
 	 * Returns the value of the '<em><b>SQL Object</b></em>' container reference.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.datatools.modelbase.sql.schema.SQLObject#getExtensions <em>Extensions</em>}'.

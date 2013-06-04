@@ -1,13 +1,9 @@
-/*******************************************************************************
- * Copyright (c) 2001, 2004 IBM Corporation and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- * 
- * Contributors:
- *     IBM Corporation - initial API and implementation
- *******************************************************************************/
+/**
+ * <copyright>
+ * </copyright>
+ *
+ * $Id$
+ */
 package org.eclipse.datatools.modelbase.sql.expressions.impl;
 
 import org.eclipse.datatools.modelbase.sql.accesscontrol.SQLAccessControlPackage;
@@ -37,9 +33,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EcorePackage;
-
 import org.eclipse.emf.ecore.impl.EPackageImpl;
-import org.eclipse.emf.ecore.impl.EcorePackageImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -117,20 +111,10 @@ public class SQLExpressionsPackageImpl extends EPackageImpl implements SQLExpres
 	private static boolean isInited = false;
 
 	/**
-	 * Creates, registers, and initializes the <b>Package</b> for this
-	 * model, and for any others upon which it depends.  Simple
-	 * dependencies are satisfied by calling this method on all
-	 * dependent packages before doing anything else.  This method drives
-	 * initialization for interdependent packages directly, in parallel
-	 * with this package, itself.
-	 * <p>Of this package and its interdependencies, all packages which
-	 * have not yet been registered by their URI values are first created
-	 * and registered.  The packages are then initialized in two steps:
-	 * meta-model objects for all of the packages are created before any
-	 * are initialized, since one package's meta-model objects may refer to
-	 * those of another.
-	 * <p>Invocation of this method will not affect any packages that have
-	 * already been initialized.
+	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
+	 * 
+	 * <p>This method is used to initialize {@link SQLExpressionsPackage#eINSTANCE} when that field is accessed.
+	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #eNS_URI
@@ -142,7 +126,7 @@ public class SQLExpressionsPackageImpl extends EPackageImpl implements SQLExpres
 		if (isInited) return (SQLExpressionsPackage)EPackage.Registry.INSTANCE.getEPackage(SQLExpressionsPackage.eNS_URI);
 
 		// Obtain or create and register package
-		SQLExpressionsPackageImpl theSQLExpressionsPackage = (SQLExpressionsPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(eNS_URI) instanceof SQLExpressionsPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(eNS_URI) : new SQLExpressionsPackageImpl());
+		SQLExpressionsPackageImpl theSQLExpressionsPackage = (SQLExpressionsPackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof SQLExpressionsPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new SQLExpressionsPackageImpl());
 
 		isInited = true;
 
@@ -181,6 +165,9 @@ public class SQLExpressionsPackageImpl extends EPackageImpl implements SQLExpres
 		// Mark meta-data to indicate it can't be changed
 		theSQLExpressionsPackage.freeze();
 
+  
+		// Update the registry and return the package
+		EPackage.Registry.INSTANCE.put(SQLExpressionsPackage.eNS_URI, theSQLExpressionsPackage);
 		return theSQLExpressionsPackage;
 	}
 
@@ -198,6 +185,24 @@ public class SQLExpressionsPackageImpl extends EPackageImpl implements SQLExpres
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EOperation getQueryExpression__GetSQL() {
+		return queryExpressionEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getQueryExpression__SetSQL__String() {
+		return queryExpressionEClass.getEOperations().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getValueExpression() {
 		return valueExpressionEClass;
 	}
@@ -207,8 +212,44 @@ public class SQLExpressionsPackageImpl extends EPackageImpl implements SQLExpres
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EOperation getValueExpression__GetSQL() {
+		return valueExpressionEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getValueExpression__SetSQL__String() {
+		return valueExpressionEClass.getEOperations().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getSearchCondition() {
 		return searchConditionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getSearchCondition__GetSQL() {
+		return searchConditionEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getSearchCondition__SetSQL__String() {
+		return searchConditionEClass.getEOperations().get(1);
 	}
 
 	/**
@@ -294,10 +335,16 @@ public class SQLExpressionsPackageImpl extends EPackageImpl implements SQLExpres
 
 		// Create classes and their features
 		queryExpressionEClass = createEClass(QUERY_EXPRESSION);
+		createEOperation(queryExpressionEClass, QUERY_EXPRESSION___GET_SQL);
+		createEOperation(queryExpressionEClass, QUERY_EXPRESSION___SET_SQL__STRING);
 
 		valueExpressionEClass = createEClass(VALUE_EXPRESSION);
+		createEOperation(valueExpressionEClass, VALUE_EXPRESSION___GET_SQL);
+		createEOperation(valueExpressionEClass, VALUE_EXPRESSION___SET_SQL__STRING);
 
 		searchConditionEClass = createEClass(SEARCH_CONDITION);
+		createEOperation(searchConditionEClass, SEARCH_CONDITION___GET_SQL);
+		createEOperation(searchConditionEClass, SEARCH_CONDITION___SET_SQL__STRING);
 
 		queryExpressionDefaultEClass = createEClass(QUERY_EXPRESSION_DEFAULT);
 		createEAttribute(queryExpressionDefaultEClass, QUERY_EXPRESSION_DEFAULT__SQL);
@@ -335,6 +382,10 @@ public class SQLExpressionsPackageImpl extends EPackageImpl implements SQLExpres
 		// Obtain other dependent packages
 		SQLSchemaPackage theSQLSchemaPackage = (SQLSchemaPackage)EPackage.Registry.INSTANCE.getEPackage(SQLSchemaPackage.eNS_URI);
 
+		// Create type parameters
+
+		// Set bounds for type parameters
+
 		// Add supertypes to classes
 		queryExpressionDefaultEClass.getESuperTypes().add(theSQLSchemaPackage.getSQLObject());
 		queryExpressionDefaultEClass.getESuperTypes().add(this.getQueryExpression());
@@ -343,39 +394,59 @@ public class SQLExpressionsPackageImpl extends EPackageImpl implements SQLExpres
 		valueExpressionDefaultEClass.getESuperTypes().add(theSQLSchemaPackage.getSQLObject());
 		valueExpressionDefaultEClass.getESuperTypes().add(this.getValueExpression());
 
-		// Initialize classes and features; add operations and parameters
-		initEClass(queryExpressionEClass, QueryExpression.class, "QueryExpression", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		// Initialize classes, features, and operations; add parameters
+		initEClass(queryExpressionEClass, QueryExpression.class, "QueryExpression", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		addEOperation(queryExpressionEClass, ecorePackage.getEString(), "getSQL", 0, 1); //$NON-NLS-1$
+		initEOperation(getQueryExpression__GetSQL(), ecorePackage.getEString(), "getSQL", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		EOperation op = addEOperation(queryExpressionEClass, null, "setSQL"); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEString(), "sqlText", 0, 1); //$NON-NLS-1$
+		EOperation op = initEOperation(getQueryExpression__SetSQL__String(), null, "setSQL", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "sqlText", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		initEClass(valueExpressionEClass, ValueExpression.class, "ValueExpression", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(valueExpressionEClass, ValueExpression.class, "ValueExpression", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		addEOperation(valueExpressionEClass, ecorePackage.getEString(), "getSQL", 0, 1); //$NON-NLS-1$
+		initEOperation(getValueExpression__GetSQL(), ecorePackage.getEString(), "getSQL", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(valueExpressionEClass, null, "setSQL"); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEString(), "sqlText", 0, 1); //$NON-NLS-1$
+		op = initEOperation(getValueExpression__SetSQL__String(), null, "setSQL", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "sqlText", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		initEClass(searchConditionEClass, SearchCondition.class, "SearchCondition", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(searchConditionEClass, SearchCondition.class, "SearchCondition", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		addEOperation(searchConditionEClass, ecorePackage.getEString(), "getSQL", 0, 1); //$NON-NLS-1$
+		initEOperation(getSearchCondition__GetSQL(), ecorePackage.getEString(), "getSQL", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(searchConditionEClass, null, "setSQL"); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEString(), "sqlText", 0, 1); //$NON-NLS-1$
+		op = initEOperation(getSearchCondition__SetSQL__String(), null, "setSQL", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "sqlText", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		initEClass(queryExpressionDefaultEClass, QueryExpressionDefault.class, "QueryExpressionDefault", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEAttribute(getQueryExpressionDefault_SQL(), ecorePackage.getEString(), "SQL", null, 0, 1, QueryExpressionDefault.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEClass(queryExpressionDefaultEClass, QueryExpressionDefault.class, "QueryExpressionDefault", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getQueryExpressionDefault_SQL(), ecorePackage.getEString(), "SQL", null, 0, 1, QueryExpressionDefault.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(searchConditionDefaultEClass, SearchConditionDefault.class, "SearchConditionDefault", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEAttribute(getSearchConditionDefault_SQL(), ecorePackage.getEString(), "SQL", null, 0, 1, SearchConditionDefault.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEClass(searchConditionDefaultEClass, SearchConditionDefault.class, "SearchConditionDefault", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getSearchConditionDefault_SQL(), ecorePackage.getEString(), "SQL", null, 0, 1, SearchConditionDefault.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
-		initEClass(valueExpressionDefaultEClass, ValueExpressionDefault.class, "ValueExpressionDefault", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEAttribute(getValueExpressionDefault_SQL(), ecorePackage.getEString(), "SQL", null, 0, 1, ValueExpressionDefault.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEClass(valueExpressionDefaultEClass, ValueExpressionDefault.class, "ValueExpressionDefault", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getValueExpressionDefault_SQL(), ecorePackage.getEString(), "SQL", null, 0, 1, ValueExpressionDefault.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);
+
+		// Create annotations
+		// http://www.eclipse.org/emf/2002/Ecore
+		createEcoreAnnotations();
+	}
+
+	/**
+	 * Initializes the annotations for <b>http://www.eclipse.org/emf/2002/Ecore</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createEcoreAnnotations() {
+		String source = "http://www.eclipse.org/emf/2002/Ecore";		
+		addAnnotation
+		  (this, 
+		   source, 
+		   new String[] {
+			 "settingDelegates", "com.isb.datamodeler.expressions.setting"
+		   });						
 	}
 
 } //SQLExpressionsPackageImpl

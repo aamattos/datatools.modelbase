@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: TemporaryTableItemProvider.java,v 1.3 2007/05/31 00:29:18 dpchou Exp $
+ * $Id$
  */
 package org.eclipse.datatools.modelbase.sql.tables.provider;
 
@@ -10,15 +10,14 @@ package org.eclipse.datatools.modelbase.sql.tables.provider;
 import java.util.Collection;
 import java.util.List;
 
-import org.eclipse.datatools.modelbase.sql.schema.provider.SqlmodelEditPlugin;
 import org.eclipse.datatools.modelbase.sql.tables.SQLTablesPackage;
 import org.eclipse.datatools.modelbase.sql.tables.TemporaryTable;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
+import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
@@ -55,7 +54,8 @@ public class TemporaryTableItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getPropertyDescriptors(Object object) {
+	@Override
+	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
@@ -76,8 +76,8 @@ public class TemporaryTableItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_TemporaryTable_local_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_TemporaryTable_local_feature", "_UI_TemporaryTable_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 getString("_UI_TemporaryTable_local_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_TemporaryTable_local_feature", "_UI_TemporaryTable_type"),
 				 SQLTablesPackage.Literals.TEMPORARY_TABLE__LOCAL,
 				 true,
 				 false,
@@ -98,8 +98,8 @@ public class TemporaryTableItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_TemporaryTable_deleteOnCommit_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_TemporaryTable_deleteOnCommit_feature", "_UI_TemporaryTable_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 getString("_UI_TemporaryTable_deleteOnCommit_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_TemporaryTable_deleteOnCommit_feature", "_UI_TemporaryTable_type"),
 				 SQLTablesPackage.Literals.TEMPORARY_TABLE__DELETE_ON_COMMIT,
 				 true,
 				 false,
@@ -115,8 +115,9 @@ public class TemporaryTableItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/TemporaryTable")); //$NON-NLS-1$
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/TemporaryTable"));
 	}
 
 	/**
@@ -125,11 +126,12 @@ public class TemporaryTableItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getText(Object object) {
 		String label = ((TemporaryTable)object).getName();
 		return label == null || label.length() == 0 ?
-			getString("_UI_TemporaryTable_type") : //$NON-NLS-1$
-			getString("_UI_TemporaryTable_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+			getString("_UI_TemporaryTable_type") :
+			label;
 	}
 
 	/**
@@ -139,6 +141,7 @@ public class TemporaryTableItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
@@ -158,8 +161,8 @@ public class TemporaryTableItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void collectNewChildDescriptors(Collection newChildDescriptors, Object object) {
+	@Override
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
-
 }

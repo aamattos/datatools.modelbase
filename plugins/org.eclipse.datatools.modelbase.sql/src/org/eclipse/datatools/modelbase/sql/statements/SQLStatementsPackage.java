@@ -1,18 +1,15 @@
-/*******************************************************************************
- * Copyright (c) 2001, 2004 IBM Corporation and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- * 
- * Contributors:
- *     IBM Corporation - initial API and implementation
- *******************************************************************************/
+/**
+ * <copyright>
+ * </copyright>
+ *
+ * $Id$
+ */
 package org.eclipse.datatools.modelbase.sql.statements;
 
 import org.eclipse.datatools.modelbase.sql.schema.SQLSchemaPackage;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 
 /**
@@ -22,6 +19,7 @@ import org.eclipse.emf.ecore.EPackage;
  * <ul>
  *   <li>each class,</li>
  *   <li>each feature of each class,</li>
+ *   <li>each operation of each class,</li>
  *   <li>each enum,</li>
  *   <li>and each data type</li>
  * </ul>
@@ -37,7 +35,7 @@ public interface SQLStatementsPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNAME = "statements"; //$NON-NLS-1$
+	String eNAME = "statements";
 
 	/**
 	 * The package namespace URI.
@@ -45,7 +43,7 @@ public interface SQLStatementsPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http:///org/eclipse/datatools/modelbase/sql/statements.ecore"; //$NON-NLS-1$
+	String eNS_URI = "http:///org/eclipse/datatools/modelbase/sql/statements.ecore";
 
 	/**
 	 * The package namespace name.
@@ -53,7 +51,7 @@ public interface SQLStatementsPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_PREFIX = "SQLStatements"; //$NON-NLS-1$
+	String eNS_PREFIX = "SQLStatements";
 
 	/**
 	 * The singleton instance of the package.
@@ -83,6 +81,33 @@ public interface SQLStatementsPackage extends EPackage {
 	int SQL_STATEMENT_FEATURE_COUNT = 0;
 
 	/**
+	 * The operation id for the '<em>Get SQL</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SQL_STATEMENT___GET_SQL = 0;
+
+	/**
+	 * The operation id for the '<em>Set SQL</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SQL_STATEMENT___SET_SQL__STRING = 1;
+
+	/**
+	 * The number of operations of the '<em>SQL Statement</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SQL_STATEMENT_OPERATION_COUNT = 2;
+
+	/**
 	 * The meta object id for the '{@link org.eclipse.datatools.modelbase.sql.statements.SQLDataStatement <em>SQL Data Statement</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -100,6 +125,33 @@ public interface SQLStatementsPackage extends EPackage {
 	 * @ordered
 	 */
 	int SQL_DATA_STATEMENT_FEATURE_COUNT = SQL_STATEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Get SQL</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SQL_DATA_STATEMENT___GET_SQL = SQL_STATEMENT___GET_SQL;
+
+	/**
+	 * The operation id for the '<em>Set SQL</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SQL_DATA_STATEMENT___SET_SQL__STRING = SQL_STATEMENT___SET_SQL__STRING;
+
+	/**
+	 * The number of operations of the '<em>SQL Data Statement</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SQL_DATA_STATEMENT_OPERATION_COUNT = SQL_STATEMENT_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.datatools.modelbase.sql.statements.SQLSchemaStatement <em>SQL Schema Statement</em>}' class.
@@ -121,6 +173,33 @@ public interface SQLStatementsPackage extends EPackage {
 	int SQL_SCHEMA_STATEMENT_FEATURE_COUNT = SQL_STATEMENT_FEATURE_COUNT + 0;
 
 	/**
+	 * The operation id for the '<em>Get SQL</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SQL_SCHEMA_STATEMENT___GET_SQL = SQL_STATEMENT___GET_SQL;
+
+	/**
+	 * The operation id for the '<em>Set SQL</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SQL_SCHEMA_STATEMENT___SET_SQL__STRING = SQL_STATEMENT___SET_SQL__STRING;
+
+	/**
+	 * The number of operations of the '<em>SQL Schema Statement</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SQL_SCHEMA_STATEMENT_OPERATION_COUNT = SQL_STATEMENT_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.eclipse.datatools.modelbase.sql.statements.SQLControlStatement <em>SQL Control Statement</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -140,6 +219,33 @@ public interface SQLStatementsPackage extends EPackage {
 	int SQL_CONTROL_STATEMENT_FEATURE_COUNT = SQL_STATEMENT_FEATURE_COUNT + 0;
 
 	/**
+	 * The operation id for the '<em>Get SQL</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SQL_CONTROL_STATEMENT___GET_SQL = SQL_STATEMENT___GET_SQL;
+
+	/**
+	 * The operation id for the '<em>Set SQL</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SQL_CONTROL_STATEMENT___SET_SQL__STRING = SQL_STATEMENT___SET_SQL__STRING;
+
+	/**
+	 * The number of operations of the '<em>SQL Control Statement</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SQL_CONTROL_STATEMENT_OPERATION_COUNT = SQL_STATEMENT_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.eclipse.datatools.modelbase.sql.statements.SQLDataChangeStatement <em>SQL Data Change Statement</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -157,6 +263,33 @@ public interface SQLStatementsPackage extends EPackage {
 	 * @ordered
 	 */
 	int SQL_DATA_CHANGE_STATEMENT_FEATURE_COUNT = SQL_DATA_STATEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Get SQL</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SQL_DATA_CHANGE_STATEMENT___GET_SQL = SQL_DATA_STATEMENT___GET_SQL;
+
+	/**
+	 * The operation id for the '<em>Set SQL</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SQL_DATA_CHANGE_STATEMENT___SET_SQL__STRING = SQL_DATA_STATEMENT___SET_SQL__STRING;
+
+	/**
+	 * The number of operations of the '<em>SQL Data Change Statement</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SQL_DATA_CHANGE_STATEMENT_OPERATION_COUNT = SQL_DATA_STATEMENT_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.datatools.modelbase.sql.statements.impl.SQLStatementDefaultImpl <em>SQL Statement Default</em>}' class.
@@ -259,6 +392,87 @@ public interface SQLStatementsPackage extends EPackage {
 	int SQL_STATEMENT_DEFAULT_FEATURE_COUNT = SQLSchemaPackage.SQL_OBJECT_FEATURE_COUNT + 1;
 
 	/**
+	 * The operation id for the '<em>Add EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SQL_STATEMENT_DEFAULT___ADD_EANNOTATION__STRING = SQLSchemaPackage.SQL_OBJECT___ADD_EANNOTATION__STRING;
+
+	/**
+	 * The operation id for the '<em>Add EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SQL_STATEMENT_DEFAULT___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING = SQLSchemaPackage.SQL_OBJECT___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SQL_STATEMENT_DEFAULT___GET_EANNOTATION_DETAIL__EANNOTATION_STRING = SQLSchemaPackage.SQL_OBJECT___GET_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Set Annotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SQL_STATEMENT_DEFAULT___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING = SQLSchemaPackage.SQL_OBJECT___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Remove EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SQL_STATEMENT_DEFAULT___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING = SQLSchemaPackage.SQL_OBJECT___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SQL_STATEMENT_DEFAULT___GET_EANNOTATION__STRING = SQLSchemaPackage.SQL_OBJECT___GET_EANNOTATION__STRING;
+
+	/**
+	 * The operation id for the '<em>Get SQL</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SQL_STATEMENT_DEFAULT___GET_SQL = SQLSchemaPackage.SQL_OBJECT_OPERATION_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Set SQL</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SQL_STATEMENT_DEFAULT___SET_SQL__STRING = SQLSchemaPackage.SQL_OBJECT_OPERATION_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>SQL Statement Default</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SQL_STATEMENT_DEFAULT_OPERATION_COUNT = SQLSchemaPackage.SQL_OBJECT_OPERATION_COUNT + 2;
+
+	/**
 	 * The meta object id for the '{@link org.eclipse.datatools.modelbase.sql.statements.SQLConnectionStatement <em>SQL Connection Statement</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -276,6 +490,33 @@ public interface SQLStatementsPackage extends EPackage {
 	 * @ordered
 	 */
 	int SQL_CONNECTION_STATEMENT_FEATURE_COUNT = SQL_STATEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Get SQL</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SQL_CONNECTION_STATEMENT___GET_SQL = SQL_STATEMENT___GET_SQL;
+
+	/**
+	 * The operation id for the '<em>Set SQL</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SQL_CONNECTION_STATEMENT___SET_SQL__STRING = SQL_STATEMENT___SET_SQL__STRING;
+
+	/**
+	 * The number of operations of the '<em>SQL Connection Statement</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SQL_CONNECTION_STATEMENT_OPERATION_COUNT = SQL_STATEMENT_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.datatools.modelbase.sql.statements.SQLDiagnosticsStatement <em>SQL Diagnostics Statement</em>}' class.
@@ -297,6 +538,33 @@ public interface SQLStatementsPackage extends EPackage {
 	int SQL_DIAGNOSTICS_STATEMENT_FEATURE_COUNT = SQL_STATEMENT_FEATURE_COUNT + 0;
 
 	/**
+	 * The operation id for the '<em>Get SQL</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SQL_DIAGNOSTICS_STATEMENT___GET_SQL = SQL_STATEMENT___GET_SQL;
+
+	/**
+	 * The operation id for the '<em>Set SQL</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SQL_DIAGNOSTICS_STATEMENT___SET_SQL__STRING = SQL_STATEMENT___SET_SQL__STRING;
+
+	/**
+	 * The number of operations of the '<em>SQL Diagnostics Statement</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SQL_DIAGNOSTICS_STATEMENT_OPERATION_COUNT = SQL_STATEMENT_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.eclipse.datatools.modelbase.sql.statements.SQLDynamicStatement <em>SQL Dynamic Statement</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -314,6 +582,33 @@ public interface SQLStatementsPackage extends EPackage {
 	 * @ordered
 	 */
 	int SQL_DYNAMIC_STATEMENT_FEATURE_COUNT = SQL_STATEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Get SQL</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SQL_DYNAMIC_STATEMENT___GET_SQL = SQL_STATEMENT___GET_SQL;
+
+	/**
+	 * The operation id for the '<em>Set SQL</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SQL_DYNAMIC_STATEMENT___SET_SQL__STRING = SQL_STATEMENT___SET_SQL__STRING;
+
+	/**
+	 * The number of operations of the '<em>SQL Dynamic Statement</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SQL_DYNAMIC_STATEMENT_OPERATION_COUNT = SQL_STATEMENT_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.datatools.modelbase.sql.statements.SQLSessionStatement <em>SQL Session Statement</em>}' class.
@@ -335,6 +630,33 @@ public interface SQLStatementsPackage extends EPackage {
 	int SQL_SESSION_STATEMENT_FEATURE_COUNT = SQL_STATEMENT_FEATURE_COUNT + 0;
 
 	/**
+	 * The operation id for the '<em>Get SQL</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SQL_SESSION_STATEMENT___GET_SQL = SQL_STATEMENT___GET_SQL;
+
+	/**
+	 * The operation id for the '<em>Set SQL</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SQL_SESSION_STATEMENT___SET_SQL__STRING = SQL_STATEMENT___SET_SQL__STRING;
+
+	/**
+	 * The number of operations of the '<em>SQL Session Statement</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SQL_SESSION_STATEMENT_OPERATION_COUNT = SQL_STATEMENT_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.eclipse.datatools.modelbase.sql.statements.SQLTransactionStatement <em>SQL Transaction Statement</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -353,6 +675,32 @@ public interface SQLStatementsPackage extends EPackage {
 	 */
 	int SQL_TRANSACTION_STATEMENT_FEATURE_COUNT = SQL_STATEMENT_FEATURE_COUNT + 0;
 
+	/**
+	 * The operation id for the '<em>Get SQL</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SQL_TRANSACTION_STATEMENT___GET_SQL = SQL_STATEMENT___GET_SQL;
+
+	/**
+	 * The operation id for the '<em>Set SQL</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SQL_TRANSACTION_STATEMENT___SET_SQL__STRING = SQL_STATEMENT___SET_SQL__STRING;
+
+	/**
+	 * The number of operations of the '<em>SQL Transaction Statement</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SQL_TRANSACTION_STATEMENT_OPERATION_COUNT = SQL_STATEMENT_OPERATION_COUNT + 0;
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.datatools.modelbase.sql.statements.SQLStatement <em>SQL Statement</em>}'.
@@ -363,6 +711,26 @@ public interface SQLStatementsPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getSQLStatement();
+
+	/**
+	 * Returns the meta object for the '{@link org.eclipse.datatools.modelbase.sql.statements.SQLStatement#getSQL() <em>Get SQL</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get SQL</em>' operation.
+	 * @see org.eclipse.datatools.modelbase.sql.statements.SQLStatement#getSQL()
+	 * @generated
+	 */
+	EOperation getSQLStatement__GetSQL();
+
+	/**
+	 * Returns the meta object for the '{@link org.eclipse.datatools.modelbase.sql.statements.SQLStatement#setSQL(java.lang.String) <em>Set SQL</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Set SQL</em>' operation.
+	 * @see org.eclipse.datatools.modelbase.sql.statements.SQLStatement#setSQL(java.lang.String)
+	 * @generated
+	 */
+	EOperation getSQLStatement__SetSQL__String();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.datatools.modelbase.sql.statements.SQLDataStatement <em>SQL Data Statement</em>}'.
@@ -490,13 +858,14 @@ public interface SQLStatementsPackage extends EPackage {
 	 * <ul>
 	 *   <li>each class,</li>
 	 *   <li>each feature of each class,</li>
+	 *   <li>each operation of each class,</li>
 	 *   <li>each enum,</li>
 	 *   <li>and each data type</li>
 	 * </ul>
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	interface Literals  {
+	interface Literals {
 		/**
 		 * The meta object literal for the '{@link org.eclipse.datatools.modelbase.sql.statements.SQLStatement <em>SQL Statement</em>}' class.
 		 * <!-- begin-user-doc -->
@@ -506,6 +875,22 @@ public interface SQLStatementsPackage extends EPackage {
 		 * @generated
 		 */
 		EClass SQL_STATEMENT = eINSTANCE.getSQLStatement();
+
+		/**
+		 * The meta object literal for the '<em><b>Get SQL</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation SQL_STATEMENT___GET_SQL = eINSTANCE.getSQLStatement__GetSQL();
+
+		/**
+		 * The meta object literal for the '<em><b>Set SQL</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation SQL_STATEMENT___SET_SQL__STRING = eINSTANCE.getSQLStatement__SetSQL__String();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.datatools.modelbase.sql.statements.SQLDataStatement <em>SQL Data Statement</em>}' class.

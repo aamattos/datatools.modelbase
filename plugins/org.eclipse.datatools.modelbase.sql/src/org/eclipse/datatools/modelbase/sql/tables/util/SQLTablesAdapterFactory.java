@@ -1,18 +1,23 @@
-/*******************************************************************************
- * Copyright (c) 2001, 2004 IBM Corporation and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- * 
- * Contributors:
- *     IBM Corporation - initial API and implementation
- *******************************************************************************/
+/**
+ * <copyright>
+ * </copyright>
+ *
+ * $Id$
+ */
 package org.eclipse.datatools.modelbase.sql.tables.util;
 
 import org.eclipse.datatools.modelbase.sql.schema.SQLObject;
 import org.eclipse.datatools.modelbase.sql.schema.TypedElement;
 import org.eclipse.datatools.modelbase.sql.tables.*;
+import org.eclipse.datatools.modelbase.sql.tables.BaseTable;
+import org.eclipse.datatools.modelbase.sql.tables.Column;
+import org.eclipse.datatools.modelbase.sql.tables.DerivedTable;
+import org.eclipse.datatools.modelbase.sql.tables.PersistentTable;
+import org.eclipse.datatools.modelbase.sql.tables.SQLTablesPackage;
+import org.eclipse.datatools.modelbase.sql.tables.Table;
+import org.eclipse.datatools.modelbase.sql.tables.TemporaryTable;
+import org.eclipse.datatools.modelbase.sql.tables.Trigger;
+import org.eclipse.datatools.modelbase.sql.tables.ViewTable;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
@@ -57,6 +62,7 @@ public class SQLTablesAdapterFactory extends AdapterFactoryImpl {
 	 * @return whether this factory is applicable for the type of the object.
 	 * @generated
 	 */
+	@Override
 	public boolean isFactoryForType(Object object) {
 		if (object == modelPackage) {
 			return true;
@@ -73,45 +79,58 @@ public class SQLTablesAdapterFactory extends AdapterFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected SQLTablesSwitch modelSwitch =
-		new SQLTablesSwitch() {
-			public Object caseViewTable(ViewTable object) {
+	protected SQLTablesSwitch<Adapter> modelSwitch =
+		new SQLTablesSwitch<Adapter>() {
+			@Override
+			public Adapter caseViewTable(ViewTable object) {
 				return createViewTableAdapter();
 			}
-			public Object caseTemporaryTable(TemporaryTable object) {
+			@Override
+			public Adapter caseTemporaryTable(TemporaryTable object) {
 				return createTemporaryTableAdapter();
 			}
-			public Object caseTable(Table object) {
+			@Override
+			public Adapter caseTable(Table object) {
 				return createTableAdapter();
 			}
-			public Object casePersistentTable(PersistentTable object) {
+			@Override
+			public Adapter casePersistentTable(PersistentTable object) {
 				return createPersistentTableAdapter();
 			}
-			public Object caseDerivedTable(DerivedTable object) {
+			@Override
+			public Adapter caseDerivedTable(DerivedTable object) {
 				return createDerivedTableAdapter();
 			}
-			public Object caseBaseTable(BaseTable object) {
+			@Override
+			public Adapter caseBaseTable(BaseTable object) {
 				return createBaseTableAdapter();
 			}
-			public Object caseColumn(Column object) {
+			@Override
+			public Adapter caseColumn(Column object) {
 				return createColumnAdapter();
 			}
-			public Object caseTrigger(Trigger object) {
+			@Override
+			public Adapter caseTrigger(Trigger object) {
 				return createTriggerAdapter();
 			}
-			public Object caseEModelElement(EModelElement object) {
+			@Override
+			public Adapter caseEModelElement(EModelElement object) {
 				return createEModelElementAdapter();
 			}
-			public Object caseENamedElement(ENamedElement object) {
+			@Override
+			public Adapter caseENamedElement(ENamedElement object) {
 				return createENamedElementAdapter();
 			}
-			public Object caseSQLObject(SQLObject object) {
+			@Override
+			public Adapter caseSQLObject(SQLObject object) {
 				return createSQLObjectAdapter();
 			}
-			public Object caseTypedElement(TypedElement object) {
+			@Override
+			public Adapter caseTypedElement(TypedElement object) {
 				return createTypedElementAdapter();
 			}
-			public Object defaultCase(EObject object) {
+			@Override
+			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
 		};
@@ -124,8 +143,9 @@ public class SQLTablesAdapterFactory extends AdapterFactoryImpl {
 	 * @return the adapter for the <code>target</code>.
 	 * @generated
 	 */
+	@Override
 	public Adapter createAdapter(Notifier target) {
-		return (Adapter)modelSwitch.doSwitch((EObject)target);
+		return modelSwitch.doSwitch((EObject)target);
 	}
 
 

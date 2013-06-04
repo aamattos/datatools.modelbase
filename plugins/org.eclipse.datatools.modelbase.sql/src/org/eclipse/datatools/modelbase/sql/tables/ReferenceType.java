@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ReferenceType.java,v 1.3 2006/09/07 00:19:49 dpchou Exp $
+ * $Id$
  */
 package org.eclipse.datatools.modelbase.sql.tables;
 
@@ -10,7 +10,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import org.eclipse.emf.common.util.AbstractEnumerator;
+import org.eclipse.emf.common.util.Enumerator;
 
 /**
  * <!-- begin-user-doc -->
@@ -21,42 +21,39 @@ import org.eclipse.emf.common.util.AbstractEnumerator;
  * @model
  * @generated
  */
-public final class ReferenceType extends AbstractEnumerator {
-	/**
-	 * The '<em><b>SYSTEM GENERATED</b></em>' literal value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #SYSTEM_GENERATED_LITERAL
-	 * @model
-	 * @generated
-	 * @ordered
-	 */
-	public static final int SYSTEM_GENERATED = 0;
-
-	/**
-	 * The '<em><b>USER GENERATED</b></em>' literal value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #USER_GENERATED_LITERAL
-	 * @model
-	 * @generated
-	 * @ordered
-	 */
-	public static final int USER_GENERATED = 1;
-
-	/**
-	 * The '<em><b>DERIVED SELF REF</b></em>' literal value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #DERIVED_SELF_REF_LITERAL
-	 * @model
-	 * @generated
-	 * @ordered
-	 */
-	public static final int DERIVED_SELF_REF = 2;
-
+public enum ReferenceType implements Enumerator {
 	/**
 	 * The '<em><b>SYSTEM GENERATED</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #SYSTEM_GENERATED_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	SYSTEM_GENERATED(0, "SYSTEM_GENERATED", "SYSTEM_GENERATED"),
+
+	/**
+	 * The '<em><b>USER GENERATED</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #USER_GENERATED_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	USER_GENERATED(1, "USER_GENERATED", "USER_GENERATED"),
+
+	/**
+	 * The '<em><b>DERIVED SELF REF</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #DERIVED_SELF_REF_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	DERIVED_SELF_REF(2, "DERIVED_SELF_REF", "DERIVED_SELF_REF");
+
+	/**
+	 * The '<em><b>SYSTEM GENERATED</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>SYSTEM GENERATED</b></em>' literal object isn't clear,
@@ -64,13 +61,14 @@ public final class ReferenceType extends AbstractEnumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #SYSTEM_GENERATED
+	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final ReferenceType SYSTEM_GENERATED_LITERAL = new ReferenceType(SYSTEM_GENERATED, "SYSTEM_GENERATED", "SYSTEM_GENERATED"); //$NON-NLS-1$
+	public static final int SYSTEM_GENERATED_VALUE = 0;
 
 	/**
-	 * The '<em><b>USER GENERATED</b></em>' literal object.
+	 * The '<em><b>USER GENERATED</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>USER GENERATED</b></em>' literal object isn't clear,
@@ -78,13 +76,14 @@ public final class ReferenceType extends AbstractEnumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #USER_GENERATED
+	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final ReferenceType USER_GENERATED_LITERAL = new ReferenceType(USER_GENERATED, "USER_GENERATED", "USER_GENERATED"); //$NON-NLS-1$
+	public static final int USER_GENERATED_VALUE = 1;
 
 	/**
-	 * The '<em><b>DERIVED SELF REF</b></em>' literal object.
+	 * The '<em><b>DERIVED SELF REF</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>DERIVED SELF REF</b></em>' literal object isn't clear,
@@ -92,10 +91,11 @@ public final class ReferenceType extends AbstractEnumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #DERIVED_SELF_REF
+	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final ReferenceType DERIVED_SELF_REF_LITERAL = new ReferenceType(DERIVED_SELF_REF, "DERIVED_SELF_REF", "DERIVED_SELF_REF"); //$NON-NLS-1$
+	public static final int DERIVED_SELF_REF_VALUE = 2;
 
 	/**
 	 * An array of all the '<em><b>Reference Type</b></em>' enumerators.
@@ -105,9 +105,9 @@ public final class ReferenceType extends AbstractEnumerator {
 	 */
 	private static final ReferenceType[] VALUES_ARRAY =
 		new ReferenceType[] {
-			SYSTEM_GENERATED_LITERAL,
-			USER_GENERATED_LITERAL,
-			DERIVED_SELF_REF_LITERAL,
+			SYSTEM_GENERATED,
+			USER_GENERATED,
+			DERIVED_SELF_REF,
 		};
 
 	/**
@@ -116,7 +116,7 @@ public final class ReferenceType extends AbstractEnumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<ReferenceType> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
 	 * Returns the '<em><b>Reference Type</b></em>' literal with the specified literal value.
@@ -158,12 +158,33 @@ public final class ReferenceType extends AbstractEnumerator {
 	 */
 	public static ReferenceType get(int value) {
 		switch (value) {
-			case SYSTEM_GENERATED: return SYSTEM_GENERATED_LITERAL;
-			case USER_GENERATED: return USER_GENERATED_LITERAL;
-			case DERIVED_SELF_REF: return DERIVED_SELF_REF_LITERAL;
+			case SYSTEM_GENERATED_VALUE: return SYSTEM_GENERATED;
+			case USER_GENERATED_VALUE: return USER_GENERATED;
+			case DERIVED_SELF_REF_VALUE: return DERIVED_SELF_REF;
 		}
 		return null;
 	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final int value;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final String name;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final String literal;
 
 	/**
 	 * Only this class can construct instances.
@@ -172,7 +193,93 @@ public final class ReferenceType extends AbstractEnumerator {
 	 * @generated
 	 */
 	private ReferenceType(int value, String name, String literal) {
-		super(value, name, literal);
+		this.value = value;
+		this.name = name;
+		this.literal = literal;
 	}
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int getValue() {
+	  return value;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getName() {
+	  return name;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getLiteral() {
+	  return literal;
+	}
+
+	/**
+	 * Returns the literal value of the enumerator, which is its string representation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		return literal;
+	}
+	
+	/*******************DEJAMOS ESTA SECCION POR COMPATIBILIDAD CON LOS PLUGINS QUE USAN EL DATATOOLS GENERADO CON COMPLIANCE 1.4 ***********************
+
+	
+	/**
+	 * The '<em><b>SYSTEM GENERATED</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>SYSTEM GENERATED</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #SYSTEM_GENERATED
+	 * @generated NOT
+	 * @ordered
+	 */
+	public static final ReferenceType SYSTEM_GENERATED_LITERAL = SYSTEM_GENERATED; //$NON-NLS-1$
+
+	/**
+	 * The '<em><b>USER GENERATED</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>USER GENERATED</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #USER_GENERATED
+	 * @generated NOT
+	 * @ordered
+	 */
+	public static final ReferenceType USER_GENERATED_LITERAL = USER_GENERATED; //$NON-NLS-1$
+
+	/**
+	 * The '<em><b>DERIVED SELF REF</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>DERIVED SELF REF</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #DERIVED_SELF_REF
+	 * @generated NOT
+	 * @ordered
+	 */
+	public static final ReferenceType DERIVED_SELF_REF_LITERAL = DERIVED_SELF_REF; //$NON-NLS-1$
+
+	
 } //ReferenceType

@@ -1,0 +1,880 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.eclipse.datatools.modelbase.sql/src"
+    editDirectory="/org.eclipse.datatools.modelbase.sql.edit/src-gen" editorDirectory="/org.eclipse.datatools.modelbase.sql.editor/src"
+    modelPluginID="org.eclipse.datatools.modelbase.sql" templateDirectory="/com.isb.datamodeler.model/templates"
+    dynamicTemplates="true" modelName="Datamodeler" modelPluginClass="" editPluginClass="org.eclipse.datatools.modelbase.sql.schema.provider.SqlmodelEditPlugin"
+    editorPluginClass="org.eclipse.datatools.modelbase.sql.schema.presentation.SqlmodelEditorPlugin"
+    reflectiveDelegation="true" importerID="org.eclipse.emf.importer.ecore" featureDelegation="Reflective"
+    complianceLevel="6.0" copyrightFields="false" editPluginID="org.eclipse.datatools.modelbase.sql.edit"
+    editorPluginID="org.eclipse.datatools.modelbase.sql.editor" runtimeVersion="2.7"
+    language="" usedGenPackages="platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore"
+    interfaceNamePattern="" classNamePattern="" operationReflection="true">
+  <foreignModel>datamodeler.ecore</foreignModel>
+  <genPackages prefix="SQLModel" basePackage="com.isb" disposableProviderFactory="true"
+      extensibleProviderFactory="true" ecorePackage="datamodeler.ecore#/">
+    <nestedGenPackages prefix="SQLSchema" basePackage="org.eclipse.datatools.modelbase.sql"
+        disposableProviderFactory="true" ecorePackage="datamodeler.ecore#//schema">
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="datamodeler.ecore#//schema/GenerateType">
+        <genEnumLiterals ecoreEnumLiteral="datamodeler.ecore#//schema/GenerateType/DEFAULT_GENERATED"/>
+        <genEnumLiterals ecoreEnumLiteral="datamodeler.ecore#//schema/GenerateType/ALWAYS_GENERATED"/>
+      </genEnums>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="datamodeler.ecore#//schema/ReferentialActionType">
+        <genEnumLiterals ecoreEnumLiteral="datamodeler.ecore#//schema/ReferentialActionType/NO_ACTION"/>
+        <genEnumLiterals ecoreEnumLiteral="datamodeler.ecore#//schema/ReferentialActionType/RESTRICT"/>
+        <genEnumLiterals ecoreEnumLiteral="datamodeler.ecore#//schema/ReferentialActionType/CASCADE"/>
+        <genEnumLiterals ecoreEnumLiteral="datamodeler.ecore#//schema/ReferentialActionType/SET_NULL"/>
+        <genEnumLiterals ecoreEnumLiteral="datamodeler.ecore#//schema/ReferentialActionType/SET_DEFAULT"/>
+      </genEnums>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="datamodeler.ecore#//schema/LogicalPhysicalType">
+        <genEnumLiterals ecoreEnumLiteral="datamodeler.ecore#//schema/LogicalPhysicalType/LOGICAL"/>
+        <genEnumLiterals ecoreEnumLiteral="datamodeler.ecore#//schema/LogicalPhysicalType/PHYSICAL"/>
+        <genEnumLiterals ecoreEnumLiteral="datamodeler.ecore#//schema/LogicalPhysicalType/LOGICAL_PHYSICAL"/>
+      </genEnums>
+      <genDataTypes ecoreDataType="datamodeler.ecore#//schema/Date"/>
+      <genDataTypes ecoreDataType="datamodeler.ecore#//schema/List"/>
+      <genDataTypes ecoreDataType="datamodeler.ecore#//schema/Diagram"/>
+      <genDataTypes ecoreDataType="datamodeler.ecore#//schema/EDMDescriptionShort"/>
+      <genDataTypes ecoreDataType="datamodeler.ecore#//schema/EDMDescriptionLarge"/>
+      <genClasses ecoreClass="datamodeler.ecore#//schema/IdentitySpecifier">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//schema/IdentitySpecifier/generationType"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//schema/IdentitySpecifier/startValue"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//schema/IdentitySpecifier/increment"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//schema/IdentitySpecifier/minimum"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//schema/IdentitySpecifier/maximum"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//schema/IdentitySpecifier/cycleOption"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="datamodeler.ecore#//schema/TypedElement">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference datamodeler.ecore#//schema/TypedElement/dataType">
+          <propertyFilterFlags>physical</propertyFilterFlags>
+        </genFeatures>
+        <genFeatures property="None" children="true" createChild="false" ecoreFeature="ecore:EReference datamodeler.ecore#//schema/TypedElement/containedType"/>
+        <genFeatures property="None" notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference datamodeler.ecore#//schema/TypedElement/referencedType"/>
+        <genFeatures property="None" createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//schema/TypedElement/domainId"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference datamodeler.ecore#//schema/TypedElement/domain"/>
+      </genClasses>
+      <genClasses ecoreClass="datamodeler.ecore#//schema/Dependency">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference datamodeler.ecore#//schema/Dependency/targetEnd"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//schema/Dependency/dependencyType"/>
+      </genClasses>
+      <genClasses ecoreClass="datamodeler.ecore#//schema/Schema">
+        <genFeatures property="None" notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference datamodeler.ecore#//schema/Schema/triggers"/>
+        <genFeatures property="None" notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference datamodeler.ecore#//schema/Schema/indices"/>
+        <genFeatures property="None" children="true" createChild="true" propertyDescription=""
+            propertySortChoices="true" ecoreFeature="ecore:EReference datamodeler.ecore#//schema/Schema/tables"/>
+        <genFeatures property="None" notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference datamodeler.ecore#//schema/Schema/sequences"/>
+        <genFeatures property="Readonly" notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference datamodeler.ecore#//schema/Schema/database"/>
+        <genFeatures property="None" notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference datamodeler.ecore#//schema/Schema/Catalog"/>
+        <genFeatures property="None" notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference datamodeler.ecore#//schema/Schema/assertions"/>
+        <genFeatures property="None" notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference datamodeler.ecore#//schema/Schema/userDefinedTypes"/>
+        <genFeatures property="None" notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference datamodeler.ecore#//schema/Schema/charSets"/>
+        <genFeatures property="None" notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference datamodeler.ecore#//schema/Schema/routines"/>
+        <genFeatures property="None" notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference datamodeler.ecore#//schema/Schema/owner"/>
+        <genFeatures createChild="false" propertyDescription="" propertyMultiLine="true"
+            ecoreFeature="ecore:EAttribute datamodeler.ecore#//schema/Schema/description"/>
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference datamodeler.ecore#//schema/Schema/project"/>
+        <genOperations ecoreOperation="datamodeler.ecore#//schema/Schema/isExternal"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="datamodeler.ecore#//schema/SQLObject">
+        <genFeatures property="None" children="true" createChild="false" ecoreFeature="ecore:EReference datamodeler.ecore#//schema/SQLObject/dependencies"/>
+        <genFeatures property="None" createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//schema/SQLObject/label"/>
+        <genFeatures property="None" createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//schema/SQLObject/deprecatedLabel"/>
+        <genFeatures property="None" notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference datamodeler.ecore#//schema/SQLObject/comments"/>
+        <genFeatures property="None" children="true" createChild="false" ecoreFeature="ecore:EReference datamodeler.ecore#//schema/SQLObject/extensions"/>
+        <genFeatures property="None" notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference datamodeler.ecore#//schema/SQLObject/privileges"/>
+        <genFeatures property="None" createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//schema/SQLObject/id"/>
+        <genFeatures property="None" createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//schema/SQLObject/basicDescription"/>
+        <genOperations ecoreOperation="datamodeler.ecore#//schema/SQLObject/addEAnnotation">
+          <genParameters ecoreParameter="datamodeler.ecore#//schema/SQLObject/addEAnnotation/source"/>
+        </genOperations>
+        <genOperations ecoreOperation="datamodeler.ecore#//schema/SQLObject/addEAnnotationDetail">
+          <genParameters ecoreParameter="datamodeler.ecore#//schema/SQLObject/addEAnnotationDetail/eAnnotation"/>
+          <genParameters ecoreParameter="datamodeler.ecore#//schema/SQLObject/addEAnnotationDetail/key"/>
+          <genParameters ecoreParameter="datamodeler.ecore#//schema/SQLObject/addEAnnotationDetail/value"/>
+        </genOperations>
+        <genOperations ecoreOperation="datamodeler.ecore#//schema/SQLObject/getEAnnotationDetail">
+          <genParameters ecoreParameter="datamodeler.ecore#//schema/SQLObject/getEAnnotationDetail/eAnnotation"/>
+          <genParameters ecoreParameter="datamodeler.ecore#//schema/SQLObject/getEAnnotationDetail/key"/>
+        </genOperations>
+        <genOperations ecoreOperation="datamodeler.ecore#//schema/SQLObject/setAnnotationDetail">
+          <genParameters ecoreParameter="datamodeler.ecore#//schema/SQLObject/setAnnotationDetail/eAnnotation"/>
+          <genParameters ecoreParameter="datamodeler.ecore#//schema/SQLObject/setAnnotationDetail/key"/>
+          <genParameters ecoreParameter="datamodeler.ecore#//schema/SQLObject/setAnnotationDetail/value"/>
+        </genOperations>
+        <genOperations ecoreOperation="datamodeler.ecore#//schema/SQLObject/removeEAnnotationDetail">
+          <genParameters ecoreParameter="datamodeler.ecore#//schema/SQLObject/removeEAnnotationDetail/eAnnotation"/>
+          <genParameters ecoreParameter="datamodeler.ecore#//schema/SQLObject/removeEAnnotationDetail/key"/>
+        </genOperations>
+        <genOperations ecoreOperation="datamodeler.ecore#//schema/SQLObject/getEAnnotation">
+          <genParameters ecoreParameter="datamodeler.ecore#//schema/SQLObject/getEAnnotation/source"/>
+        </genOperations>
+        <genOperations ecoreOperation="datamodeler.ecore#//schema/SQLObject/isValid">
+          <genParameters ecoreParameter="datamodeler.ecore#//schema/SQLObject/isValid/diagnostics"/>
+          <genParameters ecoreParameter="datamodeler.ecore#//schema/SQLObject/isValid/context"/>
+        </genOperations>
+        <genOperations ecoreOperation="datamodeler.ecore#//schema/SQLObject/getRootContainer"/>
+      </genClasses>
+      <genClasses ecoreClass="datamodeler.ecore#//schema/Sequence">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference datamodeler.ecore#//schema/Sequence/identity"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference datamodeler.ecore#//schema/Sequence/schema"/>
+      </genClasses>
+      <genClasses ecoreClass="datamodeler.ecore#//schema/Database">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//schema/Database/vendor"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//schema/Database/version"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference datamodeler.ecore#//schema/Database/schemas"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference datamodeler.ecore#//schema/Database/events"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference datamodeler.ecore#//schema/Database/catalogs"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference datamodeler.ecore#//schema/Database/authorizationIds"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//schema/Database/description"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference datamodeler.ecore#//schema/Database/instances"/>
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference datamodeler.ecore#//schema/Database/project"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference datamodeler.ecore#//schema/Database/physicalProperties"/>
+        <genOperations ecoreOperation="datamodeler.ecore#//schema/Database/getUserDefinedTypes"/>
+        <genOperations ecoreOperation="datamodeler.ecore#//schema/Database/initializeForeignKeyName">
+          <genParameters ecoreParameter="datamodeler.ecore#//schema/Database/initializeForeignKeyName/newBaseTable"/>
+          <genParameters ecoreParameter="datamodeler.ecore#//schema/Database/initializeForeignKeyName/foreingKey"/>
+        </genOperations>
+        <genOperations ecoreOperation="datamodeler.ecore#//schema/Database/initializeUniqueConstraintName">
+          <genParameters ecoreParameter="datamodeler.ecore#//schema/Database/initializeUniqueConstraintName/newBaseTable"/>
+          <genParameters ecoreParameter="datamodeler.ecore#//schema/Database/initializeUniqueConstraintName/uniqueConstraint"/>
+        </genOperations>
+        <genOperations ecoreOperation="datamodeler.ecore#//schema/Database/validateEDataType">
+          <genParameters ecoreParameter="datamodeler.ecore#//schema/Database/validateEDataType/dataType"/>
+          <genParameters ecoreParameter="datamodeler.ecore#//schema/Database/validateEDataType/object"/>
+          <genParameters ecoreParameter="datamodeler.ecore#//schema/Database/validateEDataType/featureName"/>
+          <genParameters ecoreParameter="datamodeler.ecore#//schema/Database/validateEDataType/newValue"/>
+        </genOperations>
+      </genClasses>
+      <genClasses ecoreClass="datamodeler.ecore#//schema/DatabaseInstance"/>
+      <genClasses ecoreClass="datamodeler.ecore#//schema/DatabasePhysicalProperties"/>
+      <genClasses ecoreClass="datamodeler.ecore#//schema/Event">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//schema/Event/for"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//schema/Event/condition"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//schema/Event/action"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//schema/Event/enabled"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference datamodeler.ecore#//schema/Event/Database"/>
+      </genClasses>
+      <genClasses ecoreClass="datamodeler.ecore#//schema/Comment">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//schema/Comment/description"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference datamodeler.ecore#//schema/Comment/SQLObject"/>
+      </genClasses>
+      <genClasses ecoreClass="datamodeler.ecore#//schema/Catalog">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference datamodeler.ecore#//schema/Catalog/Database"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference datamodeler.ecore#//schema/Catalog/schemas"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//schema/Catalog/description"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="datamodeler.ecore#//schema/ObjectExtension">
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference datamodeler.ecore#//schema/ObjectExtension/SQLObject"/>
+      </genClasses>
+      <genClasses ecoreClass="datamodeler.ecore#//schema/FunctionalElement">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//schema/FunctionalElement/capability"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="datamodeler.ecore#//schema/DataModelerNamedElement">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//schema/DataModelerNamedElement/name">
+          <propertyFilterFlags>physical</propertyFilterFlags>
+        </genFeatures>
+        <genOperations ecoreOperation="datamodeler.ecore#//schema/DataModelerNamedElement/getIProjectName"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="datamodeler.ecore#//schema/LogicalPhysicalDataModelerElement">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//schema/LogicalPhysicalDataModelerElement/type"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//schema/LogicalPhysicalDataModelerElement/logicalName">
+          <propertyFilterFlags>logical</propertyFilterFlags>
+        </genFeatures>
+        <genOperations ecoreOperation="datamodeler.ecore#//schema/LogicalPhysicalDataModelerElement/isLogicalOnly"/>
+        <genOperations ecoreOperation="datamodeler.ecore#//schema/LogicalPhysicalDataModelerElement/isPhysicalOnly"/>
+      </genClasses>
+      <genClasses ecoreClass="datamodeler.ecore#//schema/DomainSet">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//schema/DomainSet/version"/>
+      </genClasses>
+    </nestedGenPackages>
+    <nestedGenPackages prefix="SQLConstraints" basePackage="org.eclipse.datatools.modelbase.sql"
+        disposableProviderFactory="true" ecorePackage="datamodeler.ecore#//constraints">
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="datamodeler.ecore#//constraints/MatchType">
+        <genEnumLiterals ecoreEnumLiteral="datamodeler.ecore#//constraints/MatchType/MATCH_SIMPLE"/>
+        <genEnumLiterals ecoreEnumLiteral="datamodeler.ecore#//constraints/MatchType/MATCH_FULL"/>
+        <genEnumLiterals ecoreEnumLiteral="datamodeler.ecore#//constraints/MatchType/MATCH_PARTIAL"/>
+      </genEnums>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="datamodeler.ecore#//constraints/IncrementType">
+        <genEnumLiterals ecoreEnumLiteral="datamodeler.ecore#//constraints/IncrementType/ASC"/>
+        <genEnumLiterals ecoreEnumLiteral="datamodeler.ecore#//constraints/IncrementType/DESC"/>
+        <genEnumLiterals ecoreEnumLiteral="datamodeler.ecore#//constraints/IncrementType/RANDOM"/>
+      </genEnums>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="datamodeler.ecore#//constraints/BaseCardinality">
+        <genEnumLiterals ecoreEnumLiteral="datamodeler.ecore#//constraints/BaseCardinality/ZERO_ONE"/>
+        <genEnumLiterals ecoreEnumLiteral="datamodeler.ecore#//constraints/BaseCardinality/ZERO_MANY"/>
+        <genEnumLiterals ecoreEnumLiteral="datamodeler.ecore#//constraints/BaseCardinality/ONE_MANY"/>
+        <genEnumLiterals ecoreEnumLiteral="datamodeler.ecore#//constraints/BaseCardinality/ONE"/>
+      </genEnums>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="datamodeler.ecore#//constraints/ParentCardinality">
+        <genEnumLiterals ecoreEnumLiteral="datamodeler.ecore#//constraints/ParentCardinality/ZERO_ONE"/>
+        <genEnumLiterals ecoreEnumLiteral="datamodeler.ecore#//constraints/ParentCardinality/ONE"/>
+      </genEnums>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="datamodeler.ecore#//constraints/ValidationRuleType">
+        <genEnumLiterals ecoreEnumLiteral="datamodeler.ecore#//constraints/ValidationRuleType/USER_DEFINED"/>
+        <genEnumLiterals ecoreEnumLiteral="datamodeler.ecore#//constraints/ValidationRuleType/MIN_MAX"/>
+        <genEnumLiterals ecoreEnumLiteral="datamodeler.ecore#//constraints/ValidationRuleType/VALID_VALUES_LIST"/>
+      </genEnums>
+      <genDataTypes ecoreDataType="datamodeler.ecore#//constraints/ForeignKeyPairs"/>
+      <genClasses ecoreClass="datamodeler.ecore#//constraints/Assertion">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference datamodeler.ecore#//constraints/Assertion/searchCondition"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference datamodeler.ecore#//constraints/Assertion/schema"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference datamodeler.ecore#//constraints/Assertion/constrainedTables"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="datamodeler.ecore#//constraints/Constraint">
+        <genFeatures property="None" createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//constraints/Constraint/deferrable"/>
+        <genFeatures property="None" createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//constraints/Constraint/initiallyDeferred"/>
+        <genFeatures property="None" createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//constraints/Constraint/enforced"/>
+        <genFeatures property="None" createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//constraints/Constraint/description"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="datamodeler.ecore#//constraints/TableConstraint">
+        <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference datamodeler.ecore#//constraints/TableConstraint/baseTable"/>
+        <genFeatures property="Readonly" notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference datamodeler.ecore#//constraints/TableConstraint/baseTableSchema"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="datamodeler.ecore#//constraints/ReferenceConstraint">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference datamodeler.ecore#//constraints/ReferenceConstraint/members"/>
+      </genClasses>
+      <genClasses ecoreClass="datamodeler.ecore#//constraints/CheckConstraint">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference datamodeler.ecore#//constraints/CheckConstraint/searchCondition"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference datamodeler.ecore#//constraints/CheckConstraint/validationRule"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference datamodeler.ecore#//constraints/CheckConstraint/field"/>
+      </genClasses>
+      <genClasses ecoreClass="datamodeler.ecore#//constraints/ForeignKey">
+        <genFeatures property="None" createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//constraints/ForeignKey/match"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//constraints/ForeignKey/onUpdate"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//constraints/ForeignKey/onDelete"/>
+        <genFeatures property="None" notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference datamodeler.ecore#//constraints/ForeignKey/uniqueConstraint"/>
+        <genFeatures property="Readonly" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference datamodeler.ecore#//constraints/ForeignKey/referencedMembers"/>
+        <genFeatures property="None" notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference datamodeler.ecore#//constraints/ForeignKey/uniqueIndex"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference datamodeler.ecore#//constraints/ForeignKey/referencedTable"/>
+        <genFeatures property="Readonly" notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference datamodeler.ecore#//constraints/ForeignKey/parentTableSchema"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//constraints/ForeignKey/identifying"/>
+        <genFeatures property="None" createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//constraints/ForeignKey/defaultIdentifying"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//constraints/ForeignKey/baseCardinality"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//constraints/ForeignKey/parentCardinality"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//constraints/ForeignKey/baseRole"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//constraints/ForeignKey/parentRole"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference datamodeler.ecore#//constraints/ForeignKey/uniqueKey"/>
+        <genOperations ecoreOperation="datamodeler.ecore#//constraints/ForeignKey/allMembersPartOfPrimaryKey"/>
+        <genOperations ecoreOperation="datamodeler.ecore#//constraints/ForeignKey/getPairs"/>
+        <genOperations ecoreOperation="datamodeler.ecore#//constraints/ForeignKey/containsPair">
+          <genParameters ecoreParameter="datamodeler.ecore#//constraints/ForeignKey/containsPair/member"/>
+          <genParameters ecoreParameter="datamodeler.ecore#//constraints/ForeignKey/containsPair/referencedMember"/>
+        </genOperations>
+      </genClasses>
+      <genClasses ecoreClass="datamodeler.ecore#//constraints/UniqueConstraint">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference datamodeler.ecore#//constraints/UniqueConstraint/ForeignKey"/>
+      </genClasses>
+      <genClasses ecoreClass="datamodeler.ecore#//constraints/PrimaryKey"/>
+      <genClasses ecoreClass="datamodeler.ecore#//constraints/Index">
+        <genFeatures property="None" notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference datamodeler.ecore#//constraints/Index/Schema"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//constraints/Index/clustered"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//constraints/Index/fillFactor"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//constraints/Index/unique"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//constraints/Index/systemGenerated"/>
+        <genFeatures children="true" createChild="true" ecoreFeature="ecore:EReference datamodeler.ecore#//constraints/Index/members"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference datamodeler.ecore#//constraints/Index/table"/>
+        <genFeatures property="None" notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference datamodeler.ecore#//constraints/Index/ForeignKey"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference datamodeler.ecore#//constraints/Index/includedMembers"/>
+      </genClasses>
+      <genClasses ecoreClass="datamodeler.ecore#//constraints/IndexMember">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//constraints/IndexMember/incrementType"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference datamodeler.ecore#//constraints/IndexMember/column"/>
+      </genClasses>
+      <genClasses ecoreClass="datamodeler.ecore#//constraints/ValidationRule">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//constraints/ValidationRule/validationType"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//constraints/ValidationRule/genSQL92Format"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//constraints/ValidationRule/minValue"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//constraints/ValidationRule/maxValue"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//constraints/ValidationRule/serverValue"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference datamodeler.ecore#//constraints/ValidationRule/validValues"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//constraints/ValidationRule/quote"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//constraints/ValidationRule/not"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//constraints/ValidationRule/description"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//constraints/ValidationRule/serverSide"/>
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference datamodeler.ecore#//constraints/ValidationRule/project"/>
+        <genOperations ecoreOperation="datamodeler.ecore#//constraints/ValidationRule/getSQL">
+          <genParameters ecoreParameter="datamodeler.ecore#//constraints/ValidationRule/getSQL/field"/>
+        </genOperations>
+      </genClasses>
+      <genClasses ecoreClass="datamodeler.ecore#//constraints/ValidValue">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//constraints/ValidValue/display"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//constraints/ValidValue/description"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//constraints/ValidValue/value"/>
+      </genClasses>
+      <genClasses ecoreClass="datamodeler.ecore#//constraints/DefaultValue">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//constraints/DefaultValue/value"/>
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference datamodeler.ecore#//constraints/DefaultValue/project"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//constraints/DefaultValue/builtIn"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//constraints/DefaultValue/description"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="datamodeler.ecore#//constraints/TableKey">
+        <genOperations ecoreOperation="datamodeler.ecore#//constraints/TableKey/getColumnMembers"/>
+        <genOperations ecoreOperation="datamodeler.ecore#//constraints/TableKey/getKeyTable"/>
+        <genOperations ecoreOperation="datamodeler.ecore#//constraints/TableKey/getReferencingForeignKeys"/>
+      </genClasses>
+    </nestedGenPackages>
+    <nestedGenPackages prefix="SQLDataTypes" basePackage="org.eclipse.datatools.modelbase.sql"
+        disposableProviderFactory="true" ecorePackage="datamodeler.ecore#//datatypes">
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="datamodeler.ecore#//datatypes/CoercibilityType">
+        <genEnumLiterals ecoreEnumLiteral="datamodeler.ecore#//datatypes/CoercibilityType/IMPLICIT"/>
+        <genEnumLiterals ecoreEnumLiteral="datamodeler.ecore#//datatypes/CoercibilityType/EXPLICIT"/>
+        <genEnumLiterals ecoreEnumLiteral="datamodeler.ecore#//datatypes/CoercibilityType/COERCIBILE"/>
+        <genEnumLiterals ecoreEnumLiteral="datamodeler.ecore#//datatypes/CoercibilityType/NO_COLLATION"/>
+      </genEnums>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="datamodeler.ecore#//datatypes/IntervalQualifierType">
+        <genEnumLiterals ecoreEnumLiteral="datamodeler.ecore#//datatypes/IntervalQualifierType/YEAR"/>
+        <genEnumLiterals ecoreEnumLiteral="datamodeler.ecore#//datatypes/IntervalQualifierType/MONTH"/>
+        <genEnumLiterals ecoreEnumLiteral="datamodeler.ecore#//datatypes/IntervalQualifierType/DAY"/>
+        <genEnumLiterals ecoreEnumLiteral="datamodeler.ecore#//datatypes/IntervalQualifierType/HOUR"/>
+        <genEnumLiterals ecoreEnumLiteral="datamodeler.ecore#//datatypes/IntervalQualifierType/MINUTE"/>
+        <genEnumLiterals ecoreEnumLiteral="datamodeler.ecore#//datatypes/IntervalQualifierType/SECOND"/>
+        <genEnumLiterals ecoreEnumLiteral="datamodeler.ecore#//datatypes/IntervalQualifierType/FRACTION"/>
+      </genEnums>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="datamodeler.ecore#//datatypes/OrderingType">
+        <genEnumLiterals ecoreEnumLiteral="datamodeler.ecore#//datatypes/OrderingType/EQUALS"/>
+        <genEnumLiterals ecoreEnumLiteral="datamodeler.ecore#//datatypes/OrderingType/FULL"/>
+      </genEnums>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="datamodeler.ecore#//datatypes/OrderingCategoryType">
+        <genEnumLiterals ecoreEnumLiteral="datamodeler.ecore#//datatypes/OrderingCategoryType/RELATIVE"/>
+        <genEnumLiterals ecoreEnumLiteral="datamodeler.ecore#//datatypes/OrderingCategoryType/MAP"/>
+        <genEnumLiterals ecoreEnumLiteral="datamodeler.ecore#//datatypes/OrderingCategoryType/STATE"/>
+      </genEnums>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="datamodeler.ecore#//datatypes/PrimitiveType">
+        <genEnumLiterals ecoreEnumLiteral="datamodeler.ecore#//datatypes/PrimitiveType/CHARACTER"/>
+        <genEnumLiterals ecoreEnumLiteral="datamodeler.ecore#//datatypes/PrimitiveType/CHARACTER_VARYING"/>
+        <genEnumLiterals ecoreEnumLiteral="datamodeler.ecore#//datatypes/PrimitiveType/CHARACTER_LARGE_OBJECT"/>
+        <genEnumLiterals ecoreEnumLiteral="datamodeler.ecore#//datatypes/PrimitiveType/BINARY"/>
+        <genEnumLiterals ecoreEnumLiteral="datamodeler.ecore#//datatypes/PrimitiveType/BINARY_VARYING"/>
+        <genEnumLiterals ecoreEnumLiteral="datamodeler.ecore#//datatypes/PrimitiveType/BINARY_LARGE_OBJECT"/>
+        <genEnumLiterals ecoreEnumLiteral="datamodeler.ecore#//datatypes/PrimitiveType/NUMERIC"/>
+        <genEnumLiterals ecoreEnumLiteral="datamodeler.ecore#//datatypes/PrimitiveType/DECIMAL"/>
+        <genEnumLiterals ecoreEnumLiteral="datamodeler.ecore#//datatypes/PrimitiveType/SMALLINT"/>
+        <genEnumLiterals ecoreEnumLiteral="datamodeler.ecore#//datatypes/PrimitiveType/INTEGER"/>
+        <genEnumLiterals ecoreEnumLiteral="datamodeler.ecore#//datatypes/PrimitiveType/BIGINT"/>
+        <genEnumLiterals ecoreEnumLiteral="datamodeler.ecore#//datatypes/PrimitiveType/FLOAT"/>
+        <genEnumLiterals ecoreEnumLiteral="datamodeler.ecore#//datatypes/PrimitiveType/REAL"/>
+        <genEnumLiterals ecoreEnumLiteral="datamodeler.ecore#//datatypes/PrimitiveType/DOUBLE_PRECISION"/>
+        <genEnumLiterals ecoreEnumLiteral="datamodeler.ecore#//datatypes/PrimitiveType/BOOLEAN"/>
+        <genEnumLiterals ecoreEnumLiteral="datamodeler.ecore#//datatypes/PrimitiveType/DATE"/>
+        <genEnumLiterals ecoreEnumLiteral="datamodeler.ecore#//datatypes/PrimitiveType/TIME"/>
+        <genEnumLiterals ecoreEnumLiteral="datamodeler.ecore#//datatypes/PrimitiveType/TIME_WITH_TIMEZONE"/>
+        <genEnumLiterals ecoreEnumLiteral="datamodeler.ecore#//datatypes/PrimitiveType/TIMESTAMP"/>
+        <genEnumLiterals ecoreEnumLiteral="datamodeler.ecore#//datatypes/PrimitiveType/TIMESTAMP_WITH_TIMEZONE"/>
+        <genEnumLiterals ecoreEnumLiteral="datamodeler.ecore#//datatypes/PrimitiveType/INTERVAL"/>
+        <genEnumLiterals ecoreEnumLiteral="datamodeler.ecore#//datatypes/PrimitiveType/XML_TYPE"/>
+        <genEnumLiterals ecoreEnumLiteral="datamodeler.ecore#//datatypes/PrimitiveType/DATALINK"/>
+        <genEnumLiterals ecoreEnumLiteral="datamodeler.ecore#//datatypes/PrimitiveType/ROWID"/>
+        <genEnumLiterals ecoreEnumLiteral="datamodeler.ecore#//datatypes/PrimitiveType/NATIONAL_CHARACTER"/>
+        <genEnumLiterals ecoreEnumLiteral="datamodeler.ecore#//datatypes/PrimitiveType/NATIONAL_CHARACTER_VARYING"/>
+        <genEnumLiterals ecoreEnumLiteral="datamodeler.ecore#//datatypes/PrimitiveType/NATIONAL_CHARACTER_LARGE_OBJECT"/>
+      </genEnums>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="datamodeler.ecore#//datatypes/LinkControlOption">
+        <genEnumLiterals ecoreEnumLiteral="datamodeler.ecore#//datatypes/LinkControlOption/FILE_LINK_CONTROL"/>
+        <genEnumLiterals ecoreEnumLiteral="datamodeler.ecore#//datatypes/LinkControlOption/NO_FILE_LINK_CONTROL"/>
+      </genEnums>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="datamodeler.ecore#//datatypes/IntegrityControlOption">
+        <genEnumLiterals ecoreEnumLiteral="datamodeler.ecore#//datatypes/IntegrityControlOption/ALL"/>
+        <genEnumLiterals ecoreEnumLiteral="datamodeler.ecore#//datatypes/IntegrityControlOption/SELECTIVE"/>
+        <genEnumLiterals ecoreEnumLiteral="datamodeler.ecore#//datatypes/IntegrityControlOption/NONE"/>
+      </genEnums>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="datamodeler.ecore#//datatypes/ReadPermissionOption">
+        <genEnumLiterals ecoreEnumLiteral="datamodeler.ecore#//datatypes/ReadPermissionOption/FS"/>
+        <genEnumLiterals ecoreEnumLiteral="datamodeler.ecore#//datatypes/ReadPermissionOption/DB"/>
+      </genEnums>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="datamodeler.ecore#//datatypes/WritePermissionOption">
+        <genEnumLiterals ecoreEnumLiteral="datamodeler.ecore#//datatypes/WritePermissionOption/FS"/>
+        <genEnumLiterals ecoreEnumLiteral="datamodeler.ecore#//datatypes/WritePermissionOption/ADMIN"/>
+        <genEnumLiterals ecoreEnumLiteral="datamodeler.ecore#//datatypes/WritePermissionOption/BLOCKED"/>
+      </genEnums>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="datamodeler.ecore#//datatypes/UnlinkOption">
+        <genEnumLiterals ecoreEnumLiteral="datamodeler.ecore#//datatypes/UnlinkOption/RESTORE"/>
+        <genEnumLiterals ecoreEnumLiteral="datamodeler.ecore#//datatypes/UnlinkOption/DELETE"/>
+        <genEnumLiterals ecoreEnumLiteral="datamodeler.ecore#//datatypes/UnlinkOption/NONE"/>
+      </genEnums>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="datamodeler.ecore#//datatypes/Units">
+        <genEnumLiterals ecoreEnumLiteral="datamodeler.ecore#//datatypes/Units/KB"/>
+        <genEnumLiterals ecoreEnumLiteral="datamodeler.ecore#//datatypes/Units/MB"/>
+        <genEnumLiterals ecoreEnumLiteral="datamodeler.ecore#//datatypes/Units/GB"/>
+      </genEnums>
+      <genClasses image="false" ecoreClass="datamodeler.ecore#//datatypes/UserDefinedType">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference datamodeler.ecore#//datatypes/UserDefinedType/schema"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference datamodeler.ecore#//datatypes/UserDefinedType/ordering"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="datamodeler.ecore#//datatypes/DataType">
+        <genOperations ecoreOperation="datamodeler.ecore#//datatypes/DataType/setContainer">
+          <genParameters ecoreParameter="datamodeler.ecore#//datatypes/DataType/setContainer/newContainer"/>
+        </genOperations>
+        <genOperations ecoreOperation="datamodeler.ecore#//datatypes/DataType/compareTo">
+          <genParameters ecoreParameter="datamodeler.ecore#//datatypes/DataType/compareTo/dataType"/>
+        </genOperations>
+        <genOperations ecoreOperation="datamodeler.ecore#//datatypes/DataType/getDataTypeAttributes"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="datamodeler.ecore#//datatypes/PredefinedDataType">
+        <genFeatures property="None" notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EAttribute datamodeler.ecore#//datatypes/PredefinedDataType/primitiveType"/>
+        <genFeatures property="None" notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference datamodeler.ecore#//datatypes/PredefinedDataType/deprecatedPrimitiveType"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="datamodeler.ecore#//datatypes/CollectionDataType">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference datamodeler.ecore#//datatypes/CollectionDataType/elementType"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="datamodeler.ecore#//datatypes/NumericalDataType">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//datatypes/NumericalDataType/precision"/>
+      </genClasses>
+      <genClasses ecoreClass="datamodeler.ecore#//datatypes/CharacterStringDataType">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//datatypes/CharacterStringDataType/length"/>
+        <genFeatures property="None" createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//datatypes/CharacterStringDataType/fixedLength"/>
+        <genFeatures property="None" createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//datatypes/CharacterStringDataType/collationName"/>
+        <genFeatures property="None" notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference datamodeler.ecore#//datatypes/CharacterStringDataType/characterSet"/>
+        <genFeatures property="None" createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//datatypes/CharacterStringDataType/coercibility"/>
+      </genClasses>
+      <genClasses ecoreClass="datamodeler.ecore#//datatypes/RowDataType">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference datamodeler.ecore#//datatypes/RowDataType/fields"/>
+      </genClasses>
+      <genClasses ecoreClass="datamodeler.ecore#//datatypes/RowIDDataType"/>
+      <genClasses image="false" ecoreClass="datamodeler.ecore#//datatypes/ArrayDataType">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//datatypes/ArrayDataType/maxCardinality"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="datamodeler.ecore#//datatypes/MultisetDataType"/>
+      <genClasses ecoreClass="datamodeler.ecore#//datatypes/BooleanDataType"/>
+      <genClasses ecoreClass="datamodeler.ecore#//datatypes/IntervalDataType">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//datatypes/IntervalDataType/leadingQualifier"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//datatypes/IntervalDataType/trailingQualifier"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//datatypes/IntervalDataType/leadingFieldPrecision"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//datatypes/IntervalDataType/trailingFieldPrecision"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//datatypes/IntervalDataType/fractionalSecondsPrecision"/>
+      </genClasses>
+      <genClasses ecoreClass="datamodeler.ecore#//datatypes/BinaryStringDataType">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//datatypes/BinaryStringDataType/length"/>
+        <genOperations ecoreOperation="datamodeler.ecore#//datatypes/BinaryStringDataType/equals"/>
+      </genClasses>
+      <genClasses ecoreClass="datamodeler.ecore#//datatypes/CharacterSet">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//datatypes/CharacterSet/defaultCollation"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//datatypes/CharacterSet/encoding"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference datamodeler.ecore#//datatypes/CharacterSet/CharacterStringDataType"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference datamodeler.ecore#//datatypes/CharacterSet/schema"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//datatypes/CharacterSet/repertoire"/>
+      </genClasses>
+      <genClasses ecoreClass="datamodeler.ecore#//datatypes/TimeDataType">
+        <genFeatures property="None" createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//datatypes/TimeDataType/timeZone"/>
+        <genFeatures property="None" createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//datatypes/TimeDataType/fractionalSecondsPrecision"/>
+      </genClasses>
+      <genClasses ecoreClass="datamodeler.ecore#//datatypes/DistinctUserDefinedType">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference datamodeler.ecore#//datatypes/DistinctUserDefinedType/predefinedRepresentation"/>
+      </genClasses>
+      <genClasses ecoreClass="datamodeler.ecore#//datatypes/StructuredUserDefinedType">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//datatypes/StructuredUserDefinedType/instantiable"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//datatypes/StructuredUserDefinedType/final"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference datamodeler.ecore#//datatypes/StructuredUserDefinedType/super"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference datamodeler.ecore#//datatypes/StructuredUserDefinedType/sub"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference datamodeler.ecore#//datatypes/StructuredUserDefinedType/attributes"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference datamodeler.ecore#//datatypes/StructuredUserDefinedType/methods"/>
+      </genClasses>
+      <genClasses ecoreClass="datamodeler.ecore#//datatypes/AttributeDefinition">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//datatypes/AttributeDefinition/scopeCheck"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//datatypes/AttributeDefinition/scopeChecked"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//datatypes/AttributeDefinition/defaultValue"/>
+      </genClasses>
+      <genClasses ecoreClass="datamodeler.ecore#//datatypes/FixedPrecisionDataType"/>
+      <genClasses ecoreClass="datamodeler.ecore#//datatypes/Domain">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference datamodeler.ecore#//datatypes/Domain/constraint"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//datatypes/Domain/defaultValue"/>
+      </genClasses>
+      <genClasses ecoreClass="datamodeler.ecore#//datatypes/Field">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//datatypes/Field/scopeCheck"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//datatypes/Field/scopeChecked"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="datamodeler.ecore#//datatypes/ReferenceDataType">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference datamodeler.ecore#//datatypes/ReferenceDataType/scopeTable"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference datamodeler.ecore#//datatypes/ReferenceDataType/referencedType"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="datamodeler.ecore#//datatypes/ConstructedDataType"/>
+      <genClasses image="false" ecoreClass="datamodeler.ecore#//datatypes/SQLDataType"/>
+      <genClasses ecoreClass="datamodeler.ecore#//datatypes/DataLinkDataType">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//datatypes/DataLinkDataType/length"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//datatypes/DataLinkDataType/linkControl"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//datatypes/DataLinkDataType/integrityControl"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//datatypes/DataLinkDataType/readPermission"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//datatypes/DataLinkDataType/writePermission"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//datatypes/DataLinkDataType/recovery"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//datatypes/DataLinkDataType/unlink"/>
+      </genClasses>
+      <genClasses ecoreClass="datamodeler.ecore#//datatypes/UserDefinedTypeOrdering">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//datatypes/UserDefinedTypeOrdering/orderingForm"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//datatypes/UserDefinedTypeOrdering/orderingCategory"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference datamodeler.ecore#//datatypes/UserDefinedTypeOrdering/orderingRoutine"/>
+      </genClasses>
+      <genClasses ecoreClass="datamodeler.ecore#//datatypes/DateDataType"/>
+      <genClasses image="false" ecoreClass="datamodeler.ecore#//datatypes/ExactNumericDataType">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//datatypes/ExactNumericDataType/scale"/>
+      </genClasses>
+      <genClasses ecoreClass="datamodeler.ecore#//datatypes/ApproximateNumericDataType"/>
+      <genClasses ecoreClass="datamodeler.ecore#//datatypes/IntegerDataType"/>
+      <genClasses ecoreClass="datamodeler.ecore#//datatypes/XMLDataType"/>
+      <genClasses ecoreClass="datamodeler.ecore#//datatypes/ElementType">
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference datamodeler.ecore#//datatypes/ElementType/CollectionDataType"/>
+      </genClasses>
+      <genClasses ecoreClass="datamodeler.ecore#//datatypes/BigCharacterStringDataType">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//datatypes/BigCharacterStringDataType/unit"/>
+      </genClasses>
+      <genClasses ecoreClass="datamodeler.ecore#//datatypes/BigBinaryStringDataType">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//datatypes/BigBinaryStringDataType/unit"/>
+      </genClasses>
+      <genClasses ecoreClass="datamodeler.ecore#//datatypes/PrimitiveDataType">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//datatypes/PrimitiveDataType/value"/>
+      </genClasses>
+    </nestedGenPackages>
+    <nestedGenPackages prefix="SQLExpressions" basePackage="org.eclipse.datatools.modelbase.sql"
+        disposableProviderFactory="true" ecorePackage="datamodeler.ecore#//expressions">
+      <genClasses image="false" ecoreClass="datamodeler.ecore#//expressions/QueryExpression">
+        <genOperations ecoreOperation="datamodeler.ecore#//expressions/QueryExpression/getSQL"/>
+        <genOperations ecoreOperation="datamodeler.ecore#//expressions/QueryExpression/setSQL">
+          <genParameters ecoreParameter="datamodeler.ecore#//expressions/QueryExpression/setSQL/sqlText"/>
+        </genOperations>
+      </genClasses>
+      <genClasses image="false" ecoreClass="datamodeler.ecore#//expressions/ValueExpression">
+        <genOperations ecoreOperation="datamodeler.ecore#//expressions/ValueExpression/getSQL"/>
+        <genOperations ecoreOperation="datamodeler.ecore#//expressions/ValueExpression/setSQL">
+          <genParameters ecoreParameter="datamodeler.ecore#//expressions/ValueExpression/setSQL/sqlText"/>
+        </genOperations>
+      </genClasses>
+      <genClasses image="false" ecoreClass="datamodeler.ecore#//expressions/SearchCondition">
+        <genOperations ecoreOperation="datamodeler.ecore#//expressions/SearchCondition/getSQL"/>
+        <genOperations ecoreOperation="datamodeler.ecore#//expressions/SearchCondition/setSQL">
+          <genParameters ecoreParameter="datamodeler.ecore#//expressions/SearchCondition/setSQL/sqlText"/>
+        </genOperations>
+      </genClasses>
+      <genClasses ecoreClass="datamodeler.ecore#//expressions/QueryExpressionDefault">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//expressions/QueryExpressionDefault/SQL"/>
+      </genClasses>
+      <genClasses ecoreClass="datamodeler.ecore#//expressions/SearchConditionDefault">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//expressions/SearchConditionDefault/SQL"/>
+      </genClasses>
+      <genClasses ecoreClass="datamodeler.ecore#//expressions/ValueExpressionDefault">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//expressions/ValueExpressionDefault/SQL"/>
+      </genClasses>
+    </nestedGenPackages>
+    <nestedGenPackages prefix="SQLRoutines" basePackage="org.eclipse.datatools.modelbase.sql"
+        disposableProviderFactory="true" ecorePackage="datamodeler.ecore#//routines">
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="datamodeler.ecore#//routines/DataAccess">
+        <genEnumLiterals ecoreEnumLiteral="datamodeler.ecore#//routines/DataAccess/NO_SQL"/>
+        <genEnumLiterals ecoreEnumLiteral="datamodeler.ecore#//routines/DataAccess/CONTAINS_SQL"/>
+        <genEnumLiterals ecoreEnumLiteral="datamodeler.ecore#//routines/DataAccess/READS_SQL_DATA"/>
+        <genEnumLiterals ecoreEnumLiteral="datamodeler.ecore#//routines/DataAccess/MODIFIES_SQL_DATA"/>
+      </genEnums>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="datamodeler.ecore#//routines/ParameterMode">
+        <genEnumLiterals ecoreEnumLiteral="datamodeler.ecore#//routines/ParameterMode/IN"/>
+        <genEnumLiterals ecoreEnumLiteral="datamodeler.ecore#//routines/ParameterMode/OUT"/>
+        <genEnumLiterals ecoreEnumLiteral="datamodeler.ecore#//routines/ParameterMode/INOUT"/>
+      </genEnums>
+      <genClasses image="false" ecoreClass="datamodeler.ecore#//routines/Routine">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//routines/Routine/specificName"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//routines/Routine/language"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//routines/Routine/parameterStyle"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//routines/Routine/deterministic"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//routines/Routine/sqlDataAccess"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//routines/Routine/creationTS"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//routines/Routine/lastAlteredTS"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//routines/Routine/authorizationID"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//routines/Routine/security"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//routines/Routine/externalName"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference datamodeler.ecore#//routines/Routine/parameters"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference datamodeler.ecore#//routines/Routine/source"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference datamodeler.ecore#//routines/Routine/schema"/>
+      </genClasses>
+      <genClasses ecoreClass="datamodeler.ecore#//routines/Source">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//routines/Source/body"/>
+      </genClasses>
+      <genClasses ecoreClass="datamodeler.ecore#//routines/Parameter">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//routines/Parameter/mode"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//routines/Parameter/locator"/>
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference datamodeler.ecore#//routines/Parameter/routine"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference datamodeler.ecore#//routines/Parameter/stringTypeOption"/>
+      </genClasses>
+      <genClasses ecoreClass="datamodeler.ecore#//routines/Procedure">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//routines/Procedure/maxResultSets"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//routines/Procedure/oldSavePoint"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference datamodeler.ecore#//routines/Procedure/resultSet"/>
+      </genClasses>
+      <genClasses ecoreClass="datamodeler.ecore#//routines/Function">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//routines/Function/nullCall"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//routines/Function/static"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//routines/Function/transformGroup"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//routines/Function/typePreserving"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//routines/Function/mutator"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference datamodeler.ecore#//routines/Function/returnTable"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference datamodeler.ecore#//routines/Function/returnScalar"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference datamodeler.ecore#//routines/Function/returnCast"/>
+      </genClasses>
+      <genClasses ecoreClass="datamodeler.ecore#//routines/RoutineResultTable"/>
+      <genClasses ecoreClass="datamodeler.ecore#//routines/Method">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//routines/Method/overriding"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//routines/Method/constructor"/>
+      </genClasses>
+      <genClasses ecoreClass="datamodeler.ecore#//routines/UserDefinedFunction"/>
+      <genClasses ecoreClass="datamodeler.ecore#//routines/BuiltInFunction"/>
+    </nestedGenPackages>
+    <nestedGenPackages prefix="SQLStatements" basePackage="org.eclipse.datatools.modelbase.sql"
+        disposableProviderFactory="true" ecorePackage="datamodeler.ecore#//statements">
+      <genClasses image="false" ecoreClass="datamodeler.ecore#//statements/SQLStatement">
+        <genOperations ecoreOperation="datamodeler.ecore#//statements/SQLStatement/getSQL"/>
+        <genOperations ecoreOperation="datamodeler.ecore#//statements/SQLStatement/setSQL">
+          <genParameters ecoreParameter="datamodeler.ecore#//statements/SQLStatement/setSQL/sqlText"/>
+        </genOperations>
+      </genClasses>
+      <genClasses image="false" ecoreClass="datamodeler.ecore#//statements/SQLDataStatement"/>
+      <genClasses image="false" ecoreClass="datamodeler.ecore#//statements/SQLSchemaStatement"/>
+      <genClasses image="false" ecoreClass="datamodeler.ecore#//statements/SQLControlStatement"/>
+      <genClasses image="false" ecoreClass="datamodeler.ecore#//statements/SQLDataChangeStatement"/>
+      <genClasses ecoreClass="datamodeler.ecore#//statements/SQLStatementDefault">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//statements/SQLStatementDefault/SQL"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="datamodeler.ecore#//statements/SQLConnectionStatement"/>
+      <genClasses image="false" ecoreClass="datamodeler.ecore#//statements/SQLDiagnosticsStatement"/>
+      <genClasses image="false" ecoreClass="datamodeler.ecore#//statements/SQLDynamicStatement"/>
+      <genClasses image="false" ecoreClass="datamodeler.ecore#//statements/SQLSessionStatement"/>
+      <genClasses image="false" ecoreClass="datamodeler.ecore#//statements/SQLTransactionStatement"/>
+    </nestedGenPackages>
+    <nestedGenPackages prefix="SQLTables" basePackage="org.eclipse.datatools.modelbase.sql"
+        disposableProviderFactory="true" ecorePackage="datamodeler.ecore#//tables">
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="datamodeler.ecore#//tables/CheckType">
+        <genEnumLiterals ecoreEnumLiteral="datamodeler.ecore#//tables/CheckType/CASCADED"/>
+        <genEnumLiterals ecoreEnumLiteral="datamodeler.ecore#//tables/CheckType/LOCAL"/>
+        <genEnumLiterals ecoreEnumLiteral="datamodeler.ecore#//tables/CheckType/NONE"/>
+      </genEnums>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="datamodeler.ecore#//tables/ReferenceType">
+        <genEnumLiterals ecoreEnumLiteral="datamodeler.ecore#//tables/ReferenceType/SYSTEM_GENERATED"/>
+        <genEnumLiterals ecoreEnumLiteral="datamodeler.ecore#//tables/ReferenceType/USER_GENERATED"/>
+        <genEnumLiterals ecoreEnumLiteral="datamodeler.ecore#//tables/ReferenceType/DERIVED_SELF_REF"/>
+      </genEnums>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="datamodeler.ecore#//tables/ActionTimeType">
+        <genEnumLiterals ecoreEnumLiteral="datamodeler.ecore#//tables/ActionTimeType/AFTER"/>
+        <genEnumLiterals ecoreEnumLiteral="datamodeler.ecore#//tables/ActionTimeType/BEFORE"/>
+        <genEnumLiterals ecoreEnumLiteral="datamodeler.ecore#//tables/ActionTimeType/INSTEADOF"/>
+      </genEnums>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="datamodeler.ecore#//tables/ActionGranularityType">
+        <genEnumLiterals ecoreEnumLiteral="datamodeler.ecore#//tables/ActionGranularityType/STATEMENT"/>
+        <genEnumLiterals ecoreEnumLiteral="datamodeler.ecore#//tables/ActionGranularityType/ROW"/>
+      </genEnums>
+      <genClasses ecoreClass="datamodeler.ecore#//tables/ViewTable">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//tables/ViewTable/checkType"/>
+      </genClasses>
+      <genClasses ecoreClass="datamodeler.ecore#//tables/TemporaryTable">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//tables/TemporaryTable/local"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//tables/TemporaryTable/deleteOnCommit"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="datamodeler.ecore#//tables/Table">
+        <genFeatures children="true" createChild="true" ecoreFeature="ecore:EReference datamodeler.ecore#//tables/Table/columns"/>
+        <genFeatures property="None" notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference datamodeler.ecore#//tables/Table/supertable"/>
+        <genFeatures property="None" notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference datamodeler.ecore#//tables/Table/subtables"/>
+        <genFeatures property="Readonly" notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference datamodeler.ecore#//tables/Table/schema"/>
+        <genFeatures property="None" notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference datamodeler.ecore#//tables/Table/udt"/>
+        <genFeatures property="None" notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference datamodeler.ecore#//tables/Table/triggers"/>
+        <genFeatures property="None" notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference datamodeler.ecore#//tables/Table/index"/>
+        <genFeatures property="None" createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//tables/Table/selfRefColumnGeneration"/>
+        <genFeatures property="None" createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//tables/Table/insertable"/>
+        <genFeatures property="None" createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//tables/Table/updatable"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//tables/Table/prefix"/>
+        <genFeatures createChild="false" propertyMultiLine="true" ecoreFeature="ecore:EAttribute datamodeler.ecore#//tables/Table/description"/>
+      </genClasses>
+      <genClasses ecoreClass="datamodeler.ecore#//tables/PersistentTable"/>
+      <genClasses image="false" ecoreClass="datamodeler.ecore#//tables/DerivedTable">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference datamodeler.ecore#//tables/DerivedTable/queryExpression"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="datamodeler.ecore#//tables/BaseTable">
+        <genFeatures property="Readonly" children="true" createChild="true" ecoreFeature="ecore:EReference datamodeler.ecore#//tables/BaseTable/constraints"/>
+        <genFeatures property="Readonly" notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference datamodeler.ecore#//tables/BaseTable/referencingForeignKeys"/>
+        <genOperations ecoreOperation="datamodeler.ecore#//tables/BaseTable/getUniqueConstraints"/>
+        <genOperations ecoreOperation="datamodeler.ecore#//tables/BaseTable/getUniqueKeys"/>
+        <genOperations ecoreOperation="datamodeler.ecore#//tables/BaseTable/getForeignKeys"/>
+        <genOperations ecoreOperation="datamodeler.ecore#//tables/BaseTable/getPrimaryKey"/>
+      </genClasses>
+      <genClasses ecoreClass="datamodeler.ecore#//tables/Column">
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference datamodeler.ecore#//tables/Column/table"/>
+        <genFeatures property="None" children="true" createChild="false" ecoreFeature="ecore:EReference datamodeler.ecore#//tables/Column/identitySpecifier"/>
+        <genFeatures property="None" children="true" createChild="false" ecoreFeature="ecore:EReference datamodeler.ecore#//tables/Column/generateExpression"/>
+        <genFeatures property="None" createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//tables/Column/implementationDependent"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//tables/Column/nullable"/>
+        <genFeatures property="None" createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//tables/Column/defaultValue"/>
+        <genFeatures property="None" createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//tables/Column/scopeCheck"/>
+        <genFeatures property="None" createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//tables/Column/scopeChecked"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//tables/Column/primaryKey"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//tables/Column/partOfForeignKey"/>
+        <genFeatures property="None" createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//tables/Column/partOfUniqueConstraint"/>
+        <genFeatures property="None" notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference datamodeler.ecore#//tables/Column/referencingConstraints"/>
+        <genFeatures property="None" notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference datamodeler.ecore#//tables/Column/primitiveType"/>
+        <genFeatures createChild="false" propertyMultiLine="true" ecoreFeature="ecore:EAttribute datamodeler.ecore#//tables/Column/description"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference datamodeler.ecore#//tables/Column/validationRule">
+          <propertyFilterFlags>physical</propertyFilterFlags>
+        </genFeatures>
+        <genFeatures property="None" notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference datamodeler.ecore#//tables/Column/checkConstraint"/>
+        <genFeatures property="None" notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference datamodeler.ecore#//tables/Column/customDefault"/>
+        <genFeatures property="None" createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//tables/Column/builtInDefaultValue"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference datamodeler.ecore#//tables/Column/default">
+          <propertyFilterFlags>physical</propertyFilterFlags>
+        </genFeatures>
+        <genOperations ecoreOperation="datamodeler.ecore#//tables/Column/compareTo">
+          <genParameters ecoreParameter="datamodeler.ecore#//tables/Column/compareTo/column"/>
+        </genOperations>
+        <genOperations ecoreOperation="datamodeler.ecore#//tables/Column/clone"/>
+        <genOperations ecoreOperation="datamodeler.ecore#//tables/Column/getParentColumn"/>
+        <genOperations ecoreOperation="datamodeler.ecore#//tables/Column/getSQLPrimitiveType"/>
+        <genOperations ecoreOperation="datamodeler.ecore#//tables/Column/isPartOfPrimaryKey"/>
+      </genClasses>
+      <genClasses ecoreClass="datamodeler.ecore#//tables/Trigger">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference datamodeler.ecore#//tables/Trigger/schema"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference datamodeler.ecore#//tables/Trigger/subjectTable"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference datamodeler.ecore#//tables/Trigger/actionStatement"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference datamodeler.ecore#//tables/Trigger/triggerColumn"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//tables/Trigger/actionGranularity"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference datamodeler.ecore#//tables/Trigger/when"/>
+        <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//tables/Trigger/timeStamp"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//tables/Trigger/actionTime"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//tables/Trigger/updateType"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//tables/Trigger/insertType"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//tables/Trigger/deleteType"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//tables/Trigger/oldRow"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//tables/Trigger/newRow"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//tables/Trigger/oldTable"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//tables/Trigger/newTable"/>
+      </genClasses>
+    </nestedGenPackages>
+    <nestedGenPackages prefix="SQLAccessControl" basePackage="org.eclipse.datatools.modelbase.sql"
+        disposableProviderFactory="true" ecorePackage="datamodeler.ecore#//accesscontrol">
+      <genClasses image="false" ecoreClass="datamodeler.ecore#//accesscontrol/AuthorizationIdentifier">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference datamodeler.ecore#//accesscontrol/AuthorizationIdentifier/ownedSchema"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference datamodeler.ecore#//accesscontrol/AuthorizationIdentifier/Database"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference datamodeler.ecore#//accesscontrol/AuthorizationIdentifier/receivedRoleAuthorization"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference datamodeler.ecore#//accesscontrol/AuthorizationIdentifier/grantedRoleAuthorization"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference datamodeler.ecore#//accesscontrol/AuthorizationIdentifier/grantedPrivilege"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference datamodeler.ecore#//accesscontrol/AuthorizationIdentifier/receivedPrivilege"/>
+      </genClasses>
+      <genClasses ecoreClass="datamodeler.ecore#//accesscontrol/Privilege">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//accesscontrol/Privilege/grantable"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//accesscontrol/Privilege/action"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//accesscontrol/Privilege/withHierarchy"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference datamodeler.ecore#//accesscontrol/Privilege/grantor"/>
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference datamodeler.ecore#//accesscontrol/Privilege/grantee"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference datamodeler.ecore#//accesscontrol/Privilege/actionObjects"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference datamodeler.ecore#//accesscontrol/Privilege/object"/>
+      </genClasses>
+      <genClasses ecoreClass="datamodeler.ecore#//accesscontrol/Group">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference datamodeler.ecore#//accesscontrol/Group/user"/>
+      </genClasses>
+      <genClasses ecoreClass="datamodeler.ecore#//accesscontrol/User">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference datamodeler.ecore#//accesscontrol/User/group"/>
+      </genClasses>
+      <genClasses ecoreClass="datamodeler.ecore#//accesscontrol/Role">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference datamodeler.ecore#//accesscontrol/Role/roleAuthorization"/>
+      </genClasses>
+      <genClasses ecoreClass="datamodeler.ecore#//accesscontrol/RoleAuthorization">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//accesscontrol/RoleAuthorization/grantable"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference datamodeler.ecore#//accesscontrol/RoleAuthorization/role"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference datamodeler.ecore#//accesscontrol/RoleAuthorization/grantee"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference datamodeler.ecore#//accesscontrol/RoleAuthorization/grantor"/>
+      </genClasses>
+    </nestedGenPackages>
+    <nestedGenPackages prefix="SQLProject" basePackage="org.eclipse.datatools.modelbase.sql"
+        disposableProviderFactory="true" extensibleProviderFactory="true" ecorePackage="datamodeler.ecore#//project">
+      <genClasses ecoreClass="datamodeler.ecore#//project/DMProject">
+        <genFeatures property="Readonly" children="true" createChild="true" ecoreFeature="ecore:EReference datamodeler.ecore#//project/DMProject/database">
+          <propertyFilterFlags>physical</propertyFilterFlags>
+        </genFeatures>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference datamodeler.ecore#//project/DMProject/schemas"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//project/DMProject/description"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute datamodeler.ecore#//project/DMProject/application"/>
+        <genFeatures property="None" createChild="true" ecoreFeature="ecore:EReference datamodeler.ecore#//project/DMProject/validationRules"/>
+        <genFeatures property="None" createChild="true" ecoreFeature="ecore:EReference datamodeler.ecore#//project/DMProject/customDefaults"/>
+        <genFeatures property="Readonly" createChild="true" ecoreFeature="ecore:EReference datamodeler.ecore#//project/DMProject/domainSet"/>
+        <genOperations ecoreOperation="datamodeler.ecore#//project/DMProject/isValid">
+          <genParameters ecoreParameter="datamodeler.ecore#//project/DMProject/isValid/diagnostics"/>
+          <genParameters ecoreParameter="datamodeler.ecore#//project/DMProject/isValid/context"/>
+        </genOperations>
+      </genClasses>
+    </nestedGenPackages>
+  </genPackages>
+</genmodel:GenModel>

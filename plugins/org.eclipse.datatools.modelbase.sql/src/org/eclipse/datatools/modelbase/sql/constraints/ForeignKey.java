@@ -1,18 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2001, 2004 IBM Corporation and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- * 
- * Contributors:
- *     IBM Corporation - initial API and implementation
- *******************************************************************************/
+/**
+ * <copyright>
+ * </copyright>
+ *
+ * $Id$
+ */
 package org.eclipse.datatools.modelbase.sql.constraints;
 
 import org.eclipse.datatools.modelbase.sql.schema.ReferentialActionType;
 import org.eclipse.datatools.modelbase.sql.tables.BaseTable;
-
+import org.eclipse.datatools.modelbase.sql.tables.Column;
 import org.eclipse.emf.common.util.EList;
 
 /**
@@ -172,10 +168,10 @@ public interface ForeignKey extends ReferenceConstraint {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Referenced Members</em>' reference list.
 	 * @see org.eclipse.datatools.modelbase.sql.constraints.SQLConstraintsPackage#getForeignKey_ReferencedMembers()
-	 * @model type="org.eclipse.datatools.modelbase.sql.tables.Column" required="true"
+	 * @model required="true"
 	 * @generated
 	 */
-	EList getReferencedMembers();
+	EList<Column> getReferencedMembers();
 
 	/**
 	 * Returns the value of the '<em><b>Unique Index</b></em>' reference.
@@ -210,7 +206,7 @@ public interface ForeignKey extends ReferenceConstraint {
 	 * It is bidirectional and its opposite is '{@link org.eclipse.datatools.modelbase.sql.tables.BaseTable#getReferencingForeignKeys <em>Referencing Foreign Keys</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Referenced Table</em>' reference isn't clear,
+	 * If the meaning of the '<em>Parent Table</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->

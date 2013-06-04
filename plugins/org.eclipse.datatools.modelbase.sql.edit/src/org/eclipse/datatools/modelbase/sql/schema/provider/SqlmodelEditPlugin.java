@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SqlmodelEditPlugin.java,v 1.2 2005/06/15 18:16:14 ledunnel Exp $
+ * $Id$
  */
 package org.eclipse.datatools.modelbase.sql.schema.provider;
 
@@ -11,7 +11,7 @@ import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.provider.EcoreEditPlugin;
 
 /**
- * This is the central singleton for the Sqlmodel edit plugin.
+ * This is the central singleton for the Datamodeler edit plugin.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
@@ -53,6 +53,7 @@ public final class SqlmodelEditPlugin extends EMFPlugin {
 	 * @return the singleton instance.
 	 * @generated
 	 */
+	@Override
 	public ResourceLocator getPluginResourceLocator() {
 		return plugin;
 	}

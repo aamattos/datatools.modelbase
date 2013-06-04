@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: RoutineItemProvider.java,v 1.3 2007/05/31 00:29:17 dpchou Exp $
+ * $Id$
  */
 package org.eclipse.datatools.modelbase.sql.routines.provider;
 
@@ -22,12 +22,12 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
+import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-
 
 /**
  * This is the item provider adapter for a {@link org.eclipse.datatools.modelbase.sql.routines.Routine} object.
@@ -59,7 +59,8 @@ public class RoutineItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getPropertyDescriptors(Object object) {
+	@Override
+	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
@@ -89,8 +90,8 @@ public class RoutineItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Routine_specificName_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_Routine_specificName_feature", "_UI_Routine_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 getString("_UI_Routine_specificName_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Routine_specificName_feature", "_UI_Routine_type"),
 				 SQLRoutinesPackage.Literals.ROUTINE__SPECIFIC_NAME,
 				 true,
 				 false,
@@ -111,8 +112,8 @@ public class RoutineItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Routine_language_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_Routine_language_feature", "_UI_Routine_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 getString("_UI_Routine_language_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Routine_language_feature", "_UI_Routine_type"),
 				 SQLRoutinesPackage.Literals.ROUTINE__LANGUAGE,
 				 true,
 				 false,
@@ -133,8 +134,8 @@ public class RoutineItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Routine_parameterStyle_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_Routine_parameterStyle_feature", "_UI_Routine_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 getString("_UI_Routine_parameterStyle_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Routine_parameterStyle_feature", "_UI_Routine_type"),
 				 SQLRoutinesPackage.Literals.ROUTINE__PARAMETER_STYLE,
 				 true,
 				 false,
@@ -155,8 +156,8 @@ public class RoutineItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Routine_deterministic_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_Routine_deterministic_feature", "_UI_Routine_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 getString("_UI_Routine_deterministic_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Routine_deterministic_feature", "_UI_Routine_type"),
 				 SQLRoutinesPackage.Literals.ROUTINE__DETERMINISTIC,
 				 true,
 				 false,
@@ -177,8 +178,8 @@ public class RoutineItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Routine_sqlDataAccess_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_Routine_sqlDataAccess_feature", "_UI_Routine_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 getString("_UI_Routine_sqlDataAccess_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Routine_sqlDataAccess_feature", "_UI_Routine_type"),
 				 SQLRoutinesPackage.Literals.ROUTINE__SQL_DATA_ACCESS,
 				 true,
 				 false,
@@ -199,8 +200,8 @@ public class RoutineItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Routine_creationTS_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_Routine_creationTS_feature", "_UI_Routine_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 getString("_UI_Routine_creationTS_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Routine_creationTS_feature", "_UI_Routine_type"),
 				 SQLRoutinesPackage.Literals.ROUTINE__CREATION_TS,
 				 true,
 				 false,
@@ -221,8 +222,8 @@ public class RoutineItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Routine_lastAlteredTS_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_Routine_lastAlteredTS_feature", "_UI_Routine_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 getString("_UI_Routine_lastAlteredTS_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Routine_lastAlteredTS_feature", "_UI_Routine_type"),
 				 SQLRoutinesPackage.Literals.ROUTINE__LAST_ALTERED_TS,
 				 true,
 				 false,
@@ -243,8 +244,8 @@ public class RoutineItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Routine_authorizationID_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_Routine_authorizationID_feature", "_UI_Routine_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 getString("_UI_Routine_authorizationID_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Routine_authorizationID_feature", "_UI_Routine_type"),
 				 SQLRoutinesPackage.Literals.ROUTINE__AUTHORIZATION_ID,
 				 true,
 				 false,
@@ -265,8 +266,8 @@ public class RoutineItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Routine_security_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_Routine_security_feature", "_UI_Routine_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 getString("_UI_Routine_security_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Routine_security_feature", "_UI_Routine_type"),
 				 SQLRoutinesPackage.Literals.ROUTINE__SECURITY,
 				 true,
 				 false,
@@ -287,8 +288,8 @@ public class RoutineItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Routine_externalName_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_Routine_externalName_feature", "_UI_Routine_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 getString("_UI_Routine_externalName_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Routine_externalName_feature", "_UI_Routine_type"),
 				 SQLRoutinesPackage.Literals.ROUTINE__EXTERNAL_NAME,
 				 true,
 				 false,
@@ -309,12 +310,12 @@ public class RoutineItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Routine_schema_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_Routine_schema_feature", "_UI_Routine_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 getString("_UI_Routine_schema_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Routine_schema_feature", "_UI_Routine_type"),
 				 SQLRoutinesPackage.Literals.ROUTINE__SCHEMA,
 				 true,
 				 false,
-				 false,
+				 true,
 				 null,
 				 null,
 				 null));
@@ -328,7 +329,8 @@ public class RoutineItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Collection getChildrenFeatures(Object object) {
+	@Override
+	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(SQLRoutinesPackage.Literals.ROUTINE__PARAMETERS);
@@ -342,6 +344,7 @@ public class RoutineItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EStructuralFeature getChildFeature(Object object, Object child) {
 		// Check the type of the specified child object and return the proper feature to use for
 		// adding (see {@link AddCommand}) it as a child.
@@ -350,26 +353,17 @@ public class RoutineItemProvider
 	}
 
 	/**
-	 * This returns Routine.gif.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/Routine")); //$NON-NLS-1$
-	}
-
-	/**
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getText(Object object) {
 		String label = ((Routine)object).getName();
 		return label == null || label.length() == 0 ?
-			getString("_UI_Routine_type") : //$NON-NLS-1$
-			getString("_UI_Routine_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+			getString("_UI_Routine_type") :
+			label;
 	}
 
 	/**
@@ -379,6 +373,7 @@ public class RoutineItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
@@ -410,7 +405,8 @@ public class RoutineItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void collectNewChildDescriptors(Collection newChildDescriptors, Object object) {
+	@Override
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
 		newChildDescriptors.add
@@ -430,8 +426,8 @@ public class RoutineItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ResourceLocator getResourceLocator() {
 		return SqlmodelEditPlugin.INSTANCE;
 	}
-
 }

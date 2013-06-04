@@ -1,16 +1,19 @@
-/*******************************************************************************
- * Copyright (c) 2001, 2004 IBM Corporation and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- * 
- * Contributors:
- *     IBM Corporation - initial API and implementation
- *******************************************************************************/
+/**
+ * <copyright>
+ * </copyright>
+ *
+ * $Id$
+ */
 package org.eclipse.datatools.modelbase.sql.schema;
 
 import org.eclipse.datatools.modelbase.sql.accesscontrol.AuthorizationIdentifier;
+import org.eclipse.datatools.modelbase.sql.constraints.Assertion;
+import org.eclipse.datatools.modelbase.sql.constraints.Index;
+import org.eclipse.datatools.modelbase.sql.datatypes.CharacterSet;
+import org.eclipse.datatools.modelbase.sql.datatypes.UserDefinedType;
+import org.eclipse.datatools.modelbase.sql.routines.Routine;
+import org.eclipse.datatools.modelbase.sql.tables.Table;
+import org.eclipse.datatools.modelbase.sql.tables.Trigger;
 import org.eclipse.emf.common.util.EList;
 
 /**
@@ -49,7 +52,7 @@ public interface Schema extends SQLObject {
 	 * Returns the value of the '<em><b>Triggers</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.datatools.modelbase.sql.tables.Trigger}.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.datatools.modelbase.sql.tables.Trigger#getSchema <em>Schema</em>}'.
-	 * <!-- begin-user-doc --> 
+	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Triggers</em>' reference list isn't clear,
 	 * there really should be more of a description here...
@@ -58,10 +61,10 @@ public interface Schema extends SQLObject {
 	 * @return the value of the '<em>Triggers</em>' reference list.
 	 * @see org.eclipse.datatools.modelbase.sql.schema.SQLSchemaPackage#getSchema_Triggers()
 	 * @see org.eclipse.datatools.modelbase.sql.tables.Trigger#getSchema
-	 * @model type="org.eclipse.datatools.modelbase.sql.tables.Trigger" opposite="schema"
+	 * @model opposite="schema"
 	 * @generated
 	 */
-	EList getTriggers();
+	EList<Trigger> getTriggers();
 
 	/**
 	 * Returns the value of the '<em><b>Indices</b></em>' reference list.
@@ -76,28 +79,24 @@ public interface Schema extends SQLObject {
 	 * @return the value of the '<em>Indices</em>' reference list.
 	 * @see org.eclipse.datatools.modelbase.sql.schema.SQLSchemaPackage#getSchema_Indices()
 	 * @see org.eclipse.datatools.modelbase.sql.constraints.Index#getSchema
-	 * @model type="org.eclipse.datatools.modelbase.sql.constraints.Index" opposite="Schema"
+	 * @model opposite="Schema"
 	 * @generated
 	 */
-	EList getIndices();
+	EList<Index> getIndices();
 
 	/**
 	 * Returns the value of the '<em><b>Tables</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.datatools.modelbase.sql.tables.Table}.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.datatools.modelbase.sql.tables.Table#getSchema <em>Schema</em>}'.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Tables</em>' reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Tables</em>' reference list.
 	 * @see org.eclipse.datatools.modelbase.sql.schema.SQLSchemaPackage#getSchema_Tables()
 	 * @see org.eclipse.datatools.modelbase.sql.tables.Table#getSchema
-	 * @model type="org.eclipse.datatools.modelbase.sql.tables.Table" opposite="schema"
+	 * @model opposite="schema"
 	 * @generated
 	 */
-	EList getTables();
+	EList<Table> getTables();
 
 	/**
 	 * Returns the value of the '<em><b>Sequences</b></em>' reference list.
@@ -112,10 +111,10 @@ public interface Schema extends SQLObject {
 	 * @return the value of the '<em>Sequences</em>' reference list.
 	 * @see org.eclipse.datatools.modelbase.sql.schema.SQLSchemaPackage#getSchema_Sequences()
 	 * @see org.eclipse.datatools.modelbase.sql.schema.Sequence#getSchema
-	 * @model type="org.eclipse.datatools.modelbase.sql.schema.Sequence" opposite="schema"
+	 * @model opposite="schema"
 	 * @generated
 	 */
-	EList getSequences();
+	EList<Sequence> getSequences();
 
 	/**
 	 * Returns the value of the '<em><b>Database</b></em>' reference.
@@ -186,10 +185,10 @@ public interface Schema extends SQLObject {
 	 * @return the value of the '<em>Assertions</em>' reference list.
 	 * @see org.eclipse.datatools.modelbase.sql.schema.SQLSchemaPackage#getSchema_Assertions()
 	 * @see org.eclipse.datatools.modelbase.sql.constraints.Assertion#getSchema
-	 * @model type="org.eclipse.datatools.modelbase.sql.constraints.Assertion" opposite="schema"
+	 * @model opposite="schema"
 	 * @generated
 	 */
-	EList getAssertions();
+	EList<Assertion> getAssertions();
 
 	/**
 	 * Returns the value of the '<em><b>User Defined Types</b></em>' reference list.
@@ -204,10 +203,10 @@ public interface Schema extends SQLObject {
 	 * @return the value of the '<em>User Defined Types</em>' reference list.
 	 * @see org.eclipse.datatools.modelbase.sql.schema.SQLSchemaPackage#getSchema_UserDefinedTypes()
 	 * @see org.eclipse.datatools.modelbase.sql.datatypes.UserDefinedType#getSchema
-	 * @model type="org.eclipse.datatools.modelbase.sql.datatypes.UserDefinedType" opposite="schema"
+	 * @model opposite="schema"
 	 * @generated
 	 */
-	EList getUserDefinedTypes();
+	EList<UserDefinedType> getUserDefinedTypes();
 
 	/**
 	 * Returns the value of the '<em><b>Char Sets</b></em>' reference list.
@@ -222,10 +221,10 @@ public interface Schema extends SQLObject {
 	 * @return the value of the '<em>Char Sets</em>' reference list.
 	 * @see org.eclipse.datatools.modelbase.sql.schema.SQLSchemaPackage#getSchema_CharSets()
 	 * @see org.eclipse.datatools.modelbase.sql.datatypes.CharacterSet#getSchema
-	 * @model type="org.eclipse.datatools.modelbase.sql.datatypes.CharacterSet" opposite="schema"
+	 * @model opposite="schema"
 	 * @generated
 	 */
-	EList getCharSets();
+	EList<CharacterSet> getCharSets();
 
 	/**
 	 * Returns the value of the '<em><b>Routines</b></em>' reference list.
@@ -240,11 +239,11 @@ public interface Schema extends SQLObject {
 	 * @return the value of the '<em>Routines</em>' reference list.
 	 * @see org.eclipse.datatools.modelbase.sql.schema.SQLSchemaPackage#getSchema_Routines()
 	 * @see org.eclipse.datatools.modelbase.sql.routines.Routine#getSchema
-	 * @model type="org.eclipse.datatools.modelbase.sql.routines.Routine" opposite="schema"
+	 * @model opposite="schema"
 	 * @generated
 	 */
-	EList getRoutines();
-
+	EList<Routine> getRoutines();
+	
    /**
     * Get a list of procedures belonging to this schema.
     * <p>
@@ -268,6 +267,7 @@ public interface Schema extends SQLObject {
     * there are none, then an empty list is returned.
     */
    public EList getBuiltInFunctions();
+
 
 	/**
 	 * Returns the value of the '<em><b>Owner</b></em>' reference.

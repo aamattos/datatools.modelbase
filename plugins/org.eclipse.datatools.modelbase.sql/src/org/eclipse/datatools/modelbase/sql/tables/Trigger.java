@@ -1,13 +1,9 @@
-/*******************************************************************************
- * Copyright (c) 2001, 2004 IBM Corporation and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- * 
- * Contributors:
- *     IBM Corporation - initial API and implementation
- *******************************************************************************/
+/**
+ * <copyright>
+ * </copyright>
+ *
+ * $Id$
+ */
 package org.eclipse.datatools.modelbase.sql.tables;
 
 import java.util.Date;
@@ -15,6 +11,7 @@ import java.util.Date;
 import org.eclipse.datatools.modelbase.sql.expressions.SearchCondition;
 import org.eclipse.datatools.modelbase.sql.schema.SQLObject;
 import org.eclipse.datatools.modelbase.sql.schema.Schema;
+import org.eclipse.datatools.modelbase.sql.statements.SQLStatement;
 import org.eclipse.emf.common.util.EList;
 
 /**
@@ -113,16 +110,16 @@ public interface Trigger extends SQLObject {
 	 * The list contents are of type {@link org.eclipse.datatools.modelbase.sql.statements.SQLStatement}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Action Statement</em>' reference list isn't clear,
+	 * If the meaning of the '<em>Action Statement</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Action Statement</em>' containment reference list.
 	 * @see org.eclipse.datatools.modelbase.sql.tables.SQLTablesPackage#getTrigger_ActionStatement()
-	 * @model type="org.eclipse.datatools.modelbase.sql.statements.SQLStatement" containment="true" required="true"
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
-	EList getActionStatement();
+	EList<SQLStatement> getActionStatement();
 
 	/**
 	 * Returns the value of the '<em><b>Trigger Column</b></em>' reference list.
@@ -135,10 +132,10 @@ public interface Trigger extends SQLObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Trigger Column</em>' reference list.
 	 * @see org.eclipse.datatools.modelbase.sql.tables.SQLTablesPackage#getTrigger_TriggerColumn()
-	 * @model type="org.eclipse.datatools.modelbase.sql.tables.Column"
+	 * @model
 	 * @generated
 	 */
-	EList getTriggerColumn();
+	EList<Column> getTriggerColumn();
 
 	/**
 	 * Returns the value of the '<em><b>Action Granularity</b></em>' attribute.

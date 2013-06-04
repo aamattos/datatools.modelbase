@@ -1,13 +1,9 @@
-/*******************************************************************************
- * Copyright (c) 2001, 2004 IBM Corporation and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- * 
- * Contributors:
- *     IBM Corporation - initial API and implementation
- *******************************************************************************/
+/**
+ * <copyright>
+ * </copyright>
+ *
+ * $Id$
+ */
 package org.eclipse.datatools.modelbase.sql.datatypes;
 
 import org.eclipse.datatools.modelbase.sql.schema.SQLObject;
@@ -39,32 +35,6 @@ import org.eclipse.datatools.modelbase.sql.schema.Schema;
  * @generated
  */
 public interface CharacterSet extends SQLObject {
-	/**
-	 * Returns the value of the '<em><b>Repertoire</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Repertoire</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Repertoire</em>' attribute.
-	 * @see #setRepertoire(String)
-	 * @see org.eclipse.datatools.modelbase.sql.datatypes.SQLDataTypesPackage#getCharacterSet_Repertoire()
-	 * @model
-	 * @generated
-	 */
-	String getRepertoire();
-
-	/**
-	 * Sets the value of the '{@link org.eclipse.datatools.modelbase.sql.datatypes.CharacterSet#getRepertoire <em>Repertoire</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Repertoire</em>' attribute.
-	 * @see #getRepertoire()
-	 * @generated
-	 */
-	void setRepertoire(String value);
-
 	/**
 	 * Returns the value of the '<em><b>Default Collation</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -172,5 +142,31 @@ public interface CharacterSet extends SQLObject {
 	 * @generated
 	 */
 	void setSchema(Schema value);
+
+	/**
+	 * Returns the value of the '<em><b>Repertoire</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Repertoire</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Repertoire</em>' attribute.
+	 * @see #setRepertoire(String)
+	 * @see org.eclipse.datatools.modelbase.sql.datatypes.SQLDataTypesPackage#getCharacterSet_Repertoire()
+	 * @model
+	 * @generated
+	 */
+	String getRepertoire();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.datatools.modelbase.sql.datatypes.CharacterSet#getRepertoire <em>Repertoire</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Repertoire</em>' attribute.
+	 * @see #getRepertoire()
+	 * @generated
+	 */
+	void setRepertoire(String value);
 
 } // CharacterSet

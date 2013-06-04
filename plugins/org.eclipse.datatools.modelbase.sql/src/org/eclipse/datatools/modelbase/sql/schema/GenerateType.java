@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: GenerateType.java,v 1.3 2006/09/07 00:19:47 dpchou Exp $
+ * $Id$
  */
 package org.eclipse.datatools.modelbase.sql.schema;
 
@@ -10,7 +10,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import org.eclipse.emf.common.util.AbstractEnumerator;
+import org.eclipse.emf.common.util.Enumerator;
 
 /**
  * <!-- begin-user-doc -->
@@ -25,31 +25,28 @@ import org.eclipse.emf.common.util.AbstractEnumerator;
  * @model
  * @generated
  */
-public final class GenerateType extends AbstractEnumerator {
-	/**
-	 * The '<em><b>DEFAULT GENERATED</b></em>' literal value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #DEFAULT_GENERATED_LITERAL
-	 * @model
-	 * @generated
-	 * @ordered
-	 */
-	public static final int DEFAULT_GENERATED = 0;
-
-	/**
-	 * The '<em><b>ALWAYS GENERATED</b></em>' literal value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #ALWAYS_GENERATED_LITERAL
-	 * @model
-	 * @generated
-	 * @ordered
-	 */
-	public static final int ALWAYS_GENERATED = 1;
-
+public enum GenerateType implements Enumerator
+{
 	/**
 	 * The '<em><b>DEFAULT GENERATED</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #DEFAULT_GENERATED_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	DEFAULT_GENERATED(0, "DEFAULT_GENERATED", "DEFAULT_GENERATED"),
+	/**
+	 * The '<em><b>ALWAYS GENERATED</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #ALWAYS_GENERATED_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	ALWAYS_GENERATED(1, "ALWAYS_GENERATED", "ALWAYS_GENERATED");
+	/**
+	 * The '<em><b>DEFAULT GENERATED</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>DEFAULT GENERATED</b></em>' literal object isn't clear,
@@ -57,13 +54,14 @@ public final class GenerateType extends AbstractEnumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #DEFAULT_GENERATED
+	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final GenerateType DEFAULT_GENERATED_LITERAL = new GenerateType(DEFAULT_GENERATED, "DEFAULT_GENERATED", "DEFAULT_GENERATED"); //$NON-NLS-1$
+	public static final int DEFAULT_GENERATED_VALUE = 0;
 
 	/**
-	 * The '<em><b>ALWAYS GENERATED</b></em>' literal object.
+	 * The '<em><b>ALWAYS GENERATED</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>ALWAYS GENERATED</b></em>' literal object isn't clear,
@@ -71,10 +69,11 @@ public final class GenerateType extends AbstractEnumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #ALWAYS_GENERATED
+	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final GenerateType ALWAYS_GENERATED_LITERAL = new GenerateType(ALWAYS_GENERATED, "ALWAYS_GENERATED", "ALWAYS_GENERATED"); //$NON-NLS-1$
+	public static final int ALWAYS_GENERATED_VALUE = 1;
 
 	/**
 	 * An array of all the '<em><b>Generate Type</b></em>' enumerators.
@@ -84,8 +83,8 @@ public final class GenerateType extends AbstractEnumerator {
 	 */
 	private static final GenerateType[] VALUES_ARRAY =
 		new GenerateType[] {
-			DEFAULT_GENERATED_LITERAL,
-			ALWAYS_GENERATED_LITERAL,
+			DEFAULT_GENERATED,
+			ALWAYS_GENERATED,
 		};
 
 	/**
@@ -94,7 +93,7 @@ public final class GenerateType extends AbstractEnumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<GenerateType> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
 	 * Returns the '<em><b>Generate Type</b></em>' literal with the specified literal value.
@@ -136,11 +135,32 @@ public final class GenerateType extends AbstractEnumerator {
 	 */
 	public static GenerateType get(int value) {
 		switch (value) {
-			case DEFAULT_GENERATED: return DEFAULT_GENERATED_LITERAL;
-			case ALWAYS_GENERATED: return ALWAYS_GENERATED_LITERAL;
+			case DEFAULT_GENERATED_VALUE: return DEFAULT_GENERATED;
+			case ALWAYS_GENERATED_VALUE: return ALWAYS_GENERATED;
 		}
 		return null;
 	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final int value;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final String name;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final String literal;
 
 	/**
 	 * Only this class can construct instances.
@@ -149,7 +169,46 @@ public final class GenerateType extends AbstractEnumerator {
 	 * @generated
 	 */
 	private GenerateType(int value, String name, String literal) {
-		super(value, name, literal);
+		this.value = value;
+		this.name = name;
+		this.literal = literal;
 	}
 
-} //GenerateType
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int getValue() {
+	  return value;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getName() {
+	  return name;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getLiteral() {
+	  return literal;
+	}
+
+	/**
+	 * Returns the literal value of the enumerator, which is its string representation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		return literal;
+	}
+}

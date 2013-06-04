@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: UserDefinedFunctionItemProvider.java,v 1.4 2007/05/31 00:29:17 dpchou Exp $
+ * $Id$
  */
 package org.eclipse.datatools.modelbase.sql.routines.provider;
 
@@ -12,16 +12,14 @@ import java.util.List;
 
 import org.eclipse.datatools.modelbase.sql.routines.SQLRoutinesPackage;
 import org.eclipse.datatools.modelbase.sql.routines.UserDefinedFunction;
-import org.eclipse.datatools.modelbase.sql.schema.provider.SqlmodelEditPlugin;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
+import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-
 
 /**
  * This is the item provider adapter for a {@link org.eclipse.datatools.modelbase.sql.routines.UserDefinedFunction} object.
@@ -53,7 +51,8 @@ public class UserDefinedFunctionItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getPropertyDescriptors(Object object) {
+	@Override
+	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
@@ -67,8 +66,9 @@ public class UserDefinedFunctionItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/UserDefinedFunction")); //$NON-NLS-1$
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/UserDefinedFunction"));
 	}
 
 	/**
@@ -77,11 +77,12 @@ public class UserDefinedFunctionItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getText(Object object) {
 		String label = ((UserDefinedFunction)object).getName();
 		return label == null || label.length() == 0 ?
-			getString("_UI_UserDefinedFunction_type") : //$NON-NLS-1$
-			getString("_UI_UserDefinedFunction_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+			getString("_UI_UserDefinedFunction_type") :
+			label;
 	}
 
 	/**
@@ -91,6 +92,7 @@ public class UserDefinedFunctionItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 		super.notifyChanged(notification);
@@ -103,7 +105,8 @@ public class UserDefinedFunctionItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void collectNewChildDescriptors(Collection newChildDescriptors, Object object) {
+	@Override
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 
@@ -113,7 +116,8 @@ public class UserDefinedFunctionItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getCreateChildText(Object owner, Object feature, Object child, Collection selection) {
+	@Override
+	public String getCreateChildText(Object owner, Object feature, Object child, Collection<?> selection) {
 		Object childFeature = feature;
 		Object childObject = child;
 
@@ -124,10 +128,9 @@ public class UserDefinedFunctionItemProvider
 
 		if (qualify) {
 			return getString
-				("_UI_CreateChild_text2", //$NON-NLS-1$
+				("_UI_CreateChild_text2",
 				 new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
 		}
 		return super.getCreateChildText(owner, feature, child, selection);
 	}
-
 }

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SQLSchemaItemProviderAdapterFactory.java,v 1.4 2007/05/31 00:29:18 dpchou Exp $
+ * $Id$
  */
 package org.eclipse.datatools.modelbase.sql.schema.provider;
 
@@ -17,6 +17,7 @@ import org.eclipse.emf.edit.provider.ChangeNotifier;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.provider.IChangeNotifier;
+import org.eclipse.emf.edit.provider.IDisposable;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
@@ -33,7 +34,7 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
  * <!-- end-user-doc -->
  * @generated
  */
-public class SQLSchemaItemProviderAdapterFactory extends SQLSchemaAdapterFactory implements ComposeableAdapterFactory, IChangeNotifier {
+public class SQLSchemaItemProviderAdapterFactory extends SQLSchemaAdapterFactory implements ComposeableAdapterFactory, IChangeNotifier, IDisposable {
 	/**
 	 * This keeps track of the root adapter factory that delegates to this adapter factory.
 	 * <!-- begin-user-doc -->
@@ -56,7 +57,7 @@ public class SQLSchemaItemProviderAdapterFactory extends SQLSchemaAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected Collection supportedTypes = new ArrayList();
+	protected Collection<Object> supportedTypes = new ArrayList<Object>();
 
 	/**
 	 * This constructs an instance.
@@ -86,6 +87,7 @@ public class SQLSchemaItemProviderAdapterFactory extends SQLSchemaAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createIdentitySpecifierAdapter() {
 		if (identitySpecifierItemProvider == null) {
 			identitySpecifierItemProvider = new IdentitySpecifierItemProvider(this);
@@ -108,6 +110,7 @@ public class SQLSchemaItemProviderAdapterFactory extends SQLSchemaAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createDependencyAdapter() {
 		if (dependencyItemProvider == null) {
 			dependencyItemProvider = new DependencyItemProvider(this);
@@ -130,6 +133,7 @@ public class SQLSchemaItemProviderAdapterFactory extends SQLSchemaAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createSchemaAdapter() {
 		if (schemaItemProvider == null) {
 			schemaItemProvider = new SchemaItemProvider(this);
@@ -152,6 +156,7 @@ public class SQLSchemaItemProviderAdapterFactory extends SQLSchemaAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createSequenceAdapter() {
 		if (sequenceItemProvider == null) {
 			sequenceItemProvider = new SequenceItemProvider(this);
@@ -174,6 +179,7 @@ public class SQLSchemaItemProviderAdapterFactory extends SQLSchemaAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createDatabaseAdapter() {
 		if (databaseItemProvider == null) {
 			databaseItemProvider = new DatabaseItemProvider(this);
@@ -196,6 +202,7 @@ public class SQLSchemaItemProviderAdapterFactory extends SQLSchemaAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createEventAdapter() {
 		if (eventItemProvider == null) {
 			eventItemProvider = new EventItemProvider(this);
@@ -218,6 +225,7 @@ public class SQLSchemaItemProviderAdapterFactory extends SQLSchemaAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createCommentAdapter() {
 		if (commentItemProvider == null) {
 			commentItemProvider = new CommentItemProvider(this);
@@ -240,6 +248,7 @@ public class SQLSchemaItemProviderAdapterFactory extends SQLSchemaAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createCatalogAdapter() {
 		if (catalogItemProvider == null) {
 			catalogItemProvider = new CatalogItemProvider(this);
@@ -273,6 +282,7 @@ public class SQLSchemaItemProviderAdapterFactory extends SQLSchemaAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isFactoryForType(Object type) {
 		return supportedTypes.contains(type) || super.isFactoryForType(type);
 	}
@@ -283,6 +293,7 @@ public class SQLSchemaItemProviderAdapterFactory extends SQLSchemaAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter adapt(Notifier notifier, Object type) {
 		return super.adapt(notifier, this);
 	}
@@ -292,10 +303,11 @@ public class SQLSchemaItemProviderAdapterFactory extends SQLSchemaAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object adapt(Object object, Object type) {
 		if (isFactoryForType(type)) {
 			Object adapter = super.adapt(object, type);
-			if (!(type instanceof Class) || (((Class)type).isInstance(adapter))) {
+			if (!(type instanceof Class<?>) || (((Class<?>)type).isInstance(adapter))) {
 				return adapter;
 			}
 		}
@@ -335,6 +347,23 @@ public class SQLSchemaItemProviderAdapterFactory extends SQLSchemaAdapterFactory
 		if (parentAdapterFactory != null) {
 			parentAdapterFactory.fireNotifyChanged(notification);
 		}
+	}
+
+	/**
+	 * This disposes all of the item providers created by this factory. 
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void dispose() {
+		if (identitySpecifierItemProvider != null) identitySpecifierItemProvider.dispose();
+		if (dependencyItemProvider != null) dependencyItemProvider.dispose();
+		if (schemaItemProvider != null) schemaItemProvider.dispose();
+		if (sequenceItemProvider != null) sequenceItemProvider.dispose();
+		if (databaseItemProvider != null) databaseItemProvider.dispose();
+		if (eventItemProvider != null) eventItemProvider.dispose();
+		if (commentItemProvider != null) commentItemProvider.dispose();
+		if (catalogItemProvider != null) catalogItemProvider.dispose();
 	}
 
 }

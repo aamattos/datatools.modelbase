@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SQLExpressionsItemProviderAdapterFactory.java,v 1.3 2006/03/09 23:46:15 dpchou Exp $
+ * $Id$
  */
 package org.eclipse.datatools.modelbase.sql.expressions.provider;
 
@@ -57,7 +57,7 @@ public class SQLExpressionsItemProviderAdapterFactory extends SQLExpressionsAdap
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected Collection supportedTypes = new ArrayList();
+	protected Collection<Object> supportedTypes = new ArrayList<Object>();
 
 	/**
 	 * This constructs an instance.
@@ -87,6 +87,7 @@ public class SQLExpressionsItemProviderAdapterFactory extends SQLExpressionsAdap
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createQueryExpressionDefaultAdapter() {
 		if (queryExpressionDefaultItemProvider == null) {
 			queryExpressionDefaultItemProvider = new QueryExpressionDefaultItemProvider(this);
@@ -109,6 +110,7 @@ public class SQLExpressionsItemProviderAdapterFactory extends SQLExpressionsAdap
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createSearchConditionDefaultAdapter() {
 		if (searchConditionDefaultItemProvider == null) {
 			searchConditionDefaultItemProvider = new SearchConditionDefaultItemProvider(this);
@@ -131,6 +133,7 @@ public class SQLExpressionsItemProviderAdapterFactory extends SQLExpressionsAdap
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createValueExpressionDefaultAdapter() {
 		if (valueExpressionDefaultItemProvider == null) {
 			valueExpressionDefaultItemProvider = new ValueExpressionDefaultItemProvider(this);
@@ -164,6 +167,7 @@ public class SQLExpressionsItemProviderAdapterFactory extends SQLExpressionsAdap
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isFactoryForType(Object type) {
 		return supportedTypes.contains(type) || super.isFactoryForType(type);
 	}
@@ -174,6 +178,7 @@ public class SQLExpressionsItemProviderAdapterFactory extends SQLExpressionsAdap
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter adapt(Notifier notifier, Object type) {
 		return super.adapt(notifier, this);
 	}
@@ -183,10 +188,11 @@ public class SQLExpressionsItemProviderAdapterFactory extends SQLExpressionsAdap
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object adapt(Object object, Object type) {
 		if (isFactoryForType(type)) {
 			Object adapter = super.adapt(object, type);
-			if (!(type instanceof Class) || (((Class)type).isInstance(adapter))) {
+			if (!(type instanceof Class<?>) || (((Class<?>)type).isInstance(adapter))) {
 				return adapter;
 			}
 		}

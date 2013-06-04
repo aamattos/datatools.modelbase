@@ -1,17 +1,25 @@
-/*******************************************************************************
- * Copyright (c) 2001, 2004 IBM Corporation and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- * 
- * Contributors:
- *     IBM Corporation - initial API and implementation
- *******************************************************************************/
+/**
+ * <copyright>
+ * </copyright>
+ *
+ * $Id$
+ */
 package org.eclipse.datatools.modelbase.sql.statements.util;
 
 import org.eclipse.datatools.modelbase.sql.schema.SQLObject;
 import org.eclipse.datatools.modelbase.sql.statements.*;
+import org.eclipse.datatools.modelbase.sql.statements.SQLConnectionStatement;
+import org.eclipse.datatools.modelbase.sql.statements.SQLControlStatement;
+import org.eclipse.datatools.modelbase.sql.statements.SQLDataChangeStatement;
+import org.eclipse.datatools.modelbase.sql.statements.SQLDataStatement;
+import org.eclipse.datatools.modelbase.sql.statements.SQLDiagnosticsStatement;
+import org.eclipse.datatools.modelbase.sql.statements.SQLDynamicStatement;
+import org.eclipse.datatools.modelbase.sql.statements.SQLSchemaStatement;
+import org.eclipse.datatools.modelbase.sql.statements.SQLSessionStatement;
+import org.eclipse.datatools.modelbase.sql.statements.SQLStatement;
+import org.eclipse.datatools.modelbase.sql.statements.SQLStatementDefault;
+import org.eclipse.datatools.modelbase.sql.statements.SQLStatementsPackage;
+import org.eclipse.datatools.modelbase.sql.statements.SQLTransactionStatement;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
@@ -56,6 +64,7 @@ public class SQLStatementsAdapterFactory extends AdapterFactoryImpl {
 	 * @return whether this factory is applicable for the type of the object.
 	 * @generated
 	 */
+	@Override
 	public boolean isFactoryForType(Object object) {
 		if (object == modelPackage) {
 			return true;
@@ -72,51 +81,66 @@ public class SQLStatementsAdapterFactory extends AdapterFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected SQLStatementsSwitch modelSwitch =
-		new SQLStatementsSwitch() {
-			public Object caseSQLStatement(SQLStatement object) {
+	protected SQLStatementsSwitch<Adapter> modelSwitch =
+		new SQLStatementsSwitch<Adapter>() {
+			@Override
+			public Adapter caseSQLStatement(SQLStatement object) {
 				return createSQLStatementAdapter();
 			}
-			public Object caseSQLDataStatement(SQLDataStatement object) {
+			@Override
+			public Adapter caseSQLDataStatement(SQLDataStatement object) {
 				return createSQLDataStatementAdapter();
 			}
-			public Object caseSQLSchemaStatement(SQLSchemaStatement object) {
+			@Override
+			public Adapter caseSQLSchemaStatement(SQLSchemaStatement object) {
 				return createSQLSchemaStatementAdapter();
 			}
-			public Object caseSQLControlStatement(SQLControlStatement object) {
+			@Override
+			public Adapter caseSQLControlStatement(SQLControlStatement object) {
 				return createSQLControlStatementAdapter();
 			}
-			public Object caseSQLDataChangeStatement(SQLDataChangeStatement object) {
+			@Override
+			public Adapter caseSQLDataChangeStatement(SQLDataChangeStatement object) {
 				return createSQLDataChangeStatementAdapter();
 			}
-			public Object caseSQLStatementDefault(SQLStatementDefault object) {
+			@Override
+			public Adapter caseSQLStatementDefault(SQLStatementDefault object) {
 				return createSQLStatementDefaultAdapter();
 			}
-			public Object caseSQLConnectionStatement(SQLConnectionStatement object) {
+			@Override
+			public Adapter caseSQLConnectionStatement(SQLConnectionStatement object) {
 				return createSQLConnectionStatementAdapter();
 			}
-			public Object caseSQLDiagnosticsStatement(SQLDiagnosticsStatement object) {
+			@Override
+			public Adapter caseSQLDiagnosticsStatement(SQLDiagnosticsStatement object) {
 				return createSQLDiagnosticsStatementAdapter();
 			}
-			public Object caseSQLDynamicStatement(SQLDynamicStatement object) {
+			@Override
+			public Adapter caseSQLDynamicStatement(SQLDynamicStatement object) {
 				return createSQLDynamicStatementAdapter();
 			}
-			public Object caseSQLSessionStatement(SQLSessionStatement object) {
+			@Override
+			public Adapter caseSQLSessionStatement(SQLSessionStatement object) {
 				return createSQLSessionStatementAdapter();
 			}
-			public Object caseSQLTransactionStatement(SQLTransactionStatement object) {
+			@Override
+			public Adapter caseSQLTransactionStatement(SQLTransactionStatement object) {
 				return createSQLTransactionStatementAdapter();
 			}
-			public Object caseEModelElement(EModelElement object) {
+			@Override
+			public Adapter caseEModelElement(EModelElement object) {
 				return createEModelElementAdapter();
 			}
-			public Object caseENamedElement(ENamedElement object) {
+			@Override
+			public Adapter caseENamedElement(ENamedElement object) {
 				return createENamedElementAdapter();
 			}
-			public Object caseSQLObject(SQLObject object) {
+			@Override
+			public Adapter caseSQLObject(SQLObject object) {
 				return createSQLObjectAdapter();
 			}
-			public Object defaultCase(EObject object) {
+			@Override
+			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
 		};
@@ -129,8 +153,9 @@ public class SQLStatementsAdapterFactory extends AdapterFactoryImpl {
 	 * @return the adapter for the <code>target</code>.
 	 * @generated
 	 */
+	@Override
 	public Adapter createAdapter(Notifier target) {
-		return (Adapter)modelSwitch.doSwitch((EObject)target);
+		return modelSwitch.doSwitch((EObject)target);
 	}
 
 

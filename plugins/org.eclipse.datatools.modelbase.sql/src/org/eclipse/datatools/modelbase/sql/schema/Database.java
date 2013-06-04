@@ -1,17 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2001, 2004 IBM Corporation and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- * 
- * Contributors:
- *     IBM Corporation - initial API and implementation
- *******************************************************************************/
+/**
+ * <copyright>
+ * </copyright>
+ *
+ * $Id$
+ */
 package org.eclipse.datatools.modelbase.sql.schema;
 
 import java.util.List;
 
+import org.eclipse.datatools.modelbase.sql.accesscontrol.AuthorizationIdentifier;
 import org.eclipse.emf.common.util.EList;
 
 /**
@@ -105,10 +102,10 @@ public interface Database extends SQLObject {
 	 * @return the value of the '<em>Schemas</em>' reference list.
 	 * @see org.eclipse.datatools.modelbase.sql.schema.SQLSchemaPackage#getDatabase_Schemas()
 	 * @see org.eclipse.datatools.modelbase.sql.schema.Schema#getDatabase
-	 * @model type="org.eclipse.datatools.modelbase.sql.schema.Schema" opposite="database"
+	 * @model opposite="database"
 	 * @generated
 	 */
-	EList getSchemas();
+	EList<Schema> getSchemas();
 
 	/**
 	 * Returns the value of the '<em><b>Events</b></em>' reference list.
@@ -123,10 +120,10 @@ public interface Database extends SQLObject {
 	 * @return the value of the '<em>Events</em>' reference list.
 	 * @see org.eclipse.datatools.modelbase.sql.schema.SQLSchemaPackage#getDatabase_Events()
 	 * @see org.eclipse.datatools.modelbase.sql.schema.Event#getDatabase
-	 * @model type="org.eclipse.datatools.modelbase.sql.schema.Event" opposite="Database"
+	 * @model opposite="Database"
 	 * @generated
 	 */
-	EList getEvents();
+	EList<Event> getEvents();
 
 	/**
 	 * Returns the value of the '<em><b>Catalogs</b></em>' reference list.
@@ -134,17 +131,17 @@ public interface Database extends SQLObject {
 	 * It is bidirectional and its opposite is '{@link org.eclipse.datatools.modelbase.sql.schema.Catalog#getDatabase <em>Database</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Catalogs</em>' reference list isn't clear,
+	 * If the meaning of the '<em>Catalogs</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Catalogs</em>' reference list.
 	 * @see org.eclipse.datatools.modelbase.sql.schema.SQLSchemaPackage#getDatabase_Catalogs()
 	 * @see org.eclipse.datatools.modelbase.sql.schema.Catalog#getDatabase
-	 * @model type="org.eclipse.datatools.modelbase.sql.schema.Catalog" opposite="Database"
+	 * @model opposite="Database"
 	 * @generated
 	 */
-	EList getCatalogs();
+	EList<Catalog> getCatalogs();
 
 	/**
 	 * Returns the value of the '<em><b>Authorization Ids</b></em>' reference list.
@@ -159,10 +156,10 @@ public interface Database extends SQLObject {
 	 * @return the value of the '<em>Authorization Ids</em>' reference list.
 	 * @see org.eclipse.datatools.modelbase.sql.schema.SQLSchemaPackage#getDatabase_AuthorizationIds()
 	 * @see org.eclipse.datatools.modelbase.sql.accesscontrol.AuthorizationIdentifier#getDatabase
-	 * @model type="org.eclipse.datatools.modelbase.sql.accesscontrol.AuthorizationIdentifier" opposite="Database"
+	 * @model opposite="Database"
 	 * @generated
 	 */
-	EList getAuthorizationIds();
+	EList<AuthorizationIdentifier> getAuthorizationIds();
 
 	/**
 	 * <!-- begin-user-doc -->

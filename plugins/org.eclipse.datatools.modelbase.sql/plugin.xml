@@ -8,7 +8,7 @@
       <package
             uri="http:///org/eclipse/datatools/modelbase/sql/schema.ecore"
             class="org.eclipse.datatools.modelbase.sql.schema.SQLSchemaPackage"
-            genModel="model/sqlmodel.genmodel">
+            genModel="model/datamodeler.genmodel">
       </package>
    </extension>
    <extension
@@ -16,7 +16,7 @@
       <package
             uri="http:///org/eclipse/datatools/modelbase/sql/tables.ecore"
             class="org.eclipse.datatools.modelbase.sql.tables.SQLTablesPackage"
-            genModel="model/sqlmodel.genmodel">
+            genModel="model/datamodeler.genmodel">
       </package>
    </extension>
    <extension
@@ -24,7 +24,7 @@
       <package
             uri="http:///org/eclipse/datatools/modelbase/sql/constraints.ecore"
             class="org.eclipse.datatools.modelbase.sql.constraints.SQLConstraintsPackage"
-            genModel="model/sqlmodel.genmodel">
+            genModel="model/datamodeler.genmodel">
       </package>
    </extension>
    <extension
@@ -32,7 +32,7 @@
       <package
             uri="http:///org/eclipse/datatools/modelbase/sql/datatypes.ecore"
             class="org.eclipse.datatools.modelbase.sql.datatypes.SQLDataTypesPackage"
-            genModel="model/sqlmodel.genmodel">
+            genModel="model/datamodeler.genmodel">
       </package>
    </extension>
    <extension
@@ -40,7 +40,7 @@
       <package
             uri="http:///org/eclipse/datatools/modelbase/sql/expressions.ecore"
             class="org.eclipse.datatools.modelbase.sql.expressions.SQLExpressionsPackage"
-            genModel="model/sqlmodel.genmodel">
+            genModel="model/datamodeler.genmodel">
       </package>
    </extension>
    <extension
@@ -48,7 +48,7 @@
       <package
             uri="http:///org/eclipse/datatools/modelbase/sql/statements.ecore"
             class="org.eclipse.datatools.modelbase.sql.statements.SQLStatementsPackage"
-            genModel="model/sqlmodel.genmodel">
+            genModel="model/datamodeler.genmodel">
       </package>
    </extension>
    <extension
@@ -56,7 +56,7 @@
       <package
             uri="http:///org/eclipse/datatools/modelbase/sql/accesscontrol.ecore"
             class="org.eclipse.datatools.modelbase.sql.accesscontrol.SQLAccessControlPackage"
-            genModel="model/sqlmodel.genmodel">
+            genModel="model/datamodeler.genmodel">
       </package>
    </extension>
    <extension
@@ -64,8 +64,20 @@
       <package
             uri="http:///org/eclipse/datatools/modelbase/sql/routines.ecore"
             class="org.eclipse.datatools.modelbase.sql.routines.SQLRoutinesPackage"
-            genModel="model/sqlmodel.genmodel">
+            genModel="model/datamodeler.genmodel">
       </package>
    </extension>
-
+   <extension
+         point="org.eclipse.emf.ecore.generated_package">
+      <package
+            class="org.eclipse.datatools.modelbase.sql.project.SQLProjectPackage"
+            genModel="model/datamodeler.genmodel"
+            uri="http:///org/eclipse/datatools/modelbase/sql/project.ecore">
+      </package>
+      <package
+            class="org.eclipse.datatools.modelbase.sql.project.SQLProjectPackage"
+            genModel="model/datamodeler.genmodel"
+            uri="http:///com/isb/datamodeler/ui/model/project.ecore">
+      </package>
+   </extension>
 </plugin>

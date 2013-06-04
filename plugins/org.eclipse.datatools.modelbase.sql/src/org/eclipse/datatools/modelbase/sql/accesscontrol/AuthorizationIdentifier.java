@@ -1,17 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2001, 2004 IBM Corporation and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- * 
- * Contributors:
- *     IBM Corporation - initial API and implementation
- *******************************************************************************/
+/**
+ * <copyright>
+ * </copyright>
+ *
+ * $Id$
+ */
 package org.eclipse.datatools.modelbase.sql.accesscontrol;
 
 import org.eclipse.datatools.modelbase.sql.schema.Database;
 import org.eclipse.datatools.modelbase.sql.schema.SQLObject;
+import org.eclipse.datatools.modelbase.sql.schema.Schema;
 import org.eclipse.emf.common.util.EList;
 
 /**
@@ -53,10 +50,10 @@ public interface AuthorizationIdentifier extends SQLObject {
 	 * @return the value of the '<em>Owned Schema</em>' reference list.
 	 * @see org.eclipse.datatools.modelbase.sql.accesscontrol.SQLAccessControlPackage#getAuthorizationIdentifier_OwnedSchema()
 	 * @see org.eclipse.datatools.modelbase.sql.schema.Schema#getOwner
-	 * @model type="org.eclipse.datatools.modelbase.sql.schema.Schema" opposite="owner"
+	 * @model opposite="owner"
 	 * @generated
 	 */
-	EList getOwnedSchema();
+	EList<Schema> getOwnedSchema();
 
 	/**
 	 * Returns the value of the '<em><b>Database</b></em>' reference.
@@ -99,10 +96,10 @@ public interface AuthorizationIdentifier extends SQLObject {
 	 * @return the value of the '<em>Received Role Authorization</em>' reference list.
 	 * @see org.eclipse.datatools.modelbase.sql.accesscontrol.SQLAccessControlPackage#getAuthorizationIdentifier_ReceivedRoleAuthorization()
 	 * @see org.eclipse.datatools.modelbase.sql.accesscontrol.RoleAuthorization#getGrantee
-	 * @model type="org.eclipse.datatools.modelbase.sql.accesscontrol.RoleAuthorization" opposite="grantee"
+	 * @model opposite="grantee"
 	 * @generated
 	 */
-	EList getReceivedRoleAuthorization();
+	EList<RoleAuthorization> getReceivedRoleAuthorization();
 
 	/**
 	 * Returns the value of the '<em><b>Granted Role Authorization</b></em>' reference list.
@@ -117,10 +114,10 @@ public interface AuthorizationIdentifier extends SQLObject {
 	 * @return the value of the '<em>Granted Role Authorization</em>' reference list.
 	 * @see org.eclipse.datatools.modelbase.sql.accesscontrol.SQLAccessControlPackage#getAuthorizationIdentifier_GrantedRoleAuthorization()
 	 * @see org.eclipse.datatools.modelbase.sql.accesscontrol.RoleAuthorization#getGrantor
-	 * @model type="org.eclipse.datatools.modelbase.sql.accesscontrol.RoleAuthorization" opposite="grantor"
+	 * @model opposite="grantor"
 	 * @generated
 	 */
-	EList getGrantedRoleAuthorization();
+	EList<RoleAuthorization> getGrantedRoleAuthorization();
 
 	/**
 	 * Returns the value of the '<em><b>Granted Privilege</b></em>' reference list.
@@ -135,10 +132,10 @@ public interface AuthorizationIdentifier extends SQLObject {
 	 * @return the value of the '<em>Granted Privilege</em>' reference list.
 	 * @see org.eclipse.datatools.modelbase.sql.accesscontrol.SQLAccessControlPackage#getAuthorizationIdentifier_GrantedPrivilege()
 	 * @see org.eclipse.datatools.modelbase.sql.accesscontrol.Privilege#getGrantor
-	 * @model type="org.eclipse.datatools.modelbase.sql.accesscontrol.Privilege" opposite="grantor"
+	 * @model opposite="grantor"
 	 * @generated
 	 */
-	EList getGrantedPrivilege();
+	EList<Privilege> getGrantedPrivilege();
 
 	/**
 	 * Returns the value of the '<em><b>Received Privilege</b></em>' containment reference list.
@@ -153,9 +150,9 @@ public interface AuthorizationIdentifier extends SQLObject {
 	 * @return the value of the '<em>Received Privilege</em>' containment reference list.
 	 * @see org.eclipse.datatools.modelbase.sql.accesscontrol.SQLAccessControlPackage#getAuthorizationIdentifier_ReceivedPrivilege()
 	 * @see org.eclipse.datatools.modelbase.sql.accesscontrol.Privilege#getGrantee
-	 * @model type="org.eclipse.datatools.modelbase.sql.accesscontrol.Privilege" opposite="grantee" containment="true"
+	 * @model opposite="grantee" containment="true"
 	 * @generated
 	 */
-	EList getReceivedPrivilege();
+	EList<Privilege> getReceivedPrivilege();
 
 } // AuthorizationIdentifier

@@ -10,7 +10,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import org.eclipse.emf.common.util.AbstractEnumerator;
+import org.eclipse.emf.common.util.Enumerator;
 
 /**
  * <!-- begin-user-doc -->
@@ -24,7 +24,60 @@ import org.eclipse.emf.common.util.AbstractEnumerator;
  * @model
  * @generated
  */
-public final class DataAccess extends AbstractEnumerator {
+public enum DataAccess implements Enumerator
+{
+	/**
+	 * The '<em><b>NO SQL</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>NO SQL</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #NO_SQL
+	 * @generated
+	 * @ordered
+	 */
+	NO_SQL_LITERAL(0, "NO_SQL", "NO_SQL"),
+	/**
+	 * The '<em><b>CONTAINS SQL</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>CONTAINS SQL</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #CONTAINS_SQL
+	 * @generated
+	 * @ordered
+	 */
+	CONTAINS_SQL_LITERAL(1, "CONTAINS_SQL", "CONTAINS_SQL"),
+	/**
+	 * The '<em><b>READS SQL DATA</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>READS SQL DATA</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #READS_SQL_DATA
+	 * @generated
+	 * @ordered
+	 */
+	READS_SQL_DATA_LITERAL(2, "READS_SQL_DATA", "READS_SQL_DATA"),
+	/**
+	 * The '<em><b>MODIFIES SQL DATA</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>MODIFIES SQL DATA</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #MODIFIES_SQL_DATA
+	 * @generated
+	 * @ordered
+	 */
+	MODIFIES_SQL_DATA_LITERAL(3, "MODIFIES_SQL_DATA", "MODIFIES_SQL_DATA");
 	/**
 	 * The '<em><b>NO SQL</b></em>' literal value.
 	 * <!-- begin-user-doc -->
@@ -70,62 +123,6 @@ public final class DataAccess extends AbstractEnumerator {
 	public static final int MODIFIES_SQL_DATA = 3;
 
 	/**
-	 * The '<em><b>NO SQL</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>NO SQL</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @see #NO_SQL
-	 * @generated
-	 * @ordered
-	 */
-	public static final DataAccess NO_SQL_LITERAL = new DataAccess(NO_SQL, "NO_SQL", "NO_SQL"); //$NON-NLS-1$
-
-	/**
-	 * The '<em><b>CONTAINS SQL</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>CONTAINS SQL</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @see #CONTAINS_SQL
-	 * @generated
-	 * @ordered
-	 */
-	public static final DataAccess CONTAINS_SQL_LITERAL = new DataAccess(CONTAINS_SQL, "CONTAINS_SQL", "CONTAINS_SQL"); //$NON-NLS-1$
-
-	/**
-	 * The '<em><b>READS SQL DATA</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>READS SQL DATA</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @see #READS_SQL_DATA
-	 * @generated
-	 * @ordered
-	 */
-	public static final DataAccess READS_SQL_DATA_LITERAL = new DataAccess(READS_SQL_DATA, "READS_SQL_DATA", "READS_SQL_DATA"); //$NON-NLS-1$
-
-	/**
-	 * The '<em><b>MODIFIES SQL DATA</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>MODIFIES SQL DATA</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @see #MODIFIES_SQL_DATA
-	 * @generated
-	 * @ordered
-	 */
-	public static final DataAccess MODIFIES_SQL_DATA_LITERAL = new DataAccess(MODIFIES_SQL_DATA, "MODIFIES_SQL_DATA", "MODIFIES_SQL_DATA"); //$NON-NLS-1$
-
-	/**
 	 * An array of all the '<em><b>Data Access</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -145,7 +142,7 @@ public final class DataAccess extends AbstractEnumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<DataAccess> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
 	 * Returns the '<em><b>Data Access</b></em>' literal with the specified literal value.
@@ -196,13 +193,73 @@ public final class DataAccess extends AbstractEnumerator {
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final int value;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final String name;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final String literal;
+
+	/**
 	 * Only this class can construct instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	private DataAccess(int value, String name, String literal) {
-		super(value, name, literal);
+		this.value = value;
+		this.name = name;
+		this.literal = literal;
 	}
 
-} //DataAccess
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int getValue() {
+	  return value;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getName() {
+	  return name;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getLiteral() {
+	  return literal;
+	}
+
+	/**
+	 * Returns the literal value of the enumerator, which is its string representation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		return literal;
+	}
+}

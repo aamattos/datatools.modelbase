@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SQLAccessControlItemProviderAdapterFactory.java,v 1.3 2007/05/31 00:29:18 dpchou Exp $
+ * $Id$
  */
 package org.eclipse.datatools.modelbase.sql.accesscontrol.provider;
 
@@ -17,6 +17,7 @@ import org.eclipse.emf.edit.provider.ChangeNotifier;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.provider.IChangeNotifier;
+import org.eclipse.emf.edit.provider.IDisposable;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
@@ -33,7 +34,7 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
  * <!-- end-user-doc -->
  * @generated
  */
-public class SQLAccessControlItemProviderAdapterFactory extends SQLAccessControlAdapterFactory implements ComposeableAdapterFactory, IChangeNotifier {
+public class SQLAccessControlItemProviderAdapterFactory extends SQLAccessControlAdapterFactory implements ComposeableAdapterFactory, IChangeNotifier, IDisposable {
 	/**
 	 * This keeps track of the root adapter factory that delegates to this adapter factory.
 	 * <!-- begin-user-doc -->
@@ -56,7 +57,7 @@ public class SQLAccessControlItemProviderAdapterFactory extends SQLAccessControl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected Collection supportedTypes = new ArrayList();
+	protected Collection<Object> supportedTypes = new ArrayList<Object>();
 
 	/**
 	 * This constructs an instance.
@@ -86,6 +87,7 @@ public class SQLAccessControlItemProviderAdapterFactory extends SQLAccessControl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createPrivilegeAdapter() {
 		if (privilegeItemProvider == null) {
 			privilegeItemProvider = new PrivilegeItemProvider(this);
@@ -108,6 +110,7 @@ public class SQLAccessControlItemProviderAdapterFactory extends SQLAccessControl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createGroupAdapter() {
 		if (groupItemProvider == null) {
 			groupItemProvider = new GroupItemProvider(this);
@@ -130,6 +133,7 @@ public class SQLAccessControlItemProviderAdapterFactory extends SQLAccessControl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createUserAdapter() {
 		if (userItemProvider == null) {
 			userItemProvider = new UserItemProvider(this);
@@ -152,6 +156,7 @@ public class SQLAccessControlItemProviderAdapterFactory extends SQLAccessControl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createRoleAdapter() {
 		if (roleItemProvider == null) {
 			roleItemProvider = new RoleItemProvider(this);
@@ -174,6 +179,7 @@ public class SQLAccessControlItemProviderAdapterFactory extends SQLAccessControl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createRoleAuthorizationAdapter() {
 		if (roleAuthorizationItemProvider == null) {
 			roleAuthorizationItemProvider = new RoleAuthorizationItemProvider(this);
@@ -207,6 +213,7 @@ public class SQLAccessControlItemProviderAdapterFactory extends SQLAccessControl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isFactoryForType(Object type) {
 		return supportedTypes.contains(type) || super.isFactoryForType(type);
 	}
@@ -217,6 +224,7 @@ public class SQLAccessControlItemProviderAdapterFactory extends SQLAccessControl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter adapt(Notifier notifier, Object type) {
 		return super.adapt(notifier, this);
 	}
@@ -226,10 +234,11 @@ public class SQLAccessControlItemProviderAdapterFactory extends SQLAccessControl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object adapt(Object object, Object type) {
 		if (isFactoryForType(type)) {
 			Object adapter = super.adapt(object, type);
-			if (!(type instanceof Class) || (((Class)type).isInstance(adapter))) {
+			if (!(type instanceof Class<?>) || (((Class<?>)type).isInstance(adapter))) {
 				return adapter;
 			}
 		}
@@ -269,6 +278,20 @@ public class SQLAccessControlItemProviderAdapterFactory extends SQLAccessControl
 		if (parentAdapterFactory != null) {
 			parentAdapterFactory.fireNotifyChanged(notification);
 		}
+	}
+
+	/**
+	 * This disposes all of the item providers created by this factory. 
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void dispose() {
+		if (privilegeItemProvider != null) privilegeItemProvider.dispose();
+		if (groupItemProvider != null) groupItemProvider.dispose();
+		if (userItemProvider != null) userItemProvider.dispose();
+		if (roleItemProvider != null) roleItemProvider.dispose();
+		if (roleAuthorizationItemProvider != null) roleAuthorizationItemProvider.dispose();
 	}
 
 }

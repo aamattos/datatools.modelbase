@@ -1,31 +1,35 @@
-/*******************************************************************************
- * Copyright (c) 2001, 2004 IBM Corporation and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- * 
- * Contributors:
- *     IBM Corporation - initial API and implementation
- *******************************************************************************/
+/**
+ * <copyright>
+ * </copyright>
+ *
+ * $Id$
+ */
 package org.eclipse.datatools.modelbase.sql.routines.util;
 
-import java.util.List;
-
 import org.eclipse.datatools.modelbase.sql.routines.*;
+import org.eclipse.datatools.modelbase.sql.routines.BuiltInFunction;
+import org.eclipse.datatools.modelbase.sql.routines.Function;
+import org.eclipse.datatools.modelbase.sql.routines.Method;
+import org.eclipse.datatools.modelbase.sql.routines.Parameter;
+import org.eclipse.datatools.modelbase.sql.routines.Procedure;
+import org.eclipse.datatools.modelbase.sql.routines.Routine;
+import org.eclipse.datatools.modelbase.sql.routines.RoutineResultTable;
+import org.eclipse.datatools.modelbase.sql.routines.SQLRoutinesPackage;
+import org.eclipse.datatools.modelbase.sql.routines.Source;
+import org.eclipse.datatools.modelbase.sql.routines.UserDefinedFunction;
 import org.eclipse.datatools.modelbase.sql.schema.SQLObject;
 import org.eclipse.datatools.modelbase.sql.schema.TypedElement;
 import org.eclipse.datatools.modelbase.sql.tables.Table;
-import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EModelElement;
 import org.eclipse.emf.ecore.ENamedElement;
 import org.eclipse.emf.ecore.EObject;
-
+import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.util.Switch;
 
 /**
  * <!-- begin-user-doc -->
  * The <b>Switch</b> for the model's inheritance hierarchy.
- * It supports the call {@link #doSwitch doSwitch(object)}
+ * It supports the call {@link #doSwitch(EObject) doSwitch(object)}
  * to invoke the <code>caseXXX</code> method for each class of the model,
  * starting with the actual class of the object
  * and proceeding up the inheritance hierarchy
@@ -35,7 +39,7 @@ import org.eclipse.emf.ecore.EObject;
  * @see org.eclipse.datatools.modelbase.sql.routines.SQLRoutinesPackage
  * @generated
  */
-public class SQLRoutinesSwitch {
+public class SQLRoutinesSwitch<T> extends Switch<T> {
 	/**
 	 * The cached model package
 	 * <!-- begin-user-doc -->
@@ -57,14 +61,16 @@ public class SQLRoutinesSwitch {
 	}
 
 	/**
-	 * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that result.
+	 * Checks whether this is a switch for the given package.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the first non-null result returned by a <code>caseXXX</code> call.
+	 * @parameter ePackage the package in question.
+	 * @return whether this is a switch for the given package.
 	 * @generated
 	 */
-	public Object doSwitch(EObject theEObject) {
-		return doSwitch(theEObject.eClass(), theEObject);
+	@Override
+	protected boolean isSwitchFor(EPackage ePackage) {
+		return ePackage == modelPackage;
 	}
 
 	/**
@@ -74,31 +80,12 @@ public class SQLRoutinesSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	protected Object doSwitch(EClass theEClass, EObject theEObject) {
-		if (theEClass.eContainer() == modelPackage) {
-			return doSwitch(theEClass.getClassifierID(), theEObject);
-		}
-		else {
-			List eSuperTypes = theEClass.getESuperTypes();
-			return
-				eSuperTypes.isEmpty() ?
-					defaultCase(theEObject) :
-					doSwitch((EClass)eSuperTypes.get(0), theEObject);
-		}
-	}
-
-	/**
-	 * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that result.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the first non-null result returned by a <code>caseXXX</code> call.
-	 * @generated
-	 */
-	protected Object doSwitch(int classifierID, EObject theEObject) {
+	@Override
+	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
 			case SQLRoutinesPackage.ROUTINE: {
 				Routine routine = (Routine)theEObject;
-				Object result = caseRoutine(routine);
+				T result = caseRoutine(routine);
 				if (result == null) result = caseSQLObject(routine);
 				if (result == null) result = caseENamedElement(routine);
 				if (result == null) result = caseEModelElement(routine);
@@ -107,7 +94,7 @@ public class SQLRoutinesSwitch {
 			}
 			case SQLRoutinesPackage.SOURCE: {
 				Source source = (Source)theEObject;
-				Object result = caseSource(source);
+				T result = caseSource(source);
 				if (result == null) result = caseSQLObject(source);
 				if (result == null) result = caseENamedElement(source);
 				if (result == null) result = caseEModelElement(source);
@@ -116,7 +103,7 @@ public class SQLRoutinesSwitch {
 			}
 			case SQLRoutinesPackage.PARAMETER: {
 				Parameter parameter = (Parameter)theEObject;
-				Object result = caseParameter(parameter);
+				T result = caseParameter(parameter);
 				if (result == null) result = caseTypedElement(parameter);
 				if (result == null) result = caseSQLObject(parameter);
 				if (result == null) result = caseENamedElement(parameter);
@@ -126,7 +113,7 @@ public class SQLRoutinesSwitch {
 			}
 			case SQLRoutinesPackage.PROCEDURE: {
 				Procedure procedure = (Procedure)theEObject;
-				Object result = caseProcedure(procedure);
+				T result = caseProcedure(procedure);
 				if (result == null) result = caseRoutine(procedure);
 				if (result == null) result = caseSQLObject(procedure);
 				if (result == null) result = caseENamedElement(procedure);
@@ -136,7 +123,7 @@ public class SQLRoutinesSwitch {
 			}
 			case SQLRoutinesPackage.FUNCTION: {
 				Function function = (Function)theEObject;
-				Object result = caseFunction(function);
+				T result = caseFunction(function);
 				if (result == null) result = caseRoutine(function);
 				if (result == null) result = caseSQLObject(function);
 				if (result == null) result = caseENamedElement(function);
@@ -146,7 +133,7 @@ public class SQLRoutinesSwitch {
 			}
 			case SQLRoutinesPackage.ROUTINE_RESULT_TABLE: {
 				RoutineResultTable routineResultTable = (RoutineResultTable)theEObject;
-				Object result = caseRoutineResultTable(routineResultTable);
+				T result = caseRoutineResultTable(routineResultTable);
 				if (result == null) result = caseTable(routineResultTable);
 				if (result == null) result = caseSQLObject(routineResultTable);
 				if (result == null) result = caseENamedElement(routineResultTable);
@@ -156,7 +143,7 @@ public class SQLRoutinesSwitch {
 			}
 			case SQLRoutinesPackage.METHOD: {
 				Method method = (Method)theEObject;
-				Object result = caseMethod(method);
+				T result = caseMethod(method);
 				if (result == null) result = caseFunction(method);
 				if (result == null) result = caseRoutine(method);
 				if (result == null) result = caseSQLObject(method);
@@ -167,7 +154,7 @@ public class SQLRoutinesSwitch {
 			}
 			case SQLRoutinesPackage.USER_DEFINED_FUNCTION: {
 				UserDefinedFunction userDefinedFunction = (UserDefinedFunction)theEObject;
-				Object result = caseUserDefinedFunction(userDefinedFunction);
+				T result = caseUserDefinedFunction(userDefinedFunction);
 				if (result == null) result = caseFunction(userDefinedFunction);
 				if (result == null) result = caseRoutine(userDefinedFunction);
 				if (result == null) result = caseSQLObject(userDefinedFunction);
@@ -178,7 +165,7 @@ public class SQLRoutinesSwitch {
 			}
 			case SQLRoutinesPackage.BUILT_IN_FUNCTION: {
 				BuiltInFunction builtInFunction = (BuiltInFunction)theEObject;
-				Object result = caseBuiltInFunction(builtInFunction);
+				T result = caseBuiltInFunction(builtInFunction);
 				if (result == null) result = caseFunction(builtInFunction);
 				if (result == null) result = caseRoutine(builtInFunction);
 				if (result == null) result = caseSQLObject(builtInFunction);
@@ -202,7 +189,7 @@ public class SQLRoutinesSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseRoutine(Routine object) {
+	public T caseRoutine(Routine object) {
 		return null;
 	}
 
@@ -217,7 +204,7 @@ public class SQLRoutinesSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseSource(Source object) {
+	public T caseSource(Source object) {
 		return null;
 	}
 
@@ -232,7 +219,7 @@ public class SQLRoutinesSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseParameter(Parameter object) {
+	public T caseParameter(Parameter object) {
 		return null;
 	}
 
@@ -247,7 +234,7 @@ public class SQLRoutinesSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseProcedure(Procedure object) {
+	public T caseProcedure(Procedure object) {
 		return null;
 	}
 
@@ -262,7 +249,7 @@ public class SQLRoutinesSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseFunction(Function object) {
+	public T caseFunction(Function object) {
 		return null;
 	}
 
@@ -277,7 +264,7 @@ public class SQLRoutinesSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseRoutineResultTable(RoutineResultTable object) {
+	public T caseRoutineResultTable(RoutineResultTable object) {
 		return null;
 	}
 
@@ -292,7 +279,7 @@ public class SQLRoutinesSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseMethod(Method object) {
+	public T caseMethod(Method object) {
 		return null;
 	}
 
@@ -307,7 +294,7 @@ public class SQLRoutinesSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseUserDefinedFunction(UserDefinedFunction object) {
+	public T caseUserDefinedFunction(UserDefinedFunction object) {
 		return null;
 	}
 
@@ -322,7 +309,7 @@ public class SQLRoutinesSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseBuiltInFunction(BuiltInFunction object) {
+	public T caseBuiltInFunction(BuiltInFunction object) {
 		return null;
 	}
 
@@ -337,7 +324,7 @@ public class SQLRoutinesSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseEModelElement(EModelElement object) {
+	public T caseEModelElement(EModelElement object) {
 		return null;
 	}
 
@@ -352,7 +339,7 @@ public class SQLRoutinesSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseENamedElement(ENamedElement object) {
+	public T caseENamedElement(ENamedElement object) {
 		return null;
 	}
 
@@ -367,7 +354,7 @@ public class SQLRoutinesSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseSQLObject(SQLObject object) {
+	public T caseSQLObject(SQLObject object) {
 		return null;
 	}
 
@@ -382,7 +369,7 @@ public class SQLRoutinesSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseTypedElement(TypedElement object) {
+	public T caseTypedElement(TypedElement object) {
 		return null;
 	}
 
@@ -397,7 +384,7 @@ public class SQLRoutinesSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseTable(Table object) {
+	public T caseTable(Table object) {
 		return null;
 	}
 
@@ -412,7 +399,8 @@ public class SQLRoutinesSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject)
 	 * @generated
 	 */
-	public Object defaultCase(EObject object) {
+	@Override
+	public T defaultCase(EObject object) {
 		return null;
 	}
 

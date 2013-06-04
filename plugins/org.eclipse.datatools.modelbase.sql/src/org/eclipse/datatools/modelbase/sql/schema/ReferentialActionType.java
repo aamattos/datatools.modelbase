@@ -10,7 +10,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import org.eclipse.emf.common.util.AbstractEnumerator;
+import org.eclipse.emf.common.util.Enumerator;
 
 /**
  * <!-- begin-user-doc -->
@@ -24,7 +24,73 @@ import org.eclipse.emf.common.util.AbstractEnumerator;
  * @model
  * @generated
  */
-public final class ReferentialActionType extends AbstractEnumerator {
+public enum ReferentialActionType implements Enumerator
+{
+	/**
+	 * The '<em><b>NO ACTION</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>NO ACTION</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #NO_ACTION
+	 * @generated
+	 * @ordered
+	 */
+	NO_ACTION_LITERAL(0, "NO_ACTION", "NO_ACTION"),
+	/**
+	 * The '<em><b>RESTRICT</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>RESTRICT</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #RESTRICT
+	 * @generated
+	 * @ordered
+	 */
+	RESTRICT_LITERAL(1, "RESTRICT", "RESTRICT"),
+	/**
+	 * The '<em><b>CASCADE</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>CASCADE</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #CASCADE
+	 * @generated
+	 * @ordered
+	 */
+	CASCADE_LITERAL(2, "CASCADE", "CASCADE"),
+	/**
+	 * The '<em><b>SET NULL</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>SET NULL</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #SET_NULL
+	 * @generated
+	 * @ordered
+	 */
+	SET_NULL_LITERAL(3, "SET_NULL", "SET_NULL"),
+	/**
+	 * The '<em><b>SET DEFAULT</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>SET DEFAULT</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #SET_DEFAULT
+	 * @generated
+	 * @ordered
+	 */
+	SET_DEFAULT_LITERAL(4, "SET_DEFAULT", "SET_DEFAULT");
 	/**
 	 * The '<em><b>NO ACTION</b></em>' literal value.
 	 * <!-- begin-user-doc -->
@@ -81,76 +147,6 @@ public final class ReferentialActionType extends AbstractEnumerator {
 	public static final int SET_DEFAULT = 4;
 
 	/**
-	 * The '<em><b>NO ACTION</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>NO ACTION</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @see #NO_ACTION
-	 * @generated
-	 * @ordered
-	 */
-	public static final ReferentialActionType NO_ACTION_LITERAL = new ReferentialActionType(NO_ACTION, "NO_ACTION", "NO_ACTION"); //$NON-NLS-1$
-
-	/**
-	 * The '<em><b>RESTRICT</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>RESTRICT</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @see #RESTRICT
-	 * @generated
-	 * @ordered
-	 */
-	public static final ReferentialActionType RESTRICT_LITERAL = new ReferentialActionType(RESTRICT, "RESTRICT", "RESTRICT"); //$NON-NLS-1$
-
-	/**
-	 * The '<em><b>CASCADE</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>CASCADE</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @see #CASCADE
-	 * @generated
-	 * @ordered
-	 */
-	public static final ReferentialActionType CASCADE_LITERAL = new ReferentialActionType(CASCADE, "CASCADE", "CASCADE"); //$NON-NLS-1$
-
-	/**
-	 * The '<em><b>SET NULL</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>SET NULL</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @see #SET_NULL
-	 * @generated
-	 * @ordered
-	 */
-	public static final ReferentialActionType SET_NULL_LITERAL = new ReferentialActionType(SET_NULL, "SET_NULL", "SET_NULL"); //$NON-NLS-1$
-
-	/**
-	 * The '<em><b>SET DEFAULT</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>SET DEFAULT</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @see #SET_DEFAULT
-	 * @generated
-	 * @ordered
-	 */
-	public static final ReferentialActionType SET_DEFAULT_LITERAL = new ReferentialActionType(SET_DEFAULT, "SET_DEFAULT", "SET_DEFAULT"); //$NON-NLS-1$
-
-	/**
 	 * An array of all the '<em><b>Referential Action Type</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -171,7 +167,7 @@ public final class ReferentialActionType extends AbstractEnumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<ReferentialActionType> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
 	 * Returns the '<em><b>Referential Action Type</b></em>' literal with the specified literal value.
@@ -223,13 +219,73 @@ public final class ReferentialActionType extends AbstractEnumerator {
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final int value;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final String name;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final String literal;
+
+	/**
 	 * Only this class can construct instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	private ReferentialActionType(int value, String name, String literal) {
-		super(value, name, literal);
+		this.value = value;
+		this.name = name;
+		this.literal = literal;
 	}
 
-} //ReferentialActionType
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int getValue() {
+	  return value;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getName() {
+	  return name;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getLiteral() {
+	  return literal;
+	}
+
+	/**
+	 * Returns the literal value of the enumerator, which is its string representation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		return literal;
+	}
+}

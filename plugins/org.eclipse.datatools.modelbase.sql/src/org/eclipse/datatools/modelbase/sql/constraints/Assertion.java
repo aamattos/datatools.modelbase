@@ -1,17 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2001, 2004 IBM Corporation and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- * 
- * Contributors:
- *     IBM Corporation - initial API and implementation
- *******************************************************************************/
+/**
+ * <copyright>
+ * </copyright>
+ *
+ * $Id$
+ */
 package org.eclipse.datatools.modelbase.sql.constraints;
 
 import org.eclipse.datatools.modelbase.sql.expressions.SearchCondition;
 import org.eclipse.datatools.modelbase.sql.schema.Schema;
+import org.eclipse.datatools.modelbase.sql.tables.BaseTable;
 import org.eclipse.emf.common.util.EList;
 
 /**
@@ -104,9 +101,9 @@ public interface Assertion extends Constraint {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Constrained Tables</em>' reference list.
 	 * @see org.eclipse.datatools.modelbase.sql.constraints.SQLConstraintsPackage#getAssertion_ConstrainedTables()
-	 * @model type="org.eclipse.datatools.modelbase.sql.tables.BaseTable" required="true" derived="true"
+	 * @model required="true" derived="true"
 	 * @generated
 	 */
-	EList getConstrainedTables();
+	EList<BaseTable> getConstrainedTables();
 
 } // Assertion

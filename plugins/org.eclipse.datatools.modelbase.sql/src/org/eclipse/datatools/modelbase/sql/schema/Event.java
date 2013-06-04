@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: Event.java,v 1.1 2006/03/03 21:46:27 dpchou Exp $
+ * $Id$
  */
 package org.eclipse.datatools.modelbase.sql.schema;
 

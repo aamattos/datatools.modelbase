@@ -1,28 +1,35 @@
-/*******************************************************************************
- * Copyright (c) 2001, 2004 IBM Corporation and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- * 
- * Contributors:
- *     IBM Corporation - initial API and implementation
- *******************************************************************************/
+/**
+ * <copyright>
+ * </copyright>
+ *
+ * $Id$
+ */
 package org.eclipse.datatools.modelbase.sql.statements.util;
-
-import java.util.List;
 
 import org.eclipse.datatools.modelbase.sql.schema.SQLObject;
 import org.eclipse.datatools.modelbase.sql.statements.*;
-import org.eclipse.emf.ecore.EClass;
+import org.eclipse.datatools.modelbase.sql.statements.SQLConnectionStatement;
+import org.eclipse.datatools.modelbase.sql.statements.SQLControlStatement;
+import org.eclipse.datatools.modelbase.sql.statements.SQLDataChangeStatement;
+import org.eclipse.datatools.modelbase.sql.statements.SQLDataStatement;
+import org.eclipse.datatools.modelbase.sql.statements.SQLDiagnosticsStatement;
+import org.eclipse.datatools.modelbase.sql.statements.SQLDynamicStatement;
+import org.eclipse.datatools.modelbase.sql.statements.SQLSchemaStatement;
+import org.eclipse.datatools.modelbase.sql.statements.SQLSessionStatement;
+import org.eclipse.datatools.modelbase.sql.statements.SQLStatement;
+import org.eclipse.datatools.modelbase.sql.statements.SQLStatementDefault;
+import org.eclipse.datatools.modelbase.sql.statements.SQLStatementsPackage;
+import org.eclipse.datatools.modelbase.sql.statements.SQLTransactionStatement;
 import org.eclipse.emf.ecore.EModelElement;
 import org.eclipse.emf.ecore.ENamedElement;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.util.Switch;
 
 /**
  * <!-- begin-user-doc -->
  * The <b>Switch</b> for the model's inheritance hierarchy.
- * It supports the call {@link #doSwitch doSwitch(object)}
+ * It supports the call {@link #doSwitch(EObject) doSwitch(object)}
  * to invoke the <code>caseXXX</code> method for each class of the model,
  * starting with the actual class of the object
  * and proceeding up the inheritance hierarchy
@@ -32,7 +39,7 @@ import org.eclipse.emf.ecore.EObject;
  * @see org.eclipse.datatools.modelbase.sql.statements.SQLStatementsPackage
  * @generated
  */
-public class SQLStatementsSwitch {
+public class SQLStatementsSwitch<T> extends Switch<T> {
 	/**
 	 * The cached model package
 	 * <!-- begin-user-doc -->
@@ -54,14 +61,16 @@ public class SQLStatementsSwitch {
 	}
 
 	/**
-	 * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that result.
+	 * Checks whether this is a switch for the given package.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the first non-null result returned by a <code>caseXXX</code> call.
+	 * @parameter ePackage the package in question.
+	 * @return whether this is a switch for the given package.
 	 * @generated
 	 */
-	public Object doSwitch(EObject theEObject) {
-		return doSwitch(theEObject.eClass(), theEObject);
+	@Override
+	protected boolean isSwitchFor(EPackage ePackage) {
+		return ePackage == modelPackage;
 	}
 
 	/**
@@ -71,58 +80,39 @@ public class SQLStatementsSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	protected Object doSwitch(EClass theEClass, EObject theEObject) {
-		if (theEClass.eContainer() == modelPackage) {
-			return doSwitch(theEClass.getClassifierID(), theEObject);
-		}
-		else {
-			List eSuperTypes = theEClass.getESuperTypes();
-			return
-				eSuperTypes.isEmpty() ?
-					defaultCase(theEObject) :
-					doSwitch((EClass)eSuperTypes.get(0), theEObject);
-		}
-	}
-
-	/**
-	 * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that result.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the first non-null result returned by a <code>caseXXX</code> call.
-	 * @generated
-	 */
-	protected Object doSwitch(int classifierID, EObject theEObject) {
+	@Override
+	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
 			case SQLStatementsPackage.SQL_STATEMENT: {
 				SQLStatement sqlStatement = (SQLStatement)theEObject;
-				Object result = caseSQLStatement(sqlStatement);
+				T result = caseSQLStatement(sqlStatement);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case SQLStatementsPackage.SQL_DATA_STATEMENT: {
 				SQLDataStatement sqlDataStatement = (SQLDataStatement)theEObject;
-				Object result = caseSQLDataStatement(sqlDataStatement);
+				T result = caseSQLDataStatement(sqlDataStatement);
 				if (result == null) result = caseSQLStatement(sqlDataStatement);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case SQLStatementsPackage.SQL_SCHEMA_STATEMENT: {
 				SQLSchemaStatement sqlSchemaStatement = (SQLSchemaStatement)theEObject;
-				Object result = caseSQLSchemaStatement(sqlSchemaStatement);
+				T result = caseSQLSchemaStatement(sqlSchemaStatement);
 				if (result == null) result = caseSQLStatement(sqlSchemaStatement);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case SQLStatementsPackage.SQL_CONTROL_STATEMENT: {
 				SQLControlStatement sqlControlStatement = (SQLControlStatement)theEObject;
-				Object result = caseSQLControlStatement(sqlControlStatement);
+				T result = caseSQLControlStatement(sqlControlStatement);
 				if (result == null) result = caseSQLStatement(sqlControlStatement);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case SQLStatementsPackage.SQL_DATA_CHANGE_STATEMENT: {
 				SQLDataChangeStatement sqlDataChangeStatement = (SQLDataChangeStatement)theEObject;
-				Object result = caseSQLDataChangeStatement(sqlDataChangeStatement);
+				T result = caseSQLDataChangeStatement(sqlDataChangeStatement);
 				if (result == null) result = caseSQLDataStatement(sqlDataChangeStatement);
 				if (result == null) result = caseSQLStatement(sqlDataChangeStatement);
 				if (result == null) result = defaultCase(theEObject);
@@ -130,7 +120,7 @@ public class SQLStatementsSwitch {
 			}
 			case SQLStatementsPackage.SQL_STATEMENT_DEFAULT: {
 				SQLStatementDefault sqlStatementDefault = (SQLStatementDefault)theEObject;
-				Object result = caseSQLStatementDefault(sqlStatementDefault);
+				T result = caseSQLStatementDefault(sqlStatementDefault);
 				if (result == null) result = caseSQLObject(sqlStatementDefault);
 				if (result == null) result = caseSQLStatement(sqlStatementDefault);
 				if (result == null) result = caseENamedElement(sqlStatementDefault);
@@ -140,35 +130,35 @@ public class SQLStatementsSwitch {
 			}
 			case SQLStatementsPackage.SQL_CONNECTION_STATEMENT: {
 				SQLConnectionStatement sqlConnectionStatement = (SQLConnectionStatement)theEObject;
-				Object result = caseSQLConnectionStatement(sqlConnectionStatement);
+				T result = caseSQLConnectionStatement(sqlConnectionStatement);
 				if (result == null) result = caseSQLStatement(sqlConnectionStatement);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case SQLStatementsPackage.SQL_DIAGNOSTICS_STATEMENT: {
 				SQLDiagnosticsStatement sqlDiagnosticsStatement = (SQLDiagnosticsStatement)theEObject;
-				Object result = caseSQLDiagnosticsStatement(sqlDiagnosticsStatement);
+				T result = caseSQLDiagnosticsStatement(sqlDiagnosticsStatement);
 				if (result == null) result = caseSQLStatement(sqlDiagnosticsStatement);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case SQLStatementsPackage.SQL_DYNAMIC_STATEMENT: {
 				SQLDynamicStatement sqlDynamicStatement = (SQLDynamicStatement)theEObject;
-				Object result = caseSQLDynamicStatement(sqlDynamicStatement);
+				T result = caseSQLDynamicStatement(sqlDynamicStatement);
 				if (result == null) result = caseSQLStatement(sqlDynamicStatement);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case SQLStatementsPackage.SQL_SESSION_STATEMENT: {
 				SQLSessionStatement sqlSessionStatement = (SQLSessionStatement)theEObject;
-				Object result = caseSQLSessionStatement(sqlSessionStatement);
+				T result = caseSQLSessionStatement(sqlSessionStatement);
 				if (result == null) result = caseSQLStatement(sqlSessionStatement);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case SQLStatementsPackage.SQL_TRANSACTION_STATEMENT: {
 				SQLTransactionStatement sqlTransactionStatement = (SQLTransactionStatement)theEObject;
-				Object result = caseSQLTransactionStatement(sqlTransactionStatement);
+				T result = caseSQLTransactionStatement(sqlTransactionStatement);
 				if (result == null) result = caseSQLStatement(sqlTransactionStatement);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -188,7 +178,7 @@ public class SQLStatementsSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseSQLStatement(SQLStatement object) {
+	public T caseSQLStatement(SQLStatement object) {
 		return null;
 	}
 
@@ -203,7 +193,7 @@ public class SQLStatementsSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseSQLDataStatement(SQLDataStatement object) {
+	public T caseSQLDataStatement(SQLDataStatement object) {
 		return null;
 	}
 
@@ -218,7 +208,7 @@ public class SQLStatementsSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseSQLSchemaStatement(SQLSchemaStatement object) {
+	public T caseSQLSchemaStatement(SQLSchemaStatement object) {
 		return null;
 	}
 
@@ -233,7 +223,7 @@ public class SQLStatementsSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseSQLControlStatement(SQLControlStatement object) {
+	public T caseSQLControlStatement(SQLControlStatement object) {
 		return null;
 	}
 
@@ -248,7 +238,7 @@ public class SQLStatementsSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseSQLDataChangeStatement(SQLDataChangeStatement object) {
+	public T caseSQLDataChangeStatement(SQLDataChangeStatement object) {
 		return null;
 	}
 
@@ -263,7 +253,7 @@ public class SQLStatementsSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseSQLStatementDefault(SQLStatementDefault object) {
+	public T caseSQLStatementDefault(SQLStatementDefault object) {
 		return null;
 	}
 
@@ -278,7 +268,7 @@ public class SQLStatementsSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseSQLConnectionStatement(SQLConnectionStatement object) {
+	public T caseSQLConnectionStatement(SQLConnectionStatement object) {
 		return null;
 	}
 
@@ -293,7 +283,7 @@ public class SQLStatementsSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseSQLDiagnosticsStatement(SQLDiagnosticsStatement object) {
+	public T caseSQLDiagnosticsStatement(SQLDiagnosticsStatement object) {
 		return null;
 	}
 
@@ -308,7 +298,7 @@ public class SQLStatementsSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseSQLDynamicStatement(SQLDynamicStatement object) {
+	public T caseSQLDynamicStatement(SQLDynamicStatement object) {
 		return null;
 	}
 
@@ -323,7 +313,7 @@ public class SQLStatementsSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseSQLSessionStatement(SQLSessionStatement object) {
+	public T caseSQLSessionStatement(SQLSessionStatement object) {
 		return null;
 	}
 
@@ -338,7 +328,7 @@ public class SQLStatementsSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseSQLTransactionStatement(SQLTransactionStatement object) {
+	public T caseSQLTransactionStatement(SQLTransactionStatement object) {
 		return null;
 	}
 
@@ -353,7 +343,7 @@ public class SQLStatementsSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseEModelElement(EModelElement object) {
+	public T caseEModelElement(EModelElement object) {
 		return null;
 	}
 
@@ -368,7 +358,7 @@ public class SQLStatementsSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseENamedElement(ENamedElement object) {
+	public T caseENamedElement(ENamedElement object) {
 		return null;
 	}
 
@@ -383,7 +373,7 @@ public class SQLStatementsSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseSQLObject(SQLObject object) {
+	public T caseSQLObject(SQLObject object) {
 		return null;
 	}
 
@@ -398,7 +388,8 @@ public class SQLStatementsSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject)
 	 * @generated
 	 */
-	public Object defaultCase(EObject object) {
+	@Override
+	public T defaultCase(EObject object) {
 		return null;
 	}
 

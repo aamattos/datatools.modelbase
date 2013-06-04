@@ -1,18 +1,19 @@
-/*******************************************************************************
- * Copyright (c) 2001, 2004 IBM Corporation and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- * 
- * Contributors:
- *     IBM Corporation - initial API and implementation
- *******************************************************************************/
+/**
+ * <copyright>
+ * </copyright>
+ *
+ * $Id$
+ */
 package org.eclipse.datatools.modelbase.sql.accesscontrol.util;
 
-import java.security.acl.Group;
-
 import org.eclipse.datatools.modelbase.sql.accesscontrol.*;
+import org.eclipse.datatools.modelbase.sql.accesscontrol.AuthorizationIdentifier;
+import org.eclipse.datatools.modelbase.sql.accesscontrol.Group;
+import org.eclipse.datatools.modelbase.sql.accesscontrol.Privilege;
+import org.eclipse.datatools.modelbase.sql.accesscontrol.Role;
+import org.eclipse.datatools.modelbase.sql.accesscontrol.RoleAuthorization;
+import org.eclipse.datatools.modelbase.sql.accesscontrol.SQLAccessControlPackage;
+import org.eclipse.datatools.modelbase.sql.accesscontrol.User;
 import org.eclipse.datatools.modelbase.sql.schema.SQLObject;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
@@ -20,7 +21,6 @@ import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EModelElement;
 import org.eclipse.emf.ecore.ENamedElement;
 import org.eclipse.emf.ecore.EObject;
-
 
 /**
  * <!-- begin-user-doc -->
@@ -59,6 +59,7 @@ public class SQLAccessControlAdapterFactory extends AdapterFactoryImpl {
 	 * @return whether this factory is applicable for the type of the object.
 	 * @generated
 	 */
+	@Override
 	public boolean isFactoryForType(Object object) {
 		if (object == modelPackage) {
 			return true;
@@ -75,36 +76,46 @@ public class SQLAccessControlAdapterFactory extends AdapterFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected SQLAccessControlSwitch modelSwitch =
-		new SQLAccessControlSwitch() {
-			public Object caseAuthorizationIdentifier(AuthorizationIdentifier object) {
+	protected SQLAccessControlSwitch<Adapter> modelSwitch =
+		new SQLAccessControlSwitch<Adapter>() {
+			@Override
+			public Adapter caseAuthorizationIdentifier(AuthorizationIdentifier object) {
 				return createAuthorizationIdentifierAdapter();
 			}
-			public Object casePrivilege(Privilege object) {
+			@Override
+			public Adapter casePrivilege(Privilege object) {
 				return createPrivilegeAdapter();
 			}
-			public Object caseGroup(Group object) {
+			@Override
+			public Adapter caseGroup(Group object) {
 				return createGroupAdapter();
 			}
-			public Object caseUser(User object) {
+			@Override
+			public Adapter caseUser(User object) {
 				return createUserAdapter();
 			}
-			public Object caseRole(Role object) {
+			@Override
+			public Adapter caseRole(Role object) {
 				return createRoleAdapter();
 			}
-			public Object caseRoleAuthorization(RoleAuthorization object) {
+			@Override
+			public Adapter caseRoleAuthorization(RoleAuthorization object) {
 				return createRoleAuthorizationAdapter();
 			}
-			public Object caseEModelElement(EModelElement object) {
+			@Override
+			public Adapter caseEModelElement(EModelElement object) {
 				return createEModelElementAdapter();
 			}
-			public Object caseENamedElement(ENamedElement object) {
+			@Override
+			public Adapter caseENamedElement(ENamedElement object) {
 				return createENamedElementAdapter();
 			}
-			public Object caseSQLObject(SQLObject object) {
+			@Override
+			public Adapter caseSQLObject(SQLObject object) {
 				return createSQLObjectAdapter();
 			}
-			public Object defaultCase(EObject object) {
+			@Override
+			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
 		};
@@ -117,8 +128,9 @@ public class SQLAccessControlAdapterFactory extends AdapterFactoryImpl {
 	 * @return the adapter for the <code>target</code>.
 	 * @generated
 	 */
+	@Override
 	public Adapter createAdapter(Notifier target) {
-		return (Adapter)modelSwitch.doSwitch((EObject)target);
+		return modelSwitch.doSwitch((EObject)target);
 	}
 
 

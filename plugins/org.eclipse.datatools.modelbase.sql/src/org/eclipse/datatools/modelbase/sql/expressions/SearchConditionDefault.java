@@ -1,17 +1,12 @@
-/*******************************************************************************
- * Copyright (c) 2001, 2004 IBM Corporation and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- * 
- * Contributors:
- *     IBM Corporation - initial API and implementation
- *******************************************************************************/
+/**
+ * <copyright>
+ * </copyright>
+ *
+ * $Id$
+ */
 package org.eclipse.datatools.modelbase.sql.expressions;
 
 import org.eclipse.datatools.modelbase.sql.schema.SQLObject;
-
 
 /**
  * <!-- begin-user-doc -->
@@ -43,9 +38,11 @@ public interface SearchConditionDefault extends SQLObject, SearchCondition {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>SQL</em>' attribute.
+	 * @see #isSetSQL()
+	 * @see #unsetSQL()
 	 * @see #setSQL(String)
 	 * @see org.eclipse.datatools.modelbase.sql.expressions.SQLExpressionsPackage#getSearchConditionDefault_SQL()
-	 * @model
+	 * @model unsettable="true" transient="true" derived="true"
 	 * @generated
 	 */
 	String getSQL();
@@ -55,9 +52,34 @@ public interface SearchConditionDefault extends SQLObject, SearchCondition {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>SQL</em>' attribute.
+	 * @see #isSetSQL()
+	 * @see #unsetSQL()
 	 * @see #getSQL()
 	 * @generated
 	 */
 	void setSQL(String value);
+
+	/**
+	 * Unsets the value of the '{@link org.eclipse.datatools.modelbase.sql.expressions.SearchConditionDefault#getSQL <em>SQL</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isSetSQL()
+	 * @see #getSQL()
+	 * @see #setSQL(String)
+	 * @generated
+	 */
+	void unsetSQL();
+
+	/**
+	 * Returns whether the value of the '{@link org.eclipse.datatools.modelbase.sql.expressions.SearchConditionDefault#getSQL <em>SQL</em>}' attribute is set.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return whether the value of the '<em>SQL</em>' attribute is set.
+	 * @see #unsetSQL()
+	 * @see #getSQL()
+	 * @see #setSQL(String)
+	 * @generated
+	 */
+	boolean isSetSQL();
 
 } // SearchConditionDefault

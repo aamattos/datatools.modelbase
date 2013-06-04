@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: IntegrityControlOption.java,v 1.3 2006/09/07 00:19:48 dpchou Exp $
+ * $Id$
  */
 package org.eclipse.datatools.modelbase.sql.datatypes;
 
@@ -10,7 +10,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import org.eclipse.emf.common.util.AbstractEnumerator;
+import org.eclipse.emf.common.util.Enumerator;
 
 /**
  * <!-- begin-user-doc -->
@@ -21,42 +21,37 @@ import org.eclipse.emf.common.util.AbstractEnumerator;
  * @model
  * @generated
  */
-public final class IntegrityControlOption extends AbstractEnumerator {
-	/**
-	 * The '<em><b>ALL</b></em>' literal value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #ALL_LITERAL
-	 * @model
-	 * @generated
-	 * @ordered
-	 */
-	public static final int ALL = 0;
-
-	/**
-	 * The '<em><b>SELECTIVE</b></em>' literal value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #SELECTIVE_LITERAL
-	 * @model
-	 * @generated
-	 * @ordered
-	 */
-	public static final int SELECTIVE = 1;
-
-	/**
-	 * The '<em><b>NONE</b></em>' literal value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #NONE_LITERAL
-	 * @model
-	 * @generated
-	 * @ordered
-	 */
-	public static final int NONE = 2;
-
+public enum IntegrityControlOption implements Enumerator
+{
 	/**
 	 * The '<em><b>ALL</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #ALL_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	ALL(0, "ALL", "ALL"),
+	/**
+	 * The '<em><b>SELECTIVE</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #SELECTIVE_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	SELECTIVE(1, "SELECTIVE", "SELECTIVE"),
+	/**
+	 * The '<em><b>NONE</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #NONE_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	NONE(2, "NONE", "NONE");
+	/**
+	 * The '<em><b>ALL</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>ALL</b></em>' literal object isn't clear,
@@ -64,13 +59,14 @@ public final class IntegrityControlOption extends AbstractEnumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #ALL
+	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final IntegrityControlOption ALL_LITERAL = new IntegrityControlOption(ALL, "ALL", "ALL"); //$NON-NLS-1$
+	public static final int ALL_VALUE = 0;
 
 	/**
-	 * The '<em><b>SELECTIVE</b></em>' literal object.
+	 * The '<em><b>SELECTIVE</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>SELECTIVE</b></em>' literal object isn't clear,
@@ -78,13 +74,14 @@ public final class IntegrityControlOption extends AbstractEnumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #SELECTIVE
+	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final IntegrityControlOption SELECTIVE_LITERAL = new IntegrityControlOption(SELECTIVE, "SELECTIVE", "SELECTIVE"); //$NON-NLS-1$
+	public static final int SELECTIVE_VALUE = 1;
 
 	/**
-	 * The '<em><b>NONE</b></em>' literal object.
+	 * The '<em><b>NONE</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>NONE</b></em>' literal object isn't clear,
@@ -92,10 +89,11 @@ public final class IntegrityControlOption extends AbstractEnumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #NONE
+	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final IntegrityControlOption NONE_LITERAL = new IntegrityControlOption(NONE, "NONE", "NONE"); //$NON-NLS-1$
+	public static final int NONE_VALUE = 2;
 
 	/**
 	 * An array of all the '<em><b>Integrity Control Option</b></em>' enumerators.
@@ -105,9 +103,9 @@ public final class IntegrityControlOption extends AbstractEnumerator {
 	 */
 	private static final IntegrityControlOption[] VALUES_ARRAY =
 		new IntegrityControlOption[] {
-			ALL_LITERAL,
-			SELECTIVE_LITERAL,
-			NONE_LITERAL,
+			ALL,
+			SELECTIVE,
+			NONE,
 		};
 
 	/**
@@ -116,7 +114,7 @@ public final class IntegrityControlOption extends AbstractEnumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<IntegrityControlOption> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
 	 * Returns the '<em><b>Integrity Control Option</b></em>' literal with the specified literal value.
@@ -158,12 +156,33 @@ public final class IntegrityControlOption extends AbstractEnumerator {
 	 */
 	public static IntegrityControlOption get(int value) {
 		switch (value) {
-			case ALL: return ALL_LITERAL;
-			case SELECTIVE: return SELECTIVE_LITERAL;
-			case NONE: return NONE_LITERAL;
+			case ALL_VALUE: return ALL;
+			case SELECTIVE_VALUE: return SELECTIVE;
+			case NONE_VALUE: return NONE;
 		}
 		return null;
 	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final int value;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final String name;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final String literal;
 
 	/**
 	 * Only this class can construct instances.
@@ -172,7 +191,46 @@ public final class IntegrityControlOption extends AbstractEnumerator {
 	 * @generated
 	 */
 	private IntegrityControlOption(int value, String name, String literal) {
-		super(value, name, literal);
+		this.value = value;
+		this.name = name;
+		this.literal = literal;
 	}
 
-} //IntegrityControlOption
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int getValue() {
+	  return value;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getName() {
+	  return name;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getLiteral() {
+	  return literal;
+	}
+
+	/**
+	 * Returns the literal value of the enumerator, which is its string representation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		return literal;
+	}
+}

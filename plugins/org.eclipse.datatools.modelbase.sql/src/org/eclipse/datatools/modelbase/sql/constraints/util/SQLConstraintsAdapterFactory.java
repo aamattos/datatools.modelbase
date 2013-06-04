@@ -1,16 +1,24 @@
-/*******************************************************************************
- * Copyright (c) 2001, 2004 IBM Corporation and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- * 
- * Contributors:
- *     IBM Corporation - initial API and implementation
- *******************************************************************************/
+/**
+ * <copyright>
+ * </copyright>
+ *
+ * $Id$
+ */
 package org.eclipse.datatools.modelbase.sql.constraints.util;
 
 import org.eclipse.datatools.modelbase.sql.constraints.*;
+import org.eclipse.datatools.modelbase.sql.constraints.Assertion;
+import org.eclipse.datatools.modelbase.sql.constraints.CheckConstraint;
+import org.eclipse.datatools.modelbase.sql.constraints.Constraint;
+import org.eclipse.datatools.modelbase.sql.constraints.ForeignKey;
+import org.eclipse.datatools.modelbase.sql.constraints.Index;
+import org.eclipse.datatools.modelbase.sql.constraints.IndexExpression;
+import org.eclipse.datatools.modelbase.sql.constraints.IndexMember;
+import org.eclipse.datatools.modelbase.sql.constraints.PrimaryKey;
+import org.eclipse.datatools.modelbase.sql.constraints.ReferenceConstraint;
+import org.eclipse.datatools.modelbase.sql.constraints.SQLConstraintsPackage;
+import org.eclipse.datatools.modelbase.sql.constraints.TableConstraint;
+import org.eclipse.datatools.modelbase.sql.constraints.UniqueConstraint;
 import org.eclipse.datatools.modelbase.sql.schema.SQLObject;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
@@ -18,7 +26,6 @@ import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EModelElement;
 import org.eclipse.emf.ecore.ENamedElement;
 import org.eclipse.emf.ecore.EObject;
-
 
 /**
  * <!-- begin-user-doc -->
@@ -57,6 +64,7 @@ public class SQLConstraintsAdapterFactory extends AdapterFactoryImpl {
 	 * @return whether this factory is applicable for the type of the object.
 	 * @generated
 	 */
+	@Override
 	public boolean isFactoryForType(Object object) {
 		if (object == modelPackage) {
 			return true;
@@ -73,51 +81,66 @@ public class SQLConstraintsAdapterFactory extends AdapterFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected SQLConstraintsSwitch modelSwitch =
-		new SQLConstraintsSwitch() {
-			public Object caseAssertion(Assertion object) {
+	protected SQLConstraintsSwitch<Adapter> modelSwitch =
+		new SQLConstraintsSwitch<Adapter>() {
+			@Override
+			public Adapter caseAssertion(Assertion object) {
 				return createAssertionAdapter();
 			}
-			public Object caseConstraint(Constraint object) {
+			@Override
+			public Adapter caseConstraint(Constraint object) {
 				return createConstraintAdapter();
 			}
-			public Object caseTableConstraint(TableConstraint object) {
+			@Override
+			public Adapter caseTableConstraint(TableConstraint object) {
 				return createTableConstraintAdapter();
 			}
-			public Object caseReferenceConstraint(ReferenceConstraint object) {
+			@Override
+			public Adapter caseReferenceConstraint(ReferenceConstraint object) {
 				return createReferenceConstraintAdapter();
 			}
-			public Object caseCheckConstraint(CheckConstraint object) {
+			@Override
+			public Adapter caseCheckConstraint(CheckConstraint object) {
 				return createCheckConstraintAdapter();
 			}
-			public Object caseForeignKey(ForeignKey object) {
+			@Override
+			public Adapter caseForeignKey(ForeignKey object) {
 				return createForeignKeyAdapter();
 			}
-			public Object caseUniqueConstraint(UniqueConstraint object) {
+			@Override
+			public Adapter caseUniqueConstraint(UniqueConstraint object) {
 				return createUniqueConstraintAdapter();
 			}
-			public Object casePrimaryKey(PrimaryKey object) {
+			@Override
+			public Adapter casePrimaryKey(PrimaryKey object) {
 				return createPrimaryKeyAdapter();
 			}
-			public Object caseIndex(Index object) {
+			@Override
+			public Adapter caseIndex(Index object) {
 				return createIndexAdapter();
 			}
-			public Object caseIndexMember(IndexMember object) {
+			@Override
+			public Adapter caseIndexMember(IndexMember object) {
 				return createIndexMemberAdapter();
 			}
-			public Object caseIndexExpression(IndexExpression object) {
+			@Override
+			public Adapter caseIndexExpression(IndexExpression object) {
 				return createIndexExpressionAdapter();
 			}
-			public Object caseEModelElement(EModelElement object) {
+			@Override
+			public Adapter caseEModelElement(EModelElement object) {
 				return createEModelElementAdapter();
 			}
-			public Object caseENamedElement(ENamedElement object) {
+			@Override
+			public Adapter caseENamedElement(ENamedElement object) {
 				return createENamedElementAdapter();
 			}
-			public Object caseSQLObject(SQLObject object) {
+			@Override
+			public Adapter caseSQLObject(SQLObject object) {
 				return createSQLObjectAdapter();
 			}
-			public Object defaultCase(EObject object) {
+			@Override
+			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
 		};
@@ -130,8 +153,9 @@ public class SQLConstraintsAdapterFactory extends AdapterFactoryImpl {
 	 * @return the adapter for the <code>target</code>.
 	 * @generated
 	 */
+	@Override
 	public Adapter createAdapter(Notifier target) {
-		return (Adapter)modelSwitch.doSwitch((EObject)target);
+		return modelSwitch.doSwitch((EObject)target);
 	}
 
 

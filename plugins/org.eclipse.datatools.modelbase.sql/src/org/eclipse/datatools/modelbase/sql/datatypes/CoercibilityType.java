@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: CoercibilityType.java,v 1.3 2006/09/07 00:19:48 dpchou Exp $
+ * $Id$
  */
 package org.eclipse.datatools.modelbase.sql.datatypes;
 
@@ -10,7 +10,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import org.eclipse.emf.common.util.AbstractEnumerator;
+import org.eclipse.emf.common.util.Enumerator;
 
 /**
  * <!-- begin-user-doc -->
@@ -25,53 +25,46 @@ import org.eclipse.emf.common.util.AbstractEnumerator;
  * @model
  * @generated
  */
-public final class CoercibilityType extends AbstractEnumerator {
-	/**
-	 * The '<em><b>IMPLICIT</b></em>' literal value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #IMPLICIT_LITERAL
-	 * @model
-	 * @generated
-	 * @ordered
-	 */
-	public static final int IMPLICIT = 0;
-
-	/**
-	 * The '<em><b>EXPLICIT</b></em>' literal value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #EXPLICIT_LITERAL
-	 * @model
-	 * @generated
-	 * @ordered
-	 */
-	public static final int EXPLICIT = 1;
-
-	/**
-	 * The '<em><b>COERCIBILE</b></em>' literal value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #COERCIBILE_LITERAL
-	 * @model
-	 * @generated
-	 * @ordered
-	 */
-	public static final int COERCIBILE = 2;
-
-	/**
-	 * The '<em><b>NO COLLATION</b></em>' literal value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #NO_COLLATION_LITERAL
-	 * @model
-	 * @generated
-	 * @ordered
-	 */
-	public static final int NO_COLLATION = 3;
-
+public enum CoercibilityType implements Enumerator
+{
 	/**
 	 * The '<em><b>IMPLICIT</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #IMPLICIT_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	IMPLICIT(0, "IMPLICIT", "IMPLICIT"),
+	/**
+	 * The '<em><b>EXPLICIT</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #EXPLICIT_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	EXPLICIT(1, "EXPLICIT", "EXPLICIT"),
+	/**
+	 * The '<em><b>COERCIBILE</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #COERCIBILE_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	COERCIBILE(2, "COERCIBILE", "COERCIBILE"),
+	/**
+	 * The '<em><b>NO COLLATION</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #NO_COLLATION_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	NO_COLLATION(3, "NO_COLLATION", "NO_COLLATION");
+	/**
+	 * The '<em><b>IMPLICIT</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>IMPLICIT</b></em>' literal object isn't clear,
@@ -79,13 +72,14 @@ public final class CoercibilityType extends AbstractEnumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #IMPLICIT
+	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final CoercibilityType IMPLICIT_LITERAL = new CoercibilityType(IMPLICIT, "IMPLICIT", "IMPLICIT"); //$NON-NLS-1$
+	public static final int IMPLICIT_VALUE = 0;
 
 	/**
-	 * The '<em><b>EXPLICIT</b></em>' literal object.
+	 * The '<em><b>EXPLICIT</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>EXPLICIT</b></em>' literal object isn't clear,
@@ -93,13 +87,14 @@ public final class CoercibilityType extends AbstractEnumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #EXPLICIT
+	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final CoercibilityType EXPLICIT_LITERAL = new CoercibilityType(EXPLICIT, "EXPLICIT", "EXPLICIT"); //$NON-NLS-1$
+	public static final int EXPLICIT_VALUE = 1;
 
 	/**
-	 * The '<em><b>COERCIBILE</b></em>' literal object.
+	 * The '<em><b>COERCIBILE</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>COERCIBILE</b></em>' literal object isn't clear,
@@ -107,13 +102,14 @@ public final class CoercibilityType extends AbstractEnumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #COERCIBILE
+	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final CoercibilityType COERCIBILE_LITERAL = new CoercibilityType(COERCIBILE, "COERCIBILE", "COERCIBILE"); //$NON-NLS-1$
+	public static final int COERCIBILE_VALUE = 2;
 
 	/**
-	 * The '<em><b>NO COLLATION</b></em>' literal object.
+	 * The '<em><b>NO COLLATION</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>NO COLLATION</b></em>' literal object isn't clear,
@@ -121,10 +117,11 @@ public final class CoercibilityType extends AbstractEnumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #NO_COLLATION
+	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final CoercibilityType NO_COLLATION_LITERAL = new CoercibilityType(NO_COLLATION, "NO_COLLATION", "NO_COLLATION"); //$NON-NLS-1$
+	public static final int NO_COLLATION_VALUE = 3;
 
 	/**
 	 * An array of all the '<em><b>Coercibility Type</b></em>' enumerators.
@@ -134,10 +131,10 @@ public final class CoercibilityType extends AbstractEnumerator {
 	 */
 	private static final CoercibilityType[] VALUES_ARRAY =
 		new CoercibilityType[] {
-			IMPLICIT_LITERAL,
-			EXPLICIT_LITERAL,
-			COERCIBILE_LITERAL,
-			NO_COLLATION_LITERAL,
+			IMPLICIT,
+			EXPLICIT,
+			COERCIBILE,
+			NO_COLLATION,
 		};
 
 	/**
@@ -146,7 +143,7 @@ public final class CoercibilityType extends AbstractEnumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<CoercibilityType> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
 	 * Returns the '<em><b>Coercibility Type</b></em>' literal with the specified literal value.
@@ -188,13 +185,34 @@ public final class CoercibilityType extends AbstractEnumerator {
 	 */
 	public static CoercibilityType get(int value) {
 		switch (value) {
-			case IMPLICIT: return IMPLICIT_LITERAL;
-			case EXPLICIT: return EXPLICIT_LITERAL;
-			case COERCIBILE: return COERCIBILE_LITERAL;
-			case NO_COLLATION: return NO_COLLATION_LITERAL;
+			case IMPLICIT_VALUE: return IMPLICIT;
+			case EXPLICIT_VALUE: return EXPLICIT;
+			case COERCIBILE_VALUE: return COERCIBILE;
+			case NO_COLLATION_VALUE: return NO_COLLATION;
 		}
 		return null;
 	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final int value;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final String name;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final String literal;
 
 	/**
 	 * Only this class can construct instances.
@@ -203,7 +221,46 @@ public final class CoercibilityType extends AbstractEnumerator {
 	 * @generated
 	 */
 	private CoercibilityType(int value, String name, String literal) {
-		super(value, name, literal);
+		this.value = value;
+		this.name = name;
+		this.literal = literal;
 	}
 
-} //CoercibilityType
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int getValue() {
+	  return value;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getName() {
+	  return name;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getLiteral() {
+	  return literal;
+	}
+
+	/**
+	 * Returns the literal value of the enumerator, which is its string representation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		return literal;
+	}
+}

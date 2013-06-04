@@ -1,27 +1,34 @@
-/*******************************************************************************
- * Copyright (c) 2001, 2004 IBM Corporation and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- * 
- * Contributors:
- *     IBM Corporation - initial API and implementation
- *******************************************************************************/
+/**
+ * <copyright>
+ * </copyright>
+ *
+ * $Id$
+ */
 package org.eclipse.datatools.modelbase.sql.schema.util;
 
-import java.util.List;
-
 import org.eclipse.datatools.modelbase.sql.schema.*;
-import org.eclipse.emf.ecore.EClass;
+import org.eclipse.datatools.modelbase.sql.schema.Catalog;
+import org.eclipse.datatools.modelbase.sql.schema.Comment;
+import org.eclipse.datatools.modelbase.sql.schema.Database;
+import org.eclipse.datatools.modelbase.sql.schema.Dependency;
+import org.eclipse.datatools.modelbase.sql.schema.Event;
+import org.eclipse.datatools.modelbase.sql.schema.IdentitySpecifier;
+import org.eclipse.datatools.modelbase.sql.schema.ObjectExtension;
+import org.eclipse.datatools.modelbase.sql.schema.SQLObject;
+import org.eclipse.datatools.modelbase.sql.schema.SQLSchemaPackage;
+import org.eclipse.datatools.modelbase.sql.schema.Schema;
+import org.eclipse.datatools.modelbase.sql.schema.Sequence;
+import org.eclipse.datatools.modelbase.sql.schema.TypedElement;
 import org.eclipse.emf.ecore.EModelElement;
 import org.eclipse.emf.ecore.ENamedElement;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.util.Switch;
 
 /**
  * <!-- begin-user-doc -->
  * The <b>Switch</b> for the model's inheritance hierarchy.
- * It supports the call {@link #doSwitch doSwitch(object)}
+ * It supports the call {@link #doSwitch(EObject) doSwitch(object)}
  * to invoke the <code>caseXXX</code> method for each class of the model,
  * starting with the actual class of the object
  * and proceeding up the inheritance hierarchy
@@ -31,7 +38,7 @@ import org.eclipse.emf.ecore.EObject;
  * @see org.eclipse.datatools.modelbase.sql.schema.SQLSchemaPackage
  * @generated
  */
-public class SQLSchemaSwitch {
+public class SQLSchemaSwitch<T> extends Switch<T> {
 	/**
 	 * The cached model package
 	 * <!-- begin-user-doc -->
@@ -53,14 +60,16 @@ public class SQLSchemaSwitch {
 	}
 
 	/**
-	 * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that result.
+	 * Checks whether this is a switch for the given package.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the first non-null result returned by a <code>caseXXX</code> call.
+	 * @parameter ePackage the package in question.
+	 * @return whether this is a switch for the given package.
 	 * @generated
 	 */
-	public Object doSwitch(EObject theEObject) {
-		return doSwitch(theEObject.eClass(), theEObject);
+	@Override
+	protected boolean isSwitchFor(EPackage ePackage) {
+		return ePackage == modelPackage;
 	}
 
 	/**
@@ -70,31 +79,12 @@ public class SQLSchemaSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	protected Object doSwitch(EClass theEClass, EObject theEObject) {
-		if (theEClass.eContainer() == modelPackage) {
-			return doSwitch(theEClass.getClassifierID(), theEObject);
-		}
-		else {
-			List eSuperTypes = theEClass.getESuperTypes();
-			return
-				eSuperTypes.isEmpty() ?
-					defaultCase(theEObject) :
-					doSwitch((EClass)eSuperTypes.get(0), theEObject);
-		}
-	}
-
-	/**
-	 * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that result.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the first non-null result returned by a <code>caseXXX</code> call.
-	 * @generated
-	 */
-	protected Object doSwitch(int classifierID, EObject theEObject) {
+	@Override
+	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
 			case SQLSchemaPackage.IDENTITY_SPECIFIER: {
 				IdentitySpecifier identitySpecifier = (IdentitySpecifier)theEObject;
-				Object result = caseIdentitySpecifier(identitySpecifier);
+				T result = caseIdentitySpecifier(identitySpecifier);
 				if (result == null) result = caseSQLObject(identitySpecifier);
 				if (result == null) result = caseENamedElement(identitySpecifier);
 				if (result == null) result = caseEModelElement(identitySpecifier);
@@ -103,7 +93,7 @@ public class SQLSchemaSwitch {
 			}
 			case SQLSchemaPackage.TYPED_ELEMENT: {
 				TypedElement typedElement = (TypedElement)theEObject;
-				Object result = caseTypedElement(typedElement);
+				T result = caseTypedElement(typedElement);
 				if (result == null) result = caseSQLObject(typedElement);
 				if (result == null) result = caseENamedElement(typedElement);
 				if (result == null) result = caseEModelElement(typedElement);
@@ -112,7 +102,7 @@ public class SQLSchemaSwitch {
 			}
 			case SQLSchemaPackage.DEPENDENCY: {
 				Dependency dependency = (Dependency)theEObject;
-				Object result = caseDependency(dependency);
+				T result = caseDependency(dependency);
 				if (result == null) result = caseSQLObject(dependency);
 				if (result == null) result = caseENamedElement(dependency);
 				if (result == null) result = caseEModelElement(dependency);
@@ -121,7 +111,7 @@ public class SQLSchemaSwitch {
 			}
 			case SQLSchemaPackage.SCHEMA: {
 				Schema schema = (Schema)theEObject;
-				Object result = caseSchema(schema);
+				T result = caseSchema(schema);
 				if (result == null) result = caseSQLObject(schema);
 				if (result == null) result = caseENamedElement(schema);
 				if (result == null) result = caseEModelElement(schema);
@@ -130,7 +120,7 @@ public class SQLSchemaSwitch {
 			}
 			case SQLSchemaPackage.SQL_OBJECT: {
 				SQLObject sqlObject = (SQLObject)theEObject;
-				Object result = caseSQLObject(sqlObject);
+				T result = caseSQLObject(sqlObject);
 				if (result == null) result = caseENamedElement(sqlObject);
 				if (result == null) result = caseEModelElement(sqlObject);
 				if (result == null) result = defaultCase(theEObject);
@@ -138,7 +128,7 @@ public class SQLSchemaSwitch {
 			}
 			case SQLSchemaPackage.SEQUENCE: {
 				Sequence sequence = (Sequence)theEObject;
-				Object result = caseSequence(sequence);
+				T result = caseSequence(sequence);
 				if (result == null) result = caseTypedElement(sequence);
 				if (result == null) result = caseSQLObject(sequence);
 				if (result == null) result = caseENamedElement(sequence);
@@ -148,7 +138,7 @@ public class SQLSchemaSwitch {
 			}
 			case SQLSchemaPackage.DATABASE: {
 				Database database = (Database)theEObject;
-				Object result = caseDatabase(database);
+				T result = caseDatabase(database);
 				if (result == null) result = caseSQLObject(database);
 				if (result == null) result = caseENamedElement(database);
 				if (result == null) result = caseEModelElement(database);
@@ -157,7 +147,7 @@ public class SQLSchemaSwitch {
 			}
 			case SQLSchemaPackage.EVENT: {
 				Event event = (Event)theEObject;
-				Object result = caseEvent(event);
+				T result = caseEvent(event);
 				if (result == null) result = caseSQLObject(event);
 				if (result == null) result = caseENamedElement(event);
 				if (result == null) result = caseEModelElement(event);
@@ -166,13 +156,13 @@ public class SQLSchemaSwitch {
 			}
 			case SQLSchemaPackage.COMMENT: {
 				Comment comment = (Comment)theEObject;
-				Object result = caseComment(comment);
+				T result = caseComment(comment);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case SQLSchemaPackage.CATALOG: {
 				Catalog catalog = (Catalog)theEObject;
-				Object result = caseCatalog(catalog);
+				T result = caseCatalog(catalog);
 				if (result == null) result = caseSQLObject(catalog);
 				if (result == null) result = caseENamedElement(catalog);
 				if (result == null) result = caseEModelElement(catalog);
@@ -181,7 +171,7 @@ public class SQLSchemaSwitch {
 			}
 			case SQLSchemaPackage.OBJECT_EXTENSION: {
 				ObjectExtension objectExtension = (ObjectExtension)theEObject;
-				Object result = caseObjectExtension(objectExtension);
+				T result = caseObjectExtension(objectExtension);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -200,7 +190,7 @@ public class SQLSchemaSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseIdentitySpecifier(IdentitySpecifier object) {
+	public T caseIdentitySpecifier(IdentitySpecifier object) {
 		return null;
 	}
 
@@ -215,7 +205,7 @@ public class SQLSchemaSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseTypedElement(TypedElement object) {
+	public T caseTypedElement(TypedElement object) {
 		return null;
 	}
 
@@ -230,7 +220,7 @@ public class SQLSchemaSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseDependency(Dependency object) {
+	public T caseDependency(Dependency object) {
 		return null;
 	}
 
@@ -245,7 +235,7 @@ public class SQLSchemaSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseSchema(Schema object) {
+	public T caseSchema(Schema object) {
 		return null;
 	}
 
@@ -260,7 +250,7 @@ public class SQLSchemaSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseSQLObject(SQLObject object) {
+	public T caseSQLObject(SQLObject object) {
 		return null;
 	}
 
@@ -275,7 +265,7 @@ public class SQLSchemaSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseSequence(Sequence object) {
+	public T caseSequence(Sequence object) {
 		return null;
 	}
 
@@ -290,7 +280,7 @@ public class SQLSchemaSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseDatabase(Database object) {
+	public T caseDatabase(Database object) {
 		return null;
 	}
 
@@ -305,7 +295,7 @@ public class SQLSchemaSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseEvent(Event object) {
+	public T caseEvent(Event object) {
 		return null;
 	}
 
@@ -320,7 +310,7 @@ public class SQLSchemaSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseComment(Comment object) {
+	public T caseComment(Comment object) {
 		return null;
 	}
 
@@ -335,7 +325,7 @@ public class SQLSchemaSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseCatalog(Catalog object) {
+	public T caseCatalog(Catalog object) {
 		return null;
 	}
 
@@ -350,7 +340,7 @@ public class SQLSchemaSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseObjectExtension(ObjectExtension object) {
+	public T caseObjectExtension(ObjectExtension object) {
 		return null;
 	}
 
@@ -365,7 +355,7 @@ public class SQLSchemaSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseEModelElement(EModelElement object) {
+	public T caseEModelElement(EModelElement object) {
 		return null;
 	}
 
@@ -380,7 +370,7 @@ public class SQLSchemaSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseENamedElement(ENamedElement object) {
+	public T caseENamedElement(ENamedElement object) {
 		return null;
 	}
 
@@ -395,7 +385,8 @@ public class SQLSchemaSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject)
 	 * @generated
 	 */
-	public Object defaultCase(EObject object) {
+	@Override
+	public T defaultCase(EObject object) {
 		return null;
 	}
 

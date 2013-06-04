@@ -1,29 +1,35 @@
-/*******************************************************************************
- * Copyright (c) 2001, 2004 IBM Corporation and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- * 
- * Contributors:
- *     IBM Corporation - initial API and implementation
- *******************************************************************************/
+/**
+ * <copyright>
+ * </copyright>
+ *
+ * $Id$
+ */
 package org.eclipse.datatools.modelbase.sql.constraints.util;
 
-import java.util.List;
-
 import org.eclipse.datatools.modelbase.sql.constraints.*;
+import org.eclipse.datatools.modelbase.sql.constraints.Assertion;
+import org.eclipse.datatools.modelbase.sql.constraints.CheckConstraint;
+import org.eclipse.datatools.modelbase.sql.constraints.Constraint;
+import org.eclipse.datatools.modelbase.sql.constraints.ForeignKey;
+import org.eclipse.datatools.modelbase.sql.constraints.Index;
+import org.eclipse.datatools.modelbase.sql.constraints.IndexExpression;
+import org.eclipse.datatools.modelbase.sql.constraints.IndexMember;
+import org.eclipse.datatools.modelbase.sql.constraints.PrimaryKey;
+import org.eclipse.datatools.modelbase.sql.constraints.ReferenceConstraint;
+import org.eclipse.datatools.modelbase.sql.constraints.SQLConstraintsPackage;
+import org.eclipse.datatools.modelbase.sql.constraints.TableConstraint;
+import org.eclipse.datatools.modelbase.sql.constraints.UniqueConstraint;
 import org.eclipse.datatools.modelbase.sql.schema.SQLObject;
-import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EModelElement;
 import org.eclipse.emf.ecore.ENamedElement;
 import org.eclipse.emf.ecore.EObject;
-
+import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.util.Switch;
 
 /**
  * <!-- begin-user-doc -->
  * The <b>Switch</b> for the model's inheritance hierarchy.
- * It supports the call {@link #doSwitch doSwitch(object)}
+ * It supports the call {@link #doSwitch(EObject) doSwitch(object)}
  * to invoke the <code>caseXXX</code> method for each class of the model,
  * starting with the actual class of the object
  * and proceeding up the inheritance hierarchy
@@ -33,7 +39,7 @@ import org.eclipse.emf.ecore.EObject;
  * @see org.eclipse.datatools.modelbase.sql.constraints.SQLConstraintsPackage
  * @generated
  */
-public class SQLConstraintsSwitch {
+public class SQLConstraintsSwitch<T> extends Switch<T> {
 	/**
 	 * The cached model package
 	 * <!-- begin-user-doc -->
@@ -55,14 +61,16 @@ public class SQLConstraintsSwitch {
 	}
 
 	/**
-	 * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that result.
+	 * Checks whether this is a switch for the given package.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the first non-null result returned by a <code>caseXXX</code> call.
+	 * @parameter ePackage the package in question.
+	 * @return whether this is a switch for the given package.
 	 * @generated
 	 */
-	public Object doSwitch(EObject theEObject) {
-		return doSwitch(theEObject.eClass(), theEObject);
+	@Override
+	protected boolean isSwitchFor(EPackage ePackage) {
+		return ePackage == modelPackage;
 	}
 
 	/**
@@ -72,31 +80,12 @@ public class SQLConstraintsSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	protected Object doSwitch(EClass theEClass, EObject theEObject) {
-		if (theEClass.eContainer() == modelPackage) {
-			return doSwitch(theEClass.getClassifierID(), theEObject);
-		}
-		else {
-			List eSuperTypes = theEClass.getESuperTypes();
-			return
-				eSuperTypes.isEmpty() ?
-					defaultCase(theEObject) :
-					doSwitch((EClass)eSuperTypes.get(0), theEObject);
-		}
-	}
-
-	/**
-	 * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that result.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the first non-null result returned by a <code>caseXXX</code> call.
-	 * @generated
-	 */
-	protected Object doSwitch(int classifierID, EObject theEObject) {
+	@Override
+	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
 			case SQLConstraintsPackage.ASSERTION: {
 				Assertion assertion = (Assertion)theEObject;
-				Object result = caseAssertion(assertion);
+				T result = caseAssertion(assertion);
 				if (result == null) result = caseConstraint(assertion);
 				if (result == null) result = caseSQLObject(assertion);
 				if (result == null) result = caseENamedElement(assertion);
@@ -106,7 +95,7 @@ public class SQLConstraintsSwitch {
 			}
 			case SQLConstraintsPackage.CONSTRAINT: {
 				Constraint constraint = (Constraint)theEObject;
-				Object result = caseConstraint(constraint);
+				T result = caseConstraint(constraint);
 				if (result == null) result = caseSQLObject(constraint);
 				if (result == null) result = caseENamedElement(constraint);
 				if (result == null) result = caseEModelElement(constraint);
@@ -115,7 +104,7 @@ public class SQLConstraintsSwitch {
 			}
 			case SQLConstraintsPackage.TABLE_CONSTRAINT: {
 				TableConstraint tableConstraint = (TableConstraint)theEObject;
-				Object result = caseTableConstraint(tableConstraint);
+				T result = caseTableConstraint(tableConstraint);
 				if (result == null) result = caseConstraint(tableConstraint);
 				if (result == null) result = caseSQLObject(tableConstraint);
 				if (result == null) result = caseENamedElement(tableConstraint);
@@ -125,7 +114,7 @@ public class SQLConstraintsSwitch {
 			}
 			case SQLConstraintsPackage.REFERENCE_CONSTRAINT: {
 				ReferenceConstraint referenceConstraint = (ReferenceConstraint)theEObject;
-				Object result = caseReferenceConstraint(referenceConstraint);
+				T result = caseReferenceConstraint(referenceConstraint);
 				if (result == null) result = caseTableConstraint(referenceConstraint);
 				if (result == null) result = caseConstraint(referenceConstraint);
 				if (result == null) result = caseSQLObject(referenceConstraint);
@@ -136,7 +125,7 @@ public class SQLConstraintsSwitch {
 			}
 			case SQLConstraintsPackage.CHECK_CONSTRAINT: {
 				CheckConstraint checkConstraint = (CheckConstraint)theEObject;
-				Object result = caseCheckConstraint(checkConstraint);
+				T result = caseCheckConstraint(checkConstraint);
 				if (result == null) result = caseTableConstraint(checkConstraint);
 				if (result == null) result = caseConstraint(checkConstraint);
 				if (result == null) result = caseSQLObject(checkConstraint);
@@ -147,7 +136,7 @@ public class SQLConstraintsSwitch {
 			}
 			case SQLConstraintsPackage.FOREIGN_KEY: {
 				ForeignKey foreignKey = (ForeignKey)theEObject;
-				Object result = caseForeignKey(foreignKey);
+				T result = caseForeignKey(foreignKey);
 				if (result == null) result = caseReferenceConstraint(foreignKey);
 				if (result == null) result = caseTableConstraint(foreignKey);
 				if (result == null) result = caseConstraint(foreignKey);
@@ -159,7 +148,7 @@ public class SQLConstraintsSwitch {
 			}
 			case SQLConstraintsPackage.UNIQUE_CONSTRAINT: {
 				UniqueConstraint uniqueConstraint = (UniqueConstraint)theEObject;
-				Object result = caseUniqueConstraint(uniqueConstraint);
+				T result = caseUniqueConstraint(uniqueConstraint);
 				if (result == null) result = caseReferenceConstraint(uniqueConstraint);
 				if (result == null) result = caseTableConstraint(uniqueConstraint);
 				if (result == null) result = caseConstraint(uniqueConstraint);
@@ -171,7 +160,7 @@ public class SQLConstraintsSwitch {
 			}
 			case SQLConstraintsPackage.PRIMARY_KEY: {
 				PrimaryKey primaryKey = (PrimaryKey)theEObject;
-				Object result = casePrimaryKey(primaryKey);
+				T result = casePrimaryKey(primaryKey);
 				if (result == null) result = caseUniqueConstraint(primaryKey);
 				if (result == null) result = caseReferenceConstraint(primaryKey);
 				if (result == null) result = caseTableConstraint(primaryKey);
@@ -184,7 +173,7 @@ public class SQLConstraintsSwitch {
 			}
 			case SQLConstraintsPackage.INDEX: {
 				Index index = (Index)theEObject;
-				Object result = caseIndex(index);
+				T result = caseIndex(index);
 				if (result == null) result = caseSQLObject(index);
 				if (result == null) result = caseENamedElement(index);
 				if (result == null) result = caseEModelElement(index);
@@ -193,7 +182,7 @@ public class SQLConstraintsSwitch {
 			}
 			case SQLConstraintsPackage.INDEX_MEMBER: {
 				IndexMember indexMember = (IndexMember)theEObject;
-				Object result = caseIndexMember(indexMember);
+				T result = caseIndexMember(indexMember);
 				if (result == null) result = caseSQLObject(indexMember);
 				if (result == null) result = caseENamedElement(indexMember);
 				if (result == null) result = caseEModelElement(indexMember);
@@ -202,7 +191,7 @@ public class SQLConstraintsSwitch {
 			}
 			case SQLConstraintsPackage.INDEX_EXPRESSION: {
 				IndexExpression indexExpression = (IndexExpression)theEObject;
-				Object result = caseIndexExpression(indexExpression);
+				T result = caseIndexExpression(indexExpression);
 				if (result == null) result = caseSQLObject(indexExpression);
 				if (result == null) result = caseENamedElement(indexExpression);
 				if (result == null) result = caseEModelElement(indexExpression);
@@ -224,7 +213,7 @@ public class SQLConstraintsSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseAssertion(Assertion object) {
+	public T caseAssertion(Assertion object) {
 		return null;
 	}
 
@@ -239,7 +228,7 @@ public class SQLConstraintsSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseConstraint(Constraint object) {
+	public T caseConstraint(Constraint object) {
 		return null;
 	}
 
@@ -254,7 +243,7 @@ public class SQLConstraintsSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseTableConstraint(TableConstraint object) {
+	public T caseTableConstraint(TableConstraint object) {
 		return null;
 	}
 
@@ -269,7 +258,7 @@ public class SQLConstraintsSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseReferenceConstraint(ReferenceConstraint object) {
+	public T caseReferenceConstraint(ReferenceConstraint object) {
 		return null;
 	}
 
@@ -284,7 +273,7 @@ public class SQLConstraintsSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseCheckConstraint(CheckConstraint object) {
+	public T caseCheckConstraint(CheckConstraint object) {
 		return null;
 	}
 
@@ -299,7 +288,7 @@ public class SQLConstraintsSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseForeignKey(ForeignKey object) {
+	public T caseForeignKey(ForeignKey object) {
 		return null;
 	}
 
@@ -314,7 +303,7 @@ public class SQLConstraintsSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseUniqueConstraint(UniqueConstraint object) {
+	public T caseUniqueConstraint(UniqueConstraint object) {
 		return null;
 	}
 
@@ -329,7 +318,7 @@ public class SQLConstraintsSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object casePrimaryKey(PrimaryKey object) {
+	public T casePrimaryKey(PrimaryKey object) {
 		return null;
 	}
 
@@ -344,7 +333,7 @@ public class SQLConstraintsSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseIndex(Index object) {
+	public T caseIndex(Index object) {
 		return null;
 	}
 
@@ -359,7 +348,7 @@ public class SQLConstraintsSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseIndexMember(IndexMember object) {
+	public T caseIndexMember(IndexMember object) {
 		return null;
 	}
 
@@ -374,7 +363,7 @@ public class SQLConstraintsSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseIndexExpression(IndexExpression object) {
+	public T caseIndexExpression(IndexExpression object) {
 		return null;
 	}
 
@@ -389,7 +378,7 @@ public class SQLConstraintsSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseEModelElement(EModelElement object) {
+	public T caseEModelElement(EModelElement object) {
 		return null;
 	}
 
@@ -404,7 +393,7 @@ public class SQLConstraintsSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseENamedElement(ENamedElement object) {
+	public T caseENamedElement(ENamedElement object) {
 		return null;
 	}
 
@@ -419,7 +408,7 @@ public class SQLConstraintsSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseSQLObject(SQLObject object) {
+	public T caseSQLObject(SQLObject object) {
 		return null;
 	}
 
@@ -434,7 +423,8 @@ public class SQLConstraintsSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject)
 	 * @generated
 	 */
-	public Object defaultCase(EObject object) {
+	@Override
+	public T defaultCase(EObject object) {
 		return null;
 	}
 

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: CheckConstraintItemProvider.java,v 1.3 2007/05/31 00:29:17 dpchou Exp $
+ * $Id$
  */
 package org.eclipse.datatools.modelbase.sql.constraints.provider;
 
@@ -13,18 +13,16 @@ import java.util.List;
 import org.eclipse.datatools.modelbase.sql.constraints.CheckConstraint;
 import org.eclipse.datatools.modelbase.sql.constraints.SQLConstraintsPackage;
 import org.eclipse.datatools.modelbase.sql.expressions.SQLExpressionsFactory;
-import org.eclipse.datatools.modelbase.sql.schema.provider.SqlmodelEditPlugin;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
+import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-
 
 /**
  * This is the item provider adapter for a {@link org.eclipse.datatools.modelbase.sql.constraints.CheckConstraint} object.
@@ -56,7 +54,8 @@ public class CheckConstraintItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getPropertyDescriptors(Object object) {
+	@Override
+	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
@@ -72,7 +71,8 @@ public class CheckConstraintItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Collection getChildrenFeatures(Object object) {
+	@Override
+	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(SQLConstraintsPackage.Literals.CHECK_CONSTRAINT__SEARCH_CONDITION);
@@ -85,6 +85,7 @@ public class CheckConstraintItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EStructuralFeature getChildFeature(Object object, Object child) {
 		// Check the type of the specified child object and return the proper feature to use for
 		// adding (see {@link AddCommand}) it as a child.
@@ -98,8 +99,9 @@ public class CheckConstraintItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/CheckConstraint")); //$NON-NLS-1$
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/CheckConstraint"));
 	}
 
 	/**
@@ -108,11 +110,12 @@ public class CheckConstraintItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getText(Object object) {
 		String label = ((CheckConstraint)object).getName();
 		return label == null || label.length() == 0 ?
-			getString("_UI_CheckConstraint_type") : //$NON-NLS-1$
-			getString("_UI_CheckConstraint_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+			getString("_UI_CheckConstraint_type") :
+			label;
 	}
 
 	/**
@@ -122,6 +125,7 @@ public class CheckConstraintItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
@@ -140,7 +144,8 @@ public class CheckConstraintItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void collectNewChildDescriptors(Collection newChildDescriptors, Object object) {
+	@Override
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
 		newChildDescriptors.add
@@ -148,5 +153,4 @@ public class CheckConstraintItemProvider
 				(SQLConstraintsPackage.Literals.CHECK_CONSTRAINT__SEARCH_CONDITION,
 				 SQLExpressionsFactory.eINSTANCE.createSearchConditionDefault()));
 	}
-
 }

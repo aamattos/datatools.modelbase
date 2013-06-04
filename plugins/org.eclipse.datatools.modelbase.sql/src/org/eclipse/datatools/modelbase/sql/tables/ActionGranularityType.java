@@ -10,7 +10,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import org.eclipse.emf.common.util.AbstractEnumerator;
+import org.eclipse.emf.common.util.Enumerator;
 
 /**
  * <!-- begin-user-doc -->
@@ -24,7 +24,34 @@ import org.eclipse.emf.common.util.AbstractEnumerator;
  * @model
  * @generated
  */
-public final class ActionGranularityType extends AbstractEnumerator {
+public enum ActionGranularityType implements Enumerator
+{
+	/**
+	 * The '<em><b>STATEMENT</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>STATEMENT</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #STATEMENT
+	 * @generated
+	 * @ordered
+	 */
+	STATEMENT_LITERAL(0, "STATEMENT", "STATEMENT"),
+	/**
+	 * The '<em><b>ROW</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>ROW</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #ROW
+	 * @generated
+	 * @ordered
+	 */
+	ROW_LITERAL(1, "ROW", "ROW");
 	/**
 	 * The '<em><b>STATEMENT</b></em>' literal value.
 	 * <!-- begin-user-doc -->
@@ -48,34 +75,6 @@ public final class ActionGranularityType extends AbstractEnumerator {
 	public static final int ROW = 1;
 
 	/**
-	 * The '<em><b>STATEMENT</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>STATEMENT</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @see #STATEMENT
-	 * @generated
-	 * @ordered
-	 */
-	public static final ActionGranularityType STATEMENT_LITERAL = new ActionGranularityType(STATEMENT, "STATEMENT", "STATEMENT"); //$NON-NLS-1$
-
-	/**
-	 * The '<em><b>ROW</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>ROW</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @see #ROW
-	 * @generated
-	 * @ordered
-	 */
-	public static final ActionGranularityType ROW_LITERAL = new ActionGranularityType(ROW, "ROW", "ROW"); //$NON-NLS-1$
-
-	/**
 	 * An array of all the '<em><b>Action Granularity Type</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -93,7 +92,7 @@ public final class ActionGranularityType extends AbstractEnumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<ActionGranularityType> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
 	 * Returns the '<em><b>Action Granularity Type</b></em>' literal with the specified literal value.
@@ -142,13 +141,73 @@ public final class ActionGranularityType extends AbstractEnumerator {
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final int value;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final String name;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final String literal;
+
+	/**
 	 * Only this class can construct instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	private ActionGranularityType(int value, String name, String literal) {
-		super(value, name, literal);
+		this.value = value;
+		this.name = name;
+		this.literal = literal;
 	}
 
-} //ActionGranularityType
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int getValue() {
+	  return value;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getName() {
+	  return name;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getLiteral() {
+	  return literal;
+	}
+
+	/**
+	 * Returns the literal value of the enumerator, which is its string representation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		return literal;
+	}
+}

@@ -1,22 +1,23 @@
-/*******************************************************************************
- * Copyright (c) 2001, 2004 IBM Corporation and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- * 
- * Contributors:
- *     IBM Corporation - initial API and implementation
- *******************************************************************************/
+/**
+ * <copyright>
+ * </copyright>
+ *
+ * $Id$
+ */
 package org.eclipse.datatools.modelbase.sql.accesscontrol.impl;
 
 import org.eclipse.datatools.modelbase.sql.accesscontrol.*;
+import org.eclipse.datatools.modelbase.sql.accesscontrol.Group;
+import org.eclipse.datatools.modelbase.sql.accesscontrol.Privilege;
+import org.eclipse.datatools.modelbase.sql.accesscontrol.Role;
+import org.eclipse.datatools.modelbase.sql.accesscontrol.RoleAuthorization;
+import org.eclipse.datatools.modelbase.sql.accesscontrol.SQLAccessControlFactory;
+import org.eclipse.datatools.modelbase.sql.accesscontrol.SQLAccessControlPackage;
+import org.eclipse.datatools.modelbase.sql.accesscontrol.User;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
-
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
 /**
@@ -34,7 +35,7 @@ public class SQLAccessControlFactoryImpl extends EFactoryImpl implements SQLAcce
 	 */
 	public static SQLAccessControlFactory init() {
 		try {
-			SQLAccessControlFactory theSQLAccessControlFactory = (SQLAccessControlFactory)EPackage.Registry.INSTANCE.getEFactory("http:///org/eclipse/datatools/modelbase/sql/accesscontrol.ecore"); //$NON-NLS-1$ 
+			SQLAccessControlFactory theSQLAccessControlFactory = (SQLAccessControlFactory)EPackage.Registry.INSTANCE.getEFactory("http:///org/eclipse/datatools/modelbase/sql/accesscontrol.ecore"); 
 			if (theSQLAccessControlFactory != null) {
 				return theSQLAccessControlFactory;
 			}
@@ -60,6 +61,7 @@ public class SQLAccessControlFactoryImpl extends EFactoryImpl implements SQLAcce
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case SQLAccessControlPackage.PRIVILEGE: return createPrivilege();
@@ -68,7 +70,7 @@ public class SQLAccessControlFactoryImpl extends EFactoryImpl implements SQLAcce
 			case SQLAccessControlPackage.ROLE: return createRole();
 			case SQLAccessControlPackage.ROLE_AUTHORIZATION: return createRoleAuthorization();
 			default:
-				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
+				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
 	}
 
@@ -137,6 +139,7 @@ public class SQLAccessControlFactoryImpl extends EFactoryImpl implements SQLAcce
 	 * @deprecated
 	 * @generated
 	 */
+	@Deprecated
 	public static SQLAccessControlPackage getPackage() {
 		return SQLAccessControlPackage.eINSTANCE;
 	}

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SQLRoutinesItemProviderAdapterFactory.java,v 1.2 2005/12/22 22:37:40 bpayton Exp $
+ * $Id$
  */
 package org.eclipse.datatools.modelbase.sql.routines.provider;
 
@@ -17,6 +17,7 @@ import org.eclipse.emf.edit.provider.ChangeNotifier;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.provider.IChangeNotifier;
+import org.eclipse.emf.edit.provider.IDisposable;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
@@ -33,7 +34,7 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
  * <!-- end-user-doc -->
  * @generated
  */
-public class SQLRoutinesItemProviderAdapterFactory extends SQLRoutinesAdapterFactory implements ComposeableAdapterFactory, IChangeNotifier {
+public class SQLRoutinesItemProviderAdapterFactory extends SQLRoutinesAdapterFactory implements ComposeableAdapterFactory, IChangeNotifier, IDisposable {
 	/**
 	 * This keeps track of the root adapter factory that delegates to this adapter factory.
 	 * <!-- begin-user-doc -->
@@ -56,7 +57,7 @@ public class SQLRoutinesItemProviderAdapterFactory extends SQLRoutinesAdapterFac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected Collection supportedTypes = new ArrayList();
+	protected Collection<Object> supportedTypes = new ArrayList<Object>();
 
 	/**
 	 * This constructs an instance.
@@ -86,6 +87,7 @@ public class SQLRoutinesItemProviderAdapterFactory extends SQLRoutinesAdapterFac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createSourceAdapter() {
 		if (sourceItemProvider == null) {
 			sourceItemProvider = new SourceItemProvider(this);
@@ -108,6 +110,7 @@ public class SQLRoutinesItemProviderAdapterFactory extends SQLRoutinesAdapterFac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createParameterAdapter() {
 		if (parameterItemProvider == null) {
 			parameterItemProvider = new ParameterItemProvider(this);
@@ -130,6 +133,7 @@ public class SQLRoutinesItemProviderAdapterFactory extends SQLRoutinesAdapterFac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createProcedureAdapter() {
 		if (procedureItemProvider == null) {
 			procedureItemProvider = new ProcedureItemProvider(this);
@@ -152,6 +156,7 @@ public class SQLRoutinesItemProviderAdapterFactory extends SQLRoutinesAdapterFac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createFunctionAdapter() {
 		if (functionItemProvider == null) {
 			functionItemProvider = new FunctionItemProvider(this);
@@ -174,6 +179,7 @@ public class SQLRoutinesItemProviderAdapterFactory extends SQLRoutinesAdapterFac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createRoutineResultTableAdapter() {
 		if (routineResultTableItemProvider == null) {
 			routineResultTableItemProvider = new RoutineResultTableItemProvider(this);
@@ -196,6 +202,7 @@ public class SQLRoutinesItemProviderAdapterFactory extends SQLRoutinesAdapterFac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createMethodAdapter() {
 		if (methodItemProvider == null) {
 			methodItemProvider = new MethodItemProvider(this);
@@ -218,6 +225,7 @@ public class SQLRoutinesItemProviderAdapterFactory extends SQLRoutinesAdapterFac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createUserDefinedFunctionAdapter() {
 		if (userDefinedFunctionItemProvider == null) {
 			userDefinedFunctionItemProvider = new UserDefinedFunctionItemProvider(this);
@@ -240,6 +248,7 @@ public class SQLRoutinesItemProviderAdapterFactory extends SQLRoutinesAdapterFac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createBuiltInFunctionAdapter() {
 		if (builtInFunctionItemProvider == null) {
 			builtInFunctionItemProvider = new BuiltInFunctionItemProvider(this);
@@ -273,6 +282,7 @@ public class SQLRoutinesItemProviderAdapterFactory extends SQLRoutinesAdapterFac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isFactoryForType(Object type) {
 		return supportedTypes.contains(type) || super.isFactoryForType(type);
 	}
@@ -283,6 +293,7 @@ public class SQLRoutinesItemProviderAdapterFactory extends SQLRoutinesAdapterFac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter adapt(Notifier notifier, Object type) {
 		return super.adapt(notifier, this);
 	}
@@ -292,10 +303,11 @@ public class SQLRoutinesItemProviderAdapterFactory extends SQLRoutinesAdapterFac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object adapt(Object object, Object type) {
 		if (isFactoryForType(type)) {
 			Object adapter = super.adapt(object, type);
-			if (!(type instanceof Class) || (((Class)type).isInstance(adapter))) {
+			if (!(type instanceof Class<?>) || (((Class<?>)type).isInstance(adapter))) {
 				return adapter;
 			}
 		}
@@ -335,6 +347,23 @@ public class SQLRoutinesItemProviderAdapterFactory extends SQLRoutinesAdapterFac
 		if (parentAdapterFactory != null) {
 			parentAdapterFactory.fireNotifyChanged(notification);
 		}
+	}
+
+	/**
+	 * This disposes all of the item providers created by this factory. 
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void dispose() {
+		if (sourceItemProvider != null) sourceItemProvider.dispose();
+		if (parameterItemProvider != null) parameterItemProvider.dispose();
+		if (procedureItemProvider != null) procedureItemProvider.dispose();
+		if (functionItemProvider != null) functionItemProvider.dispose();
+		if (routineResultTableItemProvider != null) routineResultTableItemProvider.dispose();
+		if (methodItemProvider != null) methodItemProvider.dispose();
+		if (userDefinedFunctionItemProvider != null) userDefinedFunctionItemProvider.dispose();
+		if (builtInFunctionItemProvider != null) builtInFunctionItemProvider.dispose();
 	}
 
 }

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: TypedElementItemProvider.java,v 1.3 2007/05/31 00:29:18 dpchou Exp $
+ * $Id$
  */
 package org.eclipse.datatools.modelbase.sql.schema.provider;
 
@@ -10,20 +10,18 @@ package org.eclipse.datatools.modelbase.sql.schema.provider;
 import java.util.Collection;
 import java.util.List;
 
-import org.eclipse.datatools.modelbase.sql.datatypes.SQLDataTypesFactory;
 import org.eclipse.datatools.modelbase.sql.schema.SQLSchemaPackage;
 import org.eclipse.datatools.modelbase.sql.schema.TypedElement;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
+import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
@@ -56,29 +54,30 @@ public class TypedElementItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getPropertyDescriptors(Object object) {
+	@Override
+	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addReferencedTypePropertyDescriptor(object);
+			addContainedTypePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Referenced Type feature.
+	 * This adds a property descriptor for the Contained Type feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addReferencedTypePropertyDescriptor(Object object) {
+	protected void addContainedTypePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_TypedElement_referencedType_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_TypedElement_referencedType_feature", "_UI_TypedElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 SQLSchemaPackage.Literals.TYPED_ELEMENT__REFERENCED_TYPE,
+				 getString("_UI_TypedElement_containedType_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_TypedElement_containedType_feature", "_UI_TypedElement_type"),
+				 SQLSchemaPackage.Literals.TYPED_ELEMENT__CONTAINED_TYPE,
 				 true,
 				 false,
 				 false,
@@ -95,7 +94,8 @@ public class TypedElementItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Collection getChildrenFeatures(Object object) {
+	@Override
+	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(SQLSchemaPackage.Literals.TYPED_ELEMENT__CONTAINED_TYPE);
@@ -108,6 +108,7 @@ public class TypedElementItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EStructuralFeature getChildFeature(Object object, Object child) {
 		// Check the type of the specified child object and return the proper feature to use for
 		// adding (see {@link AddCommand}) it as a child.
@@ -116,26 +117,17 @@ public class TypedElementItemProvider
 	}
 
 	/**
-	 * This returns TypedElement.gif.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/TypedElement")); //$NON-NLS-1$
-	}
-
-	/**
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getText(Object object) {
 		String label = ((TypedElement)object).getName();
 		return label == null || label.length() == 0 ?
-			getString("_UI_TypedElement_type") : //$NON-NLS-1$
-			getString("_UI_TypedElement_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+			getString("_UI_TypedElement_type") :
+			label;
 	}
 
 	/**
@@ -145,6 +137,7 @@ public class TypedElementItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
@@ -163,63 +156,8 @@ public class TypedElementItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void collectNewChildDescriptors(Collection newChildDescriptors, Object object) {
+	@Override
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
-
-		newChildDescriptors.add
-			(createChildParameter
-				(SQLSchemaPackage.Literals.TYPED_ELEMENT__CONTAINED_TYPE,
-				 SQLDataTypesFactory.eINSTANCE.createCharacterStringDataType()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(SQLSchemaPackage.Literals.TYPED_ELEMENT__CONTAINED_TYPE,
-				 SQLDataTypesFactory.eINSTANCE.createBooleanDataType()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(SQLSchemaPackage.Literals.TYPED_ELEMENT__CONTAINED_TYPE,
-				 SQLDataTypesFactory.eINSTANCE.createIntervalDataType()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(SQLSchemaPackage.Literals.TYPED_ELEMENT__CONTAINED_TYPE,
-				 SQLDataTypesFactory.eINSTANCE.createBinaryStringDataType()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(SQLSchemaPackage.Literals.TYPED_ELEMENT__CONTAINED_TYPE,
-				 SQLDataTypesFactory.eINSTANCE.createTimeDataType()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(SQLSchemaPackage.Literals.TYPED_ELEMENT__CONTAINED_TYPE,
-				 SQLDataTypesFactory.eINSTANCE.createFixedPrecisionDataType()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(SQLSchemaPackage.Literals.TYPED_ELEMENT__CONTAINED_TYPE,
-				 SQLDataTypesFactory.eINSTANCE.createDataLinkDataType()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(SQLSchemaPackage.Literals.TYPED_ELEMENT__CONTAINED_TYPE,
-				 SQLDataTypesFactory.eINSTANCE.createDateDataType()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(SQLSchemaPackage.Literals.TYPED_ELEMENT__CONTAINED_TYPE,
-				 SQLDataTypesFactory.eINSTANCE.createApproximateNumericDataType()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(SQLSchemaPackage.Literals.TYPED_ELEMENT__CONTAINED_TYPE,
-				 SQLDataTypesFactory.eINSTANCE.createIntegerDataType()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(SQLSchemaPackage.Literals.TYPED_ELEMENT__CONTAINED_TYPE,
-				 SQLDataTypesFactory.eINSTANCE.createXMLDataType()));
 	}
-
 }

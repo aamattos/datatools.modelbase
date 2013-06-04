@@ -1,22 +1,19 @@
-/*******************************************************************************
- * Copyright (c) 2001, 2004 IBM Corporation and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- * 
- * Contributors:
- *     IBM Corporation - initial API and implementation
- *******************************************************************************/
+/**
+ * <copyright>
+ * </copyright>
+ *
+ * $Id$
+ */
 package org.eclipse.datatools.modelbase.sql.statements.impl;
 
 import org.eclipse.datatools.modelbase.sql.statements.*;
+import org.eclipse.datatools.modelbase.sql.statements.SQLStatementDefault;
+import org.eclipse.datatools.modelbase.sql.statements.SQLStatementsFactory;
+import org.eclipse.datatools.modelbase.sql.statements.SQLStatementsPackage;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
-
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
 /**
@@ -34,7 +31,7 @@ public class SQLStatementsFactoryImpl extends EFactoryImpl implements SQLStateme
 	 */
 	public static SQLStatementsFactory init() {
 		try {
-			SQLStatementsFactory theSQLStatementsFactory = (SQLStatementsFactory)EPackage.Registry.INSTANCE.getEFactory("http:///org/eclipse/datatools/modelbase/sql/statements.ecore"); //$NON-NLS-1$ 
+			SQLStatementsFactory theSQLStatementsFactory = (SQLStatementsFactory)EPackage.Registry.INSTANCE.getEFactory("http:///org/eclipse/datatools/modelbase/sql/statements.ecore"); 
 			if (theSQLStatementsFactory != null) {
 				return theSQLStatementsFactory;
 			}
@@ -60,11 +57,12 @@ public class SQLStatementsFactoryImpl extends EFactoryImpl implements SQLStateme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case SQLStatementsPackage.SQL_STATEMENT_DEFAULT: return createSQLStatementDefault();
 			default:
-				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
+				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
 	}
 
@@ -93,6 +91,7 @@ public class SQLStatementsFactoryImpl extends EFactoryImpl implements SQLStateme
 	 * @deprecated
 	 * @generated
 	 */
+	@Deprecated
 	public static SQLStatementsPackage getPackage() {
 		return SQLStatementsPackage.eINSTANCE;
 	}

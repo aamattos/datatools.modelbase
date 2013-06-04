@@ -1,16 +1,22 @@
-/*******************************************************************************
- * Copyright (c) 2001, 2004 IBM Corporation and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- * 
- * Contributors:
- *     IBM Corporation - initial API and implementation
- *******************************************************************************/
+/**
+ * <copyright>
+ * </copyright>
+ *
+ * $Id$
+ */
 package org.eclipse.datatools.modelbase.sql.routines.util;
 
 import org.eclipse.datatools.modelbase.sql.routines.*;
+import org.eclipse.datatools.modelbase.sql.routines.BuiltInFunction;
+import org.eclipse.datatools.modelbase.sql.routines.Function;
+import org.eclipse.datatools.modelbase.sql.routines.Method;
+import org.eclipse.datatools.modelbase.sql.routines.Parameter;
+import org.eclipse.datatools.modelbase.sql.routines.Procedure;
+import org.eclipse.datatools.modelbase.sql.routines.Routine;
+import org.eclipse.datatools.modelbase.sql.routines.RoutineResultTable;
+import org.eclipse.datatools.modelbase.sql.routines.SQLRoutinesPackage;
+import org.eclipse.datatools.modelbase.sql.routines.Source;
+import org.eclipse.datatools.modelbase.sql.routines.UserDefinedFunction;
 import org.eclipse.datatools.modelbase.sql.schema.SQLObject;
 import org.eclipse.datatools.modelbase.sql.schema.TypedElement;
 import org.eclipse.datatools.modelbase.sql.tables.Table;
@@ -20,7 +26,6 @@ import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EModelElement;
 import org.eclipse.emf.ecore.ENamedElement;
 import org.eclipse.emf.ecore.EObject;
-
 
 /**
  * <!-- begin-user-doc -->
@@ -59,6 +64,7 @@ public class SQLRoutinesAdapterFactory extends AdapterFactoryImpl {
 	 * @return whether this factory is applicable for the type of the object.
 	 * @generated
 	 */
+	@Override
 	public boolean isFactoryForType(Object object) {
 		if (object == modelPackage) {
 			return true;
@@ -75,51 +81,66 @@ public class SQLRoutinesAdapterFactory extends AdapterFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected SQLRoutinesSwitch modelSwitch =
-		new SQLRoutinesSwitch() {
-			public Object caseRoutine(Routine object) {
+	protected SQLRoutinesSwitch<Adapter> modelSwitch =
+		new SQLRoutinesSwitch<Adapter>() {
+			@Override
+			public Adapter caseRoutine(Routine object) {
 				return createRoutineAdapter();
 			}
-			public Object caseSource(Source object) {
+			@Override
+			public Adapter caseSource(Source object) {
 				return createSourceAdapter();
 			}
-			public Object caseParameter(Parameter object) {
+			@Override
+			public Adapter caseParameter(Parameter object) {
 				return createParameterAdapter();
 			}
-			public Object caseProcedure(Procedure object) {
+			@Override
+			public Adapter caseProcedure(Procedure object) {
 				return createProcedureAdapter();
 			}
-			public Object caseFunction(Function object) {
+			@Override
+			public Adapter caseFunction(Function object) {
 				return createFunctionAdapter();
 			}
-			public Object caseRoutineResultTable(RoutineResultTable object) {
+			@Override
+			public Adapter caseRoutineResultTable(RoutineResultTable object) {
 				return createRoutineResultTableAdapter();
 			}
-			public Object caseMethod(Method object) {
+			@Override
+			public Adapter caseMethod(Method object) {
 				return createMethodAdapter();
 			}
-			public Object caseUserDefinedFunction(UserDefinedFunction object) {
+			@Override
+			public Adapter caseUserDefinedFunction(UserDefinedFunction object) {
 				return createUserDefinedFunctionAdapter();
 			}
-			public Object caseBuiltInFunction(BuiltInFunction object) {
+			@Override
+			public Adapter caseBuiltInFunction(BuiltInFunction object) {
 				return createBuiltInFunctionAdapter();
 			}
-			public Object caseEModelElement(EModelElement object) {
+			@Override
+			public Adapter caseEModelElement(EModelElement object) {
 				return createEModelElementAdapter();
 			}
-			public Object caseENamedElement(ENamedElement object) {
+			@Override
+			public Adapter caseENamedElement(ENamedElement object) {
 				return createENamedElementAdapter();
 			}
-			public Object caseSQLObject(SQLObject object) {
+			@Override
+			public Adapter caseSQLObject(SQLObject object) {
 				return createSQLObjectAdapter();
 			}
-			public Object caseTypedElement(TypedElement object) {
+			@Override
+			public Adapter caseTypedElement(TypedElement object) {
 				return createTypedElementAdapter();
 			}
-			public Object caseTable(Table object) {
+			@Override
+			public Adapter caseTable(Table object) {
 				return createTableAdapter();
 			}
-			public Object defaultCase(EObject object) {
+			@Override
+			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
 		};
@@ -132,8 +153,9 @@ public class SQLRoutinesAdapterFactory extends AdapterFactoryImpl {
 	 * @return the adapter for the <code>target</code>.
 	 * @generated
 	 */
+	@Override
 	public Adapter createAdapter(Notifier target) {
-		return (Adapter)modelSwitch.doSwitch((EObject)target);
+		return modelSwitch.doSwitch((EObject)target);
 	}
 
 

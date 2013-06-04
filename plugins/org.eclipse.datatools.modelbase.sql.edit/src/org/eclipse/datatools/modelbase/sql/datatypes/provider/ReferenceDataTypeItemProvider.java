@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ReferenceDataTypeItemProvider.java,v 1.4 2007/05/31 00:29:17 dpchou Exp $
+ * $Id$
  */
 package org.eclipse.datatools.modelbase.sql.datatypes.provider;
 
@@ -12,18 +12,15 @@ import java.util.List;
 
 import org.eclipse.datatools.modelbase.sql.datatypes.ReferenceDataType;
 import org.eclipse.datatools.modelbase.sql.datatypes.SQLDataTypesPackage;
-import org.eclipse.datatools.modelbase.sql.schema.provider.SqlmodelEditPlugin;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
+import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
-
 
 /**
  * This is the item provider adapter for a {@link org.eclipse.datatools.modelbase.sql.datatypes.ReferenceDataType} object.
@@ -55,7 +52,8 @@ public class ReferenceDataTypeItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getPropertyDescriptors(Object object) {
+	@Override
+	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
@@ -76,12 +74,12 @@ public class ReferenceDataTypeItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_ReferenceDataType_scopeTable_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_ReferenceDataType_scopeTable_feature", "_UI_ReferenceDataType_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 getString("_UI_ReferenceDataType_scopeTable_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ReferenceDataType_scopeTable_feature", "_UI_ReferenceDataType_type"),
 				 SQLDataTypesPackage.Literals.REFERENCE_DATA_TYPE__SCOPE_TABLE,
 				 true,
 				 false,
-				 false,
+				 true,
 				 null,
 				 null,
 				 null));
@@ -98,12 +96,12 @@ public class ReferenceDataTypeItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_ReferenceDataType_referencedType_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_ReferenceDataType_referencedType_feature", "_UI_ReferenceDataType_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 getString("_UI_ReferenceDataType_referencedType_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ReferenceDataType_referencedType_feature", "_UI_ReferenceDataType_type"),
 				 SQLDataTypesPackage.Literals.REFERENCE_DATA_TYPE__REFERENCED_TYPE,
 				 true,
 				 false,
-				 false,
+				 true,
 				 null,
 				 null,
 				 null));
@@ -115,11 +113,12 @@ public class ReferenceDataTypeItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getText(Object object) {
 		String label = ((ReferenceDataType)object).getName();
 		return label == null || label.length() == 0 ?
-			getString("_UI_ReferenceDataType_type") : //$NON-NLS-1$
-			getString("_UI_ReferenceDataType_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+			getString("_UI_ReferenceDataType_type") :
+			label;
 	}
 
 	/**
@@ -129,6 +128,7 @@ public class ReferenceDataTypeItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 		super.notifyChanged(notification);
@@ -141,8 +141,8 @@ public class ReferenceDataTypeItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void collectNewChildDescriptors(Collection newChildDescriptors, Object object) {
+	@Override
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
-
 }

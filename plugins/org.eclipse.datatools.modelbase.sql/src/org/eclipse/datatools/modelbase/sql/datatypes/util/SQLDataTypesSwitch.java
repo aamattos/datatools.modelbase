@@ -1,30 +1,56 @@
-/*******************************************************************************
- * Copyright (c) 2001, 2004 IBM Corporation and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- * 
- * Contributors:
- *     IBM Corporation - initial API and implementation
- *******************************************************************************/
+/**
+ * <copyright>
+ * </copyright>
+ *
+ * $Id$
+ */
 package org.eclipse.datatools.modelbase.sql.datatypes.util;
 
-import java.util.List;
-
 import org.eclipse.datatools.modelbase.sql.datatypes.*;
+import org.eclipse.datatools.modelbase.sql.datatypes.ApproximateNumericDataType;
+import org.eclipse.datatools.modelbase.sql.datatypes.ArrayDataType;
+import org.eclipse.datatools.modelbase.sql.datatypes.AttributeDefinition;
+import org.eclipse.datatools.modelbase.sql.datatypes.BinaryStringDataType;
+import org.eclipse.datatools.modelbase.sql.datatypes.BooleanDataType;
+import org.eclipse.datatools.modelbase.sql.datatypes.CharacterSet;
+import org.eclipse.datatools.modelbase.sql.datatypes.CharacterStringDataType;
+import org.eclipse.datatools.modelbase.sql.datatypes.CollectionDataType;
+import org.eclipse.datatools.modelbase.sql.datatypes.ConstructedDataType;
+import org.eclipse.datatools.modelbase.sql.datatypes.DataLinkDataType;
+import org.eclipse.datatools.modelbase.sql.datatypes.DataType;
+import org.eclipse.datatools.modelbase.sql.datatypes.DateDataType;
+import org.eclipse.datatools.modelbase.sql.datatypes.DistinctUserDefinedType;
+import org.eclipse.datatools.modelbase.sql.datatypes.Domain;
+import org.eclipse.datatools.modelbase.sql.datatypes.ElementType;
+import org.eclipse.datatools.modelbase.sql.datatypes.ExactNumericDataType;
+import org.eclipse.datatools.modelbase.sql.datatypes.Field;
+import org.eclipse.datatools.modelbase.sql.datatypes.FixedPrecisionDataType;
+import org.eclipse.datatools.modelbase.sql.datatypes.IntegerDataType;
+import org.eclipse.datatools.modelbase.sql.datatypes.IntervalDataType;
+import org.eclipse.datatools.modelbase.sql.datatypes.MultisetDataType;
+import org.eclipse.datatools.modelbase.sql.datatypes.NumericalDataType;
+import org.eclipse.datatools.modelbase.sql.datatypes.PredefinedDataType;
+import org.eclipse.datatools.modelbase.sql.datatypes.ReferenceDataType;
+import org.eclipse.datatools.modelbase.sql.datatypes.RowDataType;
+import org.eclipse.datatools.modelbase.sql.datatypes.SQLDataType;
+import org.eclipse.datatools.modelbase.sql.datatypes.SQLDataTypesPackage;
+import org.eclipse.datatools.modelbase.sql.datatypes.StructuredUserDefinedType;
+import org.eclipse.datatools.modelbase.sql.datatypes.TimeDataType;
+import org.eclipse.datatools.modelbase.sql.datatypes.UserDefinedType;
+import org.eclipse.datatools.modelbase.sql.datatypes.UserDefinedTypeOrdering;
+import org.eclipse.datatools.modelbase.sql.datatypes.XMLDataType;
 import org.eclipse.datatools.modelbase.sql.schema.SQLObject;
 import org.eclipse.datatools.modelbase.sql.schema.TypedElement;
-import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EModelElement;
 import org.eclipse.emf.ecore.ENamedElement;
 import org.eclipse.emf.ecore.EObject;
-
+import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.util.Switch;
 
 /**
  * <!-- begin-user-doc -->
  * The <b>Switch</b> for the model's inheritance hierarchy.
- * It supports the call {@link #doSwitch doSwitch(object)}
+ * It supports the call {@link #doSwitch(EObject) doSwitch(object)}
  * to invoke the <code>caseXXX</code> method for each class of the model,
  * starting with the actual class of the object
  * and proceeding up the inheritance hierarchy
@@ -34,7 +60,7 @@ import org.eclipse.emf.ecore.EObject;
  * @see org.eclipse.datatools.modelbase.sql.datatypes.SQLDataTypesPackage
  * @generated
  */
-public class SQLDataTypesSwitch {
+public class SQLDataTypesSwitch<T> extends Switch<T>  {
 	/**
 	 * The cached model package
 	 * <!-- begin-user-doc -->
@@ -56,14 +82,16 @@ public class SQLDataTypesSwitch {
 	}
 
 	/**
-	 * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that result.
+	 * Checks whether this is a switch for the given package.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the first non-null result returned by a <code>caseXXX</code> call.
+	 * @parameter ePackage the package in question.
+	 * @return whether this is a switch for the given package.
 	 * @generated
 	 */
-	public Object doSwitch(EObject theEObject) {
-		return doSwitch(theEObject.eClass(), theEObject);
+	@Override
+	protected boolean isSwitchFor(EPackage ePackage) {
+		return ePackage == modelPackage;
 	}
 
 	/**
@@ -73,31 +101,12 @@ public class SQLDataTypesSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	protected Object doSwitch(EClass theEClass, EObject theEObject) {
-		if (theEClass.eContainer() == modelPackage) {
-			return doSwitch(theEClass.getClassifierID(), theEObject);
-		}
-		else {
-			List eSuperTypes = theEClass.getESuperTypes();
-			return
-				eSuperTypes.isEmpty() ?
-					defaultCase(theEObject) :
-					doSwitch((EClass)eSuperTypes.get(0), theEObject);
-		}
-	}
-
-	/**
-	 * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that result.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the first non-null result returned by a <code>caseXXX</code> call.
-	 * @generated
-	 */
-	protected Object doSwitch(int classifierID, EObject theEObject) {
+	@Override
+	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
 			case SQLDataTypesPackage.USER_DEFINED_TYPE: {
 				UserDefinedType userDefinedType = (UserDefinedType)theEObject;
-				Object result = caseUserDefinedType(userDefinedType);
+				T result = caseUserDefinedType(userDefinedType);
 				if (result == null) result = caseDataType(userDefinedType);
 				if (result == null) result = caseSQLObject(userDefinedType);
 				if (result == null) result = caseENamedElement(userDefinedType);
@@ -107,7 +116,7 @@ public class SQLDataTypesSwitch {
 			}
 			case SQLDataTypesPackage.DATA_TYPE: {
 				DataType dataType = (DataType)theEObject;
-				Object result = caseDataType(dataType);
+				T result = caseDataType(dataType);
 				if (result == null) result = caseSQLObject(dataType);
 				if (result == null) result = caseENamedElement(dataType);
 				if (result == null) result = caseEModelElement(dataType);
@@ -116,7 +125,7 @@ public class SQLDataTypesSwitch {
 			}
 			case SQLDataTypesPackage.PREDEFINED_DATA_TYPE: {
 				PredefinedDataType predefinedDataType = (PredefinedDataType)theEObject;
-				Object result = casePredefinedDataType(predefinedDataType);
+				T result = casePredefinedDataType(predefinedDataType);
 				if (result == null) result = caseSQLDataType(predefinedDataType);
 				if (result == null) result = caseDataType(predefinedDataType);
 				if (result == null) result = caseSQLObject(predefinedDataType);
@@ -127,7 +136,7 @@ public class SQLDataTypesSwitch {
 			}
 			case SQLDataTypesPackage.COLLECTION_DATA_TYPE: {
 				CollectionDataType collectionDataType = (CollectionDataType)theEObject;
-				Object result = caseCollectionDataType(collectionDataType);
+				T result = caseCollectionDataType(collectionDataType);
 				if (result == null) result = caseConstructedDataType(collectionDataType);
 				if (result == null) result = caseDataType(collectionDataType);
 				if (result == null) result = caseSQLObject(collectionDataType);
@@ -138,7 +147,7 @@ public class SQLDataTypesSwitch {
 			}
 			case SQLDataTypesPackage.NUMERICAL_DATA_TYPE: {
 				NumericalDataType numericalDataType = (NumericalDataType)theEObject;
-				Object result = caseNumericalDataType(numericalDataType);
+				T result = caseNumericalDataType(numericalDataType);
 				if (result == null) result = casePredefinedDataType(numericalDataType);
 				if (result == null) result = caseSQLDataType(numericalDataType);
 				if (result == null) result = caseDataType(numericalDataType);
@@ -150,7 +159,7 @@ public class SQLDataTypesSwitch {
 			}
 			case SQLDataTypesPackage.CHARACTER_STRING_DATA_TYPE: {
 				CharacterStringDataType characterStringDataType = (CharacterStringDataType)theEObject;
-				Object result = caseCharacterStringDataType(characterStringDataType);
+				T result = caseCharacterStringDataType(characterStringDataType);
 				if (result == null) result = casePredefinedDataType(characterStringDataType);
 				if (result == null) result = caseSQLDataType(characterStringDataType);
 				if (result == null) result = caseDataType(characterStringDataType);
@@ -162,7 +171,7 @@ public class SQLDataTypesSwitch {
 			}
 			case SQLDataTypesPackage.ROW_DATA_TYPE: {
 				RowDataType rowDataType = (RowDataType)theEObject;
-				Object result = caseRowDataType(rowDataType);
+				T result = caseRowDataType(rowDataType);
 				if (result == null) result = caseConstructedDataType(rowDataType);
 				if (result == null) result = caseDataType(rowDataType);
 				if (result == null) result = caseSQLObject(rowDataType);
@@ -173,7 +182,7 @@ public class SQLDataTypesSwitch {
 			}
 			case SQLDataTypesPackage.ARRAY_DATA_TYPE: {
 				ArrayDataType arrayDataType = (ArrayDataType)theEObject;
-				Object result = caseArrayDataType(arrayDataType);
+				T result = caseArrayDataType(arrayDataType);
 				if (result == null) result = caseCollectionDataType(arrayDataType);
 				if (result == null) result = caseConstructedDataType(arrayDataType);
 				if (result == null) result = caseDataType(arrayDataType);
@@ -185,7 +194,7 @@ public class SQLDataTypesSwitch {
 			}
 			case SQLDataTypesPackage.MULTISET_DATA_TYPE: {
 				MultisetDataType multisetDataType = (MultisetDataType)theEObject;
-				Object result = caseMultisetDataType(multisetDataType);
+				T result = caseMultisetDataType(multisetDataType);
 				if (result == null) result = caseCollectionDataType(multisetDataType);
 				if (result == null) result = caseConstructedDataType(multisetDataType);
 				if (result == null) result = caseDataType(multisetDataType);
@@ -197,7 +206,7 @@ public class SQLDataTypesSwitch {
 			}
 			case SQLDataTypesPackage.BOOLEAN_DATA_TYPE: {
 				BooleanDataType booleanDataType = (BooleanDataType)theEObject;
-				Object result = caseBooleanDataType(booleanDataType);
+				T result = caseBooleanDataType(booleanDataType);
 				if (result == null) result = casePredefinedDataType(booleanDataType);
 				if (result == null) result = caseSQLDataType(booleanDataType);
 				if (result == null) result = caseDataType(booleanDataType);
@@ -209,7 +218,7 @@ public class SQLDataTypesSwitch {
 			}
 			case SQLDataTypesPackage.INTERVAL_DATA_TYPE: {
 				IntervalDataType intervalDataType = (IntervalDataType)theEObject;
-				Object result = caseIntervalDataType(intervalDataType);
+				T result = caseIntervalDataType(intervalDataType);
 				if (result == null) result = casePredefinedDataType(intervalDataType);
 				if (result == null) result = caseSQLDataType(intervalDataType);
 				if (result == null) result = caseDataType(intervalDataType);
@@ -221,7 +230,7 @@ public class SQLDataTypesSwitch {
 			}
 			case SQLDataTypesPackage.BINARY_STRING_DATA_TYPE: {
 				BinaryStringDataType binaryStringDataType = (BinaryStringDataType)theEObject;
-				Object result = caseBinaryStringDataType(binaryStringDataType);
+				T result = caseBinaryStringDataType(binaryStringDataType);
 				if (result == null) result = casePredefinedDataType(binaryStringDataType);
 				if (result == null) result = caseSQLDataType(binaryStringDataType);
 				if (result == null) result = caseDataType(binaryStringDataType);
@@ -233,7 +242,7 @@ public class SQLDataTypesSwitch {
 			}
 			case SQLDataTypesPackage.CHARACTER_SET: {
 				CharacterSet characterSet = (CharacterSet)theEObject;
-				Object result = caseCharacterSet(characterSet);
+				T result = caseCharacterSet(characterSet);
 				if (result == null) result = caseSQLObject(characterSet);
 				if (result == null) result = caseENamedElement(characterSet);
 				if (result == null) result = caseEModelElement(characterSet);
@@ -242,7 +251,7 @@ public class SQLDataTypesSwitch {
 			}
 			case SQLDataTypesPackage.TIME_DATA_TYPE: {
 				TimeDataType timeDataType = (TimeDataType)theEObject;
-				Object result = caseTimeDataType(timeDataType);
+				T result = caseTimeDataType(timeDataType);
 				if (result == null) result = casePredefinedDataType(timeDataType);
 				if (result == null) result = caseSQLDataType(timeDataType);
 				if (result == null) result = caseDataType(timeDataType);
@@ -254,7 +263,7 @@ public class SQLDataTypesSwitch {
 			}
 			case SQLDataTypesPackage.DISTINCT_USER_DEFINED_TYPE: {
 				DistinctUserDefinedType distinctUserDefinedType = (DistinctUserDefinedType)theEObject;
-				Object result = caseDistinctUserDefinedType(distinctUserDefinedType);
+				T result = caseDistinctUserDefinedType(distinctUserDefinedType);
 				if (result == null) result = caseUserDefinedType(distinctUserDefinedType);
 				if (result == null) result = caseDataType(distinctUserDefinedType);
 				if (result == null) result = caseSQLObject(distinctUserDefinedType);
@@ -265,7 +274,7 @@ public class SQLDataTypesSwitch {
 			}
 			case SQLDataTypesPackage.STRUCTURED_USER_DEFINED_TYPE: {
 				StructuredUserDefinedType structuredUserDefinedType = (StructuredUserDefinedType)theEObject;
-				Object result = caseStructuredUserDefinedType(structuredUserDefinedType);
+				T result = caseStructuredUserDefinedType(structuredUserDefinedType);
 				if (result == null) result = caseUserDefinedType(structuredUserDefinedType);
 				if (result == null) result = caseDataType(structuredUserDefinedType);
 				if (result == null) result = caseSQLObject(structuredUserDefinedType);
@@ -276,7 +285,7 @@ public class SQLDataTypesSwitch {
 			}
 			case SQLDataTypesPackage.ATTRIBUTE_DEFINITION: {
 				AttributeDefinition attributeDefinition = (AttributeDefinition)theEObject;
-				Object result = caseAttributeDefinition(attributeDefinition);
+				T result = caseAttributeDefinition(attributeDefinition);
 				if (result == null) result = caseTypedElement(attributeDefinition);
 				if (result == null) result = caseSQLObject(attributeDefinition);
 				if (result == null) result = caseENamedElement(attributeDefinition);
@@ -286,7 +295,7 @@ public class SQLDataTypesSwitch {
 			}
 			case SQLDataTypesPackage.FIXED_PRECISION_DATA_TYPE: {
 				FixedPrecisionDataType fixedPrecisionDataType = (FixedPrecisionDataType)theEObject;
-				Object result = caseFixedPrecisionDataType(fixedPrecisionDataType);
+				T result = caseFixedPrecisionDataType(fixedPrecisionDataType);
 				if (result == null) result = caseExactNumericDataType(fixedPrecisionDataType);
 				if (result == null) result = caseNumericalDataType(fixedPrecisionDataType);
 				if (result == null) result = casePredefinedDataType(fixedPrecisionDataType);
@@ -300,7 +309,7 @@ public class SQLDataTypesSwitch {
 			}
 			case SQLDataTypesPackage.DOMAIN: {
 				Domain domain = (Domain)theEObject;
-				Object result = caseDomain(domain);
+				T result = caseDomain(domain);
 				if (result == null) result = caseDistinctUserDefinedType(domain);
 				if (result == null) result = caseUserDefinedType(domain);
 				if (result == null) result = caseDataType(domain);
@@ -312,7 +321,7 @@ public class SQLDataTypesSwitch {
 			}
 			case SQLDataTypesPackage.FIELD: {
 				Field field = (Field)theEObject;
-				Object result = caseField(field);
+				T result = caseField(field);
 				if (result == null) result = caseTypedElement(field);
 				if (result == null) result = caseSQLObject(field);
 				if (result == null) result = caseENamedElement(field);
@@ -322,7 +331,7 @@ public class SQLDataTypesSwitch {
 			}
 			case SQLDataTypesPackage.REFERENCE_DATA_TYPE: {
 				ReferenceDataType referenceDataType = (ReferenceDataType)theEObject;
-				Object result = caseReferenceDataType(referenceDataType);
+				T result = caseReferenceDataType(referenceDataType);
 				if (result == null) result = caseConstructedDataType(referenceDataType);
 				if (result == null) result = caseDataType(referenceDataType);
 				if (result == null) result = caseSQLObject(referenceDataType);
@@ -333,7 +342,7 @@ public class SQLDataTypesSwitch {
 			}
 			case SQLDataTypesPackage.CONSTRUCTED_DATA_TYPE: {
 				ConstructedDataType constructedDataType = (ConstructedDataType)theEObject;
-				Object result = caseConstructedDataType(constructedDataType);
+				T result = caseConstructedDataType(constructedDataType);
 				if (result == null) result = caseDataType(constructedDataType);
 				if (result == null) result = caseSQLObject(constructedDataType);
 				if (result == null) result = caseENamedElement(constructedDataType);
@@ -343,7 +352,7 @@ public class SQLDataTypesSwitch {
 			}
 			case SQLDataTypesPackage.SQL_DATA_TYPE: {
 				SQLDataType sqlDataType = (SQLDataType)theEObject;
-				Object result = caseSQLDataType(sqlDataType);
+				T result = caseSQLDataType(sqlDataType);
 				if (result == null) result = caseDataType(sqlDataType);
 				if (result == null) result = caseSQLObject(sqlDataType);
 				if (result == null) result = caseENamedElement(sqlDataType);
@@ -353,7 +362,7 @@ public class SQLDataTypesSwitch {
 			}
 			case SQLDataTypesPackage.DATA_LINK_DATA_TYPE: {
 				DataLinkDataType dataLinkDataType = (DataLinkDataType)theEObject;
-				Object result = caseDataLinkDataType(dataLinkDataType);
+				T result = caseDataLinkDataType(dataLinkDataType);
 				if (result == null) result = casePredefinedDataType(dataLinkDataType);
 				if (result == null) result = caseSQLDataType(dataLinkDataType);
 				if (result == null) result = caseDataType(dataLinkDataType);
@@ -365,7 +374,7 @@ public class SQLDataTypesSwitch {
 			}
 			case SQLDataTypesPackage.USER_DEFINED_TYPE_ORDERING: {
 				UserDefinedTypeOrdering userDefinedTypeOrdering = (UserDefinedTypeOrdering)theEObject;
-				Object result = caseUserDefinedTypeOrdering(userDefinedTypeOrdering);
+				T result = caseUserDefinedTypeOrdering(userDefinedTypeOrdering);
 				if (result == null) result = caseSQLObject(userDefinedTypeOrdering);
 				if (result == null) result = caseENamedElement(userDefinedTypeOrdering);
 				if (result == null) result = caseEModelElement(userDefinedTypeOrdering);
@@ -374,7 +383,7 @@ public class SQLDataTypesSwitch {
 			}
 			case SQLDataTypesPackage.DATE_DATA_TYPE: {
 				DateDataType dateDataType = (DateDataType)theEObject;
-				Object result = caseDateDataType(dateDataType);
+				T result = caseDateDataType(dateDataType);
 				if (result == null) result = casePredefinedDataType(dateDataType);
 				if (result == null) result = caseSQLDataType(dateDataType);
 				if (result == null) result = caseDataType(dateDataType);
@@ -386,7 +395,7 @@ public class SQLDataTypesSwitch {
 			}
 			case SQLDataTypesPackage.EXACT_NUMERIC_DATA_TYPE: {
 				ExactNumericDataType exactNumericDataType = (ExactNumericDataType)theEObject;
-				Object result = caseExactNumericDataType(exactNumericDataType);
+				T result = caseExactNumericDataType(exactNumericDataType);
 				if (result == null) result = caseNumericalDataType(exactNumericDataType);
 				if (result == null) result = casePredefinedDataType(exactNumericDataType);
 				if (result == null) result = caseSQLDataType(exactNumericDataType);
@@ -399,7 +408,7 @@ public class SQLDataTypesSwitch {
 			}
 			case SQLDataTypesPackage.APPROXIMATE_NUMERIC_DATA_TYPE: {
 				ApproximateNumericDataType approximateNumericDataType = (ApproximateNumericDataType)theEObject;
-				Object result = caseApproximateNumericDataType(approximateNumericDataType);
+				T result = caseApproximateNumericDataType(approximateNumericDataType);
 				if (result == null) result = caseNumericalDataType(approximateNumericDataType);
 				if (result == null) result = casePredefinedDataType(approximateNumericDataType);
 				if (result == null) result = caseSQLDataType(approximateNumericDataType);
@@ -412,7 +421,7 @@ public class SQLDataTypesSwitch {
 			}
 			case SQLDataTypesPackage.INTEGER_DATA_TYPE: {
 				IntegerDataType integerDataType = (IntegerDataType)theEObject;
-				Object result = caseIntegerDataType(integerDataType);
+				T result = caseIntegerDataType(integerDataType);
 				if (result == null) result = caseExactNumericDataType(integerDataType);
 				if (result == null) result = caseNumericalDataType(integerDataType);
 				if (result == null) result = casePredefinedDataType(integerDataType);
@@ -426,7 +435,7 @@ public class SQLDataTypesSwitch {
 			}
 			case SQLDataTypesPackage.XML_DATA_TYPE: {
 				XMLDataType xmlDataType = (XMLDataType)theEObject;
-				Object result = caseXMLDataType(xmlDataType);
+				T result = caseXMLDataType(xmlDataType);
 				if (result == null) result = casePredefinedDataType(xmlDataType);
 				if (result == null) result = caseSQLDataType(xmlDataType);
 				if (result == null) result = caseDataType(xmlDataType);
@@ -438,7 +447,7 @@ public class SQLDataTypesSwitch {
 			}
 			case SQLDataTypesPackage.ELEMENT_TYPE: {
 				ElementType elementType = (ElementType)theEObject;
-				Object result = caseElementType(elementType);
+				T result = caseElementType(elementType);
 				if (result == null) result = caseTypedElement(elementType);
 				if (result == null) result = caseSQLObject(elementType);
 				if (result == null) result = caseENamedElement(elementType);
@@ -461,7 +470,7 @@ public class SQLDataTypesSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseUserDefinedType(UserDefinedType object) {
+	public T caseUserDefinedType(UserDefinedType object) {
 		return null;
 	}
 
@@ -476,7 +485,7 @@ public class SQLDataTypesSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseDataType(DataType object) {
+	public T caseDataType(DataType object) {
 		return null;
 	}
 
@@ -491,7 +500,7 @@ public class SQLDataTypesSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object casePredefinedDataType(PredefinedDataType object) {
+	public T casePredefinedDataType(PredefinedDataType object) {
 		return null;
 	}
 
@@ -506,7 +515,7 @@ public class SQLDataTypesSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseCollectionDataType(CollectionDataType object) {
+	public T caseCollectionDataType(CollectionDataType object) {
 		return null;
 	}
 
@@ -521,7 +530,7 @@ public class SQLDataTypesSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseNumericalDataType(NumericalDataType object) {
+	public T caseNumericalDataType(NumericalDataType object) {
 		return null;
 	}
 
@@ -536,7 +545,7 @@ public class SQLDataTypesSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseCharacterStringDataType(CharacterStringDataType object) {
+	public T caseCharacterStringDataType(CharacterStringDataType object) {
 		return null;
 	}
 
@@ -551,7 +560,7 @@ public class SQLDataTypesSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseRowDataType(RowDataType object) {
+	public T caseRowDataType(RowDataType object) {
 		return null;
 	}
 
@@ -566,7 +575,7 @@ public class SQLDataTypesSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseArrayDataType(ArrayDataType object) {
+	public T caseArrayDataType(ArrayDataType object) {
 		return null;
 	}
 
@@ -581,7 +590,7 @@ public class SQLDataTypesSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseMultisetDataType(MultisetDataType object) {
+	public T caseMultisetDataType(MultisetDataType object) {
 		return null;
 	}
 
@@ -596,7 +605,7 @@ public class SQLDataTypesSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseBooleanDataType(BooleanDataType object) {
+	public T caseBooleanDataType(BooleanDataType object) {
 		return null;
 	}
 
@@ -611,7 +620,7 @@ public class SQLDataTypesSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseIntervalDataType(IntervalDataType object) {
+	public T caseIntervalDataType(IntervalDataType object) {
 		return null;
 	}
 
@@ -626,7 +635,7 @@ public class SQLDataTypesSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseBinaryStringDataType(BinaryStringDataType object) {
+	public T caseBinaryStringDataType(BinaryStringDataType object) {
 		return null;
 	}
 
@@ -641,7 +650,7 @@ public class SQLDataTypesSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseCharacterSet(CharacterSet object) {
+	public T caseCharacterSet(CharacterSet object) {
 		return null;
 	}
 
@@ -656,7 +665,7 @@ public class SQLDataTypesSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseTimeDataType(TimeDataType object) {
+	public T caseTimeDataType(TimeDataType object) {
 		return null;
 	}
 
@@ -671,7 +680,7 @@ public class SQLDataTypesSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseDistinctUserDefinedType(DistinctUserDefinedType object) {
+	public T caseDistinctUserDefinedType(DistinctUserDefinedType object) {
 		return null;
 	}
 
@@ -686,7 +695,7 @@ public class SQLDataTypesSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseStructuredUserDefinedType(StructuredUserDefinedType object) {
+	public T caseStructuredUserDefinedType(StructuredUserDefinedType object) {
 		return null;
 	}
 
@@ -701,7 +710,7 @@ public class SQLDataTypesSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseAttributeDefinition(AttributeDefinition object) {
+	public T caseAttributeDefinition(AttributeDefinition object) {
 		return null;
 	}
 
@@ -716,7 +725,7 @@ public class SQLDataTypesSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseFixedPrecisionDataType(FixedPrecisionDataType object) {
+	public T caseFixedPrecisionDataType(FixedPrecisionDataType object) {
 		return null;
 	}
 
@@ -731,7 +740,7 @@ public class SQLDataTypesSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseDomain(Domain object) {
+	public T caseDomain(Domain object) {
 		return null;
 	}
 
@@ -746,7 +755,7 @@ public class SQLDataTypesSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseField(Field object) {
+	public T caseField(Field object) {
 		return null;
 	}
 
@@ -761,7 +770,7 @@ public class SQLDataTypesSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseReferenceDataType(ReferenceDataType object) {
+	public T caseReferenceDataType(ReferenceDataType object) {
 		return null;
 	}
 
@@ -776,7 +785,7 @@ public class SQLDataTypesSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseConstructedDataType(ConstructedDataType object) {
+	public T caseConstructedDataType(ConstructedDataType object) {
 		return null;
 	}
 
@@ -791,7 +800,7 @@ public class SQLDataTypesSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseSQLDataType(SQLDataType object) {
+	public T caseSQLDataType(SQLDataType object) {
 		return null;
 	}
 
@@ -806,7 +815,7 @@ public class SQLDataTypesSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseDataLinkDataType(DataLinkDataType object) {
+	public T caseDataLinkDataType(DataLinkDataType object) {
 		return null;
 	}
 
@@ -821,7 +830,7 @@ public class SQLDataTypesSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseUserDefinedTypeOrdering(UserDefinedTypeOrdering object) {
+	public T caseUserDefinedTypeOrdering(UserDefinedTypeOrdering object) {
 		return null;
 	}
 
@@ -836,7 +845,7 @@ public class SQLDataTypesSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseDateDataType(DateDataType object) {
+	public T caseDateDataType(DateDataType object) {
 		return null;
 	}
 
@@ -851,7 +860,7 @@ public class SQLDataTypesSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseExactNumericDataType(ExactNumericDataType object) {
+	public T caseExactNumericDataType(ExactNumericDataType object) {
 		return null;
 	}
 
@@ -866,7 +875,7 @@ public class SQLDataTypesSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseApproximateNumericDataType(ApproximateNumericDataType object) {
+	public T caseApproximateNumericDataType(ApproximateNumericDataType object) {
 		return null;
 	}
 
@@ -881,7 +890,7 @@ public class SQLDataTypesSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseIntegerDataType(IntegerDataType object) {
+	public T caseIntegerDataType(IntegerDataType object) {
 		return null;
 	}
 
@@ -896,7 +905,7 @@ public class SQLDataTypesSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseXMLDataType(XMLDataType object) {
+	public T caseXMLDataType(XMLDataType object) {
 		return null;
 	}
 
@@ -911,7 +920,7 @@ public class SQLDataTypesSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseElementType(ElementType object) {
+	public T caseElementType(ElementType object) {
 		return null;
 	}
 
@@ -926,7 +935,7 @@ public class SQLDataTypesSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseEModelElement(EModelElement object) {
+	public T caseEModelElement(EModelElement object) {
 		return null;
 	}
 
@@ -941,7 +950,7 @@ public class SQLDataTypesSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseENamedElement(ENamedElement object) {
+	public T caseENamedElement(ENamedElement object) {
 		return null;
 	}
 
@@ -956,7 +965,7 @@ public class SQLDataTypesSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseSQLObject(SQLObject object) {
+	public T caseSQLObject(SQLObject object) {
 		return null;
 	}
 
@@ -971,7 +980,7 @@ public class SQLDataTypesSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseTypedElement(TypedElement object) {
+	public T caseTypedElement(TypedElement object) {
 		return null;
 	}
 
@@ -986,7 +995,8 @@ public class SQLDataTypesSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject)
 	 * @generated
 	 */
-	public Object defaultCase(EObject object) {
+	@Override
+	public T defaultCase(EObject object) {
 		return null;
 	}
 

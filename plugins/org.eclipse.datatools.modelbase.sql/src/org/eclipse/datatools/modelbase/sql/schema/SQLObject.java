@@ -1,15 +1,13 @@
-/*******************************************************************************
- * Copyright (c) 2001, 2004 IBM Corporation and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- * 
- * Contributors:
- *     IBM Corporation - initial API and implementation
- *******************************************************************************/
+/**
+ * <copyright>
+ * </copyright>
+ *
+ * $Id$
+ */
 package org.eclipse.datatools.modelbase.sql.schema;
 
+import org.eclipse.datatools.modelbase.sql.accesscontrol.Privilege;
+import org.eclipse.emf.cdo.CDOObject;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.ENamedElement;
@@ -40,9 +38,10 @@ import org.eclipse.emf.ecore.ENamedElement;
  *
  * @see org.eclipse.datatools.modelbase.sql.schema.SQLSchemaPackage#getSQLObject()
  * @model abstract="true"
+ * @extends CDOObject
  * @generated
  */
-public interface SQLObject extends ENamedElement {
+public interface SQLObject extends CDOObject, ENamedElement {
 	/**
 	 * Returns the value of the '<em><b>Dependencies</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.datatools.modelbase.sql.schema.Dependency}.
@@ -54,10 +53,10 @@ public interface SQLObject extends ENamedElement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Dependencies</em>' containment reference list.
 	 * @see org.eclipse.datatools.modelbase.sql.schema.SQLSchemaPackage#getSQLObject_Dependencies()
-	 * @model type="org.eclipse.datatools.modelbase.sql.schema.Dependency" containment="true"
+	 * @model containment="true"
 	 * @generated
 	 */
-	EList getDependencies();
+	EList<Dependency> getDependencies();
 
 	/**
 	 * Returns the value of the '<em><b>Description</b></em>' attribute.
@@ -124,10 +123,10 @@ public interface SQLObject extends ENamedElement {
 	 * @return the value of the '<em>Comments</em>' reference list.
 	 * @see org.eclipse.datatools.modelbase.sql.schema.SQLSchemaPackage#getSQLObject_Comments()
 	 * @see org.eclipse.datatools.modelbase.sql.schema.Comment#getSQLObject
-	 * @model type="org.eclipse.datatools.modelbase.sql.schema.Comment" opposite="SQLObject"
+	 * @model opposite="SQLObject"
 	 * @generated
 	 */
-	EList getComments();
+	EList<Comment> getComments();
 
 	/**
 	 * Returns the value of the '<em><b>Extensions</b></em>' containment reference list.
@@ -142,10 +141,10 @@ public interface SQLObject extends ENamedElement {
 	 * @return the value of the '<em>Extensions</em>' containment reference list.
 	 * @see org.eclipse.datatools.modelbase.sql.schema.SQLSchemaPackage#getSQLObject_Extensions()
 	 * @see org.eclipse.datatools.modelbase.sql.schema.ObjectExtension#getSQLObject
-	 * @model type="org.eclipse.datatools.modelbase.sql.schema.ObjectExtension" opposite="SQLObject" containment="true"
+	 * @model opposite="SQLObject" containment="true"
 	 * @generated
 	 */
-	EList getExtensions();
+	EList<ObjectExtension> getExtensions();
 
 	/**
 	 * Returns the value of the '<em><b>Privileges</b></em>' reference list.
@@ -160,10 +159,10 @@ public interface SQLObject extends ENamedElement {
 	 * @return the value of the '<em>Privileges</em>' reference list.
 	 * @see org.eclipse.datatools.modelbase.sql.schema.SQLSchemaPackage#getSQLObject_Privileges()
 	 * @see org.eclipse.datatools.modelbase.sql.accesscontrol.Privilege#getObject
-	 * @model type="org.eclipse.datatools.modelbase.sql.accesscontrol.Privilege" opposite="object"
+	 * @model opposite="object"
 	 * @generated
 	 */
-	EList getPrivileges();
+	EList<Privilege> getPrivileges();
 
 	/**
 	 * <!-- begin-user-doc -->

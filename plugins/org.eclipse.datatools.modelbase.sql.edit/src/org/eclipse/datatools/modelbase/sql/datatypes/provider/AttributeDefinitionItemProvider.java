@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: AttributeDefinitionItemProvider.java,v 1.3 2007/05/31 00:29:17 dpchou Exp $
+ * $Id$
  */
 package org.eclipse.datatools.modelbase.sql.datatypes.provider;
 
@@ -20,12 +20,12 @@ import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
+import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-
 
 /**
  * This is the item provider adapter for a {@link org.eclipse.datatools.modelbase.sql.datatypes.AttributeDefinition} object.
@@ -57,7 +57,8 @@ public class AttributeDefinitionItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getPropertyDescriptors(Object object) {
+	@Override
+	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
@@ -79,8 +80,8 @@ public class AttributeDefinitionItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_AttributeDefinition_scopeCheck_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_AttributeDefinition_scopeCheck_feature", "_UI_AttributeDefinition_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 getString("_UI_AttributeDefinition_scopeCheck_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_AttributeDefinition_scopeCheck_feature", "_UI_AttributeDefinition_type"),
 				 SQLDataTypesPackage.Literals.ATTRIBUTE_DEFINITION__SCOPE_CHECK,
 				 true,
 				 false,
@@ -101,8 +102,8 @@ public class AttributeDefinitionItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_AttributeDefinition_scopeChecked_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_AttributeDefinition_scopeChecked_feature", "_UI_AttributeDefinition_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 getString("_UI_AttributeDefinition_scopeChecked_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_AttributeDefinition_scopeChecked_feature", "_UI_AttributeDefinition_type"),
 				 SQLDataTypesPackage.Literals.ATTRIBUTE_DEFINITION__SCOPE_CHECKED,
 				 true,
 				 false,
@@ -123,8 +124,8 @@ public class AttributeDefinitionItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_AttributeDefinition_defaultValue_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_AttributeDefinition_defaultValue_feature", "_UI_AttributeDefinition_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 getString("_UI_AttributeDefinition_defaultValue_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_AttributeDefinition_defaultValue_feature", "_UI_AttributeDefinition_type"),
 				 SQLDataTypesPackage.Literals.ATTRIBUTE_DEFINITION__DEFAULT_VALUE,
 				 true,
 				 false,
@@ -140,8 +141,9 @@ public class AttributeDefinitionItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/AttributeDefinition")); //$NON-NLS-1$
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/AttributeDefinition"));
 	}
 
 	/**
@@ -150,11 +152,12 @@ public class AttributeDefinitionItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getText(Object object) {
 		String label = ((AttributeDefinition)object).getName();
 		return label == null || label.length() == 0 ?
-			getString("_UI_AttributeDefinition_type") : //$NON-NLS-1$
-			getString("_UI_AttributeDefinition_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+			getString("_UI_AttributeDefinition_type") :
+			label;
 	}
 
 	/**
@@ -164,6 +167,7 @@ public class AttributeDefinitionItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
@@ -184,7 +188,8 @@ public class AttributeDefinitionItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void collectNewChildDescriptors(Collection newChildDescriptors, Object object) {
+	@Override
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 
@@ -194,8 +199,8 @@ public class AttributeDefinitionItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ResourceLocator getResourceLocator() {
 		return SqlmodelEditPlugin.INSTANCE;
 	}
-
 }

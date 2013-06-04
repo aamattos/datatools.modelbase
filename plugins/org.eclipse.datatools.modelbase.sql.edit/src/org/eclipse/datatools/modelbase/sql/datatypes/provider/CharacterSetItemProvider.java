@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: CharacterSetItemProvider.java,v 1.3 2007/05/31 00:29:17 dpchou Exp $
+ * $Id$
  */
 package org.eclipse.datatools.modelbase.sql.datatypes.provider;
 
@@ -20,12 +20,12 @@ import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
+import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-
 
 /**
  * This is the item provider adapter for a {@link org.eclipse.datatools.modelbase.sql.datatypes.CharacterSet} object.
@@ -57,7 +57,8 @@ public class CharacterSetItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getPropertyDescriptors(Object object) {
+	@Override
+	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
@@ -71,28 +72,6 @@ public class CharacterSetItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Repertoire feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addRepertoirePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_CharacterSet_repertoire_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_CharacterSet_repertoire_feature", "_UI_CharacterSet_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-				 SQLDataTypesPackage.Literals.CHARACTER_SET__REPERTOIRE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
 	 * This adds a property descriptor for the Default Collation feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -103,8 +82,8 @@ public class CharacterSetItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_CharacterSet_defaultCollation_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_CharacterSet_defaultCollation_feature", "_UI_CharacterSet_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 getString("_UI_CharacterSet_defaultCollation_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_CharacterSet_defaultCollation_feature", "_UI_CharacterSet_type"),
 				 SQLDataTypesPackage.Literals.CHARACTER_SET__DEFAULT_COLLATION,
 				 true,
 				 false,
@@ -125,8 +104,8 @@ public class CharacterSetItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_CharacterSet_encoding_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_CharacterSet_encoding_feature", "_UI_CharacterSet_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 getString("_UI_CharacterSet_encoding_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_CharacterSet_encoding_feature", "_UI_CharacterSet_type"),
 				 SQLDataTypesPackage.Literals.CHARACTER_SET__ENCODING,
 				 true,
 				 false,
@@ -147,8 +126,8 @@ public class CharacterSetItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_CharacterSet_CharacterStringDataType_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_CharacterSet_CharacterStringDataType_feature", "_UI_CharacterSet_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 getString("_UI_CharacterSet_CharacterStringDataType_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_CharacterSet_CharacterStringDataType_feature", "_UI_CharacterSet_type"),
 				 SQLDataTypesPackage.Literals.CHARACTER_SET__CHARACTER_STRING_DATA_TYPE,
 				 true,
 				 false,
@@ -169,13 +148,35 @@ public class CharacterSetItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_CharacterSet_schema_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_CharacterSet_schema_feature", "_UI_CharacterSet_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 getString("_UI_CharacterSet_schema_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_CharacterSet_schema_feature", "_UI_CharacterSet_type"),
 				 SQLDataTypesPackage.Literals.CHARACTER_SET__SCHEMA,
 				 true,
 				 false,
-				 false,
+				 true,
 				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Repertoire feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addRepertoirePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_CharacterSet_repertoire_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_CharacterSet_repertoire_feature", "_UI_CharacterSet_type"),
+				 SQLDataTypesPackage.Literals.CHARACTER_SET__REPERTOIRE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -186,8 +187,9 @@ public class CharacterSetItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/CharacterSet")); //$NON-NLS-1$
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/CharacterSet"));
 	}
 
 	/**
@@ -196,11 +198,12 @@ public class CharacterSetItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getText(Object object) {
 		String label = ((CharacterSet)object).getName();
 		return label == null || label.length() == 0 ?
-			getString("_UI_CharacterSet_type") : //$NON-NLS-1$
-			getString("_UI_CharacterSet_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+			getString("_UI_CharacterSet_type") :
+			label;
 	}
 
 	/**
@@ -210,6 +213,7 @@ public class CharacterSetItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
@@ -230,7 +234,8 @@ public class CharacterSetItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void collectNewChildDescriptors(Collection newChildDescriptors, Object object) {
+	@Override
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 
@@ -240,8 +245,8 @@ public class CharacterSetItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ResourceLocator getResourceLocator() {
 		return SqlmodelEditPlugin.INSTANCE;
 	}
-
 }

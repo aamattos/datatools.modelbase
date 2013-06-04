@@ -1,13 +1,9 @@
-/*******************************************************************************
- * Copyright (c) 2001, 2004 IBM Corporation and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- * 
- * Contributors:
- *     IBM Corporation - initial API and implementation
- *******************************************************************************/
+/**
+ * <copyright>
+ * </copyright>
+ *
+ * $Id$
+ */
 package org.eclipse.datatools.modelbase.sql.routines;
 
 import org.eclipse.emf.common.util.EList;
@@ -100,15 +96,15 @@ public interface Procedure extends Routine {
 	 * The list contents are of type {@link org.eclipse.datatools.modelbase.sql.routines.RoutineResultTable}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Result Set</em>' containment reference list isn't clear,
+	 * If the meaning of the '<em>Result Set</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Result Set</em>' containment reference list.
 	 * @see org.eclipse.datatools.modelbase.sql.routines.SQLRoutinesPackage#getProcedure_ResultSet()
-	 * @model type="org.eclipse.datatools.modelbase.sql.routines.RoutineResultTable" containment="true"
+	 * @model containment="true"
 	 * @generated
 	 */
-	EList getResultSet();
+	EList<RoutineResultTable> getResultSet();
 
 } // Procedure

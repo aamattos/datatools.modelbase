@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SQLConstraintsItemProviderAdapterFactory.java,v 1.2 2005/12/22 22:37:40 bpayton Exp $
+ * $Id$
  */
 package org.eclipse.datatools.modelbase.sql.constraints.provider;
 
@@ -17,6 +17,7 @@ import org.eclipse.emf.edit.provider.ChangeNotifier;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.provider.IChangeNotifier;
+import org.eclipse.emf.edit.provider.IDisposable;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
@@ -33,7 +34,7 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
  * <!-- end-user-doc -->
  * @generated
  */
-public class SQLConstraintsItemProviderAdapterFactory extends SQLConstraintsAdapterFactory implements ComposeableAdapterFactory, IChangeNotifier {
+public class SQLConstraintsItemProviderAdapterFactory extends SQLConstraintsAdapterFactory implements ComposeableAdapterFactory, IChangeNotifier, IDisposable {
 	/**
 	 * This keeps track of the root adapter factory that delegates to this adapter factory.
 	 * <!-- begin-user-doc -->
@@ -56,7 +57,7 @@ public class SQLConstraintsItemProviderAdapterFactory extends SQLConstraintsAdap
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected Collection supportedTypes = new ArrayList();
+	protected Collection<Object> supportedTypes = new ArrayList<Object>();
 
 	/**
 	 * This constructs an instance.
@@ -86,6 +87,7 @@ public class SQLConstraintsItemProviderAdapterFactory extends SQLConstraintsAdap
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createAssertionAdapter() {
 		if (assertionItemProvider == null) {
 			assertionItemProvider = new AssertionItemProvider(this);
@@ -108,6 +110,7 @@ public class SQLConstraintsItemProviderAdapterFactory extends SQLConstraintsAdap
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createCheckConstraintAdapter() {
 		if (checkConstraintItemProvider == null) {
 			checkConstraintItemProvider = new CheckConstraintItemProvider(this);
@@ -130,6 +133,7 @@ public class SQLConstraintsItemProviderAdapterFactory extends SQLConstraintsAdap
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createForeignKeyAdapter() {
 		if (foreignKeyItemProvider == null) {
 			foreignKeyItemProvider = new ForeignKeyItemProvider(this);
@@ -152,6 +156,7 @@ public class SQLConstraintsItemProviderAdapterFactory extends SQLConstraintsAdap
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createUniqueConstraintAdapter() {
 		if (uniqueConstraintItemProvider == null) {
 			uniqueConstraintItemProvider = new UniqueConstraintItemProvider(this);
@@ -174,6 +179,7 @@ public class SQLConstraintsItemProviderAdapterFactory extends SQLConstraintsAdap
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createPrimaryKeyAdapter() {
 		if (primaryKeyItemProvider == null) {
 			primaryKeyItemProvider = new PrimaryKeyItemProvider(this);
@@ -196,6 +202,7 @@ public class SQLConstraintsItemProviderAdapterFactory extends SQLConstraintsAdap
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createIndexAdapter() {
 		if (indexItemProvider == null) {
 			indexItemProvider = new IndexItemProvider(this);
@@ -218,6 +225,7 @@ public class SQLConstraintsItemProviderAdapterFactory extends SQLConstraintsAdap
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createIndexMemberAdapter() {
 		if (indexMemberItemProvider == null) {
 			indexMemberItemProvider = new IndexMemberItemProvider(this);
@@ -240,6 +248,7 @@ public class SQLConstraintsItemProviderAdapterFactory extends SQLConstraintsAdap
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createIndexExpressionAdapter() {
 		if (indexExpressionItemProvider == null) {
 			indexExpressionItemProvider = new IndexExpressionItemProvider(this);
@@ -273,6 +282,7 @@ public class SQLConstraintsItemProviderAdapterFactory extends SQLConstraintsAdap
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isFactoryForType(Object type) {
 		return supportedTypes.contains(type) || super.isFactoryForType(type);
 	}
@@ -283,6 +293,7 @@ public class SQLConstraintsItemProviderAdapterFactory extends SQLConstraintsAdap
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter adapt(Notifier notifier, Object type) {
 		return super.adapt(notifier, this);
 	}
@@ -292,10 +303,11 @@ public class SQLConstraintsItemProviderAdapterFactory extends SQLConstraintsAdap
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object adapt(Object object, Object type) {
 		if (isFactoryForType(type)) {
 			Object adapter = super.adapt(object, type);
-			if (!(type instanceof Class) || (((Class)type).isInstance(adapter))) {
+			if (!(type instanceof Class<?>) || (((Class<?>)type).isInstance(adapter))) {
 				return adapter;
 			}
 		}
@@ -335,6 +347,23 @@ public class SQLConstraintsItemProviderAdapterFactory extends SQLConstraintsAdap
 		if (parentAdapterFactory != null) {
 			parentAdapterFactory.fireNotifyChanged(notification);
 		}
+	}
+
+	/**
+	 * This disposes all of the item providers created by this factory. 
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void dispose() {
+		if (assertionItemProvider != null) assertionItemProvider.dispose();
+		if (checkConstraintItemProvider != null) checkConstraintItemProvider.dispose();
+		if (foreignKeyItemProvider != null) foreignKeyItemProvider.dispose();
+		if (uniqueConstraintItemProvider != null) uniqueConstraintItemProvider.dispose();
+		if (primaryKeyItemProvider != null) primaryKeyItemProvider.dispose();
+		if (indexItemProvider != null) indexItemProvider.dispose();
+		if (indexMemberItemProvider != null) indexMemberItemProvider.dispose();
+		if (indexExpressionItemProvider != null) indexExpressionItemProvider.dispose();
 	}
 
 }

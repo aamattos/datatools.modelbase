@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: ParameterMode.java,v 1.3 2006/09/07 00:19:48 dpchou Exp $
+ * $Id$
  */
 package org.eclipse.datatools.modelbase.sql.routines;
 
@@ -10,7 +10,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import org.eclipse.emf.common.util.AbstractEnumerator;
+import org.eclipse.emf.common.util.Enumerator;
 
 /**
  * <!-- begin-user-doc -->
@@ -24,42 +24,39 @@ import org.eclipse.emf.common.util.AbstractEnumerator;
  * @model
  * @generated
  */
-public final class ParameterMode extends AbstractEnumerator {
-	/**
-	 * The '<em><b>IN</b></em>' literal value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #IN_LITERAL
-	 * @model
-	 * @generated
-	 * @ordered
-	 */
-	public static final int IN = 0;
-
-	/**
-	 * The '<em><b>OUT</b></em>' literal value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #OUT_LITERAL
-	 * @model
-	 * @generated
-	 * @ordered
-	 */
-	public static final int OUT = 1;
-
-	/**
-	 * The '<em><b>INOUT</b></em>' literal value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #INOUT_LITERAL
-	 * @model
-	 * @generated
-	 * @ordered
-	 */
-	public static final int INOUT = 2;
-
+public enum ParameterMode implements Enumerator {
 	/**
 	 * The '<em><b>IN</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #IN_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	IN(0, "IN", "IN"),
+
+	/**
+	 * The '<em><b>OUT</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #OUT_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	OUT(1, "OUT", "OUT"),
+
+	/**
+	 * The '<em><b>INOUT</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #INOUT_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	INOUT(2, "INOUT", "INOUT");
+
+	/**
+	 * The '<em><b>IN</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>IN</b></em>' literal object isn't clear,
@@ -67,13 +64,14 @@ public final class ParameterMode extends AbstractEnumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #IN
+	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final ParameterMode IN_LITERAL = new ParameterMode(IN, "IN", "IN"); //$NON-NLS-1$
+	public static final int IN_VALUE = 0;
 
 	/**
-	 * The '<em><b>OUT</b></em>' literal object.
+	 * The '<em><b>OUT</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>OUT</b></em>' literal object isn't clear,
@@ -81,13 +79,14 @@ public final class ParameterMode extends AbstractEnumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #OUT
+	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final ParameterMode OUT_LITERAL = new ParameterMode(OUT, "OUT", "OUT"); //$NON-NLS-1$
+	public static final int OUT_VALUE = 1;
 
 	/**
-	 * The '<em><b>INOUT</b></em>' literal object.
+	 * The '<em><b>INOUT</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>INOUT</b></em>' literal object isn't clear,
@@ -95,10 +94,11 @@ public final class ParameterMode extends AbstractEnumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #INOUT
+	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final ParameterMode INOUT_LITERAL = new ParameterMode(INOUT, "INOUT", "INOUT"); //$NON-NLS-1$
+	public static final int INOUT_VALUE = 2;
 
 	/**
 	 * An array of all the '<em><b>Parameter Mode</b></em>' enumerators.
@@ -108,9 +108,9 @@ public final class ParameterMode extends AbstractEnumerator {
 	 */
 	private static final ParameterMode[] VALUES_ARRAY =
 		new ParameterMode[] {
-			IN_LITERAL,
-			OUT_LITERAL,
-			INOUT_LITERAL,
+			IN,
+			OUT,
+			INOUT,
 		};
 
 	/**
@@ -119,7 +119,7 @@ public final class ParameterMode extends AbstractEnumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<ParameterMode> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
 	 * Returns the '<em><b>Parameter Mode</b></em>' literal with the specified literal value.
@@ -161,12 +161,33 @@ public final class ParameterMode extends AbstractEnumerator {
 	 */
 	public static ParameterMode get(int value) {
 		switch (value) {
-			case IN: return IN_LITERAL;
-			case OUT: return OUT_LITERAL;
-			case INOUT: return INOUT_LITERAL;
+			case IN_VALUE: return IN;
+			case OUT_VALUE: return OUT;
+			case INOUT_VALUE: return INOUT;
 		}
 		return null;
 	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final int value;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final String name;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final String literal;
 
 	/**
 	 * Only this class can construct instances.
@@ -175,7 +196,92 @@ public final class ParameterMode extends AbstractEnumerator {
 	 * @generated
 	 */
 	private ParameterMode(int value, String name, String literal) {
-		super(value, name, literal);
+		this.value = value;
+		this.name = name;
+		this.literal = literal;
 	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int getValue() {
+	  return value;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getName() {
+	  return name;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getLiteral() {
+	  return literal;
+	}
+
+	/**
+	 * Returns the literal value of the enumerator, which is its string representation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		return literal;
+	}
+	
+	/*******************DEJAMOS ESTA SECCION POR COMPATIBILIDAD CON LOS PLUGINS QUE USAN EL DATATOOLS GENERADO CON COMPLIANCE 1.4 ***********************
+
+	/**
+	 * The '<em><b>IN</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>IN</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #IN
+	 * @generated NOT
+	 * @ordered
+	 */
+	public static final ParameterMode IN_LITERAL = IN; //$NON-NLS-1$
+	
+	/**
+	 * The '<em><b>INOUT</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>INOUT</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #INOUT
+	 * @generated NOT
+	 * @ordered
+	 */
+	public static final ParameterMode INOUT_LITERAL = INOUT; //$NON-NLS-1$
+
+	/**
+	 * The '<em><b>OUT</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>OUT</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #OUT
+	 * @generated NOT
+	 * @ordered
+	 */
+	public static final ParameterMode OUT_LITERAL = OUT; //$NON-NLS-1$
+
 
 } //ParameterMode

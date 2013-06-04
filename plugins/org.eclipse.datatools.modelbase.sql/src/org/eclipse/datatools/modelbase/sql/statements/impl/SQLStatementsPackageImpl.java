@@ -1,13 +1,9 @@
-/*******************************************************************************
- * Copyright (c) 2001, 2004 IBM Corporation and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- * 
- * Contributors:
- *     IBM Corporation - initial API and implementation
- *******************************************************************************/
+/**
+ * <copyright>
+ * </copyright>
+ *
+ * $Id$
+ */
 package org.eclipse.datatools.modelbase.sql.statements.impl;
 
 import org.eclipse.datatools.modelbase.sql.accesscontrol.SQLAccessControlPackage;
@@ -42,9 +38,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EcorePackage;
-
 import org.eclipse.emf.ecore.impl.EPackageImpl;
-import org.eclipse.emf.ecore.impl.EcorePackageImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -157,20 +151,10 @@ public class SQLStatementsPackageImpl extends EPackageImpl implements SQLStateme
 	private static boolean isInited = false;
 
 	/**
-	 * Creates, registers, and initializes the <b>Package</b> for this
-	 * model, and for any others upon which it depends.  Simple
-	 * dependencies are satisfied by calling this method on all
-	 * dependent packages before doing anything else.  This method drives
-	 * initialization for interdependent packages directly, in parallel
-	 * with this package, itself.
-	 * <p>Of this package and its interdependencies, all packages which
-	 * have not yet been registered by their URI values are first created
-	 * and registered.  The packages are then initialized in two steps:
-	 * meta-model objects for all of the packages are created before any
-	 * are initialized, since one package's meta-model objects may refer to
-	 * those of another.
-	 * <p>Invocation of this method will not affect any packages that have
-	 * already been initialized.
+	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
+	 * 
+	 * <p>This method is used to initialize {@link SQLStatementsPackage#eINSTANCE} when that field is accessed.
+	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #eNS_URI
@@ -182,7 +166,7 @@ public class SQLStatementsPackageImpl extends EPackageImpl implements SQLStateme
 		if (isInited) return (SQLStatementsPackage)EPackage.Registry.INSTANCE.getEPackage(SQLStatementsPackage.eNS_URI);
 
 		// Obtain or create and register package
-		SQLStatementsPackageImpl theSQLStatementsPackage = (SQLStatementsPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(eNS_URI) instanceof SQLStatementsPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(eNS_URI) : new SQLStatementsPackageImpl());
+		SQLStatementsPackageImpl theSQLStatementsPackage = (SQLStatementsPackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof SQLStatementsPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new SQLStatementsPackageImpl());
 
 		isInited = true;
 
@@ -221,6 +205,9 @@ public class SQLStatementsPackageImpl extends EPackageImpl implements SQLStateme
 		// Mark meta-data to indicate it can't be changed
 		theSQLStatementsPackage.freeze();
 
+  
+		// Update the registry and return the package
+		EPackage.Registry.INSTANCE.put(SQLStatementsPackage.eNS_URI, theSQLStatementsPackage);
 		return theSQLStatementsPackage;
 	}
 
@@ -231,6 +218,24 @@ public class SQLStatementsPackageImpl extends EPackageImpl implements SQLStateme
 	 */
 	public EClass getSQLStatement() {
 		return sqlStatementEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getSQLStatement__GetSQL() {
+		return sqlStatementEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EOperation getSQLStatement__SetSQL__String() {
+		return sqlStatementEClass.getEOperations().get(1);
 	}
 
 	/**
@@ -361,6 +366,8 @@ public class SQLStatementsPackageImpl extends EPackageImpl implements SQLStateme
 
 		// Create classes and their features
 		sqlStatementEClass = createEClass(SQL_STATEMENT);
+		createEOperation(sqlStatementEClass, SQL_STATEMENT___GET_SQL);
+		createEOperation(sqlStatementEClass, SQL_STATEMENT___SET_SQL__STRING);
 
 		sqlDataStatementEClass = createEClass(SQL_DATA_STATEMENT);
 
@@ -410,6 +417,10 @@ public class SQLStatementsPackageImpl extends EPackageImpl implements SQLStateme
 		// Obtain other dependent packages
 		SQLSchemaPackage theSQLSchemaPackage = (SQLSchemaPackage)EPackage.Registry.INSTANCE.getEPackage(SQLSchemaPackage.eNS_URI);
 
+		// Create type parameters
+
+		// Set bounds for type parameters
+
 		// Add supertypes to classes
 		sqlDataStatementEClass.getESuperTypes().add(this.getSQLStatement());
 		sqlSchemaStatementEClass.getESuperTypes().add(this.getSQLStatement());
@@ -423,34 +434,34 @@ public class SQLStatementsPackageImpl extends EPackageImpl implements SQLStateme
 		sqlSessionStatementEClass.getESuperTypes().add(this.getSQLStatement());
 		sqlTransactionStatementEClass.getESuperTypes().add(this.getSQLStatement());
 
-		// Initialize classes and features; add operations and parameters
-		initEClass(sqlStatementEClass, SQLStatement.class, "SQLStatement", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		// Initialize classes, features, and operations; add parameters
+		initEClass(sqlStatementEClass, SQLStatement.class, "SQLStatement", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		addEOperation(sqlStatementEClass, ecorePackage.getEString(), "getSQL", 0, 1); //$NON-NLS-1$
+		initEOperation(getSQLStatement__GetSQL(), ecorePackage.getEString(), "getSQL", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		EOperation op = addEOperation(sqlStatementEClass, null, "setSQL"); //$NON-NLS-1$
-		addEParameter(op, ecorePackage.getEString(), "sqlText", 0, 1); //$NON-NLS-1$
+		EOperation op = initEOperation(getSQLStatement__SetSQL__String(), null, "setSQL", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "sqlText", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		initEClass(sqlDataStatementEClass, SQLDataStatement.class, "SQLDataStatement", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(sqlDataStatementEClass, SQLDataStatement.class, "SQLDataStatement", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(sqlSchemaStatementEClass, SQLSchemaStatement.class, "SQLSchemaStatement", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(sqlSchemaStatementEClass, SQLSchemaStatement.class, "SQLSchemaStatement", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(sqlControlStatementEClass, SQLControlStatement.class, "SQLControlStatement", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(sqlControlStatementEClass, SQLControlStatement.class, "SQLControlStatement", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(sqlDataChangeStatementEClass, SQLDataChangeStatement.class, "SQLDataChangeStatement", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(sqlDataChangeStatementEClass, SQLDataChangeStatement.class, "SQLDataChangeStatement", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(sqlStatementDefaultEClass, SQLStatementDefault.class, "SQLStatementDefault", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEAttribute(getSQLStatementDefault_SQL(), ecorePackage.getEString(), "SQL", null, 0, 1, SQLStatementDefault.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+		initEClass(sqlStatementDefaultEClass, SQLStatementDefault.class, "SQLStatementDefault", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getSQLStatementDefault_SQL(), ecorePackage.getEString(), "SQL", null, 0, 1, SQLStatementDefault.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(sqlConnectionStatementEClass, SQLConnectionStatement.class, "SQLConnectionStatement", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(sqlConnectionStatementEClass, SQLConnectionStatement.class, "SQLConnectionStatement", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(sqlDiagnosticsStatementEClass, SQLDiagnosticsStatement.class, "SQLDiagnosticsStatement", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(sqlDiagnosticsStatementEClass, SQLDiagnosticsStatement.class, "SQLDiagnosticsStatement", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(sqlDynamicStatementEClass, SQLDynamicStatement.class, "SQLDynamicStatement", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(sqlDynamicStatementEClass, SQLDynamicStatement.class, "SQLDynamicStatement", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(sqlSessionStatementEClass, SQLSessionStatement.class, "SQLSessionStatement", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(sqlSessionStatementEClass, SQLSessionStatement.class, "SQLSessionStatement", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(sqlTransactionStatementEClass, SQLTransactionStatement.class, "SQLTransactionStatement", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+		initEClass(sqlTransactionStatementEClass, SQLTransactionStatement.class, "SQLTransactionStatement", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);

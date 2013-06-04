@@ -1,15 +1,10 @@
-/*******************************************************************************
- * Copyright (c) 2001, 2004 IBM Corporation and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- * 
- * Contributors:
- *     IBM Corporation - initial API and implementation
- *******************************************************************************/
+/**
+ * <copyright>
+ * </copyright>
+ *
+ * $Id$
+ */
 package org.eclipse.datatools.modelbase.sql.accesscontrol;
-
 
 import org.eclipse.emf.common.util.EList;
 
@@ -47,9 +42,9 @@ public interface User extends AuthorizationIdentifier {
 	 * @return the value of the '<em>Group</em>' reference list.
 	 * @see org.eclipse.datatools.modelbase.sql.accesscontrol.SQLAccessControlPackage#getUser_Group()
 	 * @see org.eclipse.datatools.modelbase.sql.accesscontrol.Group#getUser
-	 * @model type="org.eclipse.datatools.modelbase.sql.accesscontrol.Group" opposite="user"
+	 * @model opposite="user"
 	 * @generated
 	 */
-	EList getGroup();
+	EList<Group> getGroup();
 
 } // User

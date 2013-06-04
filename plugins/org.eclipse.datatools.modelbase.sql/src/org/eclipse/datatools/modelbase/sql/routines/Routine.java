@@ -1,13 +1,9 @@
-/*******************************************************************************
- * Copyright (c) 2001, 2004 IBM Corporation and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- * 
- * Contributors:
- *     IBM Corporation - initial API and implementation
- *******************************************************************************/
+/**
+ * <copyright>
+ * </copyright>
+ *
+ * $Id$
+ */
 package org.eclipse.datatools.modelbase.sql.routines;
 
 import org.eclipse.datatools.modelbase.sql.schema.SQLObject;
@@ -83,10 +79,6 @@ public interface Routine extends SQLObject {
 	/**
 	 * Returns the value of the '<em><b>Language</b></em>' attribute.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Language</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Since there are many languages, rather than constrain ourselves to an enumerated list which is difficult to subclass in the EMF environment, we have chosen to use strings.
@@ -124,10 +116,6 @@ public interface Routine extends SQLObject {
 	/**
 	 * Returns the value of the '<em><b>Parameter Style</b></em>' attribute.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Parameter Style</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Paraphrased from 5WD-02-Foundation-2002-12 
@@ -195,10 +183,6 @@ public interface Routine extends SQLObject {
 	 * Returns the value of the '<em><b>Sql Data Access</b></em>' attribute.
 	 * The literals are from the enumeration {@link org.eclipse.datatools.modelbase.sql.routines.DataAccess}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Sql Data Access</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * 5WD-02-Foundation-2002-12
@@ -425,30 +409,16 @@ public interface Routine extends SQLObject {
 	 * @return the value of the '<em>Parameters</em>' containment reference list.
 	 * @see org.eclipse.datatools.modelbase.sql.routines.SQLRoutinesPackage#getRoutine_Parameters()
 	 * @see org.eclipse.datatools.modelbase.sql.routines.Parameter#getRoutine
-	 * @model type="org.eclipse.datatools.modelbase.sql.routines.Parameter" opposite="routine" containment="true"
+	 * @model opposite="routine" containment="true"
 	 * @generated
 	 */
-	EList getParameters();
-
-   /**
-    * Gets a list of IN and INOUT parameters associated with this routine.
-    * <p>
-    * @return a list of IN and INOUT parameters associated with this routine.
-    */
-   public EList getInputParameters();
-
-   /**
-    * Gets a list of OUT and INOUT parameters associated with this routine.
-    * <p>
-    * @return a list of OUT and INOUT parameters associated with this routine.
-    */
-   public EList getOutputParameters();
+	EList<Parameter> getParameters();
 
 	/**
 	 * Returns the value of the '<em><b>Source</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Source</em>' containment reference list isn't clear,
+	 * If the meaning of the '<em>Source</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
@@ -463,12 +433,12 @@ public interface Routine extends SQLObject {
 	/**
 	 * Sets the value of the '{@link org.eclipse.datatools.modelbase.sql.routines.Routine#getSource <em>Source</em>}' containment reference.
 	 * <!-- begin-user-doc -->
-    * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Source</em>' containment reference.
 	 * @see #getSource()
 	 * @generated
 	 */
-   void setSource(Source value);
+	void setSource(Source value);
 
 	/**
 	 * Returns the value of the '<em><b>Schema</b></em>' reference.

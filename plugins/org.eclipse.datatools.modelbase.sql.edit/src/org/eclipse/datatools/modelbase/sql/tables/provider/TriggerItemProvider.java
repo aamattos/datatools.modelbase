@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: TriggerItemProvider.java,v 1.3 2007/05/31 00:29:18 dpchou Exp $
+ * $Id$
  */
 package org.eclipse.datatools.modelbase.sql.tables.provider;
 
@@ -23,6 +23,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
+import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
@@ -59,7 +60,8 @@ public class TriggerItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List getPropertyDescriptors(Object object) {
+	@Override
+	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
@@ -91,12 +93,12 @@ public class TriggerItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Trigger_schema_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_Trigger_schema_feature", "_UI_Trigger_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 getString("_UI_Trigger_schema_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Trigger_schema_feature", "_UI_Trigger_type"),
 				 SQLTablesPackage.Literals.TRIGGER__SCHEMA,
 				 true,
 				 false,
-				 false,
+				 true,
 				 null,
 				 null,
 				 null));
@@ -113,12 +115,12 @@ public class TriggerItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Trigger_subjectTable_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_Trigger_subjectTable_feature", "_UI_Trigger_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 getString("_UI_Trigger_subjectTable_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Trigger_subjectTable_feature", "_UI_Trigger_type"),
 				 SQLTablesPackage.Literals.TRIGGER__SUBJECT_TABLE,
 				 true,
 				 false,
-				 false,
+				 true,
 				 null,
 				 null,
 				 null));
@@ -135,12 +137,12 @@ public class TriggerItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Trigger_triggerColumn_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_Trigger_triggerColumn_feature", "_UI_Trigger_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 getString("_UI_Trigger_triggerColumn_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Trigger_triggerColumn_feature", "_UI_Trigger_type"),
 				 SQLTablesPackage.Literals.TRIGGER__TRIGGER_COLUMN,
 				 true,
 				 false,
-				 false,
+				 true,
 				 null,
 				 null,
 				 null));
@@ -157,8 +159,8 @@ public class TriggerItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Trigger_actionGranularity_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_Trigger_actionGranularity_feature", "_UI_Trigger_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 getString("_UI_Trigger_actionGranularity_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Trigger_actionGranularity_feature", "_UI_Trigger_type"),
 				 SQLTablesPackage.Literals.TRIGGER__ACTION_GRANULARITY,
 				 true,
 				 false,
@@ -179,8 +181,8 @@ public class TriggerItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Trigger_timeStamp_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_Trigger_timeStamp_feature", "_UI_Trigger_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 getString("_UI_Trigger_timeStamp_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Trigger_timeStamp_feature", "_UI_Trigger_type"),
 				 SQLTablesPackage.Literals.TRIGGER__TIME_STAMP,
 				 false,
 				 false,
@@ -201,8 +203,8 @@ public class TriggerItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Trigger_actionTime_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_Trigger_actionTime_feature", "_UI_Trigger_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 getString("_UI_Trigger_actionTime_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Trigger_actionTime_feature", "_UI_Trigger_type"),
 				 SQLTablesPackage.Literals.TRIGGER__ACTION_TIME,
 				 true,
 				 false,
@@ -223,8 +225,8 @@ public class TriggerItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Trigger_updateType_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_Trigger_updateType_feature", "_UI_Trigger_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 getString("_UI_Trigger_updateType_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Trigger_updateType_feature", "_UI_Trigger_type"),
 				 SQLTablesPackage.Literals.TRIGGER__UPDATE_TYPE,
 				 true,
 				 false,
@@ -245,8 +247,8 @@ public class TriggerItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Trigger_insertType_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_Trigger_insertType_feature", "_UI_Trigger_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 getString("_UI_Trigger_insertType_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Trigger_insertType_feature", "_UI_Trigger_type"),
 				 SQLTablesPackage.Literals.TRIGGER__INSERT_TYPE,
 				 true,
 				 false,
@@ -267,8 +269,8 @@ public class TriggerItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Trigger_deleteType_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_Trigger_deleteType_feature", "_UI_Trigger_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 getString("_UI_Trigger_deleteType_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Trigger_deleteType_feature", "_UI_Trigger_type"),
 				 SQLTablesPackage.Literals.TRIGGER__DELETE_TYPE,
 				 true,
 				 false,
@@ -289,8 +291,8 @@ public class TriggerItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Trigger_oldRow_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_Trigger_oldRow_feature", "_UI_Trigger_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 getString("_UI_Trigger_oldRow_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Trigger_oldRow_feature", "_UI_Trigger_type"),
 				 SQLTablesPackage.Literals.TRIGGER__OLD_ROW,
 				 true,
 				 false,
@@ -311,8 +313,8 @@ public class TriggerItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Trigger_newRow_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_Trigger_newRow_feature", "_UI_Trigger_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 getString("_UI_Trigger_newRow_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Trigger_newRow_feature", "_UI_Trigger_type"),
 				 SQLTablesPackage.Literals.TRIGGER__NEW_ROW,
 				 true,
 				 false,
@@ -333,8 +335,8 @@ public class TriggerItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Trigger_oldTable_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_Trigger_oldTable_feature", "_UI_Trigger_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 getString("_UI_Trigger_oldTable_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Trigger_oldTable_feature", "_UI_Trigger_type"),
 				 SQLTablesPackage.Literals.TRIGGER__OLD_TABLE,
 				 true,
 				 false,
@@ -355,8 +357,8 @@ public class TriggerItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Trigger_newTable_feature"), //$NON-NLS-1$
-				 getString("_UI_PropertyDescriptor_description", "_UI_Trigger_newTable_feature", "_UI_Trigger_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				 getString("_UI_Trigger_newTable_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Trigger_newTable_feature", "_UI_Trigger_type"),
 				 SQLTablesPackage.Literals.TRIGGER__NEW_TABLE,
 				 true,
 				 false,
@@ -374,7 +376,8 @@ public class TriggerItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Collection getChildrenFeatures(Object object) {
+	@Override
+	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(SQLTablesPackage.Literals.TRIGGER__ACTION_STATEMENT);
@@ -388,6 +391,7 @@ public class TriggerItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EStructuralFeature getChildFeature(Object object, Object child) {
 		// Check the type of the specified child object and return the proper feature to use for
 		// adding (see {@link AddCommand}) it as a child.
@@ -401,8 +405,9 @@ public class TriggerItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/Trigger")); //$NON-NLS-1$
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/Trigger"));
 	}
 
 	/**
@@ -411,11 +416,12 @@ public class TriggerItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getText(Object object) {
 		String label = ((Trigger)object).getName();
 		return label == null || label.length() == 0 ?
-			getString("_UI_Trigger_type") : //$NON-NLS-1$
-			getString("_UI_Trigger_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+			getString("_UI_Trigger_type") :
+			label;
 	}
 
 	/**
@@ -425,6 +431,7 @@ public class TriggerItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
@@ -456,7 +463,8 @@ public class TriggerItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void collectNewChildDescriptors(Collection newChildDescriptors, Object object) {
+	@Override
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
 		newChildDescriptors.add
@@ -476,8 +484,8 @@ public class TriggerItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ResourceLocator getResourceLocator() {
 		return SqlmodelEditPlugin.INSTANCE;
 	}
-
 }

@@ -1,29 +1,30 @@
-/*******************************************************************************
- * Copyright (c) 2001, 2004 IBM Corporation and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- * 
- * Contributors:
- *     IBM Corporation - initial API and implementation
- *******************************************************************************/
+/**
+ * <copyright>
+ * </copyright>
+ *
+ * $Id$
+ */
 package org.eclipse.datatools.modelbase.sql.expressions.util;
 
-import java.util.List;
-
 import org.eclipse.datatools.modelbase.sql.expressions.*;
+import org.eclipse.datatools.modelbase.sql.expressions.QueryExpression;
+import org.eclipse.datatools.modelbase.sql.expressions.QueryExpressionDefault;
+import org.eclipse.datatools.modelbase.sql.expressions.SQLExpressionsPackage;
+import org.eclipse.datatools.modelbase.sql.expressions.SearchCondition;
+import org.eclipse.datatools.modelbase.sql.expressions.SearchConditionDefault;
+import org.eclipse.datatools.modelbase.sql.expressions.ValueExpression;
+import org.eclipse.datatools.modelbase.sql.expressions.ValueExpressionDefault;
 import org.eclipse.datatools.modelbase.sql.schema.SQLObject;
-import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EModelElement;
 import org.eclipse.emf.ecore.ENamedElement;
 import org.eclipse.emf.ecore.EObject;
-
+import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.util.Switch;
 
 /**
  * <!-- begin-user-doc -->
  * The <b>Switch</b> for the model's inheritance hierarchy.
- * It supports the call {@link #doSwitch doSwitch(object)}
+ * It supports the call {@link #doSwitch(EObject) doSwitch(object)}
  * to invoke the <code>caseXXX</code> method for each class of the model,
  * starting with the actual class of the object
  * and proceeding up the inheritance hierarchy
@@ -33,7 +34,7 @@ import org.eclipse.emf.ecore.EObject;
  * @see org.eclipse.datatools.modelbase.sql.expressions.SQLExpressionsPackage
  * @generated
  */
-public class SQLExpressionsSwitch {
+public class SQLExpressionsSwitch<T> extends Switch<T> {
 	/**
 	 * The cached model package
 	 * <!-- begin-user-doc -->
@@ -55,14 +56,16 @@ public class SQLExpressionsSwitch {
 	}
 
 	/**
-	 * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that result.
+	 * Checks whether this is a switch for the given package.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the first non-null result returned by a <code>caseXXX</code> call.
+	 * @parameter ePackage the package in question.
+	 * @return whether this is a switch for the given package.
 	 * @generated
 	 */
-	public Object doSwitch(EObject theEObject) {
-		return doSwitch(theEObject.eClass(), theEObject);
+	@Override
+	protected boolean isSwitchFor(EPackage ePackage) {
+		return ePackage == modelPackage;
 	}
 
 	/**
@@ -72,49 +75,30 @@ public class SQLExpressionsSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	protected Object doSwitch(EClass theEClass, EObject theEObject) {
-		if (theEClass.eContainer() == modelPackage) {
-			return doSwitch(theEClass.getClassifierID(), theEObject);
-		}
-		else {
-			List eSuperTypes = theEClass.getESuperTypes();
-			return
-				eSuperTypes.isEmpty() ?
-					defaultCase(theEObject) :
-					doSwitch((EClass)eSuperTypes.get(0), theEObject);
-		}
-	}
-
-	/**
-	 * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that result.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the first non-null result returned by a <code>caseXXX</code> call.
-	 * @generated
-	 */
-	protected Object doSwitch(int classifierID, EObject theEObject) {
+	@Override
+	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
 			case SQLExpressionsPackage.QUERY_EXPRESSION: {
 				QueryExpression queryExpression = (QueryExpression)theEObject;
-				Object result = caseQueryExpression(queryExpression);
+				T result = caseQueryExpression(queryExpression);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case SQLExpressionsPackage.VALUE_EXPRESSION: {
 				ValueExpression valueExpression = (ValueExpression)theEObject;
-				Object result = caseValueExpression(valueExpression);
+				T result = caseValueExpression(valueExpression);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case SQLExpressionsPackage.SEARCH_CONDITION: {
 				SearchCondition searchCondition = (SearchCondition)theEObject;
-				Object result = caseSearchCondition(searchCondition);
+				T result = caseSearchCondition(searchCondition);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case SQLExpressionsPackage.QUERY_EXPRESSION_DEFAULT: {
 				QueryExpressionDefault queryExpressionDefault = (QueryExpressionDefault)theEObject;
-				Object result = caseQueryExpressionDefault(queryExpressionDefault);
+				T result = caseQueryExpressionDefault(queryExpressionDefault);
 				if (result == null) result = caseSQLObject(queryExpressionDefault);
 				if (result == null) result = caseQueryExpression(queryExpressionDefault);
 				if (result == null) result = caseENamedElement(queryExpressionDefault);
@@ -124,7 +108,7 @@ public class SQLExpressionsSwitch {
 			}
 			case SQLExpressionsPackage.SEARCH_CONDITION_DEFAULT: {
 				SearchConditionDefault searchConditionDefault = (SearchConditionDefault)theEObject;
-				Object result = caseSearchConditionDefault(searchConditionDefault);
+				T result = caseSearchConditionDefault(searchConditionDefault);
 				if (result == null) result = caseSQLObject(searchConditionDefault);
 				if (result == null) result = caseSearchCondition(searchConditionDefault);
 				if (result == null) result = caseENamedElement(searchConditionDefault);
@@ -134,7 +118,7 @@ public class SQLExpressionsSwitch {
 			}
 			case SQLExpressionsPackage.VALUE_EXPRESSION_DEFAULT: {
 				ValueExpressionDefault valueExpressionDefault = (ValueExpressionDefault)theEObject;
-				Object result = caseValueExpressionDefault(valueExpressionDefault);
+				T result = caseValueExpressionDefault(valueExpressionDefault);
 				if (result == null) result = caseSQLObject(valueExpressionDefault);
 				if (result == null) result = caseValueExpression(valueExpressionDefault);
 				if (result == null) result = caseENamedElement(valueExpressionDefault);
@@ -157,7 +141,7 @@ public class SQLExpressionsSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseQueryExpression(QueryExpression object) {
+	public T caseQueryExpression(QueryExpression object) {
 		return null;
 	}
 
@@ -172,7 +156,7 @@ public class SQLExpressionsSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseValueExpression(ValueExpression object) {
+	public T caseValueExpression(ValueExpression object) {
 		return null;
 	}
 
@@ -187,7 +171,7 @@ public class SQLExpressionsSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseSearchCondition(SearchCondition object) {
+	public T caseSearchCondition(SearchCondition object) {
 		return null;
 	}
 
@@ -202,7 +186,7 @@ public class SQLExpressionsSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseQueryExpressionDefault(QueryExpressionDefault object) {
+	public T caseQueryExpressionDefault(QueryExpressionDefault object) {
 		return null;
 	}
 
@@ -217,7 +201,7 @@ public class SQLExpressionsSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseSearchConditionDefault(SearchConditionDefault object) {
+	public T caseSearchConditionDefault(SearchConditionDefault object) {
 		return null;
 	}
 
@@ -232,7 +216,7 @@ public class SQLExpressionsSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseValueExpressionDefault(ValueExpressionDefault object) {
+	public T caseValueExpressionDefault(ValueExpressionDefault object) {
 		return null;
 	}
 
@@ -247,7 +231,7 @@ public class SQLExpressionsSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseEModelElement(EModelElement object) {
+	public T caseEModelElement(EModelElement object) {
 		return null;
 	}
 
@@ -262,7 +246,7 @@ public class SQLExpressionsSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseENamedElement(ENamedElement object) {
+	public T caseENamedElement(ENamedElement object) {
 		return null;
 	}
 
@@ -277,7 +261,7 @@ public class SQLExpressionsSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseSQLObject(SQLObject object) {
+	public T caseSQLObject(SQLObject object) {
 		return null;
 	}
 
@@ -292,7 +276,8 @@ public class SQLExpressionsSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject)
 	 * @generated
 	 */
-	public Object defaultCase(EObject object) {
+	@Override
+	public T defaultCase(EObject object) {
 		return null;
 	}
 

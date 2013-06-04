@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: IncrementType.java,v 1.3 2006/09/07 00:19:49 dpchou Exp $
+ * $Id$
  */
 package org.eclipse.datatools.modelbase.sql.constraints;
 
@@ -10,7 +10,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import org.eclipse.emf.common.util.AbstractEnumerator;
+import org.eclipse.emf.common.util.Enumerator;
 
 /**
  * <!-- begin-user-doc -->
@@ -21,28 +21,65 @@ import org.eclipse.emf.common.util.AbstractEnumerator;
  * @model
  * @generated
  */
-public final class IncrementType extends AbstractEnumerator {
+public enum IncrementType implements Enumerator
+{
+	/**
+	 * The '<em><b>ASC</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #ASC_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	ASC(0, "ASC", "ASC"),
+	/**
+	 * The '<em><b>DESC</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #DESC_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	DESC(1, "DESC", "DESC"),
+	/**
+	 * The '<em><b>RANDOM</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #RANDOM_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	RANDOM(2, "RANDOM", "RANDOM");
+
 	/**
 	 * The '<em><b>ASC</b></em>' literal value.
 	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>ASC</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #ASC_LITERAL
+	 * @see #ASC
 	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final int ASC = 0;
+	public static final int ASC_VALUE = 0;
 
 	/**
 	 * The '<em><b>DESC</b></em>' literal value.
 	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>DESC</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #DESC_LITERAL
+	 * @see #DESC
 	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final int DESC = 1;
+	public static final int DESC_VALUE = 1;
 
 	/**
 	 * The '<em><b>RANDOM</b></em>' literal value.
@@ -52,50 +89,12 @@ public final class IncrementType extends AbstractEnumerator {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #RANDOM_LITERAL
+	 * @see #RANDOM
 	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final int RANDOM = 2;
-
-	/**
-	 * The '<em><b>ASC</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>ASC</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @see #ASC
-	 * @generated
-	 * @ordered
-	 */
-	public static final IncrementType ASC_LITERAL = new IncrementType(ASC, "ASC", "ASC"); //$NON-NLS-1$
-
-	/**
-	 * The '<em><b>DESC</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>DESC</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @see #DESC
-	 * @generated
-	 * @ordered
-	 */
-	public static final IncrementType DESC_LITERAL = new IncrementType(DESC, "DESC", "DESC"); //$NON-NLS-1$
-
-	/**
-	 * The '<em><b>RANDOM</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #RANDOM
-	 * @generated
-	 * @ordered
-	 */
-	public static final IncrementType RANDOM_LITERAL = new IncrementType(RANDOM, "RANDOM", "RANDOM"); //$NON-NLS-1$ //$NON-NLS-2$
+	public static final int RANDOM_VALUE = 2;
 
 	/**
 	 * An array of all the '<em><b>Increment Type</b></em>' enumerators.
@@ -105,9 +104,9 @@ public final class IncrementType extends AbstractEnumerator {
 	 */
 	private static final IncrementType[] VALUES_ARRAY =
 		new IncrementType[] {
-			ASC_LITERAL,
-			DESC_LITERAL,
-			RANDOM_LITERAL,
+			ASC,
+			DESC,
+			RANDOM,
 		};
 
 	/**
@@ -116,7 +115,7 @@ public final class IncrementType extends AbstractEnumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<IncrementType> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
 	 * Returns the '<em><b>Increment Type</b></em>' literal with the specified literal value.
@@ -158,12 +157,33 @@ public final class IncrementType extends AbstractEnumerator {
 	 */
 	public static IncrementType get(int value) {
 		switch (value) {
-			case ASC: return ASC_LITERAL;
-			case DESC: return DESC_LITERAL;
-			case RANDOM: return RANDOM_LITERAL;
+			case ASC_VALUE: return ASC;
+			case DESC_VALUE: return DESC;
+			case RANDOM_VALUE: return RANDOM;
 		}
 		return null;
 	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final int value;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final String name;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final String literal;
 
 	/**
 	 * Only this class can construct instances.
@@ -172,7 +192,88 @@ public final class IncrementType extends AbstractEnumerator {
 	 * @generated
 	 */
 	private IncrementType(int value, String name, String literal) {
-		super(value, name, literal);
+		this.value = value;
+		this.name = name;
+		this.literal = literal;
 	}
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int getValue() {
+	  return value;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getName() {
+	  return name;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getLiteral() {
+	  return literal;
+	}
+
+	/**
+	 * Returns the literal value of the enumerator, which is its string representation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		return literal;
+	}
+	
+	/*******************DEJAMOS ESTA SECCION POR COMPATIBILIDAD CON LOS PLUGINS QUE USAN EL DATATOOLS GENERADO CON COMPLIANCE 1.4 ***********************
+
+	
+	/**
+	 * The '<em><b>ASC</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>ASC</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #ASC
+	 * @generated NOT
+	 * @ordered
+	 */
+	public static final IncrementType ASC_LITERAL = ASC; //$NON-NLS-1$
+
+	/**
+	 * The '<em><b>DESC</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>DESC</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #DESC
+	 * @generated NOT
+	 * @ordered
+	 */
+	public static final IncrementType DESC_LITERAL = DESC; //$NON-NLS-1$
+
+	/**
+	 * The '<em><b>RANDOM</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #RANDOM
+	 * @generated NOT
+	 * @ordered
+	 */
+	public static final IncrementType RANDOM_LITERAL = RANDOM; //$NON-NLS-1$ //$NON-NLS-2$
+	
 } //IncrementType

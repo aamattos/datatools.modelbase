@@ -1,23 +1,49 @@
-/*******************************************************************************
- * Copyright (c) 2001, 2004 IBM Corporation and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- * 
- * Contributors:
- *     IBM Corporation - initial API and implementation
- *******************************************************************************/
+/**
+ * <copyright>
+ * </copyright>
+ *
+ * $Id$
+ */
 package org.eclipse.datatools.modelbase.sql.datatypes.impl;
 
 import org.eclipse.datatools.modelbase.sql.datatypes.*;
+import org.eclipse.datatools.modelbase.sql.datatypes.ApproximateNumericDataType;
+import org.eclipse.datatools.modelbase.sql.datatypes.AttributeDefinition;
+import org.eclipse.datatools.modelbase.sql.datatypes.BinaryStringDataType;
+import org.eclipse.datatools.modelbase.sql.datatypes.BooleanDataType;
+import org.eclipse.datatools.modelbase.sql.datatypes.CharacterSet;
+import org.eclipse.datatools.modelbase.sql.datatypes.CharacterStringDataType;
+import org.eclipse.datatools.modelbase.sql.datatypes.CoercibilityType;
+import org.eclipse.datatools.modelbase.sql.datatypes.DataLinkDataType;
+import org.eclipse.datatools.modelbase.sql.datatypes.DateDataType;
+import org.eclipse.datatools.modelbase.sql.datatypes.DistinctUserDefinedType;
+import org.eclipse.datatools.modelbase.sql.datatypes.Domain;
+import org.eclipse.datatools.modelbase.sql.datatypes.ElementType;
+import org.eclipse.datatools.modelbase.sql.datatypes.Field;
+import org.eclipse.datatools.modelbase.sql.datatypes.FixedPrecisionDataType;
+import org.eclipse.datatools.modelbase.sql.datatypes.IntegerDataType;
+import org.eclipse.datatools.modelbase.sql.datatypes.IntegrityControlOption;
+import org.eclipse.datatools.modelbase.sql.datatypes.IntervalDataType;
+import org.eclipse.datatools.modelbase.sql.datatypes.IntervalQualifierType;
+import org.eclipse.datatools.modelbase.sql.datatypes.LinkControlOption;
+import org.eclipse.datatools.modelbase.sql.datatypes.OrderingCategoryType;
+import org.eclipse.datatools.modelbase.sql.datatypes.OrderingType;
+import org.eclipse.datatools.modelbase.sql.datatypes.PrimitiveType;
+import org.eclipse.datatools.modelbase.sql.datatypes.ReadPermissionOption;
+import org.eclipse.datatools.modelbase.sql.datatypes.RowDataType;
+import org.eclipse.datatools.modelbase.sql.datatypes.SQLDataTypesFactory;
+import org.eclipse.datatools.modelbase.sql.datatypes.SQLDataTypesPackage;
+import org.eclipse.datatools.modelbase.sql.datatypes.StructuredUserDefinedType;
+import org.eclipse.datatools.modelbase.sql.datatypes.TimeDataType;
+import org.eclipse.datatools.modelbase.sql.datatypes.UnlinkOption;
+import org.eclipse.datatools.modelbase.sql.datatypes.UserDefinedTypeOrdering;
+import org.eclipse.datatools.modelbase.sql.datatypes.WritePermissionOption;
+import org.eclipse.datatools.modelbase.sql.datatypes.XMLDataType;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
-
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
 /**
@@ -35,7 +61,7 @@ public class SQLDataTypesFactoryImpl extends EFactoryImpl implements SQLDataType
 	 */
 	public static SQLDataTypesFactory init() {
 		try {
-			SQLDataTypesFactory theSQLDataTypesFactory = (SQLDataTypesFactory)EPackage.Registry.INSTANCE.getEFactory("http:///org/eclipse/datatools/modelbase/sql/datatypes.ecore"); //$NON-NLS-1$ 
+			SQLDataTypesFactory theSQLDataTypesFactory = (SQLDataTypesFactory)EPackage.Registry.INSTANCE.getEFactory("http:///org/eclipse/datatools/modelbase/sql/datatypes.ecore"); 
 			if (theSQLDataTypesFactory != null) {
 				return theSQLDataTypesFactory;
 			}
@@ -61,6 +87,7 @@ public class SQLDataTypesFactoryImpl extends EFactoryImpl implements SQLDataType
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case SQLDataTypesPackage.CHARACTER_STRING_DATA_TYPE: return createCharacterStringDataType();
@@ -84,7 +111,7 @@ public class SQLDataTypesFactoryImpl extends EFactoryImpl implements SQLDataType
 			case SQLDataTypesPackage.XML_DATA_TYPE: return createXMLDataType();
 			case SQLDataTypesPackage.ELEMENT_TYPE: return createElementType();
 			default:
-				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
+				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
 	}
 
@@ -93,6 +120,7 @@ public class SQLDataTypesFactoryImpl extends EFactoryImpl implements SQLDataType
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object createFromString(EDataType eDataType, String initialValue) {
 		switch (eDataType.getClassifierID()) {
 			case SQLDataTypesPackage.COERCIBILITY_TYPE:
@@ -116,7 +144,7 @@ public class SQLDataTypesFactoryImpl extends EFactoryImpl implements SQLDataType
 			case SQLDataTypesPackage.UNLINK_OPTION:
 				return createUnlinkOptionFromString(eDataType, initialValue);
 			default:
-				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
+				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
 	}
 
@@ -125,6 +153,7 @@ public class SQLDataTypesFactoryImpl extends EFactoryImpl implements SQLDataType
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String convertToString(EDataType eDataType, Object instanceValue) {
 		switch (eDataType.getClassifierID()) {
 			case SQLDataTypesPackage.COERCIBILITY_TYPE:
@@ -148,7 +177,7 @@ public class SQLDataTypesFactoryImpl extends EFactoryImpl implements SQLDataType
 			case SQLDataTypesPackage.UNLINK_OPTION:
 				return convertUnlinkOptionToString(eDataType, instanceValue);
 			default:
-				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
+				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
 	}
 
@@ -359,7 +388,7 @@ public class SQLDataTypesFactoryImpl extends EFactoryImpl implements SQLDataType
 	 */
 	public CoercibilityType createCoercibilityTypeFromString(EDataType eDataType, String initialValue) {
 		CoercibilityType result = CoercibilityType.get(initialValue);
-		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
 		return result;
 	}
 
@@ -379,7 +408,7 @@ public class SQLDataTypesFactoryImpl extends EFactoryImpl implements SQLDataType
 	 */
 	public IntervalQualifierType createIntervalQualifierTypeFromString(EDataType eDataType, String initialValue) {
 		IntervalQualifierType result = IntervalQualifierType.get(initialValue);
-		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
 		return result;
 	}
 
@@ -399,7 +428,7 @@ public class SQLDataTypesFactoryImpl extends EFactoryImpl implements SQLDataType
 	 */
 	public OrderingType createOrderingTypeFromString(EDataType eDataType, String initialValue) {
 		OrderingType result = OrderingType.get(initialValue);
-		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
 		return result;
 	}
 
@@ -419,7 +448,7 @@ public class SQLDataTypesFactoryImpl extends EFactoryImpl implements SQLDataType
 	 */
 	public OrderingCategoryType createOrderingCategoryTypeFromString(EDataType eDataType, String initialValue) {
 		OrderingCategoryType result = OrderingCategoryType.get(initialValue);
-		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
 		return result;
 	}
 
@@ -439,7 +468,7 @@ public class SQLDataTypesFactoryImpl extends EFactoryImpl implements SQLDataType
 	 */
 	public PrimitiveType createPrimitiveTypeFromString(EDataType eDataType, String initialValue) {
 		PrimitiveType result = PrimitiveType.get(initialValue);
-		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
 		return result;
 	}
 
@@ -459,7 +488,7 @@ public class SQLDataTypesFactoryImpl extends EFactoryImpl implements SQLDataType
 	 */
 	public LinkControlOption createLinkControlOptionFromString(EDataType eDataType, String initialValue) {
 		LinkControlOption result = LinkControlOption.get(initialValue);
-		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
 		return result;
 	}
 
@@ -479,7 +508,7 @@ public class SQLDataTypesFactoryImpl extends EFactoryImpl implements SQLDataType
 	 */
 	public IntegrityControlOption createIntegrityControlOptionFromString(EDataType eDataType, String initialValue) {
 		IntegrityControlOption result = IntegrityControlOption.get(initialValue);
-		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
 		return result;
 	}
 
@@ -499,7 +528,7 @@ public class SQLDataTypesFactoryImpl extends EFactoryImpl implements SQLDataType
 	 */
 	public ReadPermissionOption createReadPermissionOptionFromString(EDataType eDataType, String initialValue) {
 		ReadPermissionOption result = ReadPermissionOption.get(initialValue);
-		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
 		return result;
 	}
 
@@ -519,7 +548,7 @@ public class SQLDataTypesFactoryImpl extends EFactoryImpl implements SQLDataType
 	 */
 	public WritePermissionOption createWritePermissionOptionFromString(EDataType eDataType, String initialValue) {
 		WritePermissionOption result = WritePermissionOption.get(initialValue);
-		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
 		return result;
 	}
 
@@ -539,7 +568,7 @@ public class SQLDataTypesFactoryImpl extends EFactoryImpl implements SQLDataType
 	 */
 	public UnlinkOption createUnlinkOptionFromString(EDataType eDataType, String initialValue) {
 		UnlinkOption result = UnlinkOption.get(initialValue);
-		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
 		return result;
 	}
 
@@ -567,6 +596,7 @@ public class SQLDataTypesFactoryImpl extends EFactoryImpl implements SQLDataType
 	 * @deprecated
 	 * @generated
 	 */
+	@Deprecated
 	public static SQLDataTypesPackage getPackage() {
 		return SQLDataTypesPackage.eINSTANCE;
 	}

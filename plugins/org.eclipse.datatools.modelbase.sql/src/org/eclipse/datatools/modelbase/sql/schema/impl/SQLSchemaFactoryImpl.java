@@ -1,26 +1,32 @@
-/*******************************************************************************
- * Copyright (c) 2001, 2004 IBM Corporation and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- * 
- * Contributors:
- *     IBM Corporation - initial API and implementation
- *******************************************************************************/
+/**
+ * <copyright>
+ * </copyright>
+ *
+ * $Id$
+ */
 package org.eclipse.datatools.modelbase.sql.schema.impl;
 
 import java.util.Date;
 import java.util.List;
 
 import org.eclipse.datatools.modelbase.sql.schema.*;
+import org.eclipse.datatools.modelbase.sql.schema.Catalog;
+import org.eclipse.datatools.modelbase.sql.schema.Comment;
+import org.eclipse.datatools.modelbase.sql.schema.Database;
+import org.eclipse.datatools.modelbase.sql.schema.Dependency;
+import org.eclipse.datatools.modelbase.sql.schema.Event;
+import org.eclipse.datatools.modelbase.sql.schema.GenerateType;
+import org.eclipse.datatools.modelbase.sql.schema.IdentitySpecifier;
+import org.eclipse.datatools.modelbase.sql.schema.ReferentialActionType;
+import org.eclipse.datatools.modelbase.sql.schema.SQLSchemaFactory;
+import org.eclipse.datatools.modelbase.sql.schema.SQLSchemaPackage;
+import org.eclipse.datatools.modelbase.sql.schema.Schema;
+import org.eclipse.datatools.modelbase.sql.schema.Sequence;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
-
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
 /**
@@ -38,7 +44,7 @@ public class SQLSchemaFactoryImpl extends EFactoryImpl implements SQLSchemaFacto
 	 */
 	public static SQLSchemaFactory init() {
 		try {
-			SQLSchemaFactory theSQLSchemaFactory = (SQLSchemaFactory)EPackage.Registry.INSTANCE.getEFactory("http:///org/eclipse/datatools/modelbase/sql/schema.ecore"); //$NON-NLS-1$ 
+			SQLSchemaFactory theSQLSchemaFactory = (SQLSchemaFactory)EPackage.Registry.INSTANCE.getEFactory("http:///org/eclipse/datatools/modelbase/sql/schema.ecore"); 
 			if (theSQLSchemaFactory != null) {
 				return theSQLSchemaFactory;
 			}
@@ -64,6 +70,7 @@ public class SQLSchemaFactoryImpl extends EFactoryImpl implements SQLSchemaFacto
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case SQLSchemaPackage.IDENTITY_SPECIFIER: return createIdentitySpecifier();
@@ -72,10 +79,10 @@ public class SQLSchemaFactoryImpl extends EFactoryImpl implements SQLSchemaFacto
 			case SQLSchemaPackage.SEQUENCE: return createSequence();
 			case SQLSchemaPackage.DATABASE: return createDatabase();
 			case SQLSchemaPackage.EVENT: return createEvent();
-			case SQLSchemaPackage.COMMENT: return createComment();
+			case SQLSchemaPackage.COMMENT: return (EObject)createComment();
 			case SQLSchemaPackage.CATALOG: return createCatalog();
 			default:
-				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
+				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
 	}
 
@@ -84,6 +91,7 @@ public class SQLSchemaFactoryImpl extends EFactoryImpl implements SQLSchemaFacto
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object createFromString(EDataType eDataType, String initialValue) {
 		switch (eDataType.getClassifierID()) {
 			case SQLSchemaPackage.GENERATE_TYPE:
@@ -95,7 +103,7 @@ public class SQLSchemaFactoryImpl extends EFactoryImpl implements SQLSchemaFacto
 			case SQLSchemaPackage.LIST:
 				return createListFromString(eDataType, initialValue);
 			default:
-				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
+				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
 	}
 
@@ -104,6 +112,7 @@ public class SQLSchemaFactoryImpl extends EFactoryImpl implements SQLSchemaFacto
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String convertToString(EDataType eDataType, Object instanceValue) {
 		switch (eDataType.getClassifierID()) {
 			case SQLSchemaPackage.GENERATE_TYPE:
@@ -115,7 +124,7 @@ public class SQLSchemaFactoryImpl extends EFactoryImpl implements SQLSchemaFacto
 			case SQLSchemaPackage.LIST:
 				return convertListToString(eDataType, instanceValue);
 			default:
-				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
+				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
 	}
 
@@ -206,7 +215,7 @@ public class SQLSchemaFactoryImpl extends EFactoryImpl implements SQLSchemaFacto
 	 */
 	public GenerateType createGenerateTypeFromString(EDataType eDataType, String initialValue) {
 		GenerateType result = GenerateType.get(initialValue);
-		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
 		return result;
 	}
 
@@ -226,7 +235,7 @@ public class SQLSchemaFactoryImpl extends EFactoryImpl implements SQLSchemaFacto
 	 */
 	public ReferentialActionType createReferentialActionTypeFromString(EDataType eDataType, String initialValue) {
 		ReferentialActionType result = ReferentialActionType.get(initialValue);
-		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
 		return result;
 	}
 
@@ -290,6 +299,7 @@ public class SQLSchemaFactoryImpl extends EFactoryImpl implements SQLSchemaFacto
 	 * @deprecated
 	 * @generated
 	 */
+	@Deprecated
 	public static SQLSchemaPackage getPackage() {
 		return SQLSchemaPackage.eINSTANCE;
 	}

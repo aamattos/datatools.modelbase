@@ -1,15 +1,12 @@
-/*******************************************************************************
- * Copyright (c) 2001, 2004 IBM Corporation and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- * 
- * Contributors:
- *     IBM Corporation - initial API and implementation
- *******************************************************************************/
+/**
+ * <copyright>
+ * </copyright>
+ *
+ * $Id$
+ */
 package org.eclipse.datatools.modelbase.sql.datatypes;
 
+import org.eclipse.datatools.modelbase.sql.routines.Method;
 import org.eclipse.emf.common.util.EList;
 
 /**
@@ -133,10 +130,10 @@ public interface StructuredUserDefinedType extends UserDefinedType {
 	 * @return the value of the '<em>Sub</em>' reference list.
 	 * @see org.eclipse.datatools.modelbase.sql.datatypes.SQLDataTypesPackage#getStructuredUserDefinedType_Sub()
 	 * @see org.eclipse.datatools.modelbase.sql.datatypes.StructuredUserDefinedType#getSuper
-	 * @model type="org.eclipse.datatools.modelbase.sql.datatypes.StructuredUserDefinedType" opposite="super"
+	 * @model opposite="super"
 	 * @generated
 	 */
-	EList getSub();
+	EList<StructuredUserDefinedType> getSub();
 
 	/**
 	 * Returns the value of the '<em><b>Attributes</b></em>' containment reference list.
@@ -149,10 +146,10 @@ public interface StructuredUserDefinedType extends UserDefinedType {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Attributes</em>' containment reference list.
 	 * @see org.eclipse.datatools.modelbase.sql.datatypes.SQLDataTypesPackage#getStructuredUserDefinedType_Attributes()
-	 * @model type="org.eclipse.datatools.modelbase.sql.datatypes.AttributeDefinition" containment="true"
+	 * @model containment="true"
 	 * @generated
 	 */
-	EList getAttributes();
+	EList<AttributeDefinition> getAttributes();
 
 	/**
 	 * Returns the value of the '<em><b>Methods</b></em>' containment reference list.
@@ -165,9 +162,9 @@ public interface StructuredUserDefinedType extends UserDefinedType {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Methods</em>' containment reference list.
 	 * @see org.eclipse.datatools.modelbase.sql.datatypes.SQLDataTypesPackage#getStructuredUserDefinedType_Methods()
-	 * @model type="org.eclipse.datatools.modelbase.sql.routines.Method" containment="true"
+	 * @model containment="true"
 	 * @generated
 	 */
-	EList getMethods();
+	EList<Method> getMethods();
 
 } // StructuredUserDefinedType

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: SQLStatementsItemProviderAdapterFactory.java,v 1.2 2005/12/22 22:37:41 bpayton Exp $
+ * $Id$
  */
 package org.eclipse.datatools.modelbase.sql.statements.provider;
 
@@ -17,6 +17,7 @@ import org.eclipse.emf.edit.provider.ChangeNotifier;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.provider.IChangeNotifier;
+import org.eclipse.emf.edit.provider.IDisposable;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
@@ -33,7 +34,7 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
  * <!-- end-user-doc -->
  * @generated
  */
-public class SQLStatementsItemProviderAdapterFactory extends SQLStatementsAdapterFactory implements ComposeableAdapterFactory, IChangeNotifier {
+public class SQLStatementsItemProviderAdapterFactory extends SQLStatementsAdapterFactory implements ComposeableAdapterFactory, IChangeNotifier, IDisposable {
 	/**
 	 * This keeps track of the root adapter factory that delegates to this adapter factory.
 	 * <!-- begin-user-doc -->
@@ -56,7 +57,7 @@ public class SQLStatementsItemProviderAdapterFactory extends SQLStatementsAdapte
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected Collection supportedTypes = new ArrayList();
+	protected Collection<Object> supportedTypes = new ArrayList<Object>();
 
 	/**
 	 * This constructs an instance.
@@ -86,6 +87,7 @@ public class SQLStatementsItemProviderAdapterFactory extends SQLStatementsAdapte
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createSQLStatementDefaultAdapter() {
 		if (sqlStatementDefaultItemProvider == null) {
 			sqlStatementDefaultItemProvider = new SQLStatementDefaultItemProvider(this);
@@ -119,6 +121,7 @@ public class SQLStatementsItemProviderAdapterFactory extends SQLStatementsAdapte
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isFactoryForType(Object type) {
 		return supportedTypes.contains(type) || super.isFactoryForType(type);
 	}
@@ -129,6 +132,7 @@ public class SQLStatementsItemProviderAdapterFactory extends SQLStatementsAdapte
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter adapt(Notifier notifier, Object type) {
 		return super.adapt(notifier, this);
 	}
@@ -138,10 +142,11 @@ public class SQLStatementsItemProviderAdapterFactory extends SQLStatementsAdapte
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object adapt(Object object, Object type) {
 		if (isFactoryForType(type)) {
 			Object adapter = super.adapt(object, type);
-			if (!(type instanceof Class) || (((Class)type).isInstance(adapter))) {
+			if (!(type instanceof Class<?>) || (((Class<?>)type).isInstance(adapter))) {
 				return adapter;
 			}
 		}
@@ -181,6 +186,16 @@ public class SQLStatementsItemProviderAdapterFactory extends SQLStatementsAdapte
 		if (parentAdapterFactory != null) {
 			parentAdapterFactory.fireNotifyChanged(notification);
 		}
+	}
+
+	/**
+	 * This disposes all of the item providers created by this factory. 
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void dispose() {
+		if (sqlStatementDefaultItemProvider != null) sqlStatementDefaultItemProvider.dispose();
 	}
 
 }

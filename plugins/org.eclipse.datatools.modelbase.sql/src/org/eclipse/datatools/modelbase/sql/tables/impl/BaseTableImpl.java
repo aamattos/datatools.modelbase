@@ -1,16 +1,12 @@
-/*******************************************************************************
- * Copyright (c) 2001, 2004 IBM Corporation and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- * 
- * Contributors:
- *     IBM Corporation - initial API and implementation
- *******************************************************************************/
+/**
+ * <copyright>
+ * </copyright>
+ *
+ * $Id$
+ */
 package org.eclipse.datatools.modelbase.sql.tables.impl;
 
-import java.util.Collection;
+import java.lang.reflect.InvocationTargetException;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Vector;
@@ -18,24 +14,12 @@ import java.util.Vector;
 import org.eclipse.datatools.modelbase.sql.constraints.Constraint;
 import org.eclipse.datatools.modelbase.sql.constraints.ForeignKey;
 import org.eclipse.datatools.modelbase.sql.constraints.PrimaryKey;
-import org.eclipse.datatools.modelbase.sql.constraints.SQLConstraintsPackage;
 import org.eclipse.datatools.modelbase.sql.constraints.TableConstraint;
 import org.eclipse.datatools.modelbase.sql.constraints.UniqueConstraint;
-import org.eclipse.datatools.modelbase.sql.datatypes.StructuredUserDefinedType;
-import org.eclipse.datatools.modelbase.sql.schema.SQLSchemaPackage;
-import org.eclipse.datatools.modelbase.sql.schema.Schema;
 import org.eclipse.datatools.modelbase.sql.tables.BaseTable;
-import org.eclipse.datatools.modelbase.sql.tables.ReferenceType;
 import org.eclipse.datatools.modelbase.sql.tables.SQLTablesPackage;
-import org.eclipse.datatools.modelbase.sql.tables.Table;
-import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.ecore.InternalEObject;
-import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
-import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
-import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -52,26 +36,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * @generated
  */
 public abstract class BaseTableImpl extends TableImpl implements BaseTable {
-	/**
-	 * The cached value of the '{@link #getConstraints() <em>Constraints</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getConstraints()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList constraints;
-
-	/**
-	 * The cached value of the '{@link #getReferencingForeignKeys() <em>Referencing Foreign Keys</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getReferencingForeignKeys()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList referencingForeignKeys;
-
+	
+	
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -86,6 +52,7 @@ public abstract class BaseTableImpl extends TableImpl implements BaseTable {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return SQLTablesPackage.Literals.BASE_TABLE;
 	}
@@ -95,11 +62,9 @@ public abstract class BaseTableImpl extends TableImpl implements BaseTable {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getConstraints() {
-		if (constraints == null) {
-			constraints = new EObjectContainmentWithInverseEList(TableConstraint.class, this, SQLTablesPackage.BASE_TABLE__CONSTRAINTS, SQLConstraintsPackage.TABLE_CONSTRAINT__BASE_TABLE);
-		}
-		return constraints;
+	@SuppressWarnings("unchecked")
+	public EList<TableConstraint> getConstraints() {
+		return (EList<TableConstraint>)eGet(SQLTablesPackage.Literals.BASE_TABLE__CONSTRAINTS, true);
 	}
 
 	/**
@@ -107,17 +72,17 @@ public abstract class BaseTableImpl extends TableImpl implements BaseTable {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getReferencingForeignKeys() {
-		if (referencingForeignKeys == null) {
-			referencingForeignKeys = new EObjectWithInverseResolvingEList(ForeignKey.class, this, SQLTablesPackage.BASE_TABLE__REFERENCING_FOREIGN_KEYS, SQLConstraintsPackage.FOREIGN_KEY__REFERENCED_TABLE);
-		}
-		return referencingForeignKeys;
+	@SuppressWarnings("unchecked")
+	public EList<ForeignKey> getReferencingForeignKeys() {
+		return (EList<ForeignKey>)eGet(SQLTablesPackage.Literals.BASE_TABLE__REFERENCING_FOREIGN_KEYS, true);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated not
 	 */
+	@SuppressWarnings("unchecked")
 	public List getUniqueConstraints() {
 		Vector uniqueConstraints = new Vector();
 		Iterator allConstraints = this.getConstraints().iterator();
@@ -134,7 +99,9 @@ public abstract class BaseTableImpl extends TableImpl implements BaseTable {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated not
 	 */
+	@SuppressWarnings("unchecked")
 	public List getForeignKeys() {
 		Vector foreignKeys = new Vector();
 		Iterator allConstraints = this.getConstraints().iterator();
@@ -151,6 +118,7 @@ public abstract class BaseTableImpl extends TableImpl implements BaseTable {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated not
 	 */
 	public PrimaryKey getPrimaryKey() {
 		Iterator allConstraints = this.getConstraints().iterator();
@@ -160,7 +128,6 @@ public abstract class BaseTableImpl extends TableImpl implements BaseTable {
 				return (PrimaryKey)currentConstraint;
 			}
 		}
-		
 		return null;
 	}
 
@@ -169,95 +136,17 @@ public abstract class BaseTableImpl extends TableImpl implements BaseTable {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case SQLTablesPackage.BASE_TABLE__CONSTRAINTS:
-				return ((InternalEList)getConstraints()).basicAdd(otherEnd, msgs);
-			case SQLTablesPackage.BASE_TABLE__REFERENCING_FOREIGN_KEYS:
-				return ((InternalEList)getReferencingForeignKeys()).basicAdd(otherEnd, msgs);
+	@Override
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
+		switch (operationID) {
+			case SQLTablesPackage.BASE_TABLE___GET_UNIQUE_CONSTRAINTS:
+				return getUniqueConstraints();
+			case SQLTablesPackage.BASE_TABLE___GET_FOREIGN_KEYS:
+				return getForeignKeys();
+			case SQLTablesPackage.BASE_TABLE___GET_PRIMARY_KEY:
+				return getPrimaryKey();
 		}
-		return super.eInverseAdd(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case SQLTablesPackage.BASE_TABLE__CONSTRAINTS:
-				return ((InternalEList)getConstraints()).basicRemove(otherEnd, msgs);
-			case SQLTablesPackage.BASE_TABLE__REFERENCING_FOREIGN_KEYS:
-				return ((InternalEList)getReferencingForeignKeys()).basicRemove(otherEnd, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case SQLTablesPackage.BASE_TABLE__CONSTRAINTS:
-				return getConstraints();
-			case SQLTablesPackage.BASE_TABLE__REFERENCING_FOREIGN_KEYS:
-				return getReferencingForeignKeys();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case SQLTablesPackage.BASE_TABLE__CONSTRAINTS:
-				getConstraints().clear();
-				getConstraints().addAll((Collection)newValue);
-				return;
-			case SQLTablesPackage.BASE_TABLE__REFERENCING_FOREIGN_KEYS:
-				getReferencingForeignKeys().clear();
-				getReferencingForeignKeys().addAll((Collection)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void eUnset(int featureID) {
-		switch (featureID) {
-			case SQLTablesPackage.BASE_TABLE__CONSTRAINTS:
-				getConstraints().clear();
-				return;
-			case SQLTablesPackage.BASE_TABLE__REFERENCING_FOREIGN_KEYS:
-				getReferencingForeignKeys().clear();
-				return;
-		}
-		super.eUnset(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case SQLTablesPackage.BASE_TABLE__CONSTRAINTS:
-				return constraints != null && !constraints.isEmpty();
-			case SQLTablesPackage.BASE_TABLE__REFERENCING_FOREIGN_KEYS:
-				return referencingForeignKeys != null && !referencingForeignKeys.isEmpty();
-		}
-		return super.eIsSet(featureID);
+		return super.eInvoke(operationID, arguments);
 	}
 
 } //BaseTableImpl

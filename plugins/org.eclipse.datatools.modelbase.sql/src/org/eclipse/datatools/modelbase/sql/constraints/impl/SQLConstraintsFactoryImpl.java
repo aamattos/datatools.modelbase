@@ -1,23 +1,29 @@
-/*******************************************************************************
- * Copyright (c) 2001, 2004 IBM Corporation and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- * 
- * Contributors:
- *     IBM Corporation - initial API and implementation
- *******************************************************************************/
+/**
+ * <copyright>
+ * </copyright>
+ *
+ * $Id$
+ */
 package org.eclipse.datatools.modelbase.sql.constraints.impl;
 
 import org.eclipse.datatools.modelbase.sql.constraints.*;
+import org.eclipse.datatools.modelbase.sql.constraints.Assertion;
+import org.eclipse.datatools.modelbase.sql.constraints.CheckConstraint;
+import org.eclipse.datatools.modelbase.sql.constraints.ForeignKey;
+import org.eclipse.datatools.modelbase.sql.constraints.IncrementType;
+import org.eclipse.datatools.modelbase.sql.constraints.Index;
+import org.eclipse.datatools.modelbase.sql.constraints.IndexExpression;
+import org.eclipse.datatools.modelbase.sql.constraints.IndexMember;
+import org.eclipse.datatools.modelbase.sql.constraints.MatchType;
+import org.eclipse.datatools.modelbase.sql.constraints.PrimaryKey;
+import org.eclipse.datatools.modelbase.sql.constraints.SQLConstraintsFactory;
+import org.eclipse.datatools.modelbase.sql.constraints.SQLConstraintsPackage;
+import org.eclipse.datatools.modelbase.sql.constraints.UniqueConstraint;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
-
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
 /**
@@ -35,7 +41,7 @@ public class SQLConstraintsFactoryImpl extends EFactoryImpl implements SQLConstr
 	 */
 	public static SQLConstraintsFactory init() {
 		try {
-			SQLConstraintsFactory theSQLConstraintsFactory = (SQLConstraintsFactory)EPackage.Registry.INSTANCE.getEFactory("http:///org/eclipse/datatools/modelbase/sql/constraints.ecore"); //$NON-NLS-1$ 
+			SQLConstraintsFactory theSQLConstraintsFactory = (SQLConstraintsFactory)EPackage.Registry.INSTANCE.getEFactory("http:///org/eclipse/datatools/modelbase/sql/constraints.ecore"); 
 			if (theSQLConstraintsFactory != null) {
 				return theSQLConstraintsFactory;
 			}
@@ -61,6 +67,7 @@ public class SQLConstraintsFactoryImpl extends EFactoryImpl implements SQLConstr
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case SQLConstraintsPackage.ASSERTION: return createAssertion();
@@ -72,7 +79,7 @@ public class SQLConstraintsFactoryImpl extends EFactoryImpl implements SQLConstr
 			case SQLConstraintsPackage.INDEX_MEMBER: return createIndexMember();
 			case SQLConstraintsPackage.INDEX_EXPRESSION: return createIndexExpression();
 			default:
-				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
+				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
 	}
 
@@ -81,6 +88,7 @@ public class SQLConstraintsFactoryImpl extends EFactoryImpl implements SQLConstr
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object createFromString(EDataType eDataType, String initialValue) {
 		switch (eDataType.getClassifierID()) {
 			case SQLConstraintsPackage.MATCH_TYPE:
@@ -88,7 +96,7 @@ public class SQLConstraintsFactoryImpl extends EFactoryImpl implements SQLConstr
 			case SQLConstraintsPackage.INCREMENT_TYPE:
 				return createIncrementTypeFromString(eDataType, initialValue);
 			default:
-				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
+				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
 	}
 
@@ -97,6 +105,7 @@ public class SQLConstraintsFactoryImpl extends EFactoryImpl implements SQLConstr
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String convertToString(EDataType eDataType, Object instanceValue) {
 		switch (eDataType.getClassifierID()) {
 			case SQLConstraintsPackage.MATCH_TYPE:
@@ -104,7 +113,7 @@ public class SQLConstraintsFactoryImpl extends EFactoryImpl implements SQLConstr
 			case SQLConstraintsPackage.INCREMENT_TYPE:
 				return convertIncrementTypeToString(eDataType, instanceValue);
 			default:
-				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
+				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
 	}
 
@@ -195,7 +204,7 @@ public class SQLConstraintsFactoryImpl extends EFactoryImpl implements SQLConstr
 	 */
 	public MatchType createMatchTypeFromString(EDataType eDataType, String initialValue) {
 		MatchType result = MatchType.get(initialValue);
-		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
 		return result;
 	}
 
@@ -215,7 +224,7 @@ public class SQLConstraintsFactoryImpl extends EFactoryImpl implements SQLConstr
 	 */
 	public IncrementType createIncrementTypeFromString(EDataType eDataType, String initialValue) {
 		IncrementType result = IncrementType.get(initialValue);
-		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
 		return result;
 	}
 
@@ -243,6 +252,7 @@ public class SQLConstraintsFactoryImpl extends EFactoryImpl implements SQLConstr
 	 * @deprecated
 	 * @generated
 	 */
+	@Deprecated
 	public static SQLConstraintsPackage getPackage() {
 		return SQLConstraintsPackage.eINSTANCE;
 	}

@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: LinkControlOption.java,v 1.3 2006/09/07 00:19:48 dpchou Exp $
+ * $Id$
  */
 package org.eclipse.datatools.modelbase.sql.datatypes;
 
@@ -10,7 +10,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import org.eclipse.emf.common.util.AbstractEnumerator;
+import org.eclipse.emf.common.util.Enumerator;
 
 /**
  * <!-- begin-user-doc -->
@@ -21,31 +21,28 @@ import org.eclipse.emf.common.util.AbstractEnumerator;
  * @model
  * @generated
  */
-public final class LinkControlOption extends AbstractEnumerator {
-	/**
-	 * The '<em><b>FILE LINK CONTROL</b></em>' literal value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #FILE_LINK_CONTROL_LITERAL
-	 * @model
-	 * @generated
-	 * @ordered
-	 */
-	public static final int FILE_LINK_CONTROL = 0;
-
-	/**
-	 * The '<em><b>NO FILE LINK CONTROL</b></em>' literal value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #NO_FILE_LINK_CONTROL_LITERAL
-	 * @model
-	 * @generated
-	 * @ordered
-	 */
-	public static final int NO_FILE_LINK_CONTROL = 1;
-
+public enum LinkControlOption implements Enumerator
+{
 	/**
 	 * The '<em><b>FILE LINK CONTROL</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #FILE_LINK_CONTROL_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	FILE_LINK_CONTROL(0, "FILE_LINK_CONTROL", "FILE_LINK_CONTROL"),
+	/**
+	 * The '<em><b>NO FILE LINK CONTROL</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #NO_FILE_LINK_CONTROL_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	NO_FILE_LINK_CONTROL(1, "NO_FILE_LINK_CONTROL", "NO_FILE_LINK_CONTROL");
+	/**
+	 * The '<em><b>FILE LINK CONTROL</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>FILE LINK CONTROL</b></em>' literal object isn't clear,
@@ -53,13 +50,14 @@ public final class LinkControlOption extends AbstractEnumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #FILE_LINK_CONTROL
+	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final LinkControlOption FILE_LINK_CONTROL_LITERAL = new LinkControlOption(FILE_LINK_CONTROL, "FILE_LINK_CONTROL", "FILE_LINK_CONTROL"); //$NON-NLS-1$
+	public static final int FILE_LINK_CONTROL_VALUE = 0;
 
 	/**
-	 * The '<em><b>NO FILE LINK CONTROL</b></em>' literal object.
+	 * The '<em><b>NO FILE LINK CONTROL</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>NO FILE LINK CONTROL</b></em>' literal object isn't clear,
@@ -67,10 +65,11 @@ public final class LinkControlOption extends AbstractEnumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #NO_FILE_LINK_CONTROL
+	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final LinkControlOption NO_FILE_LINK_CONTROL_LITERAL = new LinkControlOption(NO_FILE_LINK_CONTROL, "NO_FILE_LINK_CONTROL", "NO_FILE_LINK_CONTROL"); //$NON-NLS-1$
+	public static final int NO_FILE_LINK_CONTROL_VALUE = 1;
 
 	/**
 	 * An array of all the '<em><b>Link Control Option</b></em>' enumerators.
@@ -80,8 +79,8 @@ public final class LinkControlOption extends AbstractEnumerator {
 	 */
 	private static final LinkControlOption[] VALUES_ARRAY =
 		new LinkControlOption[] {
-			FILE_LINK_CONTROL_LITERAL,
-			NO_FILE_LINK_CONTROL_LITERAL,
+			FILE_LINK_CONTROL,
+			NO_FILE_LINK_CONTROL,
 		};
 
 	/**
@@ -90,7 +89,7 @@ public final class LinkControlOption extends AbstractEnumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<LinkControlOption> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
 	 * Returns the '<em><b>Link Control Option</b></em>' literal with the specified literal value.
@@ -132,11 +131,32 @@ public final class LinkControlOption extends AbstractEnumerator {
 	 */
 	public static LinkControlOption get(int value) {
 		switch (value) {
-			case FILE_LINK_CONTROL: return FILE_LINK_CONTROL_LITERAL;
-			case NO_FILE_LINK_CONTROL: return NO_FILE_LINK_CONTROL_LITERAL;
+			case FILE_LINK_CONTROL_VALUE: return FILE_LINK_CONTROL;
+			case NO_FILE_LINK_CONTROL_VALUE: return NO_FILE_LINK_CONTROL;
 		}
 		return null;
 	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final int value;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final String name;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final String literal;
 
 	/**
 	 * Only this class can construct instances.
@@ -145,7 +165,46 @@ public final class LinkControlOption extends AbstractEnumerator {
 	 * @generated
 	 */
 	private LinkControlOption(int value, String name, String literal) {
-		super(value, name, literal);
+		this.value = value;
+		this.name = name;
+		this.literal = literal;
 	}
 
-} //LinkControlOption
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int getValue() {
+	  return value;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getName() {
+	  return name;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getLiteral() {
+	  return literal;
+	}
+
+	/**
+	 * Returns the literal value of the enumerator, which is its string representation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		return literal;
+	}
+}

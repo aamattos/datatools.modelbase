@@ -1,17 +1,12 @@
-/*******************************************************************************
- * Copyright (c) 2001, 2004 IBM Corporation and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- * 
- * Contributors:
- *     IBM Corporation - initial API and implementation
- *******************************************************************************/
+/**
+ * <copyright>
+ * </copyright>
+ *
+ * $Id$
+ */
 package org.eclipse.datatools.modelbase.sql.routines;
 
 import org.eclipse.datatools.modelbase.sql.datatypes.CharacterStringDataType;
-
 import org.eclipse.datatools.modelbase.sql.schema.TypedElement;
 
 /**
@@ -43,10 +38,6 @@ public interface Parameter extends TypedElement {
 	 * Returns the value of the '<em><b>Mode</b></em>' attribute.
 	 * The literals are from the enumeration {@link org.eclipse.datatools.modelbase.sql.routines.ParameterMode}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Mode</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * 5WD-02-Foundation-2002-12

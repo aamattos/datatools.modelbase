@@ -1,13 +1,9 @@
-/*******************************************************************************
- * Copyright (c) 2001, 2004 IBM Corporation and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- * 
- * Contributors:
- *     IBM Corporation - initial API and implementation
- *******************************************************************************/
+/**
+ * <copyright>
+ * </copyright>
+ *
+ * $Id$
+ */
 package org.eclipse.datatools.modelbase.sql.routines;
 
 import org.eclipse.datatools.modelbase.sql.schema.SQLSchemaPackage;
@@ -25,6 +21,7 @@ import org.eclipse.emf.ecore.EReference;
  * <ul>
  *   <li>each class,</li>
  *   <li>each feature of each class,</li>
+ *   <li>each operation of each class,</li>
  *   <li>each enum,</li>
  *   <li>and each data type</li>
  * </ul>
@@ -40,7 +37,7 @@ public interface SQLRoutinesPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNAME = "routines"; //$NON-NLS-1$
+	String eNAME = "routines";
 
 	/**
 	 * The package namespace URI.
@@ -48,7 +45,7 @@ public interface SQLRoutinesPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http:///org/eclipse/datatools/modelbase/sql/routines.ecore"; //$NON-NLS-1$
+	String eNS_URI = "http:///org/eclipse/datatools/modelbase/sql/routines.ecore";
 
 	/**
 	 * The package namespace name.
@@ -56,7 +53,7 @@ public interface SQLRoutinesPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_PREFIX = "SQLRoutines"; //$NON-NLS-1$
+	String eNS_PREFIX = "SQLRoutines";
 
 	/**
 	 * The singleton instance of the package.
@@ -275,6 +272,69 @@ public interface SQLRoutinesPackage extends EPackage {
 	int ROUTINE_FEATURE_COUNT = SQLSchemaPackage.SQL_OBJECT_FEATURE_COUNT + 13;
 
 	/**
+	 * The operation id for the '<em>Add EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROUTINE___ADD_EANNOTATION__STRING = SQLSchemaPackage.SQL_OBJECT___ADD_EANNOTATION__STRING;
+
+	/**
+	 * The operation id for the '<em>Add EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROUTINE___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING = SQLSchemaPackage.SQL_OBJECT___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROUTINE___GET_EANNOTATION_DETAIL__EANNOTATION_STRING = SQLSchemaPackage.SQL_OBJECT___GET_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Set Annotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROUTINE___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING = SQLSchemaPackage.SQL_OBJECT___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Remove EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROUTINE___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING = SQLSchemaPackage.SQL_OBJECT___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROUTINE___GET_EANNOTATION__STRING = SQLSchemaPackage.SQL_OBJECT___GET_EANNOTATION__STRING;
+
+	/**
+	 * The number of operations of the '<em>Routine</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROUTINE_OPERATION_COUNT = SQLSchemaPackage.SQL_OBJECT_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.eclipse.datatools.modelbase.sql.routines.impl.SourceImpl <em>Source</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -373,6 +433,69 @@ public interface SQLRoutinesPackage extends EPackage {
 	 * @ordered
 	 */
 	int SOURCE_FEATURE_COUNT = SQLSchemaPackage.SQL_OBJECT_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Add EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SOURCE___ADD_EANNOTATION__STRING = SQLSchemaPackage.SQL_OBJECT___ADD_EANNOTATION__STRING;
+
+	/**
+	 * The operation id for the '<em>Add EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SOURCE___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING = SQLSchemaPackage.SQL_OBJECT___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SOURCE___GET_EANNOTATION_DETAIL__EANNOTATION_STRING = SQLSchemaPackage.SQL_OBJECT___GET_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Set Annotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SOURCE___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING = SQLSchemaPackage.SQL_OBJECT___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Remove EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SOURCE___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING = SQLSchemaPackage.SQL_OBJECT___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SOURCE___GET_EANNOTATION__STRING = SQLSchemaPackage.SQL_OBJECT___GET_EANNOTATION__STRING;
+
+	/**
+	 * The number of operations of the '<em>Source</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SOURCE_OPERATION_COUNT = SQLSchemaPackage.SQL_OBJECT_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.datatools.modelbase.sql.routines.impl.ParameterImpl <em>Parameter</em>}' class.
@@ -518,6 +641,87 @@ public interface SQLRoutinesPackage extends EPackage {
 	 * @ordered
 	 */
 	int PARAMETER_FEATURE_COUNT = SQLSchemaPackage.TYPED_ELEMENT_FEATURE_COUNT + 4;
+
+	/**
+	 * The operation id for the '<em>Add EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER___ADD_EANNOTATION__STRING = SQLSchemaPackage.TYPED_ELEMENT___ADD_EANNOTATION__STRING;
+
+	/**
+	 * The operation id for the '<em>Add EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING = SQLSchemaPackage.TYPED_ELEMENT___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER___GET_EANNOTATION_DETAIL__EANNOTATION_STRING = SQLSchemaPackage.TYPED_ELEMENT___GET_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Set Annotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING = SQLSchemaPackage.TYPED_ELEMENT___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Remove EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING = SQLSchemaPackage.TYPED_ELEMENT___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER___GET_EANNOTATION__STRING = SQLSchemaPackage.TYPED_ELEMENT___GET_EANNOTATION__STRING;
+
+	/**
+	 * The operation id for the '<em>Set Data Type</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER___SET_DATA_TYPE__DATATYPE = SQLSchemaPackage.TYPED_ELEMENT___SET_DATA_TYPE__DATATYPE;
+
+	/**
+	 * The operation id for the '<em>Get Data Type</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER___GET_DATA_TYPE = SQLSchemaPackage.TYPED_ELEMENT___GET_DATA_TYPE;
+
+	/**
+	 * The number of operations of the '<em>Parameter</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER_OPERATION_COUNT = SQLSchemaPackage.TYPED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.datatools.modelbase.sql.routines.impl.ProcedureImpl <em>Procedure</em>}' class.
@@ -753,6 +957,69 @@ public interface SQLRoutinesPackage extends EPackage {
 	 * @ordered
 	 */
 	int PROCEDURE_FEATURE_COUNT = ROUTINE_FEATURE_COUNT + 3;
+
+	/**
+	 * The operation id for the '<em>Add EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROCEDURE___ADD_EANNOTATION__STRING = ROUTINE___ADD_EANNOTATION__STRING;
+
+	/**
+	 * The operation id for the '<em>Add EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROCEDURE___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING = ROUTINE___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROCEDURE___GET_EANNOTATION_DETAIL__EANNOTATION_STRING = ROUTINE___GET_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Set Annotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROCEDURE___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING = ROUTINE___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Remove EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROCEDURE___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING = ROUTINE___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROCEDURE___GET_EANNOTATION__STRING = ROUTINE___GET_EANNOTATION__STRING;
+
+	/**
+	 * The number of operations of the '<em>Procedure</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROCEDURE_OPERATION_COUNT = ROUTINE_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.datatools.modelbase.sql.routines.impl.FunctionImpl <em>Function</em>}' class.
@@ -1008,7 +1275,7 @@ public interface SQLRoutinesPackage extends EPackage {
 	int FUNCTION__RETURN_TABLE = ROUTINE_FEATURE_COUNT + 5;
 
 	/**
-	 * The feature id for the '<em><b>Return Scalar</b></em>' containment reference.
+	 * The feature id for the '<em><b>Return Scalar</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1017,7 +1284,7 @@ public interface SQLRoutinesPackage extends EPackage {
 	int FUNCTION__RETURN_SCALAR = ROUTINE_FEATURE_COUNT + 6;
 
 	/**
-	 * The feature id for the '<em><b>Return Cast</b></em>' containment reference.
+	 * The feature id for the '<em><b>Return Cast</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1033,6 +1300,69 @@ public interface SQLRoutinesPackage extends EPackage {
 	 * @ordered
 	 */
 	int FUNCTION_FEATURE_COUNT = ROUTINE_FEATURE_COUNT + 8;
+
+	/**
+	 * The operation id for the '<em>Add EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTION___ADD_EANNOTATION__STRING = ROUTINE___ADD_EANNOTATION__STRING;
+
+	/**
+	 * The operation id for the '<em>Add EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTION___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING = ROUTINE___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTION___GET_EANNOTATION_DETAIL__EANNOTATION_STRING = ROUTINE___GET_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Set Annotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTION___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING = ROUTINE___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Remove EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTION___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING = ROUTINE___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTION___GET_EANNOTATION__STRING = ROUTINE___GET_EANNOTATION__STRING;
+
+	/**
+	 * The number of operations of the '<em>Function</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FUNCTION_OPERATION_COUNT = ROUTINE_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.datatools.modelbase.sql.routines.impl.RoutineResultTableImpl <em>Routine Result Table</em>}' class.
@@ -1214,6 +1544,69 @@ public interface SQLRoutinesPackage extends EPackage {
 	 * @ordered
 	 */
 	int ROUTINE_RESULT_TABLE_FEATURE_COUNT = SQLTablesPackage.TABLE_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Add EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROUTINE_RESULT_TABLE___ADD_EANNOTATION__STRING = SQLTablesPackage.TABLE___ADD_EANNOTATION__STRING;
+
+	/**
+	 * The operation id for the '<em>Add EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROUTINE_RESULT_TABLE___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING = SQLTablesPackage.TABLE___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROUTINE_RESULT_TABLE___GET_EANNOTATION_DETAIL__EANNOTATION_STRING = SQLTablesPackage.TABLE___GET_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Set Annotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROUTINE_RESULT_TABLE___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING = SQLTablesPackage.TABLE___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Remove EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROUTINE_RESULT_TABLE___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING = SQLTablesPackage.TABLE___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROUTINE_RESULT_TABLE___GET_EANNOTATION__STRING = SQLTablesPackage.TABLE___GET_EANNOTATION__STRING;
+
+	/**
+	 * The number of operations of the '<em>Routine Result Table</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROUTINE_RESULT_TABLE_OPERATION_COUNT = SQLTablesPackage.TABLE_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.datatools.modelbase.sql.routines.impl.MethodImpl <em>Method</em>}' class.
@@ -1469,7 +1862,7 @@ public interface SQLRoutinesPackage extends EPackage {
 	int METHOD__RETURN_TABLE = FUNCTION__RETURN_TABLE;
 
 	/**
-	 * The feature id for the '<em><b>Return Scalar</b></em>' containment reference.
+	 * The feature id for the '<em><b>Return Scalar</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1478,7 +1871,7 @@ public interface SQLRoutinesPackage extends EPackage {
 	int METHOD__RETURN_SCALAR = FUNCTION__RETURN_SCALAR;
 
 	/**
-	 * The feature id for the '<em><b>Return Cast</b></em>' containment reference.
+	 * The feature id for the '<em><b>Return Cast</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1512,6 +1905,69 @@ public interface SQLRoutinesPackage extends EPackage {
 	 * @ordered
 	 */
 	int METHOD_FEATURE_COUNT = FUNCTION_FEATURE_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>Add EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int METHOD___ADD_EANNOTATION__STRING = FUNCTION___ADD_EANNOTATION__STRING;
+
+	/**
+	 * The operation id for the '<em>Add EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int METHOD___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING = FUNCTION___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int METHOD___GET_EANNOTATION_DETAIL__EANNOTATION_STRING = FUNCTION___GET_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Set Annotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int METHOD___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING = FUNCTION___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Remove EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int METHOD___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING = FUNCTION___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int METHOD___GET_EANNOTATION__STRING = FUNCTION___GET_EANNOTATION__STRING;
+
+	/**
+	 * The number of operations of the '<em>Method</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int METHOD_OPERATION_COUNT = FUNCTION_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.datatools.modelbase.sql.routines.impl.UserDefinedFunctionImpl <em>User Defined Function</em>}' class.
@@ -1767,7 +2223,7 @@ public interface SQLRoutinesPackage extends EPackage {
 	int USER_DEFINED_FUNCTION__RETURN_TABLE = FUNCTION__RETURN_TABLE;
 
 	/**
-	 * The feature id for the '<em><b>Return Scalar</b></em>' containment reference.
+	 * The feature id for the '<em><b>Return Scalar</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1776,7 +2232,7 @@ public interface SQLRoutinesPackage extends EPackage {
 	int USER_DEFINED_FUNCTION__RETURN_SCALAR = FUNCTION__RETURN_SCALAR;
 
 	/**
-	 * The feature id for the '<em><b>Return Cast</b></em>' containment reference.
+	 * The feature id for the '<em><b>Return Cast</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1792,6 +2248,69 @@ public interface SQLRoutinesPackage extends EPackage {
 	 * @ordered
 	 */
 	int USER_DEFINED_FUNCTION_FEATURE_COUNT = FUNCTION_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Add EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USER_DEFINED_FUNCTION___ADD_EANNOTATION__STRING = FUNCTION___ADD_EANNOTATION__STRING;
+
+	/**
+	 * The operation id for the '<em>Add EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USER_DEFINED_FUNCTION___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING = FUNCTION___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USER_DEFINED_FUNCTION___GET_EANNOTATION_DETAIL__EANNOTATION_STRING = FUNCTION___GET_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Set Annotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USER_DEFINED_FUNCTION___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING = FUNCTION___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Remove EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USER_DEFINED_FUNCTION___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING = FUNCTION___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USER_DEFINED_FUNCTION___GET_EANNOTATION__STRING = FUNCTION___GET_EANNOTATION__STRING;
+
+	/**
+	 * The number of operations of the '<em>User Defined Function</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USER_DEFINED_FUNCTION_OPERATION_COUNT = FUNCTION_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.datatools.modelbase.sql.routines.impl.BuiltInFunctionImpl <em>Built In Function</em>}' class.
@@ -2047,7 +2566,7 @@ public interface SQLRoutinesPackage extends EPackage {
 	int BUILT_IN_FUNCTION__RETURN_TABLE = FUNCTION__RETURN_TABLE;
 
 	/**
-	 * The feature id for the '<em><b>Return Scalar</b></em>' containment reference.
+	 * The feature id for the '<em><b>Return Scalar</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -2056,7 +2575,7 @@ public interface SQLRoutinesPackage extends EPackage {
 	int BUILT_IN_FUNCTION__RETURN_SCALAR = FUNCTION__RETURN_SCALAR;
 
 	/**
-	 * The feature id for the '<em><b>Return Cast</b></em>' containment reference.
+	 * The feature id for the '<em><b>Return Cast</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -2072,6 +2591,69 @@ public interface SQLRoutinesPackage extends EPackage {
 	 * @ordered
 	 */
 	int BUILT_IN_FUNCTION_FEATURE_COUNT = FUNCTION_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Add EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUILT_IN_FUNCTION___ADD_EANNOTATION__STRING = FUNCTION___ADD_EANNOTATION__STRING;
+
+	/**
+	 * The operation id for the '<em>Add EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUILT_IN_FUNCTION___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING = FUNCTION___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUILT_IN_FUNCTION___GET_EANNOTATION_DETAIL__EANNOTATION_STRING = FUNCTION___GET_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Set Annotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUILT_IN_FUNCTION___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING = FUNCTION___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING;
+
+	/**
+	 * The operation id for the '<em>Remove EAnnotation Detail</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUILT_IN_FUNCTION___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING = FUNCTION___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING;
+
+	/**
+	 * The operation id for the '<em>Get EAnnotation</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUILT_IN_FUNCTION___GET_EANNOTATION__STRING = FUNCTION___GET_EANNOTATION__STRING;
+
+	/**
+	 * The number of operations of the '<em>Built In Function</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUILT_IN_FUNCTION_OPERATION_COUNT = FUNCTION_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.datatools.modelbase.sql.routines.DataAccess <em>Data Access</em>}' enum.
@@ -2442,10 +3024,10 @@ public interface SQLRoutinesPackage extends EPackage {
 	EReference getFunction_ReturnTable();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.eclipse.datatools.modelbase.sql.routines.Function#getReturnScalar <em>Return Scalar</em>}'.
+	 * Returns the meta object for the reference '{@link org.eclipse.datatools.modelbase.sql.routines.Function#getReturnScalar <em>Return Scalar</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Return Scalar</em>'.
+	 * @return the meta object for the reference '<em>Return Scalar</em>'.
 	 * @see org.eclipse.datatools.modelbase.sql.routines.Function#getReturnScalar()
 	 * @see #getFunction()
 	 * @generated
@@ -2453,10 +3035,10 @@ public interface SQLRoutinesPackage extends EPackage {
 	EReference getFunction_ReturnScalar();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.eclipse.datatools.modelbase.sql.routines.Function#getReturnCast <em>Return Cast</em>}'.
+	 * Returns the meta object for the reference '{@link org.eclipse.datatools.modelbase.sql.routines.Function#getReturnCast <em>Return Cast</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Return Cast</em>'.
+	 * @return the meta object for the reference '<em>Return Cast</em>'.
 	 * @see org.eclipse.datatools.modelbase.sql.routines.Function#getReturnCast()
 	 * @see #getFunction()
 	 * @generated
@@ -2560,13 +3142,14 @@ public interface SQLRoutinesPackage extends EPackage {
 	 * <ul>
 	 *   <li>each class,</li>
 	 *   <li>each feature of each class,</li>
+	 *   <li>each operation of each class,</li>
 	 *   <li>each enum,</li>
 	 *   <li>and each data type</li>
 	 * </ul>
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	interface Literals  {
+	interface Literals {
 		/**
 		 * The meta object literal for the '{@link org.eclipse.datatools.modelbase.sql.routines.impl.RoutineImpl <em>Routine</em>}' class.
 		 * <!-- begin-user-doc -->
@@ -2834,7 +3417,7 @@ public interface SQLRoutinesPackage extends EPackage {
 		EReference FUNCTION__RETURN_TABLE = eINSTANCE.getFunction_ReturnTable();
 
 		/**
-		 * The meta object literal for the '<em><b>Return Scalar</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Return Scalar</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -2842,7 +3425,7 @@ public interface SQLRoutinesPackage extends EPackage {
 		EReference FUNCTION__RETURN_SCALAR = eINSTANCE.getFunction_ReturnScalar();
 
 		/**
-		 * The meta object literal for the '<em><b>Return Cast</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Return Cast</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated

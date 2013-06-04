@@ -10,38 +10,22 @@
  *******************************************************************************/
 package org.eclipse.datatools.modelbase.sql.schema.impl;
 
-import java.io.ObjectStreamException;
-import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.util.Collection;
-import java.util.Date;
+import java.lang.reflect.InvocationTargetException;
 import java.util.Iterator;
-import java.util.List;
 
 import org.eclipse.datatools.modelbase.sql.accesscontrol.Privilege;
-import org.eclipse.datatools.modelbase.sql.accesscontrol.SQLAccessControlPackage;
-
 import org.eclipse.datatools.modelbase.sql.schema.Comment;
 import org.eclipse.datatools.modelbase.sql.schema.Dependency;
 import org.eclipse.datatools.modelbase.sql.schema.ObjectExtension;
 import org.eclipse.datatools.modelbase.sql.schema.SQLObject;
 import org.eclipse.datatools.modelbase.sql.schema.SQLSchemaPackage;
-import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcoreFactory;
 import org.eclipse.emf.ecore.EcorePackage;
-import org.eclipse.emf.ecore.InternalEObject;
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EStringToStringMapEntryImpl;
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
-import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
-import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -54,6 +38,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link org.eclipse.datatools.modelbase.sql.schema.impl.SQLObjectImpl#getDescription <em>Description</em>}</li>
  *   <li>{@link org.eclipse.datatools.modelbase.sql.schema.impl.SQLObjectImpl#getLabel <em>Label</em>}</li>
  *   <li>{@link org.eclipse.datatools.modelbase.sql.schema.impl.SQLObjectImpl#getComments <em>Comments</em>}</li>
+ *   <li>{@link org.eclipse.datatools.modelbase.sql.schema.impl.SQLObjectImpl#getExtensions <em>Extensions</em>}</li>
  *   <li>{@link org.eclipse.datatools.modelbase.sql.schema.impl.SQLObjectImpl#getPrivileges <em>Privileges</em>}</li>
  * </ul>
  * </p>
@@ -61,86 +46,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * @generated not
  */
 public abstract class SQLObjectImpl extends ENamedElementImpl implements SQLObject {
-	/**
-	 * The cached value of the '{@link #getDependencies() <em>Dependencies</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getDependencies()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList dependencies;
-
-	/**
-	 * The default value of the '{@link #getDescription() <em>Description</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getDescription()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String DESCRIPTION_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getDescription() <em>Description</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getDescription()
-	 * @generated
-	 * @ordered
-	 */
-	protected String description = DESCRIPTION_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getLabel() <em>Label</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getLabel()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String LABEL_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getLabel() <em>Label</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getLabel()
-	 * @generated
-	 * @ordered
-	 */
-	protected String label = LABEL_EDEFAULT;
-
-	/**
-	 * The cached value of the '{@link #getComments() <em>Comments</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getComments()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList comments;
-
-	/**
-	 * The cached value of the '{@link #getExtensions() <em>Extensions</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getExtensions()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList extensions;
-
-	/**
-	 * The cached value of the '{@link #getPrivileges() <em>Privileges</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPrivileges()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList privileges;
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -155,6 +60,7 @@ public abstract class SQLObjectImpl extends ENamedElementImpl implements SQLObje
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return SQLSchemaPackage.Literals.SQL_OBJECT;
 	}
@@ -162,13 +68,21 @@ public abstract class SQLObjectImpl extends ENamedElementImpl implements SQLObje
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated not
+	 */
+	@Override
+	protected int eStaticFeatureCount() {
+		return 0;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getDependencies() {
-		if (dependencies == null) {
-			dependencies = new EObjectContainmentEList(Dependency.class, this, SQLSchemaPackage.SQL_OBJECT__DEPENDENCIES);
-		}
-		return dependencies;
+	@SuppressWarnings("unchecked")
+	public EList<Dependency> getDependencies() {
+		return (EList<Dependency>)eGet(SQLSchemaPackage.Literals.SQL_OBJECT__DEPENDENCIES, true);
 	}
 
 	/**
@@ -177,7 +91,7 @@ public abstract class SQLObjectImpl extends ENamedElementImpl implements SQLObje
 	 * @generated
 	 */
 	public String getDescription() {
-		return description;
+		return (String)eGet(SQLSchemaPackage.Literals.SQL_OBJECT__DESCRIPTION, true);
 	}
 
 	/**
@@ -186,10 +100,7 @@ public abstract class SQLObjectImpl extends ENamedElementImpl implements SQLObje
 	 * @generated
 	 */
 	public void setDescription(String newDescription) {
-		String oldDescription = description;
-		description = newDescription;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, SQLSchemaPackage.SQL_OBJECT__DESCRIPTION, oldDescription, description));
+		eSet(SQLSchemaPackage.Literals.SQL_OBJECT__DESCRIPTION, newDescription);
 	}
 
 	/**
@@ -198,7 +109,7 @@ public abstract class SQLObjectImpl extends ENamedElementImpl implements SQLObje
 	 * @generated
 	 */
 	public String getLabel() {
-		return label;
+		return (String)eGet(SQLSchemaPackage.Literals.SQL_OBJECT__LABEL, true);
 	}
 
 	/**
@@ -207,10 +118,7 @@ public abstract class SQLObjectImpl extends ENamedElementImpl implements SQLObje
 	 * @generated
 	 */
 	public void setLabel(String newLabel) {
-		String oldLabel = label;
-		label = newLabel;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, SQLSchemaPackage.SQL_OBJECT__LABEL, oldLabel, label));
+		eSet(SQLSchemaPackage.Literals.SQL_OBJECT__LABEL, newLabel);
 	}
 
 	/**
@@ -218,11 +126,9 @@ public abstract class SQLObjectImpl extends ENamedElementImpl implements SQLObje
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getComments() {
-		if (comments == null) {
-			comments = new EObjectWithInverseResolvingEList(Comment.class, this, SQLSchemaPackage.SQL_OBJECT__COMMENTS, SQLSchemaPackage.COMMENT__SQL_OBJECT);
-		}
-		return comments;
+	@SuppressWarnings("unchecked")
+	public EList<Comment> getComments() {
+		return (EList<Comment>)eGet(SQLSchemaPackage.Literals.SQL_OBJECT__COMMENTS, true);
 	}
 
 	/**
@@ -230,11 +136,9 @@ public abstract class SQLObjectImpl extends ENamedElementImpl implements SQLObje
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getExtensions() {
-		if (extensions == null) {
-			extensions = new EObjectContainmentWithInverseEList(ObjectExtension.class, this, SQLSchemaPackage.SQL_OBJECT__EXTENSIONS, SQLSchemaPackage.OBJECT_EXTENSION__SQL_OBJECT);
-		}
-		return extensions;
+	@SuppressWarnings("unchecked")
+	public EList<ObjectExtension> getExtensions() {
+		return (EList<ObjectExtension>)eGet(SQLSchemaPackage.Literals.SQL_OBJECT__EXTENSIONS, true);
 	}
 
 	/**
@@ -242,11 +146,9 @@ public abstract class SQLObjectImpl extends ENamedElementImpl implements SQLObje
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList getPrivileges() {
-		if (privileges == null) {
-			privileges = new EObjectWithInverseResolvingEList(Privilege.class, this, SQLSchemaPackage.SQL_OBJECT__PRIVILEGES, SQLAccessControlPackage.PRIVILEGE__OBJECT);
-		}
-		return privileges;
+	@SuppressWarnings("unchecked")
+	public EList<Privilege> getPrivileges() {
+		return (EList<Privilege>)eGet(SQLSchemaPackage.Literals.SQL_OBJECT__PRIVILEGES, true);
 	}
 
 	/**
@@ -336,6 +238,31 @@ public abstract class SQLObjectImpl extends ENamedElementImpl implements SQLObje
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
+		switch (operationID) {
+			case SQLSchemaPackage.SQL_OBJECT___ADD_EANNOTATION__STRING:
+				return addEAnnotation((String)arguments.get(0));
+			case SQLSchemaPackage.SQL_OBJECT___ADD_EANNOTATION_DETAIL__EANNOTATION_STRING_STRING:
+				addEAnnotationDetail((EAnnotation)arguments.get(0), (String)arguments.get(1), (String)arguments.get(2));
+				return null;
+			case SQLSchemaPackage.SQL_OBJECT___GET_EANNOTATION_DETAIL__EANNOTATION_STRING:
+				return getEAnnotationDetail((EAnnotation)arguments.get(0), (String)arguments.get(1));
+			case SQLSchemaPackage.SQL_OBJECT___SET_ANNOTATION_DETAIL__EANNOTATION_STRING_STRING:
+				setAnnotationDetail((EAnnotation)arguments.get(0), (String)arguments.get(1), (String)arguments.get(2));
+				return null;
+			case SQLSchemaPackage.SQL_OBJECT___REMOVE_EANNOTATION_DETAIL__EANNOTATION_STRING:
+				removeEAnnotationDetail((EAnnotation)arguments.get(0), (String)arguments.get(1));
+				return null;
+		}
+		return super.eInvoke(operationID, arguments);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 */
 	public EAnnotation getEAnnotation(String source) {
 		EAnnotation eAnnotation = null;
@@ -347,167 +274,6 @@ public abstract class SQLObjectImpl extends ENamedElementImpl implements SQLObje
 			}
 		}
 		return eAnnotation;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case SQLSchemaPackage.SQL_OBJECT__COMMENTS:
-				return ((InternalEList)getComments()).basicAdd(otherEnd, msgs);
-			case SQLSchemaPackage.SQL_OBJECT__EXTENSIONS:
-				return ((InternalEList)getExtensions()).basicAdd(otherEnd, msgs);
-			case SQLSchemaPackage.SQL_OBJECT__PRIVILEGES:
-				return ((InternalEList)getPrivileges()).basicAdd(otherEnd, msgs);
-		}
-		return super.eInverseAdd(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case SQLSchemaPackage.SQL_OBJECT__DEPENDENCIES:
-				return ((InternalEList)getDependencies()).basicRemove(otherEnd, msgs);
-			case SQLSchemaPackage.SQL_OBJECT__COMMENTS:
-				return ((InternalEList)getComments()).basicRemove(otherEnd, msgs);
-			case SQLSchemaPackage.SQL_OBJECT__EXTENSIONS:
-				return ((InternalEList)getExtensions()).basicRemove(otherEnd, msgs);
-			case SQLSchemaPackage.SQL_OBJECT__PRIVILEGES:
-				return ((InternalEList)getPrivileges()).basicRemove(otherEnd, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case SQLSchemaPackage.SQL_OBJECT__DEPENDENCIES:
-				return getDependencies();
-			case SQLSchemaPackage.SQL_OBJECT__DESCRIPTION:
-				return getDescription();
-			case SQLSchemaPackage.SQL_OBJECT__LABEL:
-				return getLabel();
-			case SQLSchemaPackage.SQL_OBJECT__COMMENTS:
-				return getComments();
-			case SQLSchemaPackage.SQL_OBJECT__EXTENSIONS:
-				return getExtensions();
-			case SQLSchemaPackage.SQL_OBJECT__PRIVILEGES:
-				return getPrivileges();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case SQLSchemaPackage.SQL_OBJECT__DEPENDENCIES:
-				getDependencies().clear();
-				getDependencies().addAll((Collection)newValue);
-				return;
-			case SQLSchemaPackage.SQL_OBJECT__DESCRIPTION:
-				setDescription((String)newValue);
-				return;
-			case SQLSchemaPackage.SQL_OBJECT__LABEL:
-				setLabel((String)newValue);
-				return;
-			case SQLSchemaPackage.SQL_OBJECT__COMMENTS:
-				getComments().clear();
-				getComments().addAll((Collection)newValue);
-				return;
-			case SQLSchemaPackage.SQL_OBJECT__EXTENSIONS:
-				getExtensions().clear();
-				getExtensions().addAll((Collection)newValue);
-				return;
-			case SQLSchemaPackage.SQL_OBJECT__PRIVILEGES:
-				getPrivileges().clear();
-				getPrivileges().addAll((Collection)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void eUnset(int featureID) {
-		switch (featureID) {
-			case SQLSchemaPackage.SQL_OBJECT__DEPENDENCIES:
-				getDependencies().clear();
-				return;
-			case SQLSchemaPackage.SQL_OBJECT__DESCRIPTION:
-				setDescription(DESCRIPTION_EDEFAULT);
-				return;
-			case SQLSchemaPackage.SQL_OBJECT__LABEL:
-				setLabel(LABEL_EDEFAULT);
-				return;
-			case SQLSchemaPackage.SQL_OBJECT__COMMENTS:
-				getComments().clear();
-				return;
-			case SQLSchemaPackage.SQL_OBJECT__EXTENSIONS:
-				getExtensions().clear();
-				return;
-			case SQLSchemaPackage.SQL_OBJECT__PRIVILEGES:
-				getPrivileges().clear();
-				return;
-		}
-		super.eUnset(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case SQLSchemaPackage.SQL_OBJECT__DEPENDENCIES:
-				return dependencies != null && !dependencies.isEmpty();
-			case SQLSchemaPackage.SQL_OBJECT__DESCRIPTION:
-				return DESCRIPTION_EDEFAULT == null ? description != null : !DESCRIPTION_EDEFAULT.equals(description);
-			case SQLSchemaPackage.SQL_OBJECT__LABEL:
-				return LABEL_EDEFAULT == null ? label != null : !LABEL_EDEFAULT.equals(label);
-			case SQLSchemaPackage.SQL_OBJECT__COMMENTS:
-				return comments != null && !comments.isEmpty();
-			case SQLSchemaPackage.SQL_OBJECT__EXTENSIONS:
-				return extensions != null && !extensions.isEmpty();
-			case SQLSchemaPackage.SQL_OBJECT__PRIVILEGES:
-				return privileges != null && !privileges.isEmpty();
-		}
-		return super.eIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String toString() {
-		if (eIsProxy()) return super.toString();
-
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (description: "); //$NON-NLS-1$
-		result.append(description);
-		result.append(", label: "); //$NON-NLS-1$
-		result.append(label);
-		result.append(')');
-		return result.toString();
 	}
 
 } //SQLObjectImpl
